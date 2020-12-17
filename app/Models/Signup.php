@@ -5,12 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class F1Team extends Model
+class Signup extends Model
 {
     use HasFactory;
 
-    public function drivers()
-    {
-        return $this->hasMany(Driver::class);
-    }
+    public $fillable = ['name', 'email', 'country', 'division_id'];
+
 }

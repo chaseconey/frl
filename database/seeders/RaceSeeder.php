@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Race;
 use Illuminate\Database\Seeder;
 
 class RaceSeeder extends Seeder
@@ -13,6 +14,6 @@ class RaceSeeder extends Seeder
      */
     public function run()
     {
-
+        Race::factory(10)->create();
     }
 }

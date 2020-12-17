@@ -17,7 +17,8 @@ class CreateDivisionsTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->dateTime('race_time');
+            $table->string('day_of_week');
+            $table->time('race_time');
             $table->timestamps();
         });
     }

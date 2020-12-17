@@ -22,7 +22,9 @@ class RaceFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'race_time' => $this->faker->dateTimeThisYear,
+            'division_id' => $this->faker->numberBetween(1, 2),
+            'track_id' => $this->faker->numberBetween(1, 20)
         ];
     }
 }

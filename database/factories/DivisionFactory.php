@@ -23,7 +23,9 @@ class DivisionFactory extends Factory
     {
         return [
             'name' => 'Division 1',
-            'description' => $this->faker->sentence
+            'description' => $this->faker->sentence,
+            'race_time' => $this->faker->time(),
+            'day_of_week' => $this->faker->dayOfWeek,
         ];
     }
 }

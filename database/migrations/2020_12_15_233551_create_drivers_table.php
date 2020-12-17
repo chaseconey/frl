@@ -16,8 +16,10 @@ class CreateDriversTable extends Migration
         Schema::create('drivers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
+            $table->foreignId('f1_number_id')->constrained();
+            $table->foreignId('f1_team_id')->constrained();
             $table->foreignId('division_id')->constrained();
-            $table->boolean('approved')->default(false);
+            $table->timestamp('approved_at')->nullable();
             $table->timestamps();
         });
     }
