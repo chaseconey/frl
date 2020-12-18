@@ -3,6 +3,9 @@
 namespace Database\Factories;
 
 use App\Models\Driver;
+use App\Models\F1Number;
+use App\Models\F1Team;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class DriverFactory extends Factory
@@ -22,8 +25,10 @@ class DriverFactory extends Factory
     public function definition()
     {
         return [
-            'driver_id' => 1,
-            'division_id' => 1
+            'user_id' => User::factory(),
+            'division_id' => 1,
+            'f1_number_id' => F1Number::factory(),
+            'f1_team_id' => F1Team::factory()
         ];
     }
 }

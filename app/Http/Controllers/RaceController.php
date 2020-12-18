@@ -14,7 +14,12 @@ class RaceController extends Controller
      */
     public function index()
     {
-        //
+        $races = Race::latest('race_time')
+            ->with('track', 'division')
+            ->paginate();
+
+        return view('races.index')
+            ->withRaces($races);
     }
 
     /**

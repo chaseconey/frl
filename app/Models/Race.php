@@ -22,4 +22,19 @@ class Race extends Model
     {
         return $this->belongsTo(Division::class);
     }
+
+    public function results()
+    {
+        return $this->hasMany(RaceResults::class);
+    }
+
+    public function qualiResults()
+    {
+        return $this->hasMany(RaceQualiResults::class);
+    }
+
+    public function driver()
+    {
+        return $this->belongsTo(Driver::class);
+    }
 }

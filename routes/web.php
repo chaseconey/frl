@@ -25,4 +25,7 @@ Route::group(['middleware' => 'auth'], function () {
     })->middleware(['auth'])->name('dashboard');
 
     Route::resource('signup', \App\Http\Controllers\SignupController::class)->only('create', 'store');
+    Route::resource('races', \App\Http\Controllers\RaceController::class);
+    Route::resource('race.results', \App\Http\Controllers\RaceResultsController::class);
+    Route::resource('race.quali-results', \App\Http\Controllers\RaceQualiResultsController::class);
 });
