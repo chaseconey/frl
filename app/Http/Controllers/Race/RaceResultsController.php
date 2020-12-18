@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Race;
 
+use App\Http\Controllers\Controller;
 use App\Models\Race;
-use App\Models\RaceQualiResults;
+use App\Models\RaceResults;
 use Illuminate\Http\Request;
 
-class RaceQualiResultsController extends Controller
+class RaceResultsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +16,9 @@ class RaceQualiResultsController extends Controller
      */
     public function index(Race $race)
     {
-        $race->load(['qualiResults']);
+        $race->load(['results']);
 
-        return view('race-quali-results.index')
+        return view('race-results.index')
             ->withRace($race);
     }
 
@@ -64,7 +65,7 @@ class RaceQualiResultsController extends Controller
                 ])->create();
             }
 
-            $qualiResult = \App\Models\RaceQualiResults::fromFile($result);
+            $qualiResult = \App\Models\RaceResults::fromFile($result);
             $qualiResult->race_id = $race->id;
 
             $qualiResult->driver_id = $driver->id;
@@ -78,10 +79,10 @@ class RaceQualiResultsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\RaceQualiResults  $raceQualiResults
+     * @param  \App\Models\RaceResults  $raceResults
      * @return \Illuminate\Http\Response
      */
-    public function show(RaceQualiResults $raceQualiResults)
+    public function show(RaceResults $raceResults)
     {
         //
     }
@@ -89,10 +90,10 @@ class RaceQualiResultsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\RaceQualiResults  $raceQualiResults
+     * @param  \App\Models\RaceResults  $raceResults
      * @return \Illuminate\Http\Response
      */
-    public function edit(RaceQualiResults $raceQualiResults)
+    public function edit(RaceResults $raceResults)
     {
         //
     }
@@ -101,10 +102,10 @@ class RaceQualiResultsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\RaceQualiResults  $raceQualiResults
+     * @param  \App\Models\RaceResults  $raceResults
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RaceQualiResults $raceQualiResults)
+    public function update(Request $request, RaceResults $raceResults)
     {
         //
     }
@@ -112,10 +113,10 @@ class RaceQualiResultsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\RaceQualiResults  $raceQualiResults
+     * @param  \App\Models\RaceResults  $raceResults
      * @return \Illuminate\Http\Response
      */
-    public function destroy(RaceQualiResults $raceQualiResults)
+    public function destroy(RaceResults $raceResults)
     {
         //
     }
