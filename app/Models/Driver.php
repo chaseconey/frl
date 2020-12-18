@@ -45,8 +45,8 @@ class Driver extends Model
         return $this->belongsTo(Division::class);
     }
 
-    public function races()
+    public function raceResults()
     {
-        return $this->hasMany(Race::class);
+        return $this->hasMany(RaceResults::class);
     }
 }

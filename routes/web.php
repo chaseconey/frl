@@ -26,6 +26,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('signup', \App\Http\Controllers\SignupController::class)->only('create', 'store');
     Route::resource('races', \App\Http\Controllers\RaceController::class);
-    Route::resource('race.results', \App\Http\Controllers\RaceResultsController::class);
-    Route::resource('race.quali-results', \App\Http\Controllers\RaceQualiResultsController::class);
+    Route::resource('race.results', \App\Http\Controllers\Race\RaceResultsController::class);
+    Route::resource('race.quali-results', \App\Http\Controllers\Race\RaceQualiResultsController::class);
+    Route::resource('standings', \App\Http\Controllers\StandingController::class);
+    Route::resource('divisions.standings', \App\Http\Controllers\Division\StandingController::class);
 });
