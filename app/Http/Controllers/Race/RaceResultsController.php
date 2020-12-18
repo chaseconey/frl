@@ -18,7 +18,7 @@ class RaceResultsController extends Controller
     {
         $race->load(['results']);
 
-        return view('race-results.index')
+        return view('races.race-results.index')
             ->withRace($race);
     }
 

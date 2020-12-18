@@ -73,7 +73,7 @@
 
             </div>
             @if($race->qualiResults->count() === 0 && auth()->user()->hasRole('admin'))
-                @include('race-results.partials.upload-form', ['route' => 'race.quali-results.store'])
+                @include('races.race-results.partials.upload-form', ['route' => 'race.quali-results.store'])
             @endif
         </div>
     </div>
