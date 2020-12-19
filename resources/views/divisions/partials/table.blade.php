@@ -11,11 +11,11 @@
                         </th>
                         <th scope="col"
                             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Races Completed
+                            Type
                         </th>
                         <th scope="col"
                             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Last Race
+                            Races
                         </th>
                     </tr>
                     </thead>
@@ -23,27 +23,20 @@
                     @foreach($drivers as $driver)
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap truncate">
-                                <div class="ml-4">
+                                <div class="ml-4 border-l-2 pl-2 {{ f1_team_color($driver->f1Team->name) }}">
                                     <div class="text-sm font-medium text-gray-900 truncate">
                                         {{ $driver->user->name }}
                                     </div>
                                     <div class="text-sm text-gray-500">
-                                        {{ $driver->type }}
+                                        {{ $driver->f1Team->name }}
                                     </div>
                                 </div>
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-right">
-                                <div class="text-sm text-gray-900">{{ $driver->raceResults->count() }}</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="ml-4">
-                                    <div class="text-sm font-medium text-gray-900 truncate">
-                                        {{ $driver->latestRace->race->track->name }}
-                                    </div>
-                                    <div class="text-sm text-gray-500">
-                                        {{ $driver->latestRace->race->race_time->diffForHumans() }}
-                                    </div>
-                                </div>
+                                <div class="text-sm text-gray-900">{{ $driver->type }}</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right">
+                                <div class="text-sm text-gray-900">{{ $driver->raceResults()->count() }}</div>
                             </td>
                         </tr>
                     @endforeach

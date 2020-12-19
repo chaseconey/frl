@@ -15,7 +15,7 @@ class DivisionController extends Controller
     public function index()
     {
         $divisions = Division::withCount('drivers')
-            ->with(['drivers', 'drivers.user', 'drivers.latestRace', 'drivers.latestRace.race', 'drivers.latestRace.race.track'])
+            ->with(['drivers', 'drivers.user', 'drivers.f1Team'])
             ->get();
 
         return view('divisions.index')

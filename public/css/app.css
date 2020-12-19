@@ -3396,6 +3396,56 @@ select {
   border-color: rgba(131, 24, 67, var(--tw-divide-opacity));
 }
 
+.divide-alfa-romeo > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-opacity: 1;
+  border-color: rgba(155, 0, 0, var(--tw-divide-opacity));
+}
+
+.divide-alpha-tauri > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-opacity: 1;
+  border-color: rgba(255, 255, 255, var(--tw-divide-opacity));
+}
+
+.divide-ferrari > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-opacity: 1;
+  border-color: rgba(200, 0, 0, var(--tw-divide-opacity));
+}
+
+.divide-haas > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-opacity: 1;
+  border-color: rgba(120, 120, 120, var(--tw-divide-opacity));
+}
+
+.divide-mclaren > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-opacity: 1;
+  border-color: rgba(255, 135, 0, var(--tw-divide-opacity));
+}
+
+.divide-mercedes > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-opacity: 1;
+  border-color: rgba(0, 210, 190, var(--tw-divide-opacity));
+}
+
+.divide-racing-point > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-opacity: 1;
+  border-color: rgba(245, 150, 200, var(--tw-divide-opacity));
+}
+
+.divide-red-bull > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-opacity: 1;
+  border-color: rgba(30, 65, 255, var(--tw-divide-opacity));
+}
+
+.divide-renault > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-opacity: 1;
+  border-color: rgba(255, 245, 0, var(--tw-divide-opacity));
+}
+
+.divide-williams > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-opacity: 1;
+  border-color: rgba(0, 130, 250, var(--tw-divide-opacity));
+}
+
 .divide-solid > :not([hidden]) ~ :not([hidden]) {
   border-style: solid;
 }
@@ -9780,6 +9830,56 @@ select {
   border-color: rgba(131, 24, 67, var(--tw-border-opacity));
 }
 
+.border-alfa-romeo {
+  --tw-border-opacity: 1;
+  border-color: rgba(155, 0, 0, var(--tw-border-opacity));
+}
+
+.border-alpha-tauri {
+  --tw-border-opacity: 1;
+  border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+}
+
+.border-ferrari {
+  --tw-border-opacity: 1;
+  border-color: rgba(200, 0, 0, var(--tw-border-opacity));
+}
+
+.border-haas {
+  --tw-border-opacity: 1;
+  border-color: rgba(120, 120, 120, var(--tw-border-opacity));
+}
+
+.border-mclaren {
+  --tw-border-opacity: 1;
+  border-color: rgba(255, 135, 0, var(--tw-border-opacity));
+}
+
+.border-mercedes {
+  --tw-border-opacity: 1;
+  border-color: rgba(0, 210, 190, var(--tw-border-opacity));
+}
+
+.border-racing-point {
+  --tw-border-opacity: 1;
+  border-color: rgba(245, 150, 200, var(--tw-border-opacity));
+}
+
+.border-red-bull {
+  --tw-border-opacity: 1;
+  border-color: rgba(30, 65, 255, var(--tw-border-opacity));
+}
+
+.border-renault {
+  --tw-border-opacity: 1;
+  border-color: rgba(255, 245, 0, var(--tw-border-opacity));
+}
+
+.border-williams {
+  --tw-border-opacity: 1;
+  border-color: rgba(0, 130, 250, var(--tw-border-opacity));
+}
+
 .group:hover .group-hover\:border-transparent {
   border-color: transparent;
 }
@@ -10196,6 +10296,56 @@ select {
 .group:hover .group-hover\:border-pink-900 {
   --tw-border-opacity: 1;
   border-color: rgba(131, 24, 67, var(--tw-border-opacity));
+}
+
+.group:hover .group-hover\:border-alfa-romeo {
+  --tw-border-opacity: 1;
+  border-color: rgba(155, 0, 0, var(--tw-border-opacity));
+}
+
+.group:hover .group-hover\:border-alpha-tauri {
+  --tw-border-opacity: 1;
+  border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+}
+
+.group:hover .group-hover\:border-ferrari {
+  --tw-border-opacity: 1;
+  border-color: rgba(200, 0, 0, var(--tw-border-opacity));
+}
+
+.group:hover .group-hover\:border-haas {
+  --tw-border-opacity: 1;
+  border-color: rgba(120, 120, 120, var(--tw-border-opacity));
+}
+
+.group:hover .group-hover\:border-mclaren {
+  --tw-border-opacity: 1;
+  border-color: rgba(255, 135, 0, var(--tw-border-opacity));
+}
+
+.group:hover .group-hover\:border-mercedes {
+  --tw-border-opacity: 1;
+  border-color: rgba(0, 210, 190, var(--tw-border-opacity));
+}
+
+.group:hover .group-hover\:border-racing-point {
+  --tw-border-opacity: 1;
+  border-color: rgba(245, 150, 200, var(--tw-border-opacity));
+}
+
+.group:hover .group-hover\:border-red-bull {
+  --tw-border-opacity: 1;
+  border-color: rgba(30, 65, 255, var(--tw-border-opacity));
+}
+
+.group:hover .group-hover\:border-renault {
+  --tw-border-opacity: 1;
+  border-color: rgba(255, 245, 0, var(--tw-border-opacity));
+}
+
+.group:hover .group-hover\:border-williams {
+  --tw-border-opacity: 1;
+  border-color: rgba(0, 130, 250, var(--tw-border-opacity));
 }
 
 .focus-within\:border-transparent:focus-within {
@@ -10616,6 +10766,56 @@ select {
   border-color: rgba(131, 24, 67, var(--tw-border-opacity));
 }
 
+.focus-within\:border-alfa-romeo:focus-within {
+  --tw-border-opacity: 1;
+  border-color: rgba(155, 0, 0, var(--tw-border-opacity));
+}
+
+.focus-within\:border-alpha-tauri:focus-within {
+  --tw-border-opacity: 1;
+  border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+}
+
+.focus-within\:border-ferrari:focus-within {
+  --tw-border-opacity: 1;
+  border-color: rgba(200, 0, 0, var(--tw-border-opacity));
+}
+
+.focus-within\:border-haas:focus-within {
+  --tw-border-opacity: 1;
+  border-color: rgba(120, 120, 120, var(--tw-border-opacity));
+}
+
+.focus-within\:border-mclaren:focus-within {
+  --tw-border-opacity: 1;
+  border-color: rgba(255, 135, 0, var(--tw-border-opacity));
+}
+
+.focus-within\:border-mercedes:focus-within {
+  --tw-border-opacity: 1;
+  border-color: rgba(0, 210, 190, var(--tw-border-opacity));
+}
+
+.focus-within\:border-racing-point:focus-within {
+  --tw-border-opacity: 1;
+  border-color: rgba(245, 150, 200, var(--tw-border-opacity));
+}
+
+.focus-within\:border-red-bull:focus-within {
+  --tw-border-opacity: 1;
+  border-color: rgba(30, 65, 255, var(--tw-border-opacity));
+}
+
+.focus-within\:border-renault:focus-within {
+  --tw-border-opacity: 1;
+  border-color: rgba(255, 245, 0, var(--tw-border-opacity));
+}
+
+.focus-within\:border-williams:focus-within {
+  --tw-border-opacity: 1;
+  border-color: rgba(0, 130, 250, var(--tw-border-opacity));
+}
+
 .hover\:border-transparent:hover {
   border-color: transparent;
 }
@@ -11034,6 +11234,56 @@ select {
   border-color: rgba(131, 24, 67, var(--tw-border-opacity));
 }
 
+.hover\:border-alfa-romeo:hover {
+  --tw-border-opacity: 1;
+  border-color: rgba(155, 0, 0, var(--tw-border-opacity));
+}
+
+.hover\:border-alpha-tauri:hover {
+  --tw-border-opacity: 1;
+  border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+}
+
+.hover\:border-ferrari:hover {
+  --tw-border-opacity: 1;
+  border-color: rgba(200, 0, 0, var(--tw-border-opacity));
+}
+
+.hover\:border-haas:hover {
+  --tw-border-opacity: 1;
+  border-color: rgba(120, 120, 120, var(--tw-border-opacity));
+}
+
+.hover\:border-mclaren:hover {
+  --tw-border-opacity: 1;
+  border-color: rgba(255, 135, 0, var(--tw-border-opacity));
+}
+
+.hover\:border-mercedes:hover {
+  --tw-border-opacity: 1;
+  border-color: rgba(0, 210, 190, var(--tw-border-opacity));
+}
+
+.hover\:border-racing-point:hover {
+  --tw-border-opacity: 1;
+  border-color: rgba(245, 150, 200, var(--tw-border-opacity));
+}
+
+.hover\:border-red-bull:hover {
+  --tw-border-opacity: 1;
+  border-color: rgba(30, 65, 255, var(--tw-border-opacity));
+}
+
+.hover\:border-renault:hover {
+  --tw-border-opacity: 1;
+  border-color: rgba(255, 245, 0, var(--tw-border-opacity));
+}
+
+.hover\:border-williams:hover {
+  --tw-border-opacity: 1;
+  border-color: rgba(0, 130, 250, var(--tw-border-opacity));
+}
+
 .focus\:border-transparent:focus {
   border-color: transparent;
 }
@@ -11450,6 +11700,56 @@ select {
 .focus\:border-pink-900:focus {
   --tw-border-opacity: 1;
   border-color: rgba(131, 24, 67, var(--tw-border-opacity));
+}
+
+.focus\:border-alfa-romeo:focus {
+  --tw-border-opacity: 1;
+  border-color: rgba(155, 0, 0, var(--tw-border-opacity));
+}
+
+.focus\:border-alpha-tauri:focus {
+  --tw-border-opacity: 1;
+  border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+}
+
+.focus\:border-ferrari:focus {
+  --tw-border-opacity: 1;
+  border-color: rgba(200, 0, 0, var(--tw-border-opacity));
+}
+
+.focus\:border-haas:focus {
+  --tw-border-opacity: 1;
+  border-color: rgba(120, 120, 120, var(--tw-border-opacity));
+}
+
+.focus\:border-mclaren:focus {
+  --tw-border-opacity: 1;
+  border-color: rgba(255, 135, 0, var(--tw-border-opacity));
+}
+
+.focus\:border-mercedes:focus {
+  --tw-border-opacity: 1;
+  border-color: rgba(0, 210, 190, var(--tw-border-opacity));
+}
+
+.focus\:border-racing-point:focus {
+  --tw-border-opacity: 1;
+  border-color: rgba(245, 150, 200, var(--tw-border-opacity));
+}
+
+.focus\:border-red-bull:focus {
+  --tw-border-opacity: 1;
+  border-color: rgba(30, 65, 255, var(--tw-border-opacity));
+}
+
+.focus\:border-renault:focus {
+  --tw-border-opacity: 1;
+  border-color: rgba(255, 245, 0, var(--tw-border-opacity));
+}
+
+.focus\:border-williams:focus {
+  --tw-border-opacity: 1;
+  border-color: rgba(0, 130, 250, var(--tw-border-opacity));
 }
 
 .border-opacity-0 {
@@ -35364,6 +35664,56 @@ select {
     border-color: rgba(131, 24, 67, var(--tw-divide-opacity));
   }
 
+  .sm\:divide-alfa-romeo > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(155, 0, 0, var(--tw-divide-opacity));
+  }
+
+  .sm\:divide-alpha-tauri > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(255, 255, 255, var(--tw-divide-opacity));
+  }
+
+  .sm\:divide-ferrari > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(200, 0, 0, var(--tw-divide-opacity));
+  }
+
+  .sm\:divide-haas > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(120, 120, 120, var(--tw-divide-opacity));
+  }
+
+  .sm\:divide-mclaren > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(255, 135, 0, var(--tw-divide-opacity));
+  }
+
+  .sm\:divide-mercedes > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(0, 210, 190, var(--tw-divide-opacity));
+  }
+
+  .sm\:divide-racing-point > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(245, 150, 200, var(--tw-divide-opacity));
+  }
+
+  .sm\:divide-red-bull > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(30, 65, 255, var(--tw-divide-opacity));
+  }
+
+  .sm\:divide-renault > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(255, 245, 0, var(--tw-divide-opacity));
+  }
+
+  .sm\:divide-williams > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(0, 130, 250, var(--tw-divide-opacity));
+  }
+
   .sm\:divide-solid > :not([hidden]) ~ :not([hidden]) {
     border-style: solid;
   }
@@ -41748,6 +42098,56 @@ select {
     border-color: rgba(131, 24, 67, var(--tw-border-opacity));
   }
 
+  .sm\:border-alfa-romeo {
+    --tw-border-opacity: 1;
+    border-color: rgba(155, 0, 0, var(--tw-border-opacity));
+  }
+
+  .sm\:border-alpha-tauri {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+  }
+
+  .sm\:border-ferrari {
+    --tw-border-opacity: 1;
+    border-color: rgba(200, 0, 0, var(--tw-border-opacity));
+  }
+
+  .sm\:border-haas {
+    --tw-border-opacity: 1;
+    border-color: rgba(120, 120, 120, var(--tw-border-opacity));
+  }
+
+  .sm\:border-mclaren {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 135, 0, var(--tw-border-opacity));
+  }
+
+  .sm\:border-mercedes {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 210, 190, var(--tw-border-opacity));
+  }
+
+  .sm\:border-racing-point {
+    --tw-border-opacity: 1;
+    border-color: rgba(245, 150, 200, var(--tw-border-opacity));
+  }
+
+  .sm\:border-red-bull {
+    --tw-border-opacity: 1;
+    border-color: rgba(30, 65, 255, var(--tw-border-opacity));
+  }
+
+  .sm\:border-renault {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 245, 0, var(--tw-border-opacity));
+  }
+
+  .sm\:border-williams {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 130, 250, var(--tw-border-opacity));
+  }
+
   .group:hover .sm\:group-hover\:border-transparent {
     border-color: transparent;
   }
@@ -42164,6 +42564,56 @@ select {
   .group:hover .sm\:group-hover\:border-pink-900 {
     --tw-border-opacity: 1;
     border-color: rgba(131, 24, 67, var(--tw-border-opacity));
+  }
+
+  .group:hover .sm\:group-hover\:border-alfa-romeo {
+    --tw-border-opacity: 1;
+    border-color: rgba(155, 0, 0, var(--tw-border-opacity));
+  }
+
+  .group:hover .sm\:group-hover\:border-alpha-tauri {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+  }
+
+  .group:hover .sm\:group-hover\:border-ferrari {
+    --tw-border-opacity: 1;
+    border-color: rgba(200, 0, 0, var(--tw-border-opacity));
+  }
+
+  .group:hover .sm\:group-hover\:border-haas {
+    --tw-border-opacity: 1;
+    border-color: rgba(120, 120, 120, var(--tw-border-opacity));
+  }
+
+  .group:hover .sm\:group-hover\:border-mclaren {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 135, 0, var(--tw-border-opacity));
+  }
+
+  .group:hover .sm\:group-hover\:border-mercedes {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 210, 190, var(--tw-border-opacity));
+  }
+
+  .group:hover .sm\:group-hover\:border-racing-point {
+    --tw-border-opacity: 1;
+    border-color: rgba(245, 150, 200, var(--tw-border-opacity));
+  }
+
+  .group:hover .sm\:group-hover\:border-red-bull {
+    --tw-border-opacity: 1;
+    border-color: rgba(30, 65, 255, var(--tw-border-opacity));
+  }
+
+  .group:hover .sm\:group-hover\:border-renault {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 245, 0, var(--tw-border-opacity));
+  }
+
+  .group:hover .sm\:group-hover\:border-williams {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 130, 250, var(--tw-border-opacity));
   }
 
   .sm\:focus-within\:border-transparent:focus-within {
@@ -42584,6 +43034,56 @@ select {
     border-color: rgba(131, 24, 67, var(--tw-border-opacity));
   }
 
+  .sm\:focus-within\:border-alfa-romeo:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(155, 0, 0, var(--tw-border-opacity));
+  }
+
+  .sm\:focus-within\:border-alpha-tauri:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+  }
+
+  .sm\:focus-within\:border-ferrari:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(200, 0, 0, var(--tw-border-opacity));
+  }
+
+  .sm\:focus-within\:border-haas:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(120, 120, 120, var(--tw-border-opacity));
+  }
+
+  .sm\:focus-within\:border-mclaren:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 135, 0, var(--tw-border-opacity));
+  }
+
+  .sm\:focus-within\:border-mercedes:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 210, 190, var(--tw-border-opacity));
+  }
+
+  .sm\:focus-within\:border-racing-point:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(245, 150, 200, var(--tw-border-opacity));
+  }
+
+  .sm\:focus-within\:border-red-bull:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(30, 65, 255, var(--tw-border-opacity));
+  }
+
+  .sm\:focus-within\:border-renault:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 245, 0, var(--tw-border-opacity));
+  }
+
+  .sm\:focus-within\:border-williams:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 130, 250, var(--tw-border-opacity));
+  }
+
   .sm\:hover\:border-transparent:hover {
     border-color: transparent;
   }
@@ -43002,6 +43502,56 @@ select {
     border-color: rgba(131, 24, 67, var(--tw-border-opacity));
   }
 
+  .sm\:hover\:border-alfa-romeo:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(155, 0, 0, var(--tw-border-opacity));
+  }
+
+  .sm\:hover\:border-alpha-tauri:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+  }
+
+  .sm\:hover\:border-ferrari:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(200, 0, 0, var(--tw-border-opacity));
+  }
+
+  .sm\:hover\:border-haas:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(120, 120, 120, var(--tw-border-opacity));
+  }
+
+  .sm\:hover\:border-mclaren:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 135, 0, var(--tw-border-opacity));
+  }
+
+  .sm\:hover\:border-mercedes:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 210, 190, var(--tw-border-opacity));
+  }
+
+  .sm\:hover\:border-racing-point:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(245, 150, 200, var(--tw-border-opacity));
+  }
+
+  .sm\:hover\:border-red-bull:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(30, 65, 255, var(--tw-border-opacity));
+  }
+
+  .sm\:hover\:border-renault:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 245, 0, var(--tw-border-opacity));
+  }
+
+  .sm\:hover\:border-williams:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 130, 250, var(--tw-border-opacity));
+  }
+
   .sm\:focus\:border-transparent:focus {
     border-color: transparent;
   }
@@ -43418,6 +43968,56 @@ select {
   .sm\:focus\:border-pink-900:focus {
     --tw-border-opacity: 1;
     border-color: rgba(131, 24, 67, var(--tw-border-opacity));
+  }
+
+  .sm\:focus\:border-alfa-romeo:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(155, 0, 0, var(--tw-border-opacity));
+  }
+
+  .sm\:focus\:border-alpha-tauri:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+  }
+
+  .sm\:focus\:border-ferrari:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(200, 0, 0, var(--tw-border-opacity));
+  }
+
+  .sm\:focus\:border-haas:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(120, 120, 120, var(--tw-border-opacity));
+  }
+
+  .sm\:focus\:border-mclaren:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 135, 0, var(--tw-border-opacity));
+  }
+
+  .sm\:focus\:border-mercedes:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 210, 190, var(--tw-border-opacity));
+  }
+
+  .sm\:focus\:border-racing-point:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(245, 150, 200, var(--tw-border-opacity));
+  }
+
+  .sm\:focus\:border-red-bull:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(30, 65, 255, var(--tw-border-opacity));
+  }
+
+  .sm\:focus\:border-renault:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 245, 0, var(--tw-border-opacity));
+  }
+
+  .sm\:focus\:border-williams:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 130, 250, var(--tw-border-opacity));
   }
 
   .sm\:border-opacity-0 {
@@ -67254,6 +67854,56 @@ select {
     border-color: rgba(131, 24, 67, var(--tw-divide-opacity));
   }
 
+  .md\:divide-alfa-romeo > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(155, 0, 0, var(--tw-divide-opacity));
+  }
+
+  .md\:divide-alpha-tauri > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(255, 255, 255, var(--tw-divide-opacity));
+  }
+
+  .md\:divide-ferrari > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(200, 0, 0, var(--tw-divide-opacity));
+  }
+
+  .md\:divide-haas > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(120, 120, 120, var(--tw-divide-opacity));
+  }
+
+  .md\:divide-mclaren > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(255, 135, 0, var(--tw-divide-opacity));
+  }
+
+  .md\:divide-mercedes > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(0, 210, 190, var(--tw-divide-opacity));
+  }
+
+  .md\:divide-racing-point > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(245, 150, 200, var(--tw-divide-opacity));
+  }
+
+  .md\:divide-red-bull > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(30, 65, 255, var(--tw-divide-opacity));
+  }
+
+  .md\:divide-renault > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(255, 245, 0, var(--tw-divide-opacity));
+  }
+
+  .md\:divide-williams > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(0, 130, 250, var(--tw-divide-opacity));
+  }
+
   .md\:divide-solid > :not([hidden]) ~ :not([hidden]) {
     border-style: solid;
   }
@@ -73638,6 +74288,56 @@ select {
     border-color: rgba(131, 24, 67, var(--tw-border-opacity));
   }
 
+  .md\:border-alfa-romeo {
+    --tw-border-opacity: 1;
+    border-color: rgba(155, 0, 0, var(--tw-border-opacity));
+  }
+
+  .md\:border-alpha-tauri {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+  }
+
+  .md\:border-ferrari {
+    --tw-border-opacity: 1;
+    border-color: rgba(200, 0, 0, var(--tw-border-opacity));
+  }
+
+  .md\:border-haas {
+    --tw-border-opacity: 1;
+    border-color: rgba(120, 120, 120, var(--tw-border-opacity));
+  }
+
+  .md\:border-mclaren {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 135, 0, var(--tw-border-opacity));
+  }
+
+  .md\:border-mercedes {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 210, 190, var(--tw-border-opacity));
+  }
+
+  .md\:border-racing-point {
+    --tw-border-opacity: 1;
+    border-color: rgba(245, 150, 200, var(--tw-border-opacity));
+  }
+
+  .md\:border-red-bull {
+    --tw-border-opacity: 1;
+    border-color: rgba(30, 65, 255, var(--tw-border-opacity));
+  }
+
+  .md\:border-renault {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 245, 0, var(--tw-border-opacity));
+  }
+
+  .md\:border-williams {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 130, 250, var(--tw-border-opacity));
+  }
+
   .group:hover .md\:group-hover\:border-transparent {
     border-color: transparent;
   }
@@ -74054,6 +74754,56 @@ select {
   .group:hover .md\:group-hover\:border-pink-900 {
     --tw-border-opacity: 1;
     border-color: rgba(131, 24, 67, var(--tw-border-opacity));
+  }
+
+  .group:hover .md\:group-hover\:border-alfa-romeo {
+    --tw-border-opacity: 1;
+    border-color: rgba(155, 0, 0, var(--tw-border-opacity));
+  }
+
+  .group:hover .md\:group-hover\:border-alpha-tauri {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+  }
+
+  .group:hover .md\:group-hover\:border-ferrari {
+    --tw-border-opacity: 1;
+    border-color: rgba(200, 0, 0, var(--tw-border-opacity));
+  }
+
+  .group:hover .md\:group-hover\:border-haas {
+    --tw-border-opacity: 1;
+    border-color: rgba(120, 120, 120, var(--tw-border-opacity));
+  }
+
+  .group:hover .md\:group-hover\:border-mclaren {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 135, 0, var(--tw-border-opacity));
+  }
+
+  .group:hover .md\:group-hover\:border-mercedes {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 210, 190, var(--tw-border-opacity));
+  }
+
+  .group:hover .md\:group-hover\:border-racing-point {
+    --tw-border-opacity: 1;
+    border-color: rgba(245, 150, 200, var(--tw-border-opacity));
+  }
+
+  .group:hover .md\:group-hover\:border-red-bull {
+    --tw-border-opacity: 1;
+    border-color: rgba(30, 65, 255, var(--tw-border-opacity));
+  }
+
+  .group:hover .md\:group-hover\:border-renault {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 245, 0, var(--tw-border-opacity));
+  }
+
+  .group:hover .md\:group-hover\:border-williams {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 130, 250, var(--tw-border-opacity));
   }
 
   .md\:focus-within\:border-transparent:focus-within {
@@ -74474,6 +75224,56 @@ select {
     border-color: rgba(131, 24, 67, var(--tw-border-opacity));
   }
 
+  .md\:focus-within\:border-alfa-romeo:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(155, 0, 0, var(--tw-border-opacity));
+  }
+
+  .md\:focus-within\:border-alpha-tauri:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+  }
+
+  .md\:focus-within\:border-ferrari:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(200, 0, 0, var(--tw-border-opacity));
+  }
+
+  .md\:focus-within\:border-haas:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(120, 120, 120, var(--tw-border-opacity));
+  }
+
+  .md\:focus-within\:border-mclaren:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 135, 0, var(--tw-border-opacity));
+  }
+
+  .md\:focus-within\:border-mercedes:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 210, 190, var(--tw-border-opacity));
+  }
+
+  .md\:focus-within\:border-racing-point:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(245, 150, 200, var(--tw-border-opacity));
+  }
+
+  .md\:focus-within\:border-red-bull:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(30, 65, 255, var(--tw-border-opacity));
+  }
+
+  .md\:focus-within\:border-renault:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 245, 0, var(--tw-border-opacity));
+  }
+
+  .md\:focus-within\:border-williams:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 130, 250, var(--tw-border-opacity));
+  }
+
   .md\:hover\:border-transparent:hover {
     border-color: transparent;
   }
@@ -74892,6 +75692,56 @@ select {
     border-color: rgba(131, 24, 67, var(--tw-border-opacity));
   }
 
+  .md\:hover\:border-alfa-romeo:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(155, 0, 0, var(--tw-border-opacity));
+  }
+
+  .md\:hover\:border-alpha-tauri:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+  }
+
+  .md\:hover\:border-ferrari:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(200, 0, 0, var(--tw-border-opacity));
+  }
+
+  .md\:hover\:border-haas:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(120, 120, 120, var(--tw-border-opacity));
+  }
+
+  .md\:hover\:border-mclaren:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 135, 0, var(--tw-border-opacity));
+  }
+
+  .md\:hover\:border-mercedes:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 210, 190, var(--tw-border-opacity));
+  }
+
+  .md\:hover\:border-racing-point:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(245, 150, 200, var(--tw-border-opacity));
+  }
+
+  .md\:hover\:border-red-bull:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(30, 65, 255, var(--tw-border-opacity));
+  }
+
+  .md\:hover\:border-renault:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 245, 0, var(--tw-border-opacity));
+  }
+
+  .md\:hover\:border-williams:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 130, 250, var(--tw-border-opacity));
+  }
+
   .md\:focus\:border-transparent:focus {
     border-color: transparent;
   }
@@ -75308,6 +76158,56 @@ select {
   .md\:focus\:border-pink-900:focus {
     --tw-border-opacity: 1;
     border-color: rgba(131, 24, 67, var(--tw-border-opacity));
+  }
+
+  .md\:focus\:border-alfa-romeo:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(155, 0, 0, var(--tw-border-opacity));
+  }
+
+  .md\:focus\:border-alpha-tauri:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+  }
+
+  .md\:focus\:border-ferrari:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(200, 0, 0, var(--tw-border-opacity));
+  }
+
+  .md\:focus\:border-haas:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(120, 120, 120, var(--tw-border-opacity));
+  }
+
+  .md\:focus\:border-mclaren:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 135, 0, var(--tw-border-opacity));
+  }
+
+  .md\:focus\:border-mercedes:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 210, 190, var(--tw-border-opacity));
+  }
+
+  .md\:focus\:border-racing-point:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(245, 150, 200, var(--tw-border-opacity));
+  }
+
+  .md\:focus\:border-red-bull:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(30, 65, 255, var(--tw-border-opacity));
+  }
+
+  .md\:focus\:border-renault:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 245, 0, var(--tw-border-opacity));
+  }
+
+  .md\:focus\:border-williams:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 130, 250, var(--tw-border-opacity));
   }
 
   .md\:border-opacity-0 {
@@ -99144,6 +100044,56 @@ select {
     border-color: rgba(131, 24, 67, var(--tw-divide-opacity));
   }
 
+  .lg\:divide-alfa-romeo > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(155, 0, 0, var(--tw-divide-opacity));
+  }
+
+  .lg\:divide-alpha-tauri > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(255, 255, 255, var(--tw-divide-opacity));
+  }
+
+  .lg\:divide-ferrari > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(200, 0, 0, var(--tw-divide-opacity));
+  }
+
+  .lg\:divide-haas > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(120, 120, 120, var(--tw-divide-opacity));
+  }
+
+  .lg\:divide-mclaren > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(255, 135, 0, var(--tw-divide-opacity));
+  }
+
+  .lg\:divide-mercedes > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(0, 210, 190, var(--tw-divide-opacity));
+  }
+
+  .lg\:divide-racing-point > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(245, 150, 200, var(--tw-divide-opacity));
+  }
+
+  .lg\:divide-red-bull > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(30, 65, 255, var(--tw-divide-opacity));
+  }
+
+  .lg\:divide-renault > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(255, 245, 0, var(--tw-divide-opacity));
+  }
+
+  .lg\:divide-williams > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(0, 130, 250, var(--tw-divide-opacity));
+  }
+
   .lg\:divide-solid > :not([hidden]) ~ :not([hidden]) {
     border-style: solid;
   }
@@ -105528,6 +106478,56 @@ select {
     border-color: rgba(131, 24, 67, var(--tw-border-opacity));
   }
 
+  .lg\:border-alfa-romeo {
+    --tw-border-opacity: 1;
+    border-color: rgba(155, 0, 0, var(--tw-border-opacity));
+  }
+
+  .lg\:border-alpha-tauri {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+  }
+
+  .lg\:border-ferrari {
+    --tw-border-opacity: 1;
+    border-color: rgba(200, 0, 0, var(--tw-border-opacity));
+  }
+
+  .lg\:border-haas {
+    --tw-border-opacity: 1;
+    border-color: rgba(120, 120, 120, var(--tw-border-opacity));
+  }
+
+  .lg\:border-mclaren {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 135, 0, var(--tw-border-opacity));
+  }
+
+  .lg\:border-mercedes {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 210, 190, var(--tw-border-opacity));
+  }
+
+  .lg\:border-racing-point {
+    --tw-border-opacity: 1;
+    border-color: rgba(245, 150, 200, var(--tw-border-opacity));
+  }
+
+  .lg\:border-red-bull {
+    --tw-border-opacity: 1;
+    border-color: rgba(30, 65, 255, var(--tw-border-opacity));
+  }
+
+  .lg\:border-renault {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 245, 0, var(--tw-border-opacity));
+  }
+
+  .lg\:border-williams {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 130, 250, var(--tw-border-opacity));
+  }
+
   .group:hover .lg\:group-hover\:border-transparent {
     border-color: transparent;
   }
@@ -105944,6 +106944,56 @@ select {
   .group:hover .lg\:group-hover\:border-pink-900 {
     --tw-border-opacity: 1;
     border-color: rgba(131, 24, 67, var(--tw-border-opacity));
+  }
+
+  .group:hover .lg\:group-hover\:border-alfa-romeo {
+    --tw-border-opacity: 1;
+    border-color: rgba(155, 0, 0, var(--tw-border-opacity));
+  }
+
+  .group:hover .lg\:group-hover\:border-alpha-tauri {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+  }
+
+  .group:hover .lg\:group-hover\:border-ferrari {
+    --tw-border-opacity: 1;
+    border-color: rgba(200, 0, 0, var(--tw-border-opacity));
+  }
+
+  .group:hover .lg\:group-hover\:border-haas {
+    --tw-border-opacity: 1;
+    border-color: rgba(120, 120, 120, var(--tw-border-opacity));
+  }
+
+  .group:hover .lg\:group-hover\:border-mclaren {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 135, 0, var(--tw-border-opacity));
+  }
+
+  .group:hover .lg\:group-hover\:border-mercedes {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 210, 190, var(--tw-border-opacity));
+  }
+
+  .group:hover .lg\:group-hover\:border-racing-point {
+    --tw-border-opacity: 1;
+    border-color: rgba(245, 150, 200, var(--tw-border-opacity));
+  }
+
+  .group:hover .lg\:group-hover\:border-red-bull {
+    --tw-border-opacity: 1;
+    border-color: rgba(30, 65, 255, var(--tw-border-opacity));
+  }
+
+  .group:hover .lg\:group-hover\:border-renault {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 245, 0, var(--tw-border-opacity));
+  }
+
+  .group:hover .lg\:group-hover\:border-williams {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 130, 250, var(--tw-border-opacity));
   }
 
   .lg\:focus-within\:border-transparent:focus-within {
@@ -106364,6 +107414,56 @@ select {
     border-color: rgba(131, 24, 67, var(--tw-border-opacity));
   }
 
+  .lg\:focus-within\:border-alfa-romeo:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(155, 0, 0, var(--tw-border-opacity));
+  }
+
+  .lg\:focus-within\:border-alpha-tauri:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+  }
+
+  .lg\:focus-within\:border-ferrari:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(200, 0, 0, var(--tw-border-opacity));
+  }
+
+  .lg\:focus-within\:border-haas:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(120, 120, 120, var(--tw-border-opacity));
+  }
+
+  .lg\:focus-within\:border-mclaren:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 135, 0, var(--tw-border-opacity));
+  }
+
+  .lg\:focus-within\:border-mercedes:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 210, 190, var(--tw-border-opacity));
+  }
+
+  .lg\:focus-within\:border-racing-point:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(245, 150, 200, var(--tw-border-opacity));
+  }
+
+  .lg\:focus-within\:border-red-bull:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(30, 65, 255, var(--tw-border-opacity));
+  }
+
+  .lg\:focus-within\:border-renault:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 245, 0, var(--tw-border-opacity));
+  }
+
+  .lg\:focus-within\:border-williams:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 130, 250, var(--tw-border-opacity));
+  }
+
   .lg\:hover\:border-transparent:hover {
     border-color: transparent;
   }
@@ -106782,6 +107882,56 @@ select {
     border-color: rgba(131, 24, 67, var(--tw-border-opacity));
   }
 
+  .lg\:hover\:border-alfa-romeo:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(155, 0, 0, var(--tw-border-opacity));
+  }
+
+  .lg\:hover\:border-alpha-tauri:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+  }
+
+  .lg\:hover\:border-ferrari:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(200, 0, 0, var(--tw-border-opacity));
+  }
+
+  .lg\:hover\:border-haas:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(120, 120, 120, var(--tw-border-opacity));
+  }
+
+  .lg\:hover\:border-mclaren:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 135, 0, var(--tw-border-opacity));
+  }
+
+  .lg\:hover\:border-mercedes:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 210, 190, var(--tw-border-opacity));
+  }
+
+  .lg\:hover\:border-racing-point:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(245, 150, 200, var(--tw-border-opacity));
+  }
+
+  .lg\:hover\:border-red-bull:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(30, 65, 255, var(--tw-border-opacity));
+  }
+
+  .lg\:hover\:border-renault:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 245, 0, var(--tw-border-opacity));
+  }
+
+  .lg\:hover\:border-williams:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 130, 250, var(--tw-border-opacity));
+  }
+
   .lg\:focus\:border-transparent:focus {
     border-color: transparent;
   }
@@ -107198,6 +108348,56 @@ select {
   .lg\:focus\:border-pink-900:focus {
     --tw-border-opacity: 1;
     border-color: rgba(131, 24, 67, var(--tw-border-opacity));
+  }
+
+  .lg\:focus\:border-alfa-romeo:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(155, 0, 0, var(--tw-border-opacity));
+  }
+
+  .lg\:focus\:border-alpha-tauri:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+  }
+
+  .lg\:focus\:border-ferrari:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(200, 0, 0, var(--tw-border-opacity));
+  }
+
+  .lg\:focus\:border-haas:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(120, 120, 120, var(--tw-border-opacity));
+  }
+
+  .lg\:focus\:border-mclaren:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 135, 0, var(--tw-border-opacity));
+  }
+
+  .lg\:focus\:border-mercedes:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 210, 190, var(--tw-border-opacity));
+  }
+
+  .lg\:focus\:border-racing-point:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(245, 150, 200, var(--tw-border-opacity));
+  }
+
+  .lg\:focus\:border-red-bull:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(30, 65, 255, var(--tw-border-opacity));
+  }
+
+  .lg\:focus\:border-renault:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 245, 0, var(--tw-border-opacity));
+  }
+
+  .lg\:focus\:border-williams:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 130, 250, var(--tw-border-opacity));
   }
 
   .lg\:border-opacity-0 {
@@ -131034,6 +132234,56 @@ select {
     border-color: rgba(131, 24, 67, var(--tw-divide-opacity));
   }
 
+  .xl\:divide-alfa-romeo > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(155, 0, 0, var(--tw-divide-opacity));
+  }
+
+  .xl\:divide-alpha-tauri > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(255, 255, 255, var(--tw-divide-opacity));
+  }
+
+  .xl\:divide-ferrari > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(200, 0, 0, var(--tw-divide-opacity));
+  }
+
+  .xl\:divide-haas > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(120, 120, 120, var(--tw-divide-opacity));
+  }
+
+  .xl\:divide-mclaren > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(255, 135, 0, var(--tw-divide-opacity));
+  }
+
+  .xl\:divide-mercedes > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(0, 210, 190, var(--tw-divide-opacity));
+  }
+
+  .xl\:divide-racing-point > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(245, 150, 200, var(--tw-divide-opacity));
+  }
+
+  .xl\:divide-red-bull > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(30, 65, 255, var(--tw-divide-opacity));
+  }
+
+  .xl\:divide-renault > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(255, 245, 0, var(--tw-divide-opacity));
+  }
+
+  .xl\:divide-williams > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(0, 130, 250, var(--tw-divide-opacity));
+  }
+
   .xl\:divide-solid > :not([hidden]) ~ :not([hidden]) {
     border-style: solid;
   }
@@ -137418,6 +138668,56 @@ select {
     border-color: rgba(131, 24, 67, var(--tw-border-opacity));
   }
 
+  .xl\:border-alfa-romeo {
+    --tw-border-opacity: 1;
+    border-color: rgba(155, 0, 0, var(--tw-border-opacity));
+  }
+
+  .xl\:border-alpha-tauri {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+  }
+
+  .xl\:border-ferrari {
+    --tw-border-opacity: 1;
+    border-color: rgba(200, 0, 0, var(--tw-border-opacity));
+  }
+
+  .xl\:border-haas {
+    --tw-border-opacity: 1;
+    border-color: rgba(120, 120, 120, var(--tw-border-opacity));
+  }
+
+  .xl\:border-mclaren {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 135, 0, var(--tw-border-opacity));
+  }
+
+  .xl\:border-mercedes {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 210, 190, var(--tw-border-opacity));
+  }
+
+  .xl\:border-racing-point {
+    --tw-border-opacity: 1;
+    border-color: rgba(245, 150, 200, var(--tw-border-opacity));
+  }
+
+  .xl\:border-red-bull {
+    --tw-border-opacity: 1;
+    border-color: rgba(30, 65, 255, var(--tw-border-opacity));
+  }
+
+  .xl\:border-renault {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 245, 0, var(--tw-border-opacity));
+  }
+
+  .xl\:border-williams {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 130, 250, var(--tw-border-opacity));
+  }
+
   .group:hover .xl\:group-hover\:border-transparent {
     border-color: transparent;
   }
@@ -137834,6 +139134,56 @@ select {
   .group:hover .xl\:group-hover\:border-pink-900 {
     --tw-border-opacity: 1;
     border-color: rgba(131, 24, 67, var(--tw-border-opacity));
+  }
+
+  .group:hover .xl\:group-hover\:border-alfa-romeo {
+    --tw-border-opacity: 1;
+    border-color: rgba(155, 0, 0, var(--tw-border-opacity));
+  }
+
+  .group:hover .xl\:group-hover\:border-alpha-tauri {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+  }
+
+  .group:hover .xl\:group-hover\:border-ferrari {
+    --tw-border-opacity: 1;
+    border-color: rgba(200, 0, 0, var(--tw-border-opacity));
+  }
+
+  .group:hover .xl\:group-hover\:border-haas {
+    --tw-border-opacity: 1;
+    border-color: rgba(120, 120, 120, var(--tw-border-opacity));
+  }
+
+  .group:hover .xl\:group-hover\:border-mclaren {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 135, 0, var(--tw-border-opacity));
+  }
+
+  .group:hover .xl\:group-hover\:border-mercedes {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 210, 190, var(--tw-border-opacity));
+  }
+
+  .group:hover .xl\:group-hover\:border-racing-point {
+    --tw-border-opacity: 1;
+    border-color: rgba(245, 150, 200, var(--tw-border-opacity));
+  }
+
+  .group:hover .xl\:group-hover\:border-red-bull {
+    --tw-border-opacity: 1;
+    border-color: rgba(30, 65, 255, var(--tw-border-opacity));
+  }
+
+  .group:hover .xl\:group-hover\:border-renault {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 245, 0, var(--tw-border-opacity));
+  }
+
+  .group:hover .xl\:group-hover\:border-williams {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 130, 250, var(--tw-border-opacity));
   }
 
   .xl\:focus-within\:border-transparent:focus-within {
@@ -138254,6 +139604,56 @@ select {
     border-color: rgba(131, 24, 67, var(--tw-border-opacity));
   }
 
+  .xl\:focus-within\:border-alfa-romeo:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(155, 0, 0, var(--tw-border-opacity));
+  }
+
+  .xl\:focus-within\:border-alpha-tauri:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+  }
+
+  .xl\:focus-within\:border-ferrari:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(200, 0, 0, var(--tw-border-opacity));
+  }
+
+  .xl\:focus-within\:border-haas:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(120, 120, 120, var(--tw-border-opacity));
+  }
+
+  .xl\:focus-within\:border-mclaren:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 135, 0, var(--tw-border-opacity));
+  }
+
+  .xl\:focus-within\:border-mercedes:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 210, 190, var(--tw-border-opacity));
+  }
+
+  .xl\:focus-within\:border-racing-point:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(245, 150, 200, var(--tw-border-opacity));
+  }
+
+  .xl\:focus-within\:border-red-bull:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(30, 65, 255, var(--tw-border-opacity));
+  }
+
+  .xl\:focus-within\:border-renault:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 245, 0, var(--tw-border-opacity));
+  }
+
+  .xl\:focus-within\:border-williams:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 130, 250, var(--tw-border-opacity));
+  }
+
   .xl\:hover\:border-transparent:hover {
     border-color: transparent;
   }
@@ -138672,6 +140072,56 @@ select {
     border-color: rgba(131, 24, 67, var(--tw-border-opacity));
   }
 
+  .xl\:hover\:border-alfa-romeo:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(155, 0, 0, var(--tw-border-opacity));
+  }
+
+  .xl\:hover\:border-alpha-tauri:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+  }
+
+  .xl\:hover\:border-ferrari:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(200, 0, 0, var(--tw-border-opacity));
+  }
+
+  .xl\:hover\:border-haas:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(120, 120, 120, var(--tw-border-opacity));
+  }
+
+  .xl\:hover\:border-mclaren:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 135, 0, var(--tw-border-opacity));
+  }
+
+  .xl\:hover\:border-mercedes:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 210, 190, var(--tw-border-opacity));
+  }
+
+  .xl\:hover\:border-racing-point:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(245, 150, 200, var(--tw-border-opacity));
+  }
+
+  .xl\:hover\:border-red-bull:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(30, 65, 255, var(--tw-border-opacity));
+  }
+
+  .xl\:hover\:border-renault:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 245, 0, var(--tw-border-opacity));
+  }
+
+  .xl\:hover\:border-williams:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 130, 250, var(--tw-border-opacity));
+  }
+
   .xl\:focus\:border-transparent:focus {
     border-color: transparent;
   }
@@ -139088,6 +140538,56 @@ select {
   .xl\:focus\:border-pink-900:focus {
     --tw-border-opacity: 1;
     border-color: rgba(131, 24, 67, var(--tw-border-opacity));
+  }
+
+  .xl\:focus\:border-alfa-romeo:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(155, 0, 0, var(--tw-border-opacity));
+  }
+
+  .xl\:focus\:border-alpha-tauri:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+  }
+
+  .xl\:focus\:border-ferrari:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(200, 0, 0, var(--tw-border-opacity));
+  }
+
+  .xl\:focus\:border-haas:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(120, 120, 120, var(--tw-border-opacity));
+  }
+
+  .xl\:focus\:border-mclaren:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 135, 0, var(--tw-border-opacity));
+  }
+
+  .xl\:focus\:border-mercedes:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 210, 190, var(--tw-border-opacity));
+  }
+
+  .xl\:focus\:border-racing-point:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(245, 150, 200, var(--tw-border-opacity));
+  }
+
+  .xl\:focus\:border-red-bull:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(30, 65, 255, var(--tw-border-opacity));
+  }
+
+  .xl\:focus\:border-renault:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 245, 0, var(--tw-border-opacity));
+  }
+
+  .xl\:focus\:border-williams:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 130, 250, var(--tw-border-opacity));
   }
 
   .xl\:border-opacity-0 {
@@ -162924,6 +164424,56 @@ select {
     border-color: rgba(131, 24, 67, var(--tw-divide-opacity));
   }
 
+  .\32xl\:divide-alfa-romeo > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(155, 0, 0, var(--tw-divide-opacity));
+  }
+
+  .\32xl\:divide-alpha-tauri > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(255, 255, 255, var(--tw-divide-opacity));
+  }
+
+  .\32xl\:divide-ferrari > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(200, 0, 0, var(--tw-divide-opacity));
+  }
+
+  .\32xl\:divide-haas > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(120, 120, 120, var(--tw-divide-opacity));
+  }
+
+  .\32xl\:divide-mclaren > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(255, 135, 0, var(--tw-divide-opacity));
+  }
+
+  .\32xl\:divide-mercedes > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(0, 210, 190, var(--tw-divide-opacity));
+  }
+
+  .\32xl\:divide-racing-point > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(245, 150, 200, var(--tw-divide-opacity));
+  }
+
+  .\32xl\:divide-red-bull > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(30, 65, 255, var(--tw-divide-opacity));
+  }
+
+  .\32xl\:divide-renault > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(255, 245, 0, var(--tw-divide-opacity));
+  }
+
+  .\32xl\:divide-williams > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 1;
+    border-color: rgba(0, 130, 250, var(--tw-divide-opacity));
+  }
+
   .\32xl\:divide-solid > :not([hidden]) ~ :not([hidden]) {
     border-style: solid;
   }
@@ -169308,6 +170858,56 @@ select {
     border-color: rgba(131, 24, 67, var(--tw-border-opacity));
   }
 
+  .\32xl\:border-alfa-romeo {
+    --tw-border-opacity: 1;
+    border-color: rgba(155, 0, 0, var(--tw-border-opacity));
+  }
+
+  .\32xl\:border-alpha-tauri {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+  }
+
+  .\32xl\:border-ferrari {
+    --tw-border-opacity: 1;
+    border-color: rgba(200, 0, 0, var(--tw-border-opacity));
+  }
+
+  .\32xl\:border-haas {
+    --tw-border-opacity: 1;
+    border-color: rgba(120, 120, 120, var(--tw-border-opacity));
+  }
+
+  .\32xl\:border-mclaren {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 135, 0, var(--tw-border-opacity));
+  }
+
+  .\32xl\:border-mercedes {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 210, 190, var(--tw-border-opacity));
+  }
+
+  .\32xl\:border-racing-point {
+    --tw-border-opacity: 1;
+    border-color: rgba(245, 150, 200, var(--tw-border-opacity));
+  }
+
+  .\32xl\:border-red-bull {
+    --tw-border-opacity: 1;
+    border-color: rgba(30, 65, 255, var(--tw-border-opacity));
+  }
+
+  .\32xl\:border-renault {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 245, 0, var(--tw-border-opacity));
+  }
+
+  .\32xl\:border-williams {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 130, 250, var(--tw-border-opacity));
+  }
+
   .group:hover .\32xl\:group-hover\:border-transparent {
     border-color: transparent;
   }
@@ -169724,6 +171324,56 @@ select {
   .group:hover .\32xl\:group-hover\:border-pink-900 {
     --tw-border-opacity: 1;
     border-color: rgba(131, 24, 67, var(--tw-border-opacity));
+  }
+
+  .group:hover .\32xl\:group-hover\:border-alfa-romeo {
+    --tw-border-opacity: 1;
+    border-color: rgba(155, 0, 0, var(--tw-border-opacity));
+  }
+
+  .group:hover .\32xl\:group-hover\:border-alpha-tauri {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+  }
+
+  .group:hover .\32xl\:group-hover\:border-ferrari {
+    --tw-border-opacity: 1;
+    border-color: rgba(200, 0, 0, var(--tw-border-opacity));
+  }
+
+  .group:hover .\32xl\:group-hover\:border-haas {
+    --tw-border-opacity: 1;
+    border-color: rgba(120, 120, 120, var(--tw-border-opacity));
+  }
+
+  .group:hover .\32xl\:group-hover\:border-mclaren {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 135, 0, var(--tw-border-opacity));
+  }
+
+  .group:hover .\32xl\:group-hover\:border-mercedes {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 210, 190, var(--tw-border-opacity));
+  }
+
+  .group:hover .\32xl\:group-hover\:border-racing-point {
+    --tw-border-opacity: 1;
+    border-color: rgba(245, 150, 200, var(--tw-border-opacity));
+  }
+
+  .group:hover .\32xl\:group-hover\:border-red-bull {
+    --tw-border-opacity: 1;
+    border-color: rgba(30, 65, 255, var(--tw-border-opacity));
+  }
+
+  .group:hover .\32xl\:group-hover\:border-renault {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 245, 0, var(--tw-border-opacity));
+  }
+
+  .group:hover .\32xl\:group-hover\:border-williams {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 130, 250, var(--tw-border-opacity));
   }
 
   .\32xl\:focus-within\:border-transparent:focus-within {
@@ -170144,6 +171794,56 @@ select {
     border-color: rgba(131, 24, 67, var(--tw-border-opacity));
   }
 
+  .\32xl\:focus-within\:border-alfa-romeo:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(155, 0, 0, var(--tw-border-opacity));
+  }
+
+  .\32xl\:focus-within\:border-alpha-tauri:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+  }
+
+  .\32xl\:focus-within\:border-ferrari:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(200, 0, 0, var(--tw-border-opacity));
+  }
+
+  .\32xl\:focus-within\:border-haas:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(120, 120, 120, var(--tw-border-opacity));
+  }
+
+  .\32xl\:focus-within\:border-mclaren:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 135, 0, var(--tw-border-opacity));
+  }
+
+  .\32xl\:focus-within\:border-mercedes:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 210, 190, var(--tw-border-opacity));
+  }
+
+  .\32xl\:focus-within\:border-racing-point:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(245, 150, 200, var(--tw-border-opacity));
+  }
+
+  .\32xl\:focus-within\:border-red-bull:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(30, 65, 255, var(--tw-border-opacity));
+  }
+
+  .\32xl\:focus-within\:border-renault:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 245, 0, var(--tw-border-opacity));
+  }
+
+  .\32xl\:focus-within\:border-williams:focus-within {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 130, 250, var(--tw-border-opacity));
+  }
+
   .\32xl\:hover\:border-transparent:hover {
     border-color: transparent;
   }
@@ -170562,6 +172262,56 @@ select {
     border-color: rgba(131, 24, 67, var(--tw-border-opacity));
   }
 
+  .\32xl\:hover\:border-alfa-romeo:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(155, 0, 0, var(--tw-border-opacity));
+  }
+
+  .\32xl\:hover\:border-alpha-tauri:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+  }
+
+  .\32xl\:hover\:border-ferrari:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(200, 0, 0, var(--tw-border-opacity));
+  }
+
+  .\32xl\:hover\:border-haas:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(120, 120, 120, var(--tw-border-opacity));
+  }
+
+  .\32xl\:hover\:border-mclaren:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 135, 0, var(--tw-border-opacity));
+  }
+
+  .\32xl\:hover\:border-mercedes:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 210, 190, var(--tw-border-opacity));
+  }
+
+  .\32xl\:hover\:border-racing-point:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(245, 150, 200, var(--tw-border-opacity));
+  }
+
+  .\32xl\:hover\:border-red-bull:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(30, 65, 255, var(--tw-border-opacity));
+  }
+
+  .\32xl\:hover\:border-renault:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 245, 0, var(--tw-border-opacity));
+  }
+
+  .\32xl\:hover\:border-williams:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 130, 250, var(--tw-border-opacity));
+  }
+
   .\32xl\:focus\:border-transparent:focus {
     border-color: transparent;
   }
@@ -170978,6 +172728,56 @@ select {
   .\32xl\:focus\:border-pink-900:focus {
     --tw-border-opacity: 1;
     border-color: rgba(131, 24, 67, var(--tw-border-opacity));
+  }
+
+  .\32xl\:focus\:border-alfa-romeo:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(155, 0, 0, var(--tw-border-opacity));
+  }
+
+  .\32xl\:focus\:border-alpha-tauri:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+  }
+
+  .\32xl\:focus\:border-ferrari:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(200, 0, 0, var(--tw-border-opacity));
+  }
+
+  .\32xl\:focus\:border-haas:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(120, 120, 120, var(--tw-border-opacity));
+  }
+
+  .\32xl\:focus\:border-mclaren:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 135, 0, var(--tw-border-opacity));
+  }
+
+  .\32xl\:focus\:border-mercedes:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 210, 190, var(--tw-border-opacity));
+  }
+
+  .\32xl\:focus\:border-racing-point:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(245, 150, 200, var(--tw-border-opacity));
+  }
+
+  .\32xl\:focus\:border-red-bull:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(30, 65, 255, var(--tw-border-opacity));
+  }
+
+  .\32xl\:focus\:border-renault:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 245, 0, var(--tw-border-opacity));
+  }
+
+  .\32xl\:focus\:border-williams:focus {
+    --tw-border-opacity: 1;
+    border-color: rgba(0, 130, 250, var(--tw-border-opacity));
   }
 
   .\32xl\:border-opacity-0 {
