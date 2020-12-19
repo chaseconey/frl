@@ -18,7 +18,7 @@
                     <x-nav-link :href="route('signup.index')" :active="request()->routeIs('signup.*')">
                         {{ __('Signup') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('races.index')" :active="request()->routeIs('races.*')">
+                    <x-nav-link :href="route('races.index')" :active="request()->routeIs('race*')">
                         {{ __('Races') }}
                     </x-nav-link>
                     <x-nav-link :href="route('standings.index')" :active="request()->routeIs('standings.*')">
@@ -84,7 +84,7 @@
             <x-responsive-nav-link :href="route('signup.index')" :active="request()->routeIs('signup.*')">
                 {{ __('Sign Up') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('races.index')" :active="request()->routeIs('races.*')">
+            <x-responsive-nav-link :href="route('races.index')" :active="request()->routeIs('races*')">
                 {{ __('Races') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('standings.index')" :active="request()->routeIs('standings.*')">

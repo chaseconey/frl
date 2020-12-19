@@ -11,6 +11,8 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
 
+                    @include('races.race-results.partials.breadcrumbs', ['race' => $race])
+
                     <div class="my-4">
                         @include('races.race-results.partials.tabs')
                     </div>
