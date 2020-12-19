@@ -8,26 +8,14 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
 
-                    <h2>Select a Division</h2>
-
-                    <ul>
-                        @foreach($divisions as $division)
-                        <li><a href="{{ route('divisions.standings.index', ['division' => $division]) }}">{{ $division->name }}</a></li>
-                        @endforeach
-                    </ul>
-
-                    <div class="my-4">
-{{--                        @include('standings.partials.tabs', ['divisions' => $divisions])--}}
-                    </div>
-
-                    <div class="my-4">
-{{--                        @include('standings.partials.table', ['standings' => $standings])--}}
-                    </div>
-
-                </div>
+            <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                @foreach($divisions as $division)
+                    <a class="flex justify-center bg-white p-4 shadow rounded hover:bg-gray-100"
+                       href="{{ route('divisions.standings.index', ['division' => $division]) }}">
+                        {{ $division->name }}
+                    </a>
+                @endforeach
             </div>
         </div>
     </div>
