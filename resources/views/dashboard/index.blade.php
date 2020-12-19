@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 py-12 max-w-7xl mx-auto ">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 py-12 max-w-7xl mx-auto">
 
         @include('components.races-detail-list', ['races' => $latestRaces, 'title' => 'Latest Races'])
 

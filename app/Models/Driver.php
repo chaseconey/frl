@@ -50,4 +50,10 @@ class Driver extends Model
     {
         return $this->hasMany(RaceResults::class);
     }
+
+    public function latestRace()
+    {
+        return $this->hasOne(RaceResults::class)
+            ->latest();
+    }
 }
