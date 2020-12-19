@@ -42,28 +42,28 @@
                                     </div>
                                     <div class="ml-4">
                                         <div class="text-sm font-medium text-gray-900">
-                                            {{ $result->driver->user->name ?? '' }}
+                                            {{ $result->driver->user->name }}
                                         </div>
                                         <div class="text-sm text-gray-500">
-                                            {{ $result->driver->f1Team->name ?? '' }}
+                                            {{ $result->driver->f1Team->name }}
                                         </div>
                                     </div>
                                 </div>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
+                            <td class="px-6 py-4 whitespace-nowrap text-right">
                                 <div class="text-sm text-gray-900">{{ $result->best_lap_time }}</div>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="text-sm text-gray-900">{{ $result->lap_delta }}</div>
+                            <td class="px-6 py-4 whitespace-nowrap text-right">
+                                <div class="text-sm text-gray-900">{{ number_format($result->lap_delta, 3) }}</div>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="text-sm text-gray-900">{{ $result->speedtrap_speed }}</div>
+                            <td class="px-6 py-4 whitespace-nowrap text-right">
+                                <div class="text-sm {{ $race->quali_results_max_speedtrap_speed == $result->speedtrap_speed ? 'text-purple-800 font-bold' : 'text-gray-900'}}">{{ number_format($result->speedtrap_speed, 2) }}</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="text-sm text-gray-900">
-                                    <span>{{ $result->best_s1_time }}</span> |
-                                    <span>{{ $result->best_s2_time }}</span> |
-                                    <span>{{ $result->best_s3_time }}</span>
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $race->quali_results_min_best_s1_time == $result->best_s1_time ? 'bg-purple-100 text-purple-800' : 'bg-gray-100 text-gray-800' }}">{{ number_format($result->best_s1_time, 3) }}</span>
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $race->quali_results_min_best_s2_time == $result->best_s2_time ? 'bg-purple-100 text-purple-800' : 'bg-gray-100 text-gray-800' }}">{{ number_format($result->best_s2_time, 3) }}</span>
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $race->quali_results_min_best_s3_time == $result->best_s3_time ? 'bg-purple-100 text-purple-800' : 'bg-gray-100 text-gray-800' }}">{{ number_format($result->best_s3_time, 3) }}</span>
                                 </div>
                             </td>
                         </tr>

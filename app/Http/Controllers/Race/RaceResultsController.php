@@ -55,12 +55,12 @@ class RaceResultsController extends Controller
             $driver = \App\Models\User::join('drivers', 'drivers.user_id', '=', 'users.id')
                 ->select('drivers.id')
                 ->whereName($result['Driver'])
-                ->where('division_id', 1)
+                ->where('division_id', $race->division_id)
                 ->first();
 
-            // Delete in practice
+            // TODO: Delete in practice
             if ( ! $driver) {
-                $driver = \App\Models\Driver::factory(['f1_number_id' => $id])->forUser([
+                $driver = \App\Models\Driver::factory(['f1_number_id' => $id, 'division_id' => $race->division_id])->forUser([
                     'name' => $result['Driver']
                 ])->create();
             }

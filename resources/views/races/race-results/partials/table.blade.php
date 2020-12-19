@@ -62,13 +62,13 @@
                                     </div>
                                 </div>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
+                            <td class="px-6 py-4 whitespace-nowrap text-right">
                                 <div class="text-sm text-gray-900">{{ $result->best_lap_time }}</div>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
+                            <td class="px-6 py-4 whitespace-nowrap text-right">
                                 <div class="text-sm text-gray-900">{{ $result->num_pit_stops }}</div>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
+                            <td class="px-6 py-4 whitespace-nowrap text-right">
                                 <div class="text-sm text-gray-900">{{ $result->tire_stints }}</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
@@ -76,10 +76,10 @@
                                     ({{ $result->penalty_seconds }}s)
                                 </div>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
+                            <td class="px-6 py-4 whitespace-nowrap text-right">
                                 <div class="text-sm text-gray-900">{{ $result->race_time }}</div>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
+                            <td class="px-6 py-4 whitespace-nowrap text-right">
                                 <div class="text-sm text-gray-900">{{ $result->points }}</div>
                             </td>
                         </tr>
