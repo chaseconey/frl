@@ -13,6 +13,11 @@ class Race extends Model
         'race_time' => 'datetime'
     ];
 
+    public function scopeCompleted($query)
+    {
+        return $query->whereDate('race_time', '<=', now()->toDateString());
+    }
+
     public function track()
     {
         return $this->belongsTo(Track::class);
@@ -31,10 +36,5 @@ class Race extends Model
     public function qualiResults()
     {
         return $this->hasMany(RaceQualiResults::class);
-    }
-
-    public function driver()
-    {
-        return $this->belongsTo(Driver::class);
     }
 }

@@ -22,9 +22,7 @@ Route::redirect('/', 'dashboard');
 require __DIR__.'/auth.php';
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->middleware(['auth'])->name('dashboard');
+    Route::get('dashboard', '\App\Http\Controllers\DashboardController@index')->name('dashboard');
 
     Route::resource('signup', \App\Http\Controllers\SignupController::class)->only('index', 'create', 'store');
     Route::resource('races', \App\Http\Controllers\RaceController::class);
