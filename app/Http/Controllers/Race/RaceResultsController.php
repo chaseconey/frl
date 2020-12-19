@@ -16,7 +16,7 @@ class RaceResultsController extends Controller
      */
     public function index(Race $race)
     {
-        $race->load(['results']);
+        $race->load(['results', 'results.driver', 'results.driver.user', 'results.driver.f1Team']);
 
         return view('races.race-results.index')
             ->withRace($race);

@@ -16,7 +16,7 @@ class RaceQualiResultsController extends Controller
      */
     public function index(Race $race)
     {
-        $race->load(['qualiResults'])
+        $race->load(['qualiResults', 'qualiResults.driver', 'qualiResults.driver.user', 'qualiResults.driver.f1Team'])
             ->loadMin('qualiResults', 'best_s1_time')
             ->loadMin('qualiResults', 'best_s2_time')
             ->loadMin('qualiResults', 'best_s3_time')
