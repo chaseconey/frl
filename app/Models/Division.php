@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Division extends Model
 {
     use HasFactory;
+
+    public function drivers()
+    {
+        return $this->hasMany(Driver::class);
+    }
+
+    public function races()
+    {
+        return $this->hasMany(Race::class);
+    }
 }

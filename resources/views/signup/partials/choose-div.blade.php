@@ -14,7 +14,7 @@
                     <div class="flex-1 px-4 py-2 text-sm truncate">
                         <a href="{{ route('signup.create', ['division_id' => $division->id]) }}"
                            class="text-gray-900 font-medium hover:text-gray-600">{{ $division->name }}</a>
-                        <p class="text-gray-500">16 Members</p>
+                        <p class="text-gray-500">{{ $division->drivers_count }} {{ Str::plural('Members', $division->drivers_count) }}</p>
                     </div>
                     <div class="flex-shrink-0 pr-2">
                         <button

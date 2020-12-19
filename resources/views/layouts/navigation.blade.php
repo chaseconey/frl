@@ -15,7 +15,7 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('signup.create')" :active="request()->routeIs('signup.*')">
+                    <x-nav-link :href="route('signup.index')" :active="request()->routeIs('signup.*')">
                         {{ __('Signup') }}
                     </x-nav-link>
                     <x-nav-link :href="route('races.index')" :active="request()->routeIs('races.*')">
@@ -81,7 +81,7 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('signup.create')" :active="request()->routeIs('signup.*')">
+            <x-responsive-nav-link :href="route('signup.index')" :active="request()->routeIs('signup.*')">
                 {{ __('Sign Up') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('races.index')" :active="request()->routeIs('races.*')">

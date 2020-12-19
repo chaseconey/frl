@@ -1,14 +1,12 @@
-
 @php
-    $selected = $divisions->keyBy('id')[Request::get('division_id')];
     $markdown = new Parsedown();
 @endphp
 
 <div>
-    <h2 class="my-4 text-lg font-bold">{{ $selected->name }}</h2>
+    <h2 class="my-4 text-lg font-bold">{{ $division->name }}</h2>
 
     <article class="prose lg:prose-xl">
-        {!! $markdown->text($selected->description) !!}
+        {!! $markdown->text($division->description) !!}
     </article>
 
 </div>
@@ -46,9 +44,24 @@
                 <div class="mt-1 sm:mt-0 sm:col-span-2">
                     <select id="f1_number_id" name="f1_number_id" autocomplete="f1_number_id"
                             class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
-                        @foreach($numbers as $number)
-                            <option value="{{ $number->id }}">{{ $number->racing_number }}</option>
+                        @foreach($numbers as $id => $number)
+                            <option value="{{ $id }}">{{ $number }}</option>
                         @endforeach
+                    </select>
+                </div>
+            </div>
+
+            <div
+                class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                <label for="type"
+                       class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
+                    Driver Type
+                </label>
+                <div class="mt-1 sm:mt-0 sm:col-span-2">
+                    <select id="type" name="type" autocomplete="type"
+                            class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                        <option value="FULL_TIME">Full-Time</option>
+                        <option value="RESERVE">Reserve</option>
                     </select>
                 </div>
             </div>

@@ -13,9 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+//Route::get('/', function () {
+//    return view('home');
+//});
+
+Route::redirect('/', 'dashboard');
 
 require __DIR__.'/auth.php';
 
@@ -24,7 +26,7 @@ Route::group(['middleware' => 'auth'], function () {
         return view('dashboard');
     })->middleware(['auth'])->name('dashboard');
 
-    Route::resource('signup', \App\Http\Controllers\SignupController::class)->only('create', 'store');
+    Route::resource('signup', \App\Http\Controllers\SignupController::class)->only('index', 'create', 'store');
     Route::resource('races', \App\Http\Controllers\RaceController::class);
     Route::resource('race.results', \App\Http\Controllers\Race\RaceResultsController::class);
     Route::resource('race.quali-results', \App\Http\Controllers\Race\RaceQualiResultsController::class);

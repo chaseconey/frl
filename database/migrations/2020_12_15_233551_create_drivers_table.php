@@ -19,6 +19,7 @@ class CreateDriversTable extends Migration
             $table->foreignId('f1_number_id')->constrained();
             $table->foreignId('f1_team_id')->constrained();
             $table->foreignId('division_id')->constrained();
+            $table->enum('type', ['FULL_TIME', 'RESERVE'])->default('FULL_TIME');
             $table->timestamp('approved_at')->nullable();
             $table->timestamps();
         });

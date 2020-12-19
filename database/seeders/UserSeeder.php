@@ -15,9 +15,9 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(20)
-            ->hasDriver()
-            ->create();
+//        \App\Models\User::factory(20)
+//            ->hasDriver()
+//            ->create();
 
         $role = Role::create(['name' => 'admin']);
         $permission = Permission::create(['name' => 'manage-users']);

@@ -28,7 +28,8 @@ class DriverFactory extends Factory
             'user_id' => User::factory(),
             'division_id' => 1,
             'f1_number_id' => F1Number::factory(),
-            'f1_team_id' => F1Team::factory()
+            'f1_team_id' => F1Team::factory(),
+            'type' => 'FULL_TIME'
         ];
     }
 }
