@@ -24,6 +24,12 @@
                     <x-nav-link :href="route('standings.index')" :active="request()->routeIs('standings.*')">
                         {{ __('Standings') }}
                     </x-nav-link>
+
+                    @role('admin')
+                    <x-nav-link href="/nova">
+                        {{ __('Admin') }}
+                    </x-nav-link>
+                    @endrole
                 </div>
             </div>
 
@@ -84,6 +90,12 @@
             <x-responsive-nav-link :href="route('standings.index')" :active="request()->routeIs('standings.*')">
                 {{ __('Standings') }}
             </x-responsive-nav-link>
+
+            @role('admin')
+            <x-responsive-nav-link href="/nova">
+                {{ __('Admin') }}
+            </x-responsive-nav-link>
+            @endrole
         </div>
 
         <!-- Responsive Settings Options -->
