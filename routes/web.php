@@ -30,5 +30,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('race.results', \App\Http\Controllers\Race\RaceResultsController::class);
     Route::resource('race.quali-results', \App\Http\Controllers\Race\RaceQualiResultsController::class);
     Route::resource('standings', \App\Http\Controllers\StandingController::class);
-    Route::resource('divisions.standings', \App\Http\Controllers\Division\StandingController::class);
+
+    Route::get('divisions/{division}/standings', '\App\Http\Controllers\Division\StandingController@standings')
+        ->name('standings.standings');
+    Route::get('divisions/{division}/team-standings', '\App\Http\Controllers\Division\StandingController@teamStandings')
+        ->name('standings.team-standings');
+    Route::get('divisions/{division}/matrix', '\App\Http\Controllers\Division\StandingController@matrix')
+        ->name('standings.matrix');
 });

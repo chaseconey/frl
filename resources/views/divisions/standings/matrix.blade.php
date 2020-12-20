@@ -2,7 +2,7 @@
 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __("Standings") }}
+            {{ __("Team Standings") }}
         </h2>
     </x-slot>
 
@@ -12,11 +12,11 @@
                 <div class="p-6 bg-white border-b border-gray-200">
 
                     <div class="my-4">
-                        @include('standings.partials.tabs')
+                        @include('divisions.standings.partials.tabs', ['division' => $division])
                     </div>
 
                     <div class="my-4">
-                        @include('standings.partials.table', ['standings' => $standings])
+                        @include('divisions.standings.partials.matrix-table', ['standings' => $standings])
                     </div>
 
                 </div>
