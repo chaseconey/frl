@@ -45,7 +45,7 @@ class Race extends Resource
             ID::make(__('ID'), 'id')->sortable(),
             DateTime::make('Race Time')->sortable(),
             BelongsTo::make('Division'),
-            BelongsTo::make('Track'),
+            BelongsTo::make('Track')->searchable(),
         ];
     }
 

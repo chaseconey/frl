@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Avatar;
 use Laravel\Nova\Fields\Country;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
@@ -46,7 +47,8 @@ class Track extends Resource
         return [
             ID::make(__('ID'), 'id')->sortable(),
             Text::make('Name')->sortable(),
-            Country::make('Country')->sortable(),
+            Country::make('Country')->displayUsingLabels()->sortable(),
+            Avatar::make(),
         ];
     }
 
