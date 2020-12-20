@@ -2,7 +2,7 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 
 const teams = [
     'alfa-romeo',
-    'alpha-tauri',
+    'alphatauri',
     'ferrari',
     'haas',
     'mclaren',
@@ -28,7 +28,7 @@ module.exports = {
             },
             borderColor: {
                 'alfa-romeo': '#9B0000',
-                'alpha-tauri': '#FFFFFF',
+                'alphatauri': '#FFFFFF',
                 'ferrari': '#C80000',
                 'haas': '#787878',
                 'mclaren': '#FF8700',
