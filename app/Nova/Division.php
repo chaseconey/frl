@@ -3,7 +3,11 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laraning\NovaTimeField\TimeField;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Markdown;
+use Laravel\Nova\Fields\Select;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Division extends Resource
@@ -20,7 +24,7 @@ class Division extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -29,6 +33,7 @@ class Division extends Resource
      */
     public static $search = [
         'id',
+        'name'
     ];
 
     /**
@@ -41,6 +46,19 @@ class Division extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
+
+            Text::make('Name')->sortable(),
+            Markdown::make('Description'),
+            Select::make('Day Of Week')->options([
+                'Sunday' => 'Sunday',
+                'Monday' => 'Monday',
+                'Tuesday' => 'Tuesday',
+                'Wednesday' => 'Wednesday',
+                'Thursday' => 'Thursday',
+                'Friday' => 'Friday',
+                'Saturday' => 'Saturday',
+            ]),
+            TimeField::make('Race Time')->withTimezoneAdjustments(),
         ];
     }
 

@@ -9,6 +9,13 @@ class Division extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'description',
+        'day_of_week',
+        'race_time'
+    ];
+
     public function drivers()
     {
         return $this->hasMany(Driver::class);
