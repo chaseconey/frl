@@ -21,12 +21,12 @@
                         <label for="results"
                                class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
                             <span>Upload a file</span>
-                            <input id="results" name="results" type="file" class="sr-only">
+                            <input id="results" name="results" type="file" class="sr-only" accept="application/JSON">
                         </label>
                         <p class="pl-1">or drag and drop</p>
                     </div>
                     <p class="text-xs text-gray-500">
-                        PNG, JPG, GIF up to 10MB
+                        json up to 10MB
                     </p>
                 </div>
             </div>
