@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Race;
 
 use App\Http\Controllers\Controller;
+use App\Models\Driver;
 use App\Models\Race;
 use App\Models\RaceResults;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class RaceResultsController extends Controller
      */
     public function index(Race $race)
     {
-        $race->load(['results', 'results.driver', 'results.driver.user', 'results.driver.f1Team']);
+        $race->load(['results', 'results.driver', 'results.driver.user', 'results.f1Team']);
 
         return view('races.race-results.index')
             ->withRace($race);
@@ -54,25 +55,30 @@ class RaceResultsController extends Controller
         DB::transaction(function () use ($results, $race) {
             foreach ($results as $id => $result) {
                 // Look up Driver by string name...could be improved to use driver number later possibly.
-                $driver = \App\Models\User::join('drivers', 'drivers.user_id', '=', 'users.id')
-                    ->select('drivers.id')
-                    ->whereName($result['Driver'])
+                $driver = Driver::whereHas('user', function ($query) use ($result) {
+                    $query->where('name', $result['Driver']);
+                })
                     ->where('division_id', $race->division_id)
                     ->first();
 
                 // TODO: Delete in practice
                 if ( ! $driver) {
-                    $driver = \App\Models\Driver::factory(['f1_number_id' => $id, 'division_id' => $race->division_id])->forUser([
+                    $driver = \App\Models\Driver::factory([
+                        'f1_number_id' => $id,
+                        'division_id' => $race->division_id,
+                        'f1_team_id' => 1
+                    ])->forUser([
                         'name' => $result['Driver']
                     ])->create();
                 }
 
-                $qualiResult = \App\Models\RaceResults::fromFile($result);
-                $qualiResult->race_id = $race->id;
+                $raceResult = \App\Models\RaceResults::fromFile($result);
+                $raceResult->race_id = $race->id;
 
-                $qualiResult->driver_id = $driver->id;
+                $raceResult->driver_id = $driver->id;
+                $raceResult->f1_team_id = $driver->f1Team->id;
 
-                $qualiResult->save();
+                $raceResult->save();
             }
         });
 

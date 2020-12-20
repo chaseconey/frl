@@ -45,7 +45,7 @@
                                             {{ $result->driver->user->name }}
                                         </div>
                                         <div class="text-sm text-gray-500">
-                                            {{ $result->driver->f1Team->name }}
+                                            {{ $result->f1Team->name }}
                                         </div>
                                     </div>
                                 </div>

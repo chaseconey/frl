@@ -19,21 +19,21 @@
                     </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                    @foreach($standings as $teamId => $teamDrivers)
+                    @foreach($standings as $team)
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="pl-4 border-l-4 {{ f1_team_color($teamDrivers->first()->f1Team->name) }}">
+                                <div class="pl-4 border-l-4 {{ f1_team_color($team->name) }}">
                                     <div class="text-sm font-medium text-gray-900">
-                                        {{ $teamDrivers->first()->f1Team->name }}
+                                        {{ $team->name }}
                                     </div>
                                     <div class="text-sm text-gray-500">
-                                        {{ $teamDrivers->pluck('user.name')->join(', ') }}
+                                        {{ $team->raceResults->pluck('driver.user.name')->join(', ') }}
                                     </div>
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div
-                                    class="text-sm text-gray-900">{{ $teamDrivers->sum->race_results_sum_points ?? 0 }}</div>
+                                    class="text-sm text-gray-900">{{ $team->points ?? 0 }}</div>
                             </td>
                         </tr>
                     @endforeach

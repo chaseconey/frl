@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Race;
 
 use App\Http\Controllers\Controller;
+use App\Models\Driver;
 use App\Models\Race;
 use App\Models\RaceQualiResults;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class RaceQualiResultsController extends Controller
      */
     public function index(Race $race)
     {
-        $race->load(['qualiResults', 'qualiResults.driver', 'qualiResults.driver.user', 'qualiResults.driver.f1Team'])
+        $race->load(['qualiResults', 'qualiResults.driver', 'qualiResults.driver.user', 'qualiResults.f1Team'])
             ->loadMin('qualiResults', 'best_s1_time')
             ->loadMin('qualiResults', 'best_s2_time')
             ->loadMin('qualiResults', 'best_s3_time')
@@ -59,15 +60,19 @@ class RaceQualiResultsController extends Controller
         DB::transaction(function () use ($results, $race) {
             foreach ($results as $id => $result) {
                 // Look up Driver by string name...could be improved to use driver number later possibly.
-                $driver = \App\Models\User::join('drivers', 'drivers.user_id', '=', 'users.id')
-                    ->select('drivers.id')
-                    ->whereName($result['Driver'])
+                $driver = Driver::whereHas('user', function ($query) use ($result) {
+                    $query->where('name', $result['Driver']);
+                })
                     ->where('division_id', $race->division_id)
                     ->first();
 
                 // TODO: Delete in practice
                 if ( ! $driver) {
-                    $driver = \App\Models\Driver::factory(['f1_number_id' => $id, 'division_id' => $race->division_id])->forUser([
+                    $driver = \App\Models\Driver::factory([
+                        'f1_number_id' => $id,
+                        'division_id' => $race->division_id,
+                        'f1_team_id' => 1
+                    ])->forUser([
                         'name' => $result['Driver']
                     ])->create();
                 }
@@ -76,6 +81,7 @@ class RaceQualiResultsController extends Controller
                 $qualiResult->race_id = $race->id;
 
                 $qualiResult->driver_id = $driver->id;
+                $qualiResult->f1_team_id = $driver->f1Team->id;
 
                 $qualiResult->save();
             }

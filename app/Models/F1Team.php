@@ -13,4 +13,9 @@ class F1Team extends Model
     {
         return $this->hasMany(Driver::class);
     }
+
+    public function raceResults()
+    {
+        return $this->hasMany(RaceResults::class);
+    }
 }

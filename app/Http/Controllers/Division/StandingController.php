@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Division;
 use App\Models\Driver;
 use App\Models\Race;
-use App\Models\Track;
+use App\Models\F1Team;
 use Illuminate\Http\Request;
 
 class StandingController extends Controller
@@ -30,14 +30,19 @@ class StandingController extends Controller
     public function teamStandings(Division $division)
     {
         // TODO: Divisions need date constraints (season? end time?)
-        $standings = Driver::where('division_id', $division->id)
-            ->with('user', 'f1Team')
-            ->has('raceResults')
-            ->withSum('raceResults', 'points')
-            ->orderByDesc('race_results_sum_points')
+        $standings = F1Team::with([
+            'raceResults' => function ($query) use ($division) {
+                $query->whereHas('race', function ($query) use ($division) {
+                    $query->where('division_id', $division->id);
+                })
+                    ->with('driver', 'driver.user');
+            }
+        ])
             ->get()
-            ->groupBy('f1_team_id');
-
+            ->each(function ($team) {
+                $points = $team->raceResults->sum('points');
+                $team->points = $points;
+            })->sortByDesc('points');
 
         return view('divisions.standings.team-standings')
             ->withDivision($division)

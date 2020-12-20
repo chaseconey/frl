@@ -48,6 +48,11 @@ class RaceQualiResults extends Model
         return $this->belongsTo(Driver::class);
     }
 
+    public function f1Team()
+    {
+        return $this->belongsTo(F1Team::class);
+    }
+
     public function race()
     {
         return $this->belongsTo(Race::class);
