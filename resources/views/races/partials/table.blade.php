@@ -64,6 +64,10 @@
                 </table>
 
             </div>
+
+            <div class="mt-4">
+                {{ $races->links() }}
+            </div>
         </div>
     </div>
 </div>
