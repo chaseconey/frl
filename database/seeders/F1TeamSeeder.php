@@ -16,7 +16,7 @@ class F1TeamSeeder extends Seeder
     {
         $teams = [
             'Mercedes',
-            'Ferari',
+            'Ferrari',
             'Red Bull',
             'Renault',
             'Haas',

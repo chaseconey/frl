@@ -22,7 +22,7 @@
                     @foreach($standings as $teamId => $teamDrivers)
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="pl-4 border-l-2 {{ f1_team_color($teamDrivers->first()->f1Team->name) }}">
+                                <div class="pl-4 border-l-4 {{ f1_team_color($teamDrivers->first()->f1Team->name) }}">
                                     <div class="text-sm font-medium text-gray-900">
                                         {{ $teamDrivers->first()->f1Team->name }}
                                     </div>
