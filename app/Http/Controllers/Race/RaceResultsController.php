@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Race;
 use App\Models\RaceResults;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RaceResultsController extends Controller
 {
@@ -50,28 +51,30 @@ class RaceResultsController extends Controller
         $parser = new \App\Service\RaceParser();
         $results = $parser->parse($json);
 
-        foreach ($results as $id => $result) {
-            // Look up Driver by string name...could be improved to use driver number later possibly.
-            $driver = \App\Models\User::join('drivers', 'drivers.user_id', '=', 'users.id')
-                ->select('drivers.id')
-                ->whereName($result['Driver'])
-                ->where('division_id', $race->division_id)
-                ->first();
+        DB::transaction(function () use ($results, $race) {
+            foreach ($results as $id => $result) {
+                // Look up Driver by string name...could be improved to use driver number later possibly.
+                $driver = \App\Models\User::join('drivers', 'drivers.user_id', '=', 'users.id')
+                    ->select('drivers.id')
+                    ->whereName($result['Driver'])
+                    ->where('division_id', $race->division_id)
+                    ->first();
 
-            // TODO: Delete in practice
-            if ( ! $driver) {
-                $driver = \App\Models\Driver::factory(['f1_number_id' => $id, 'division_id' => $race->division_id])->forUser([
-                    'name' => $result['Driver']
-                ])->create();
+                // TODO: Delete in practice
+                if ( ! $driver) {
+                    $driver = \App\Models\Driver::factory(['f1_number_id' => $id, 'division_id' => $race->division_id])->forUser([
+                        'name' => $result['Driver']
+                    ])->create();
+                }
+
+                $qualiResult = \App\Models\RaceResults::fromFile($result);
+                $qualiResult->race_id = $race->id;
+
+                $qualiResult->driver_id = $driver->id;
+
+                $qualiResult->save();
             }
-
-            $qualiResult = \App\Models\RaceResults::fromFile($result);
-            $qualiResult->race_id = $race->id;
-
-            $qualiResult->driver_id = $driver->id;
-
-            $qualiResult->save();
-        }
+        });
 
         return redirect()->back();
     }
