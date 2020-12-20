@@ -1,7 +1,25 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
+const teams = [
+    'alfa-romeo',
+    'alpha-tauri',
+    'ferrari',
+    'haas',
+    'mclaren',
+    'mercedes',
+    'racing-point',
+    'red-bull',
+    'renault',
+    'williams'
+]
+
 module.exports = {
-    purge: ['./storage/framework/views/*.php', './resources/views/**/*.blade.php'],
+    purge: {
+        content: ['./storage/framework/views/*.php', './resources/views/**/*.blade.php'],
+        options: {
+            safelist: teams.map(team => `border-${team}`)
+        }
+    },
 
     theme: {
         extend: {
