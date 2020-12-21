@@ -30,7 +30,7 @@
                         @php
                             $driverRaces = $driver->raceResults->groupBy('race_id');
                         @endphp
-                        <tr>
+                        <tr class="{{ in_array($driver->id, auth()->user()->drivers->pluck('id')->toArray()) ? 'bg-gray-100' : '' }}">
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="text-sm text-gray-900">{{ $loop->iteration }}</div>
                             </td>
