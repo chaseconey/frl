@@ -21,7 +21,7 @@
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
                     @foreach($drivers as $driver)
-                        <tr>
+                        <tr class="{{ in_array($driver->id, auth()->user()->drivers->pluck('id')->toArray()) ? 'bg-gray-100' : '' }}">
                             <td class="px-6 py-4 whitespace-nowrap truncate">
                                 <div class="ml-4 border-l-4 pl-2 {{ f1_team_color($driver->f1Team->name) }}">
                                     <div class="text-sm font-medium text-gray-900 truncate">
