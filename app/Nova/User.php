@@ -4,11 +4,10 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Gravatar;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\Text;
-use Vyuldashev\NovaPermission\PermissionBooleanGroup;
-use Vyuldashev\NovaPermission\RoleBooleanGroup;
 use Vyuldashev\NovaPermission\RoleSelect;
 
 class User extends Resource
@@ -65,6 +64,8 @@ class User extends Resource
                 ->updateRules('nullable', 'string', 'min:8'),
 
             RoleSelect::make('Role', 'roles'),
+
+            HasMany::make('Drivers')
         ];
     }
 
