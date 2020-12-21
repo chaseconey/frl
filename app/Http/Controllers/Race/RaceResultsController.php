@@ -77,6 +77,7 @@ class RaceResultsController extends Controller
 
                 $raceResult->driver_id = $driver->id;
                 $raceResult->f1_team_id = $driver->f1Team->id;
+                // TODO: need to add a number for race finish position
 
                 $raceResult->save();
             }

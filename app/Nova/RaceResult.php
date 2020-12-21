@@ -4,19 +4,19 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\DateTime;
-use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Race extends Resource
+class RaceResult extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\Race::class;
+    public static $model = \App\Models\RaceResult::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -35,16 +35,6 @@ class Race extends Resource
     ];
 
     /**
-     * Get the value that should be displayed to represent the resource.
-     *
-     * @return string
-     */
-    public function title()
-    {
-        return "{$this->division->name} | {$this->track->name}";
-    }
-
-    /**
      * Get the fields displayed by the resource.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -54,11 +44,18 @@ class Race extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
-            DateTime::make('Race Time')->sortable(),
-            BelongsTo::make('Division'),
-            BelongsTo::make('Track')->searchable(),
 
-            HasMany::make('Race Results', 'results')
+            BelongsTo::make('Race'),
+            BelongsTo::make('Driver'),
+
+            Text::make('Race Time'),
+            Number::make('Pit Stop', 'num_pit_stops'),
+            Text::make('Tire Stints'),
+            Number::make('Grid Position'),
+            Number::make('Points'),
+            Text::make('Best Lap Time')->hideFromIndex(),
+            Number::make('Penalties', 'num_penalties')->hideFromIndex(),
+            Number::make('Penalty Time', 'penalty_seconds')->hideFromIndex(),
         ];
     }
 
