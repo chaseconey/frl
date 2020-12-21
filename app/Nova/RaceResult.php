@@ -45,7 +45,9 @@ class RaceResult extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make(__('ID'), 'id')->sortable(),
+            ID::make(__('ID'), 'id')->hideFromIndex()->sortable(),
+            Number::make('Position')->sortable(),
+            Number::make('Grid Position'),
 
             BelongsTo::make('Race'),
             BelongsTo::make('Driver'),
@@ -54,7 +56,6 @@ class RaceResult extends Resource
             Text::make('Race Time'),
             Number::make('Pit Stop', 'num_pit_stops'),
             Text::make('Tire Stints'),
-            Number::make('Grid Position'),
             Number::make('Points'),
             Text::make('Best Lap Time')->hideFromIndex(),
             Number::make('Penalties', 'num_penalties')->hideFromIndex(),
