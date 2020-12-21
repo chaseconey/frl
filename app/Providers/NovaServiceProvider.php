@@ -54,7 +54,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function cards()
     {
         return [
-            new Help,
+            (new \Skydiver\NovaUpdateCard\LaravelUpdateCard)->width('1/2'),
+            (new \Skydiver\NovaUpdateCard\NovaUpdateCard)->width('1/2'),
         ];
     }
 
