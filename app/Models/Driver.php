@@ -48,12 +48,12 @@ class Driver extends Model
 
     public function raceResults()
     {
-        return $this->hasMany(RaceResults::class);
+        return $this->hasMany(RaceResult::class);
     }
 
     public function latestRace()
     {
-        return $this->hasOne(RaceResults::class)
+        return $this->hasOne(RaceResult::class)
             ->latest();
     }
 }

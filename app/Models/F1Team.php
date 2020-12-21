@@ -16,6 +16,6 @@ class F1Team extends Model
 
     public function raceResults()
     {
-        return $this->hasMany(RaceResults::class);
+        return $this->hasMany(RaceResult::class);
     }
 }

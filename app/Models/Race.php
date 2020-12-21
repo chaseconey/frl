@@ -30,13 +30,13 @@ class Race extends Model
 
     public function results()
     {
-        return $this->hasMany(RaceResults::class)
+        return $this->hasMany(RaceResult::class)
             ->orderByDesc('points');
     }
 
     public function qualiResults()
     {
-        return $this->hasMany(RaceQualiResults::class)
+        return $this->hasMany(RaceQualiResult::class)
             ->orderBy('lap_delta');
     }
 }

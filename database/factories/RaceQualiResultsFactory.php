@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\RaceQualiResults;
+use App\Models\RaceQualiResult;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class RaceQualiResultsFactory extends Factory
@@ -12,7 +12,7 @@ class RaceQualiResultsFactory extends Factory
      *
      * @var string
      */
-    protected $model = RaceQualiResults::class;
+    protected $model = RaceQualiResult::class;
 
     /**
      * Define the model's default state.

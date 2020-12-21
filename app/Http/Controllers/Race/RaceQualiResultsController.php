@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Race;
 use App\Http\Controllers\Controller;
 use App\Models\Driver;
 use App\Models\Race;
-use App\Models\RaceQualiResults;
+use App\Models\RaceQualiResult;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -77,7 +77,7 @@ class RaceQualiResultsController extends Controller
                     ])->create();
                 }
 
-                $qualiResult = \App\Models\RaceQualiResults::fromFile($result);
+                $qualiResult = \App\Models\RaceQualiResult::fromFile($result);
                 $qualiResult->race_id = $race->id;
 
                 $qualiResult->driver_id = $driver->id;
@@ -93,10 +93,10 @@ class RaceQualiResultsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\RaceQualiResults  $raceQualiResults
+     * @param  \App\Models\RaceQualiResult  $raceQualiResults
      * @return \Illuminate\Http\Response
      */
-    public function show(RaceQualiResults $raceQualiResults)
+    public function show(RaceQualiResult $raceQualiResults)
     {
         //
     }
@@ -104,10 +104,10 @@ class RaceQualiResultsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\RaceQualiResults  $raceQualiResults
+     * @param  \App\Models\RaceQualiResult  $raceQualiResults
      * @return \Illuminate\Http\Response
      */
-    public function edit(RaceQualiResults $raceQualiResults)
+    public function edit(RaceQualiResult $raceQualiResults)
     {
         //
     }
@@ -116,10 +116,10 @@ class RaceQualiResultsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\RaceQualiResults  $raceQualiResults
+     * @param  \App\Models\RaceQualiResult  $raceQualiResults
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RaceQualiResults $raceQualiResults)
+    public function update(Request $request, RaceQualiResult $raceQualiResults)
     {
         //
     }
@@ -127,10 +127,10 @@ class RaceQualiResultsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\RaceQualiResults  $raceQualiResults
+     * @param  \App\Models\RaceQualiResult  $raceQualiResults
      * @return \Illuminate\Http\Response
      */
-    public function destroy(RaceQualiResults $raceQualiResults)
+    public function destroy(RaceQualiResult $raceQualiResults)
     {
         //
     }
