@@ -56,4 +56,13 @@ abstract class Resource extends NovaResource
     {
         return parent::relatableQuery($request, $query);
     }
+
+    protected static function applyOrderings($query, array $orderings)
+    {
+        if (empty($orderings) && property_exists(static::class, 'orderBy')) {
+            $orderings = static::$orderBy;
+        }
+
+        return parent::applyOrderings($query, $orderings);
+    }
 }

@@ -9,14 +9,14 @@ use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class RaceResult extends Resource
+class RaceQualiResult extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\RaceResult::class;
+    public static $model = \App\Models\RaceQualiResult::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -34,6 +34,8 @@ class RaceResult extends Resource
         'id',
     ];
 
+    public static $orderBy = ['lap_delta' => 'asc'];
+
     /**
      * Get the fields displayed by the resource.
      *
@@ -49,14 +51,9 @@ class RaceResult extends Resource
             BelongsTo::make('Driver'),
             BelongsTo::make('Team', 'f1Team', \App\Nova\F1Team::class),
 
-            Text::make('Race Time'),
-            Number::make('Pit Stop', 'num_pit_stops'),
-            Text::make('Tire Stints'),
-            Number::make('Grid Position'),
-            Number::make('Points'),
-            Text::make('Best Lap Time')->hideFromIndex(),
-            Number::make('Penalties', 'num_penalties')->hideFromIndex(),
-            Number::make('Penalty Time', 'penalty_seconds')->hideFromIndex(),
+            Text::make('Best Lap Time')->sortable(),
+            Number::make('Lap Delta')->sortable(),
+            Number::make('Speedtrap Speed')->sortable(),
         ];
     }
 
