@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laraning\NovaTimeField\TimeField;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Select;
@@ -59,6 +60,9 @@ class Division extends Resource
                 'Saturday' => 'Saturday',
             ]),
             TimeField::make('Race Time')->withTimezoneAdjustments(),
+
+            HasMany::make('Drivers'),
+            HasMany::make('Races'),
         ];
     }
 
