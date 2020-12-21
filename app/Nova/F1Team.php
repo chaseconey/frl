@@ -46,7 +46,8 @@ class F1Team extends Resource
             ID::make(__('ID'), 'id')->sortable(),
             Text::make('Name')->sortable(),
 
-            HasMany::make('Drivers')
+            HasMany::make('Drivers'),
+            HasMany::make('Race Results', 'raceResults'),
         ];
     }
 
