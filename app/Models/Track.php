@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Track extends Model
 {
     use HasFactory;
+
+    public function races()
+    {
+        return $this->hasMany(Race::class);
+    }
 }

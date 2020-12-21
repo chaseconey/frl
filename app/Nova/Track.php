@@ -5,6 +5,7 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Avatar;
 use Laravel\Nova\Fields\Country;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -49,6 +50,8 @@ class Track extends Resource
             Text::make('Name')->sortable(),
             Country::make('Country')->displayUsingLabels()->sortable(),
             Avatar::make(),
+
+            HasMany::make('Races')
         ];
     }
 
