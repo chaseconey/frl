@@ -25,5 +25,5 @@ function f1_team_color($name)
  */
 function country_code_to_name($short)
 {
-    return config("countries.{$short}") ?? $short;
+    return config("countries.{$short}", $short);
 }
