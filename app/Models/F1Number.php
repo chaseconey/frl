@@ -11,6 +11,6 @@ class F1Number extends Model
 
     public function drivers()
     {
-        return $this->hasMany(Driver::class, 'racing_number_id');
+        return $this->hasMany(Driver::class, 'f1_number_id');
     }
 }
