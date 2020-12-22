@@ -11,6 +11,7 @@ class DashboardController extends Controller
     {
         $latestRaces = Race::latest()
             ->take(5)
+            ->with('track', 'division')
             ->withCount('results')
             ->completed()
             ->latest('race_time')
@@ -19,6 +20,7 @@ class DashboardController extends Controller
         $myRaces = Race::latest()
             ->take(5)
             ->withCount('results')
+            ->with('track', 'division')
             ->completed()
             ->latest('race_time')
             ->whereHas('results', function ($query) {

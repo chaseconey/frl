@@ -10,9 +10,9 @@
             <a href="{{ route('race.results.index', $race->id) }}" class="block hover:bg-gray-50">
                 <div class="flex items-center px-4 py-4 sm:px-6">
                     <div class="min-w-0 flex-1 flex items-center">
-{{--                        <div class="flex-shrink-0">--}}
-{{--                            <img class="h-12 w-12 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">--}}
-{{--                        </div>--}}
+                        <div class="flex-shrink-0">
+                            <x-track-avatar :track="$race->track"></x-track-avatar>
+                        </div>
                         <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
                             <div>
                                 <p class="text-sm font-medium text-indigo-600 truncate">{{ $race->division->name }} | {{ $race->track->name }}</p>
