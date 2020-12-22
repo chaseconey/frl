@@ -61,7 +61,7 @@ class StandingController extends Controller
 
         $races = Race::where('division_id', $division->id)
             ->with('track')
-            ->latest('race_time')
+            ->oldest('race_time')
             ->get();
 
 
