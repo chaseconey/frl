@@ -9,20 +9,18 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $latestRaces = Race::latest()
+        $latestRaces = Race::latest('race_time')
             ->take(5)
             ->with('track', 'division')
             ->withCount('results')
             ->completed()
-            ->latest('race_time')
             ->get();
 
-        $myRaces = Race::latest()
+        $myRaces = Race::latest('race_time')
             ->take(5)
             ->withCount('results')
             ->with('track', 'division')
             ->completed()
-            ->latest('race_time')
             ->whereHas('results', function ($query) {
                 $query->whereIn('driver_id', auth()->user()->drivers->pluck('id'));
             })
