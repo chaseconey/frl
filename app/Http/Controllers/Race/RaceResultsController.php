@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Race;
 
 use App\Http\Controllers\Controller;
 use App\Models\Driver;
+use App\Models\F1Team;
 use App\Models\Race;
 use App\Models\RaceResult;
 use Illuminate\Http\Request;
@@ -53,6 +54,7 @@ class RaceResultsController extends Controller
         $results = $parser->parse($json);
 
         DB::transaction(function () use ($results, $race) {
+            $teams = F1Team::pluck('id', 'name');
             foreach ($results as $id => $result) {
                 // Look up Driver by string name...could be improved to use driver number later possibly.
                 $driver = Driver::where('name', $result['Driver'])
@@ -64,7 +66,7 @@ class RaceResultsController extends Controller
                     $driver = \App\Models\Driver::factory([
                         'f1_number_id' => $id,
                         'division_id' => $race->division_id,
-                        'f1_team_id' => 1,
+                        'f1_team_id' => $teams[$result['Team']],
                         'name' => $result['Driver']
                     ])->create();
                 }

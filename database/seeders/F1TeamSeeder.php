@@ -17,13 +17,13 @@ class F1TeamSeeder extends Seeder
         $teams = [
             'Mercedes',
             'Ferrari',
-            'Red Bull',
+            'Red Bull Racing',
             'Renault',
             'Haas',
             'McLaren',
             'Racing Point',
             'Alfa Romeo',
-            'AlphaTauri',
+            'Alpha Tauri',
             'Williams',
         ];
 
