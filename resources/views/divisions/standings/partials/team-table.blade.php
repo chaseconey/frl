@@ -24,7 +24,7 @@
                                         {{ $team->name }}
                                     </div>
                                     <div class="text-sm text-gray-500">
-                                        {{ $team->raceResults->pluck('driver.name')->join(', ') }}
+                                        {{ $team->raceResults->pluck('driver.name')->unique()->join(', ') }}
                                     </div>
                                 </div>
                             </td>
