@@ -5,6 +5,7 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
@@ -48,12 +49,16 @@ class Driver extends Resource
             ID::make(__('ID'), 'id')->sortable(),
             Text::make('Name')->sortable(),
             BelongsTo::make('User')->sortable()->nullable(),
-            Select::make('Type')->options(['FULL_TIME' => 'Full Time', 'RESERVE' => 'Reserve'])->displayUsingLabels(),
+            Select::make('Type')
+                ->options(['FULL_TIME' => 'Full Time', 'RESERVE' => 'Reserve'])
+                ->displayUsingLabels()
+                ->sortable(),
             BelongsTo::make('Division')->sortable(),
             BelongsTo::make('F1 Team', 'f1Team')->sortable(),
             BelongsTo::make('F1 Number', 'f1Number')->sortable(),
-
             DateTime::make('Approved At'),
+
+            HasMany::make('Race Results', 'raceResults')
         ];
     }
 
