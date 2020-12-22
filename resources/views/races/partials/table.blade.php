@@ -36,7 +36,7 @@
                                         {{ $race->track->name }}
                                     </div>
                                     <div class="text-sm text-gray-500">
-                                        {{ $race->track->country }}
+                                        {{ country_code_to_name($race->track->country) }}
                                     </div>
                                 </div>
                             </div>

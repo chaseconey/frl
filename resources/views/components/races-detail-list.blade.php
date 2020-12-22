@@ -17,7 +17,7 @@
                             <div>
                                 <p class="text-sm font-medium text-indigo-600 truncate">{{ $race->division->name }} | {{ $race->track->name }}</p>
                                 <p class="mt-2 flex items-center text-sm text-gray-500">
-                                    <span class="truncate">{{ $race->track->country }}</span>
+                                    <span class="truncate">{{ country_code_to_name($race->track->country) }}</span>
                                 </p>
                             </div>
                             <div class="hidden md:block">
