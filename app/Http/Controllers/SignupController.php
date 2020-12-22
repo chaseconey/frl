@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Division;
 use App\Models\Driver;
 use App\Models\F1Number;
-use App\Models\Signup;
 use App\Models\F1Team;
 use Illuminate\Http\Request;
 
@@ -64,7 +63,8 @@ class SignupController extends Controller
             'user_id' => $request->user()->id,
             'f1_number_id' => $request->f1_number_id,
             'f1_team_id' => $request->f1_team_id,
-            'type' => $request->type
+            'type' => $request->type,
+            'name' => $request->user()->name
         ]);
 
         return redirect()->route('dashboard');

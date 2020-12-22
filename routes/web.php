@@ -25,6 +25,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('dashboard', '\App\Http\Controllers\DashboardController@index')->name('dashboard');
 
     Route::resource('signup', \App\Http\Controllers\SignupController::class)->only('index', 'create', 'store');
+    Route::resource('drivers', \App\Http\Controllers\DriverController::class)->only('update');
     Route::resource('races', \App\Http\Controllers\RaceController::class);
     Route::resource('divisions', \App\Http\Controllers\DivisionController::class);
     Route::resource('race.results', \App\Http\Controllers\Race\RaceResultsController::class);

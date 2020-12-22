@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Driver extends Resource
@@ -22,7 +23,7 @@ class Driver extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -31,17 +32,8 @@ class Driver extends Resource
      */
     public static $search = [
         'id',
+        'name'
     ];
-
-    /**
-     * Get the value that should be displayed to represent the resource.
-     *
-     * @return string
-     */
-    public function title()
-    {
-        return "{$this->user->name}";
-    }
 
     /**
      * Get the fields displayed by the resource.
@@ -53,7 +45,8 @@ class Driver extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
-            BelongsTo::make('User')->sortable(),
+            Text::make('Name')->sortable(),
+            BelongsTo::make('User')->sortable()->nullable(),
             BelongsTo::make('Division')->sortable(),
             BelongsTo::make('F1 Team', 'f1Team')->sortable(),
             BelongsTo::make('F1 Number', 'f1Number')->sortable(),

@@ -52,7 +52,7 @@
                                     </div>
                                     <div class="ml-4">
                                         <div class="text-sm font-medium text-gray-900">
-                                            {{ $result->driver->user->name ?? '' }}
+                                            {{ $result->driver->name ?? '' }}
                                         </div>
                                         <div class="text-sm text-gray-500">
                                             {{ $result->f1Team->name ?? '' }}

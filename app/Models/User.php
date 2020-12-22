@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Driver::class);
     }
+
+    public function hasDriver($driverId)
+    {
+        return in_array($driverId, $this->drivers->pluck('id')->toArray());
+    }
 }

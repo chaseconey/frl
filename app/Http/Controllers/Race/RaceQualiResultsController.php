@@ -60,9 +60,7 @@ class RaceQualiResultsController extends Controller
         DB::transaction(function () use ($results, $race) {
             foreach ($results as $id => $result) {
                 // Look up Driver by string name...could be improved to use driver number later possibly.
-                $driver = Driver::whereHas('user', function ($query) use ($result) {
-                    $query->where('name', $result['Driver']);
-                })
+                $driver = Driver::where('name', $result['Driver'])
                     ->where('division_id', $race->division_id)
                     ->first();
 
@@ -71,8 +69,7 @@ class RaceQualiResultsController extends Controller
                     $driver = \App\Models\Driver::factory([
                         'f1_number_id' => $id,
                         'division_id' => $race->division_id,
-                        'f1_team_id' => 1
-                    ])->forUser([
+                        'f1_team_id' => 1,
                         'name' => $result['Driver']
                     ])->create();
                 }

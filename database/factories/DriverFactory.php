@@ -25,7 +25,6 @@ class DriverFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::factory(),
             'division_id' => 1,
             'f1_number_id' => F1Number::factory(),
             'f1_team_id' => F1Team::factory(),

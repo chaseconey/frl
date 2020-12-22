@@ -14,7 +14,8 @@ class Driver extends Model
         'f1_number_id',
         'f1_team_id',
         'division_id',
-        'type'
+        'type',
+        'name'
     ];
 
     /**
