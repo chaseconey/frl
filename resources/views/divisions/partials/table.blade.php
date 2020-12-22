@@ -36,7 +36,7 @@
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="text-sm text-gray-900">{{ $driver->type }}</div>
+                                <div class="text-sm text-gray-900">{{ \App\Models\Driver::TYPES[$driver->type] }}</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="text-sm text-gray-900">{{ $driver->raceResults()->count() }}</div>

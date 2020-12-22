@@ -50,7 +50,7 @@ class Driver extends Resource
             Text::make('Name')->sortable(),
             BelongsTo::make('User')->sortable()->nullable(),
             Select::make('Type')
-                ->options(['FULL_TIME' => 'Full Time', 'RESERVE' => 'Reserve'])
+                ->options(\App\Models\Driver::TYPES)
                 ->displayUsingLabels()
                 ->sortable(),
             BelongsTo::make('Division')->sortable(),
