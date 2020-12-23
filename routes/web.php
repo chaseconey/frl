@@ -24,7 +24,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('signup', \App\Http\Controllers\SignupController::class)->only('index', 'create', 'store');
     Route::resource('drivers', \App\Http\Controllers\DriverController::class)->only('update');
-    Route::resource('races', \App\Http\Controllers\RaceController::class);
+    Route::get('races/{race}/broadcast', '\App\Http\Controllers\RaceController@broadcast')->name('races.broadcast');
+    Route::resource('races', \App\Http\Controllers\RaceController::class)->only('index');
     Route::resource('divisions', \App\Http\Controllers\DivisionController::class);
     Route::resource('race.results', \App\Http\Controllers\Race\RaceResultsController::class);
     Route::resource('race.quali-results', \App\Http\Controllers\Race\RaceQualiResultsController::class);
