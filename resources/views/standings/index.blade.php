@@ -12,7 +12,7 @@
             <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
                 @foreach($divisions as $division)
                     <a class="flex justify-center bg-white p-4 shadow rounded hover:bg-gray-100"
-                       href="{{ route('standings.standings', ['division' => $division]) }}">
+                       href="{{ route('standings.matrix', ['division' => $division]) }}">
                         {{ $division->name }}
                     </a>
                 @endforeach
