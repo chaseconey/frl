@@ -63,11 +63,15 @@
                             <td class="px-6 py-4 whitespace-nowrap text-right">
                                 <div class="text-sm text-gray-900">{{ $result->best_lap_time }}</div>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-right">
+                            <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="text-sm text-gray-900">{{ $result->num_pit_stops }}</div>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-right">
-                                <div class="text-sm text-gray-900">{{ $result->tire_stints }}</div>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">
+                                    @foreach(str_split($result->tire_stints) as $tire)
+                                        <x-tire :tire="$tire"></x-tire>
+                                    @endforeach
+                                </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="text-sm text-gray-900">{{ $result->num_penalties }}

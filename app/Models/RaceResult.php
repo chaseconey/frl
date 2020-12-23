@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class RaceResult extends Model
 {
@@ -33,7 +34,7 @@ class RaceResult extends Model
             'num_penalties' => $json['numPenalties'],
             'penalty_seconds' => $json['penaltiesTime'],
             'race_time' => $json['RaceTime'],
-            'tire_stints' => $json['TyreStints'],
+            'tire_stints' => Str::of($json['TyreStints'])->trim(),
             'points' => $json['points'],
         ]);
     }
