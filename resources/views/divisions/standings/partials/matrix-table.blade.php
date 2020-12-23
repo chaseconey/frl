@@ -55,7 +55,7 @@
                                         @if(!isset($driverRaces[$race->id]))
                                             -
                                         @else
-                                            {{ $driverRaces[$race->id]->first()->points }}
+                                            <a href="{{ route('race.results.index', $race->id) }}">{{ $driverRaces[$race->id]->first()->points }}</a>
                                         @endif
                                     </div>
                                 </td>
