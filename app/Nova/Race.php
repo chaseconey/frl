@@ -7,6 +7,7 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Race extends Resource
@@ -57,6 +58,8 @@ class Race extends Resource
             DateTime::make('Race Time')->sortable(),
             BelongsTo::make('Division'),
             BelongsTo::make('Track')->searchable(),
+
+            Text::make('Broadcast ID', 'broadcast_id')->sortable()->nullable(),
 
             HasMany::make('Race Results', 'results')
         ];
