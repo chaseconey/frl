@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Division;
 use App\Models\Race;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,10 @@ class RaceController extends Controller
             ->with('track', 'division')
             ->paginate();
 
+        $divisions = Division::all();
+
         return view('races.index')
+            ->withDivisions($divisions)
             ->withRaces($races);
     }
 
