@@ -2,6 +2,8 @@
     $markdown = new Parsedown();
 @endphp
 
+@include('components.form-errors', ['errors' => $errors])
+
 <div>
     <h2 class="my-4 text-lg font-bold">{{ $division->name }}</h2>
 

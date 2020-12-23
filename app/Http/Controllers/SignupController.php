@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SignupRequest;
 use App\Models\Division;
 use App\Models\Driver;
 use App\Models\F1Number;
@@ -49,13 +50,11 @@ class SignupController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  SignupRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SignupRequest $request)
     {
-        // TODO: add request
-
         // TODO: make sure only 2 FULL_TIME drivers per team
 
         // TODO: make sure a user can only sign up per division 1 time
