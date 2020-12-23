@@ -18,18 +18,46 @@
         <div class="mt-6 sm:mt-5 space-y-6 sm:space-y-5">
 
             <input type="hidden" name="division_id" value="{{ Request::get('division_id') }}">
+            <input type="hidden" name="type" value="{{ Request::has('reserve') ? 'RESERVE' : 'FULL_TIME' }}">
+
+            <div
+                class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                <label for="type"
+                       class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
+                    Driver Type
+                </label>
+                <div class="mt-1 sm:mt-0 sm:col-span-2">
+                    <a href="{{ route('signup.create', ['reserve' => 1, 'division_id' => Request::get('division_id')]) }}">
+                        <button type="button"
+                                class="{{ Request::has('reserve') ? 'bg-green-600 hover:bg-green-700' : 'bg-gray-600 hover:bg-gray-700' }} inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+                            Reserve
+                        </button>
+                    </a>
+                    <a href="{{ route('signup.create', ['division_id' => Request::get('division_id')]) }}">
+                        <button type="button"
+                                class="{{ !Request::has('reserve') ? 'bg-green-600 hover:bg-green-700' : 'bg-gray-600 hover:bg-gray-700' }} ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+                            Full Time
+                        </button>
+                    </a>
+                </div>
+            </div>
 
             <div
                 class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                 <label for="f1_team_id"
                        class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-                    Desired Racing Number
+                    Desired Team
                 </label>
                 <div class="mt-1 sm:mt-0 sm:col-span-2">
                     <select id="f1_team_id" name="f1_team_id" autocomplete="f1_team_id"
                             class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
                         @foreach($teams as $team)
-                            <option value="{{ $team->id }}">{{ $team->name }}</option>
+                            <option
+                                value="{{ $team->id }}"
+                                @if(!Request::has('reserve') && $team->drivers_count >= 2)disabled="disabled"@endif
+                            >
+                                {{ $team->name }}
+                            </option>
                         @endforeach
                     </select>
                 </div>
@@ -47,21 +75,6 @@
                         @foreach($numbers as $id => $number)
                             <option value="{{ $id }}">{{ $number }}</option>
                         @endforeach
-                    </select>
-                </div>
-            </div>
-
-            <div
-                class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-                <label for="type"
-                       class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-                    Driver Type
-                </label>
-                <div class="mt-1 sm:mt-0 sm:col-span-2">
-                    <select id="type" name="type" autocomplete="type"
-                            class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
-                        <option value="FULL_TIME">Full-Time</option>
-                        <option value="RESERVE">Reserve</option>
                     </select>
                 </div>
             </div>

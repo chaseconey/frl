@@ -6,6 +6,7 @@ use App\Models\Division;
 use App\Models\Driver;
 use App\Models\F1Number;
 use App\Models\F1Team;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class SignupController extends Controller
@@ -31,9 +32,10 @@ class SignupController extends Controller
             ->with('drivers', 'drivers.f1Number', 'drivers.f1Team')
             ->first();
 
-        $teams = F1Team::all();
+        $teams = F1Team::withCount(['drivers' => function (Builder $query) {
+            $query->where('type', '=', 'FULL_TIME');
+        }])->get();
 
-        // TODO: remove already selected numbers
         $takenNumbers = $division->drivers->pluck('f1Number.id');
         $numbers = F1Number::whereNotIn('id', $takenNumbers)->pluck('racing_number', 'id');
 
