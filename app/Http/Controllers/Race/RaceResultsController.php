@@ -75,7 +75,7 @@ class RaceResultsController extends Controller
                 $raceResult->race_id = $race->id;
 
                 $raceResult->driver_id = $driver->id;
-                $raceResult->f1_team_id = $driver->f1Team->id;
+                $raceResult->f1_team_id = $teams[$result['Team']];
                 $raceResult->position = $id;
 
                 $raceResult->save();

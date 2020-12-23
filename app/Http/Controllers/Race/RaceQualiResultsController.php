@@ -80,7 +80,7 @@ class RaceQualiResultsController extends Controller
                 $qualiResult->race_id = $race->id;
 
                 $qualiResult->driver_id = $driver->id;
-                $qualiResult->f1_team_id = $driver->f1Team->id;
+                $qualiResult->f1_team_id = $teams[$result['Team']];
 
                 $qualiResult->save();
             }
