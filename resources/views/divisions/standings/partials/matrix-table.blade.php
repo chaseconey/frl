@@ -6,21 +6,21 @@
                     <thead class="bg-gray-50">
                     <tr>
                         <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            class="px-6 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Pos
                         </th>
                         <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            class="px-6 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Driver
                         </th>
                         @foreach($races as $race)
                         <th scope="col"
-                            class="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            class="px-2 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider">
                             {{ $race->track->country }}
                         </th>
                         @endforeach
                         <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            class="px-6 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Points
                         </th>
                     </tr>
@@ -28,28 +28,16 @@
                     <tbody class="bg-white divide-y divide-gray-200">
                     @foreach($standings as $driver)
                         <tr class="{{ in_array($driver->id, auth()->user()->drivers->pluck('id')->toArray()) ? 'bg-gray-100' : '' }}">
-                            <td class="px-6 py-4 whitespace-nowrap">
+                            <td class="px-6 py-2 whitespace-nowrap">
                                 <div class="text-sm text-gray-900">{{ $loop->iteration }}</div>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="flex items-center">
-                                    <div class="flex-shrink-0 h-10 w-10">
-                                        <x-user-avatar :user="$driver->user"></x-user-avatar>
-                                    </div>
-                                    <div class="ml-4">
-                                        <div class="text-sm font-medium text-gray-900">
-                                            {{ $driver->name }}
-                                        </div>
-                                        <div class="text-sm text-gray-500">
-                                            {{ $driver->f1Team->name }}
-                                        </div>
-                                    </div>
-                                </div>
+                            <td class="px-6 py-2 whitespace-nowrap border-l-2 {{ f1_team_color($driver->f1Team->name) }}">
+                                <div class="text-sm text-gray-900">{{ $driver->name }} #{{ $driver->f1Number->racing_number }}</div>
                             </td>
                             @foreach($races as $race)
                                 <x-matrix-points-cell :race="$race" :driver="$driver"></x-matrix-points-cell>
                             @endforeach
-                            <td class="px-6 py-4 whitespace-nowrap text-right">
+                            <td class="px-6 py-2 whitespace-nowrap text-right">
                                 <div class="text-sm text-gray-900">{{ $driver->race_results_sum_points ?? 0 }}</div>
                             </td>
                         </tr>
