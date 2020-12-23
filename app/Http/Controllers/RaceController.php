@@ -11,13 +11,15 @@ class RaceController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $races = Race::whereDate('races.race_time', '<=', now()->addWeeks(4))
             ->with('track', 'division')
             ->sortable(['race_time' => 'desc'])
+            ->filter($request->all())
             ->paginate();
 
         $divisions = Division::all();

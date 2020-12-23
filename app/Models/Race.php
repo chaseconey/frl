@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use EloquentFilter\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
 
 class Race extends Model
 {
-    use HasFactory, Sortable;
+    use HasFactory, Sortable, Filterable;
 
     public $sortable = [
         'id',

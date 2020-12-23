@@ -22,6 +22,7 @@
         "skydiver/nova-update-card": "^1.5",
         "spatie/laravel-permission": "^3.18",
         "thomaswelton/laravel-gravatar": "^1.3",
+        "tucker-eric/eloquentfilter": "^2.4",
         "vyuldashev/nova-permission": "^2.10"
     },
     "repositories": [
