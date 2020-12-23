@@ -27,7 +27,7 @@
                                         {{ $driver->name }}
                                     </div>
                                     <div class="text-sm text-gray-500">
-                                        {{ $driver->f1Team->name }}
+                                        {{ $driver->f1Team->name }}, #{{ $driver->f1Number->racing_number }}
                                     </div>
                                 </div>
                             </div>

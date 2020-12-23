@@ -32,7 +32,7 @@
                                 <div class="text-sm text-gray-900">{{ $loop->iteration }}</div>
                             </td>
                             <td class="px-6 py-2 whitespace-nowrap border-l-2 {{ f1_team_color($driver->f1Team->name) }}">
-                                <div class="text-sm text-gray-900">{{ $driver->name }} #{{ $driver->f1Number->racing_number }}</div>
+                                <div class="text-sm text-gray-900">{{ $driver->name }} <span class="text-xs text-gray-700">#{{ $driver->f1Number->racing_number }}</span></div>
                             </td>
                             @foreach($races as $race)
                                 <x-matrix-points-cell :race="$race" :driver="$driver"></x-matrix-points-cell>
