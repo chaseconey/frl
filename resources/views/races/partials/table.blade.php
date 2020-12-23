@@ -7,13 +7,13 @@
                     <thead class="bg-gray-50">
                     <tr>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Track
+                            @sortablelink('track.name', 'Track')
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Division
+                            @sortablelink('division.name', 'Division')
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Race Time
+                            @sortablelink('race_time', 'Race Time')
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Status
@@ -72,7 +72,7 @@
             </div>
 
             <div class="mt-4">
-                {{ $races->links() }}
+                {{ $races->withQueryString()->render() }}
             </div>
         </div>
     </div>

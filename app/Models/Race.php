@@ -4,10 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 
 class Race extends Model
 {
-    use HasFactory;
+    use HasFactory, Sortable;
+
+    public $sortable = [
+        'id',
+        'broadcast_id',
+        'race_time'
+    ];
 
     protected $casts = [
         'race_time' => 'datetime'

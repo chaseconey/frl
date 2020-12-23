@@ -15,9 +15,9 @@ class RaceController extends Controller
      */
     public function index()
     {
-        $races = Race::latest('race_time')
-            ->whereDate('race_time', '<=', now()->addWeeks(4))
+        $races = Race::whereDate('races.race_time', '<=', now()->addWeeks(4))
             ->with('track', 'division')
+            ->sortable(['race_time' => 'desc'])
             ->paginate();
 
         $divisions = Division::all();

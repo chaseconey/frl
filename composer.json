@@ -14,6 +14,7 @@
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "kyslik/column-sortable": "^6.4",
         "laraning/nova-time-field": "^1.2",
         "laravel/framework": "^8.12",
         "laravel/nova": "*",

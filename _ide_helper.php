@@ -10418,6 +10418,17 @@
         {
                         return \Illuminate\Http\Request::hasValidRelativeSignature();
         }
+                    /**
+         * 
+         *
+         * @see \Kyslik\ColumnSortable\ColumnSortableServiceProvider::boot()
+         * @param array $keys
+         * @static 
+         */ 
+        public static function allFilled($keys)
+        {
+                        return \Illuminate\Http\Request::allFilled($keys);
+        }
          
     }
             /**
@@ -15633,6 +15644,17 @@
         public static function hasValidRelativeSignature()
         {
                         return \Illuminate\Http\Request::hasValidRelativeSignature();
+        }
+                    /**
+         * 
+         *
+         * @see \Kyslik\ColumnSortable\ColumnSortableServiceProvider::boot()
+         * @param array $keys
+         * @static 
+         */ 
+        public static function allFilled($keys)
+        {
+                        return \Illuminate\Http\Request::allFilled($keys);
         }
          
     }
