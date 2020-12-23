@@ -23,7 +23,7 @@
                     </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                    @foreach($drivers as $driver)
+                    @foreach($drivers->loadCount('raceResults')->sortBy([['type', 'asc'], ['race_results_count', 'desc']]) as $driver)
                         <tr class="{{ auth()->user()->hasDriver($driver->id) ? 'bg-gray-100' : '' }}">
                             <td class="px-6 py-4 whitespace-nowrap truncate">
                                 <div class="ml-4 border-l-4 pl-2 {{ f1_team_color($driver->f1Team->name) }}">
@@ -39,7 +39,7 @@
                                 <div class="text-sm text-gray-900">{{ \App\Models\Driver::TYPES[$driver->type] }}</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="text-sm text-gray-900">{{ $driver->raceResults()->count() }}</div>
+                                <div class="text-sm text-gray-900">{{ $driver->race_results_count }}</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap" x-data="{ open: false }">
                                 <div class="relative inline-block text-left">
