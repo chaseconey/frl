@@ -27,9 +27,6 @@
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
                     @foreach($standings as $driver)
-                        @php
-                            $driverRaces = $driver->raceResults->groupBy('race_id');
-                        @endphp
                         <tr class="{{ in_array($driver->id, auth()->user()->drivers->pluck('id')->toArray()) ? 'bg-gray-100' : '' }}">
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="text-sm text-gray-900">{{ $loop->iteration }}</div>
@@ -50,15 +47,7 @@
                                 </div>
                             </td>
                             @foreach($races as $race)
-                                <td class="px-2 py-4 whitespace-nowrap">
-                                    <div class="text-sm text-gray-900">
-                                        @if(!isset($driverRaces[$race->id]))
-                                            -
-                                        @else
-                                            <a href="{{ route('race.results.index', $race->id) }}">{{ $driverRaces[$race->id]->first()->points }}</a>
-                                        @endif
-                                    </div>
-                                </td>
+                                <x-matrix-points-cell :race="$race" :driver="$driver"></x-matrix-points-cell>
                             @endforeach
                             <td class="px-6 py-4 whitespace-nowrap text-right">
                                 <div class="text-sm text-gray-900">{{ $driver->race_results_sum_points ?? 0 }}</div>
