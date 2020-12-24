@@ -15,7 +15,7 @@ class StandingController extends Controller
     {
         // TODO: Divisions need date constraints (season? end time?)
         $standings = Driver::where('division_id', $division->id)
-            ->with('user', 'f1Team')
+            ->with('user', 'f1Team', 'f1Number')
             ->has('raceResults')
             ->withSum('raceResults', 'points')
             ->orderByDesc('race_results_sum_points')

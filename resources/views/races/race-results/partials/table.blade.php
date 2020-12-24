@@ -41,7 +41,7 @@
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
                     @foreach($race->results as $result)
-                        <tr>
+                        <tr class="{{ auth()->user()->hasDriver($result->driver->id) ? 'bg-gray-100' : '' }}">
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="text-sm text-gray-900">{{ $result->position }}</div>
                             </td>

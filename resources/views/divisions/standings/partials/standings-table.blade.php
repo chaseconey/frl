@@ -16,7 +16,7 @@
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
                     @foreach($standings as $driver)
-                    <tr class="{{ in_array($driver->id, auth()->user()->drivers->pluck('id')->toArray()) ? 'bg-gray-100' : '' }}">
+                    <tr class="{{ auth()->user()->hasDriver($driver->id) ? 'bg-gray-100' : '' }}">
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="flex items-center">
                                 <div class="flex-shrink-0 h-10 w-10">

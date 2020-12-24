@@ -27,7 +27,7 @@
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
                     @foreach($standings as $driver)
-                        <tr class="{{ in_array($driver->id, auth()->user()->drivers->pluck('id')->toArray()) ? 'bg-gray-100' : '' }}">
+                        <tr class="{{ auth()->user()->hasDriver($driver->id) ? 'bg-gray-100' : '' }}">
                             <td class="px-6 py-2 whitespace-nowrap">
                                 <div class="text-sm text-gray-900">{{ $loop->iteration }}</div>
                             </td>
