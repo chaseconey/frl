@@ -61,7 +61,8 @@ class Race extends Resource
 
             Text::make('Broadcast ID', 'broadcast_id')->sortable()->nullable(),
 
-            HasMany::make('Race Results', 'results')
+            HasMany::make('Race Results', 'results'),
+            HasMany::make('Race Quali Results', 'qualiResults'),
         ];
     }
 
