@@ -33,10 +33,13 @@ class SignupController extends Controller
             ->with('drivers', 'drivers.f1Number', 'drivers.f1Team')
             ->first();
 
-        $teams = F1Team::withCount(['drivers' => function (Builder $query) use ($division) {
-            $query->where('type', '=', 'FULL_TIME')
-                ->where('division_id', '=', $division->id);
-        }])->get();
+        $teams = F1Team::active()
+            ->withCount([
+                'drivers' => function (Builder $query) use ($division) {
+                    $query->where('type', '=', 'FULL_TIME')
+                        ->where('division_id', '=', $division->id);
+                }
+            ])->get();
 
         $takenNumbers = $division->drivers->pluck('f1Number.id');
         $numbers = F1Number::whereNotIn('id', $takenNumbers)->pluck('racing_number', 'id');

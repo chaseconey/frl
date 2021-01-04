@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
@@ -45,6 +46,7 @@ class F1Team extends Resource
         return [
             ID::make(__('ID'), 'id')->sortable(),
             Text::make('Name')->sortable(),
+            DateTime::make('Inactive At')->nullable(),
 
             HasMany::make('Drivers'),
             HasMany::make('Race Results', 'raceResults'),
