@@ -8,6 +8,7 @@ use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\Panel;
 
 class RaceQualiResult extends Resource
 {
@@ -54,9 +55,7 @@ class RaceQualiResult extends Resource
             BelongsTo::make('Driver'),
             BelongsTo::make('Team', 'f1Team', \App\Nova\F1Team::class),
 
-            Text::make('Best Lap Time')->sortable(),
-            Number::make('Lap Delta')->sortable(),
-            Number::make('Speedtrap Speed')->sortable(),
+            new Panel('Race Details', $this->raceDetailField()),
         ];
     }
 
@@ -102,5 +101,21 @@ class RaceQualiResult extends Resource
     public function actions(Request $request)
     {
         return [];
+    }
+
+    private function raceDetailField()
+    {
+        return [
+            Text::make('Best Lap Time')->sortable(),
+            Number::make('Lap Delta')->sortable()->nullable(),
+            Number::make('Speedtrap Speed')->sortable()->nullable(),
+
+            Number::make('Best S1 Time')->nullable()->hideFromIndex(),
+            Number::make('Best S2 Time')->nullable()->hideFromIndex(),
+            Number::make('Best S3 Time')->nullable()->hideFromIndex(),
+            Number::make('Best S1 Delta')->nullable()->hideFromIndex(),
+            Number::make('Best S2 Delta')->nullable()->hideFromIndex(),
+            Number::make('Best S3 Delta')->nullable()->hideFromIndex(),
+        ];
     }
 }

@@ -51,16 +51,22 @@
                                 <div class="text-sm text-gray-900">{{ $result->best_lap_time }}</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right">
-                                <div class="text-sm text-gray-900">{{ number_format($result->lap_delta, 3) }}</div>
+                                @if(!is_null($result->lap_delta))
+                                    <div class="text-sm text-gray-900">{{ number_format($result->lap_delta, 3) }}</div>
+                                @endif
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right">
-                                <div class="text-sm {{ $race->quali_results_max_speedtrap_speed == $result->speedtrap_speed ? 'text-purple-800 font-bold' : 'text-gray-900'}}">{{ number_format($result->speedtrap_speed, 2) }}</div>
+                                @if(!is_null($result->speedtrap_speed))
+                                    <div class="text-sm {{ $race->quali_results_max_speedtrap_speed == $result->speedtrap_speed ? 'text-purple-800 font-bold' : 'text-gray-900'}}">{{ number_format($result->speedtrap_speed, 2) }}</div>
+                                @endif
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="text-sm text-gray-900">
-                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $race->quali_results_min_best_s1_time == $result->best_s1_time ? 'bg-purple-100 text-purple-800' : 'bg-gray-100 text-gray-800' }}">{{ number_format($result->best_s1_time, 3) }}</span>
-                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $race->quali_results_min_best_s2_time == $result->best_s2_time ? 'bg-purple-100 text-purple-800' : 'bg-gray-100 text-gray-800' }}">{{ number_format($result->best_s2_time, 3) }}</span>
-                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $race->quali_results_min_best_s3_time == $result->best_s3_time ? 'bg-purple-100 text-purple-800' : 'bg-gray-100 text-gray-800' }}">{{ number_format($result->best_s3_time, 3) }}</span>
+                                    @if(!is_null($result->best_s1_time))
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $race->quali_results_min_best_s1_time == $result->best_s1_time ? 'bg-purple-100 text-purple-800' : 'bg-gray-100 text-gray-800' }}">{{ number_format($result->best_s1_time, 3) }}</span>
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $race->quali_results_min_best_s2_time == $result->best_s2_time ? 'bg-purple-100 text-purple-800' : 'bg-gray-100 text-gray-800' }}">{{ number_format($result->best_s2_time, 3) }}</span>
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $race->quali_results_min_best_s3_time == $result->best_s3_time ? 'bg-purple-100 text-purple-800' : 'bg-gray-100 text-gray-800' }}">{{ number_format($result->best_s3_time, 3) }}</span>
+                                    @endif
                                 </div>
                             </td>
                         </tr>
