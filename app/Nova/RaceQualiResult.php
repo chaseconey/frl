@@ -18,6 +18,8 @@ class RaceQualiResult extends Resource
      */
     public static $model = \App\Models\RaceQualiResult::class;
 
+    public static $perPageViaRelationship = 20;
+
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
