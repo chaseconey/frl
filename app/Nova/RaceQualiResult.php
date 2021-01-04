@@ -48,6 +48,7 @@ class RaceQualiResult extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
+            Number::make('Position')->sortable(),
 
             BelongsTo::make('Race'),
             BelongsTo::make('Driver'),

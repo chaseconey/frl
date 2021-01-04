@@ -30,7 +30,7 @@
                     @foreach($race->qualiResults as $result)
                         <tr class="{{ auth()->user()->hasDriver($result->driver->id) ? 'bg-gray-100' : '' }}">
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="text-sm text-gray-900">{{ $loop->iteration }}</div>
+                                <div class="text-sm text-gray-900">{{ $result->position }}</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="flex items-center">
