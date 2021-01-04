@@ -15,6 +15,13 @@
                             <h3 class="text-lg leading-6 font-medium text-gray-900">
                                 {{ $division->name }}
                             </h3>
+                            <div>
+                                @foreach($division->drivers->countBy('type') as $type => $count)
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                                    {{ \App\Models\Driver::TYPES[$type] }}: {{ $count }}
+                                </span>
+                                @endforeach
+                            </div>
                         </div>
                         <div class="ml-4 mt-2 flex-shrink-0">
                             <a href="{{ route('standings.matrix', $division->id) }}">
