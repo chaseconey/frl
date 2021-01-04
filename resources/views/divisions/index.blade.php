@@ -34,7 +34,16 @@
                     </div>
 
                 </div>
-                @include('divisions.partials.table', ['drivers' => $division->drivers])
+                @foreach($division->drivers->groupBy('type') as $type => $drivers)
+                <div class="mt-4">
+                    <div class="ml-4">
+                        <h4 class="text-md leading-6 font-medium text-gray-900">
+                            {{ \App\Models\Driver::TYPES[$type] }}
+                        </h4>
+                    </div>
+                    @include('divisions.partials.table', ['drivers' => $drivers])
+                </div>
+                @endforeach
             </div>
         @endforeach
 
