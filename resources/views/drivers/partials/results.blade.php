@@ -11,7 +11,11 @@
                         </th>
                         <th scope="col"
                             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Driver
+                            Track
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Team
                         </th>
                         <th scope="col"
                             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -31,35 +35,35 @@
                         </th>
                         <th scope="col"
                             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Race Time
+                            Points
                         </th>
                         <th scope="col"
                             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Points
+                            Race Time
                         </th>
                     </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                    @foreach($race->results as $result)
-                        <tr class="{{ auth()->user()->hasDriver($result->driver->id) ? 'bg-gray-100' : '' }}">
+                    @foreach($driver->raceResults->sortByDesc('race.race_time') as $result)
+                        <tr>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="text-sm text-gray-900">{{ $result->position }}</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="flex items-center">
-                                    <div class="flex-shrink-0 h-10 w-10">
-                                        <x-user-avatar :user="$result->driver->user"></x-user-avatar>
+                                <a href="#">
+                                    <div class="text-sm font-medium text-gray-900">
+                                        <a href="{{ route('race.results.index', $result->race->id) }}" class="text-indigo-600 hover:text-indigo-900">
+                                            {{ $result->race->track->name }}
+                                        </a>
                                     </div>
-                                    <div class="ml-4">
-                                        <div class="text-sm font-medium text-gray-900">
-                                            <a href="{{ route('drivers.show', $result->driver) }}" class="text-indigo-600 hover:text-indigo-900">
-                                                {{ $result->driver->name }}
-                                            </a>
-                                        </div>
-                                        <div class="text-sm text-gray-500">
-                                            {{ $result->f1Team->name ?? '' }}
-                                        </div>
+                                    <div class="text-sm text-gray-500">
+                                        {{ country_code_to_name($result->race->track->country) }}
                                     </div>
+                                </a>
+                            </td>
+                            <td class="px-6 py-2 whitespace-nowrap">
+                                <div class="text-sm text-gray-900 pl-2 border-l-4 {{ f1_team_color($result->f1Team->name) }}">
+                                    {{ $result->f1Team->name }}
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right">
@@ -81,19 +85,16 @@
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right">
-                                <div class="text-sm text-gray-900">{{ $result->race_time }}</div>
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-right">
                                 <div class="text-sm text-gray-900">{{ $result->points }}</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-left">
+                                <div class="text-sm text-gray-900">{{ $result->race->race_time->diffForHumans() }}</div>
                             </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
             </div>
-            @if($race->results->count() === 0 && auth()->user()->hasRole('admin'))
-                @include('races.race-results.partials.upload-form', ['route' => 'race.results.store'])
-            @endif
         </div>
     </div>
 </div>

@@ -8,6 +8,18 @@ use Illuminate\Http\Request;
 class DriverController extends Controller
 {
 
+    public function show(Driver $driver)
+    {
+        $driver->load(['raceResults.race.track', 'raceResults.f1Team'])
+            ->loadCount('raceResults')
+            ->loadSum('raceResults', 'points')
+            ->loadAvg('raceResults', 'position')
+            ->loadAvg('raceResults', 'num_penalties');
+
+        return view('drivers.show')
+            ->withDriver($driver);
+    }
+
     /**
      * Update the specified resource in storage.
      *

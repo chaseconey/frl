@@ -38,9 +38,9 @@
                                         <x-user-avatar :user="$result->driver->user"></x-user-avatar>
                                     </div>
                                     <div class="ml-4">
-                                        <div class="text-sm font-medium text-gray-900">
+                                        <a href="{{ route('drivers.show', $result->driver) }}" class="text-indigo-600 hover:text-indigo-900">
                                             {{ $result->driver->name }}
-                                        </div>
+                                        </a>
                                         <div class="text-sm text-gray-500">
                                             {{ $result->f1Team->name }}
                                         </div>
