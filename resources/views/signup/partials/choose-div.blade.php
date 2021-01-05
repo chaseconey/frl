@@ -17,13 +17,16 @@
                         <p class="text-gray-500">{{ $division->drivers_count }} {{ Str::plural('Members', $division->drivers_count) }}</p>
                     </div>
                     <div class="flex-shrink-0 pr-2">
-                        <button
-                            class="w-8 h-8 bg-white inline-flex items-center justify-center text-gray-400 rounded-full bg-transparent hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                 fill="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                            </svg>
-                        </button>
+                        <a href="{{ route('signup.create', ['division_id' => $division->id]) }}"
+                           class="text-gray-900 font-medium hover:text-gray-600">
+                            <button
+                                class="w-8 h-8 bg-white inline-flex items-center justify-center text-gray-400 rounded-full bg-transparent hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                     fill="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </button>
+                        </a>
                     </div>
                 </div>
             </li>
