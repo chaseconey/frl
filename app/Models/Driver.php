@@ -15,7 +15,8 @@ class Driver extends Model
         'f1_team_id',
         'division_id',
         'type',
-        'name'
+        'name',
+        'steam_friend_code'
     ];
 
     /**

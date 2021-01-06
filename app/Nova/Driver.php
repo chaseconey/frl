@@ -7,6 +7,7 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -56,7 +57,7 @@ class Driver extends Resource
             BelongsTo::make('Division')->sortable(),
             BelongsTo::make('F1 Team', 'f1Team')->sortable(),
             BelongsTo::make('F1 Number', 'f1Number')->sortable(),
-            DateTime::make('Approved At'),
+            Number::make('Steam Friend Code')->sortable(),
 
             HasMany::make('Race Results', 'raceResults')
         ];
