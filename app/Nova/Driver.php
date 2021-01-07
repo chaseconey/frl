@@ -58,6 +58,7 @@ class Driver extends Resource
             BelongsTo::make('F1 Team', 'f1Team')->sortable(),
             BelongsTo::make('F1 Number', 'f1Number')->sortable(),
             Number::make('Steam Friend Code')->sortable(),
+            DateTime::make('Created At')->format('YYYY-MM-DD')->sortable(),
 
             HasMany::make('Race Results', 'raceResults')
         ];
