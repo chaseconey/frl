@@ -6,10 +6,11 @@ use EloquentFilter\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
+use Laravel\Nova\Actions\Actionable;
 
 class Race extends Model
 {
-    use HasFactory, Sortable, Filterable;
+    use HasFactory, Sortable, Filterable, Actionable;
 
     public $sortable = [
         'id',
