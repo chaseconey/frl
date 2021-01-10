@@ -3,34 +3,18 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Actions\ActionResource;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\KeyValue;
+use Laravel\Nova\Fields\MorphToActionTarget;
+use Laravel\Nova\Fields\Status;
+use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class ActionEvent extends Resource
+class ActionEvent extends ActionResource
 {
-    /**
-     * The model the resource corresponds to.
-     *
-     * @var string
-     */
-    public static $model = \Laravel\Nova\Actions\ActionEvent::class;
-
-    /**
-     * The single value that should be used to represent the resource when being displayed.
-     *
-     * @var string
-     */
-    public static $title = 'id';
-
-    /**
-     * The columns that should be searched.
-     *
-     * @var array
-     */
-    public static $search = [
-        'id',
-    ];
-
     /**
      * Get the fields displayed by the resource.
      *
@@ -40,51 +24,43 @@ class ActionEvent extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make(__('ID'), 'id')->sortable(),
+            ID::make('ID', 'id'),
+            Text::make(__('Action Name'), 'name', function ($value) {
+                return __($value);
+            })->sortable(),
+
+            Text::make(__('Action Initiated By'), function () {
+                return $this->user->name ?? $this->user->email ?? __('Nova User');
+            })->sortable(),
+
+            MorphToActionTarget::make(__('Action Target'), 'target')->sortable(),
+
+            Status::make(__('Action Status'), 'status', function ($value) {
+                return __(ucfirst($value));
+            })->loadingWhen([__('Waiting'), __('Running')])->failedWhen([__('Failed')]),
+
+            $this->when(isset($this->original), function () {
+                return KeyValue::make(__('Original'), 'original');
+            }),
+
+            $this->when(isset($this->changes), function () {
+                return KeyValue::make(__('Changes'), 'changes');
+            }),
+
+            Textarea::make(__('Exception'), 'exception'),
+
+            DateTime::make(__('Action Happened At'), 'created_at')->exceptOnForms()->sortable(),
         ];
     }
 
     /**
-     * Get the cards available for the request.
+     * Determine if this resource is available for navigation.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return array
+     * @return bool
      */
-    public function cards(Request $request)
+    public static function availableForNavigation(Request $request)
     {
-        return [];
-    }
-
-    /**
-     * Get the filters available for the resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
-    public function filters(Request $request)
-    {
-        return [];
-    }
-
-    /**
-     * Get the lenses available for the resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
-    public function lenses(Request $request)
-    {
-        return [];
-    }
-
-    /**
-     * Get the actions available for the resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
-    public function actions(Request $request)
-    {
-        return [];
+        return true;
     }
 }

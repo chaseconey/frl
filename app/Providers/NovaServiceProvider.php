@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Nova\ActionEvent;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Cards\Help;
 use Laravel\Nova\Nova;

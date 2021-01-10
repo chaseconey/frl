@@ -131,7 +131,7 @@ return [
     */
 
     'actions' => [
-        'resource' => ActionResource::class,
+        'resource' => \App\Nova\ActionEvent::class,
     ],
 
     /*
