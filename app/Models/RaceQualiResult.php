@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Nova\Actions\Actionable;
 
 class RaceQualiResult extends Model
 {
-    use HasFactory;
+    use HasFactory, Actionable;
 
     protected $fillable = [
         'race_id',
