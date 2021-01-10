@@ -13,6 +13,13 @@ use Vyuldashev\NovaPermission\RoleSelect;
 class User extends Resource
 {
     /**
+     * The logical group associated with the resource.
+     *
+     * @var string
+     */
+    public static $group = 'Roles & Permissions';
+
+    /**
      * The model the resource corresponds to.
      *
      * @var string

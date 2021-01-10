@@ -13,6 +13,13 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 class Race extends Resource
 {
     /**
+     * The logical group associated with the resource.
+     *
+     * @var string
+     */
+    public static $group = 'Races';
+
+    /**
      * The model the resource corresponds to.
      *
      * @var string

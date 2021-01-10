@@ -12,6 +12,13 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 class F1Team extends Resource
 {
     /**
+     * The logical group associated with the resource.
+     *
+     * @var string
+     */
+    public static $group = 'Admin';
+
+    /**
      * The model the resource corresponds to.
      *
      * @var string
