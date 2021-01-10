@@ -71,4 +71,17 @@ class ActionEvent extends ActionResource
     {
         return true;
     }
+
+    /**
+     * Get the filters available for the resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    public function filters(Request $request)
+    {
+        return [
+            new \App\Nova\Filters\User
+        ];
+    }
 }
