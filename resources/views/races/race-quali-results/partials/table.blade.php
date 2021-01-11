@@ -49,7 +49,9 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="flex justify-around">
+                                    @if($result->best_lap_tire)
                                     <x-tire :tire="$result->best_lap_tire"></x-tire>
+                                    @endif
                                     <div class="text-sm text-gray-900">{{ $result->best_lap_time }}</div>
                                 </div>
                             </td>
