@@ -47,9 +47,11 @@
                                     </div>
                                 </div>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap flex justify-around">
-                                <x-tire :tire="$result->best_lap_tire"></x-tire>
-                                <div class="text-sm text-gray-900">{{ $result->best_lap_time }}</div>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex justify-around">
+                                    <x-tire :tire="$result->best_lap_tire"></x-tire>
+                                    <div class="text-sm text-gray-900">{{ $result->best_lap_time }}</div>
+                                </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right">
                                 @if(!is_null($result->lap_delta))
