@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Panel;
@@ -114,15 +115,22 @@ class RaceQualiResult extends Resource
     {
         return [
             Text::make('Best Lap Time')->sortable(),
-            Number::make('Lap Delta')->sortable()->nullable(),
-            Number::make('Speedtrap Speed')->sortable()->nullable(),
+            Number::make('Lap Delta')->step(0.001)->sortable()->nullable(),
+            Number::make('Speedtrap Speed')->step(0.01)->sortable()->nullable(),
+            Select::make('Best Lap Tire')->options([
+                'S' => 'Soft',
+                'M' => 'Medium',
+                'H' => 'Hard',
+                'W' => 'Wet',
+                'I' => 'Inters'
+            ]),
 
-            Number::make('Best S1 Time')->nullable()->hideFromIndex(),
-            Number::make('Best S2 Time')->nullable()->hideFromIndex(),
-            Number::make('Best S3 Time')->nullable()->hideFromIndex(),
-            Number::make('Best S1 Delta')->nullable()->hideFromIndex(),
-            Number::make('Best S2 Delta')->nullable()->hideFromIndex(),
-            Number::make('Best S3 Delta')->nullable()->hideFromIndex(),
+            Number::make('Best S1 Time')->step(0.001)->nullable()->hideFromIndex(),
+            Number::make('Best S2 Time')->step(0.001)->nullable()->hideFromIndex(),
+            Number::make('Best S3 Time')->step(0.001)->nullable()->hideFromIndex(),
+            Number::make('Best S1 Delta')->step(0.001)->nullable()->hideFromIndex(),
+            Number::make('Best S2 Delta')->step(0.001)->nullable()->hideFromIndex(),
+            Number::make('Best S3 Delta')->step(0.001)->nullable()->hideFromIndex(),
         ];
     }
 }

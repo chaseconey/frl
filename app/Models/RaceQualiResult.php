@@ -22,7 +22,7 @@ class RaceQualiResult extends Model
         'best_s2_delta',
         'best_s3_delta',
         'speedtrap_speed',
-        'best_s1_delta',
+        'best_lap_tire',
     ];
 
     /**
@@ -41,6 +41,7 @@ class RaceQualiResult extends Model
             'best_s2_delta' => $json['S2_Delta'],
             'best_s3_delta' => $json['S3_Delta'],
             'speedtrap_speed' => $json['SpeedTrap'],
+            'best_lap_tire' => $json['Tyre']
         ]);
     }
 
