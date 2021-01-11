@@ -123,7 +123,7 @@ class RaceQualiResult extends Resource
                 'H' => 'Hard',
                 'W' => 'Wet',
                 'I' => 'Inters'
-            ]),
+            ])->nullable(),
 
             Number::make('Best S1 Time')->step(0.001)->nullable()->hideFromIndex(),
             Number::make('Best S2 Time')->step(0.001)->nullable()->hideFromIndex(),
