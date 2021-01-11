@@ -114,7 +114,7 @@ class RaceQualiResult extends Resource
     private function raceDetailField()
     {
         return [
-            Text::make('Best Lap Time')->sortable(),
+            Text::make('Best Lap Time')->sortable()->required(),
             Number::make('Lap Delta')->step(0.001)->sortable()->nullable(),
             Number::make('Speedtrap Speed')->step(0.01)->sortable()->nullable(),
             Select::make('Best Lap Tire')->options([
