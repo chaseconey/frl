@@ -45,6 +45,11 @@ class Driver extends Resource
         'name'
     ];
 
+    public function title()
+    {
+        return "{$this->name} | {$this->division->name}";
+    }
+
     /**
      * Get the fields displayed by the resource.
      *
