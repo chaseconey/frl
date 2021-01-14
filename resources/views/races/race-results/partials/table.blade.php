@@ -41,7 +41,7 @@
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
                     @foreach($race->results as $result)
-                        <tr class="{{ auth()->user()->hasDriver($result->driver->id) ? 'bg-gray-100' : '' }}">
+                        <x-race-table-row :driver="$result->driver">
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="text-sm text-gray-900">{{ $result->position }}</div>
                             </td>
@@ -52,7 +52,8 @@
                                     </div>
                                     <div class="ml-4">
                                         <div class="text-sm font-medium text-gray-900">
-                                            <a href="{{ route('drivers.show', $result->driver) }}" class="text-indigo-600 hover:text-indigo-900">
+                                            <a href="{{ route('drivers.show', $result->driver) }}"
+                                               class="text-indigo-600 hover:text-indigo-900">
                                                 {{ $result->driver->name }}
                                             </a>
                                         </div>
@@ -86,7 +87,7 @@
                             <td class="px-6 py-4 whitespace-nowrap text-right">
                                 <div class="text-sm text-gray-900">{{ $result->points }}</div>
                             </td>
-                        </tr>
+                        </x-race-table-row>
                     @endforeach
                     </tbody>
                 </table>

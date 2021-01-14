@@ -29,7 +29,7 @@ class Driver extends Model
         'approved_at' => 'datetime',
     ];
 
-    const TYPES = ['FULL_TIME' => 'Full Time', 'RESERVE' => 'Reserve', 'RETIRED' => 'Retired'];
+    const TYPES = ['FULL_TIME' => 'Full Time', 'RESERVE' => 'Reserve', 'RETIRED' => 'Retired', 'BANNED' => 'Banned'];
 
     public function user()
     {

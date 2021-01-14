@@ -27,7 +27,7 @@
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
                     @foreach($standings as $driver)
-                        <tr class="{{ auth()->user()->hasDriver($driver->id) ? 'bg-gray-100' : '' }}">
+                        <x-race-table-row :driver="$driver">
                             <td class="px-6 py-2 whitespace-nowrap">
                                 <div class="text-sm text-gray-900">{{ $loop->iteration }}</div>
                             </td>
@@ -40,7 +40,7 @@
                             <td class="px-6 py-2 whitespace-nowrap text-right">
                                 <div class="text-sm text-gray-900">{{ $driver->race_results_sum_points ?? 0 }}</div>
                             </td>
-                        </tr>
+                        </x-race-table-row>
                     @endforeach
                     </tbody>
                 </table>
