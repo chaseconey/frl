@@ -12,7 +12,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-        
+
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-W2DQ2BPDFL"></script>
         <script>
@@ -45,5 +45,5 @@
     <script src="https://kit.fontawesome.com/399fc73196.js" crossorigin="anonymous"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 
-    {{ $scripts }}
+    {{ $scripts ?? '' }}
 </html>
