@@ -23,8 +23,6 @@
           gtag('config', 'G-W2DQ2BPDFL');
         </script>
 
-        <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
@@ -43,5 +41,9 @@
             </main>
         </div>
     </body>
+    <!-- Scripts -->
     <script src="https://kit.fontawesome.com/399fc73196.js" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+
+    {{ $scripts }}
 </html>

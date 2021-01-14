@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Driver;
+use App\Models\RaceResult;
 use Illuminate\Http\Request;
 
 class DriverController extends Controller
@@ -10,13 +11,17 @@ class DriverController extends Controller
 
     public function show(Driver $driver)
     {
-        $driver->load(['raceResults.race.track', 'raceResults.f1Team'])
-            ->loadCount('raceResults')
+        $driver->loadCount('raceResults')
             ->loadSum('raceResults', 'points')
             ->loadAvg('raceResults', 'position')
             ->loadAvg('raceResults', 'num_penalties');
 
+        $results = RaceResult::where('driver_id', $driver->id)
+            ->with('race.track', 'f1Team')
+            ->paginate(5);
+
         return view('drivers.show')
+            ->withResults($results)
             ->withDriver($driver);
     }
 

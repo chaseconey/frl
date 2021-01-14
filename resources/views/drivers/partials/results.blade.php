@@ -44,7 +44,7 @@
                     </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                    @foreach($driver->raceResults->sortByDesc('race.race_time') as $result)
+                    @foreach($results->sortByDesc('race.race_time') as $result)
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="text-sm text-gray-900">{{ $result->position }}</div>
@@ -94,6 +94,9 @@
                     @endforeach
                     </tbody>
                 </table>
+            </div>
+            <div class="mt-5">
+                {{ $results->render() }}
             </div>
         </div>
     </div>
