@@ -58,6 +58,26 @@
                 </dl>
             </div>
 
+            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                <div class="mt-5 bg-white overflow-hidden shadow rounded-lg">
+                    <h3 class="mt-2 font-medium text-center text-gray-900">
+                        Position Change
+                    </h3>
+                    <div class="m-4">
+                        <canvas id="positionDelta"></canvas>
+                    </div>
+                </div>
+
+                <div class="mt-5 bg-white overflow-hidden shadow rounded-lg">
+                    <h3 class="mt-2 font-medium text-center text-gray-900">
+                        Quali Sector Deltas
+                    </h3>
+                    <div class="m-4">
+                        <canvas id="qualiDeltasChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
             <div class="mt-5">
                 <h3 class="text-lg leading-6 font-medium text-gray-900">
                     Recent Results
@@ -69,5 +89,95 @@
             </div>
         </div>
     </div>
+
+    <x-slot name="scripts">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+        <script>
+            const positionDeltaChart = document.getElementById('positionDelta')
+            const positionChange = @json($positions->map(fn ($p) => $p->grid_position - $p->position));
+            let labels = @json($positions->map->country);
+
+            new Chart(positionDeltaChart, {
+                type: 'line',
+                data: {
+                    labels,
+                    datasets: [{
+                        label: 'Position Change',
+                        data: positionChange,
+                    }]
+                },
+                options: {
+                    legend: {
+                        display: false
+                    },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                },
+                plugins: [{
+                    beforeRender: function (x, options) {
+                        var c = x.chart
+                        var dataset = x.data.datasets[0]
+                        var yScale = x.scales['y-axis-0']
+                        var yPos = yScale.getPixelForValue(0)
+
+                        var gradientFill = c.ctx.createLinearGradient(0, 0, 0, c.height)
+                        gradientFill.addColorStop(0, '#34D399')
+                        gradientFill.addColorStop(yPos / c.height - 0.01, '#34D399')
+                        gradientFill.addColorStop(yPos / c.height + 0.01, '#F87171')
+                        gradientFill.addColorStop(1, '#F87171')
+
+                        var model = x.data.datasets[0]._meta[Object.keys(dataset._meta)[0]].dataset._model
+                        model.backgroundColor = gradientFill
+                    }
+                }]
+            })
+
+
+
+            const qualiDeltasChart = document.getElementById('qualiDeltasChart')
+            labels = @json($sectorDeltas->map->country);
+
+            new Chart(qualiDeltasChart, {
+                type: 'line',
+                data: {
+                    labels,
+                    datasets: [{
+                        label: 'Sector 1 Delta',
+                        data: @json($sectorDeltas->map->best_s1_delta),
+                        backgroundColor: '#F59E0B',
+                        fill: false
+                    },{
+                        label: 'Sector 2 Delta',
+                        data: @json($sectorDeltas->map->best_s2_delta),
+                        backgroundColor: '#10B981',
+                        fill: false
+                    },{
+                        label: 'Sector 3 Delta',
+                        data: @json($sectorDeltas->map->best_s3_delta),
+                        backgroundColor: '#3B82F6',
+                        fill: false
+                    }]
+                },
+                options: {
+                    legend: {
+                        display: false
+                    },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            })
+        </script>
+    </x-slot>
+
 
 </x-app-layout>
