@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Race;
 
 use App\Http\Controllers\Controller;
 use App\Models\Driver;
+use App\Models\DriverVideo;
 use App\Models\F1Team;
 use App\Models\Race;
 use App\Models\RaceResult;
@@ -21,7 +22,12 @@ class RaceResultsController extends Controller
     {
         $race->load(['results', 'results.driver', 'results.driver.user', 'results.f1Team']);
 
+        $driverVideos = DriverVideo::where('race_id', $race->id)
+            ->get()
+            ->keyBy('driver_id');
+
         return view('races.race-results.index')
+            ->withDriverVideos($driverVideos)
             ->withRace($race);
     }
 

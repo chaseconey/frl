@@ -11,7 +11,18 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
 
-                    @include('races.race-results.partials.breadcrumbs', ['race' => $race])
+                    <div class="mb-4">
+                        @include('components.form-errors', ['errors' => $errors])
+                    </div>
+
+                    <div class="flex flex-wrap justify-between" x-data="{ open: false }">
+                        <div class="w-full sm:w-1/2">
+                            @include('races.race-results.partials.breadcrumbs', ['race' => $race])
+                        </div>
+                        <div class="relative w-full sm:w-1/2 text-right hidden sm:block">
+                            @include('races.race-results.partials.submit-video', ['race' => $race])
+                        </div>
+                    </div>
 
                     <div class="my-4">
                         @include('races.race-results.partials.tabs')
