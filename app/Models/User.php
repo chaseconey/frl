@@ -60,6 +60,16 @@ class User extends Authenticatable
     }
 
     /**
+     * Does User have a Driver in given division
+     *
+     * @return bool
+     */
+    public function hasDriverInDivision($divisionId)
+    {
+        return $this->drivers->where('division_id', $divisionId)->isNotEmpty();
+    }
+
+    /**
      * Determines if a User is associated with a given Team for a specific Division
      *
      * @param $teamId

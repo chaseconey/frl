@@ -83,7 +83,7 @@
                                                         Unclaim Driver
                                                     </button>
                                                 </form>
-                                            @elseif(is_null($driver->user_id))
+                                            @elseif(is_null($driver->user_id) && !auth()->user()->hasDriverInDivision($driver->division_id))
                                                 <form method="POST" action="{{ route('drivers.update', $driver) }}">
                                                     @method('PUT')
                                                     @csrf

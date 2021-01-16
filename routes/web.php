@@ -27,7 +27,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('driver-videos', \App\Http\Controllers\DriverVideoController::class)->only(['store']);
     Route::get('races/{race}/broadcast', '\App\Http\Controllers\RaceController@broadcast')->name('races.broadcast');
     Route::resource('races', \App\Http\Controllers\RaceController::class)->only('index');
-    Route::resource('divisions', \App\Http\Controllers\DivisionController::class);
+    Route::resource('divisions', \App\Http\Controllers\DivisionController::class)->only('index');
     Route::resource('race.results', \App\Http\Controllers\Race\RaceResultsController::class);
     Route::resource('race.quali-results', \App\Http\Controllers\Race\RaceQualiResultsController::class);
     Route::resource('standings', \App\Http\Controllers\StandingController::class);
