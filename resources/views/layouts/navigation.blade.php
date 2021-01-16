@@ -52,16 +52,34 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
+                        <div class="divide-y divide-gray-100">
+                            <div class="px-4 py-3">
+                                <p class="text-sm">
+                                    Signed in as
+                                </p>
+                                <p class="text-sm font-medium text-gray-900 truncate">
+                                    {{ auth()->user()->email }}
+                                </p>
+                            </div>
+                            <div>
+                                @foreach(auth()->user()->drivers as $driver)
+                                    <x-dropdown-link :href="route('drivers.show', $driver->id)">
+                                        {{ $driver->name }}
+                                        <span class="text-gray-600 text-xs">{{ $driver->division->name }}</span>
+                                    </x-dropdown-link>
+                                @endforeach
+                            </div>
+                            <!-- Authentication -->
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
 
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
+                                <x-dropdown-link :href="route('logout')"
+                                                 onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Logout') }}
-                            </x-dropdown-link>
-                        </form>
+                                    {{ __('Logout') }}
+                                </x-dropdown-link>
+                            </form>
+                        </div>
                     </x-slot>
                 </x-dropdown>
             </div>
