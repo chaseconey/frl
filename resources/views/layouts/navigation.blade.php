@@ -138,6 +138,13 @@
             </div>
 
             <div class="mt-3 space-y-1">
+                @foreach(auth()->user()->drivers as $driver)
+                    <x-responsive-nav-link :href="route('drivers.show', $driver->id)">
+                        {{ $driver->name }}
+                        <span class="text-gray-600 text-xs">{{ $driver->division->name }}</span>
+                    </x-responsive-nav-link>
+                @endforeach
+
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
