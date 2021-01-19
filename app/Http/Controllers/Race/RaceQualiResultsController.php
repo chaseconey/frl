@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Race;
 
 use App\Http\Controllers\Controller;
 use App\Models\Driver;
+use App\Models\DriverVideo;
 use App\Models\F1Team;
 use App\Models\Race;
 use App\Models\RaceQualiResult;
@@ -25,8 +26,13 @@ class RaceQualiResultsController extends Controller
             ->loadMin('qualiResults', 'best_s3_time')
             ->loadMax('qualiResults', 'speedtrap_speed');
 
+        $driverVideos = DriverVideo::where('race_id', $race->id)
+            ->get()
+            ->keyBy('driver_id');
+
 
         return view('races.race-quali-results.index')
+            ->withDriverVideos($driverVideos)
             ->withRace($race);
     }
 
