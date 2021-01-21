@@ -31,7 +31,7 @@
         >
             <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                 <span @click="openPopover = true" class="block px-4 py-2 cursor-pointer text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Submit Perspective</span>
-                <a href="{{ route('protests.create', ['division_id' => $race->division_id]) }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Protest Race</a>
+                <a href="{{ route('protests.create', ['division_id' => $race->division_id, 'race_id' => $race->id]) }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Protest Race</a>
             </div>
         </div>
     </div>

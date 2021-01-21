@@ -43,7 +43,10 @@
                     <select id="race_id" name="race_id" autocomplete="race_id"
                             class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
                         @foreach($races as $race)
-                            <option value="{{ $race->id }}">
+                            <option
+                                value="{{ $race->id }}"
+                                @if(Request::get('race_id') == $race->id) selected @endif
+                            >
                                 {{ country_code_to_name($race->track->country) }} - {{ $race->track->name }}
                             </option>
                         @endforeach
