@@ -70,7 +70,7 @@ class User extends Resource
                 ->creationRules('required', 'string', 'min:8')
                 ->updateRules('nullable', 'string', 'min:8'),
 
-            RoleSelect::make('Role', 'roles')->sortable(),
+            RoleSelect::make('Role', 'roles'),
 
             HasMany::make('Drivers')
         ];
