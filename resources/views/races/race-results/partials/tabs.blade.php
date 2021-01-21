@@ -1,7 +1,8 @@
 @php
     $links = [
         ['link' => route('race.quali-results.index', $race->id), 'title' => 'Qualifying Results', 'activeRoute' => 'race.quali-results.*'],
-        ['link' => route('race.results.index', $race->id), 'title' => 'Race Results', 'activeRoute' => 'race.results.*']
+        ['link' => route('race.results.index', $race->id), 'title' => 'Race Results', 'activeRoute' => 'race.results.*'],
+        ['link' => route('races.protests', $race->id), 'title' => 'Protests', 'activeRoute' => 'races.protests']
     ];
 
     if ($race->broadcast_id) {

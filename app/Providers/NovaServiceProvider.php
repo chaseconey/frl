@@ -42,8 +42,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     protected function gate()
     {
-        Gate::define('viewNova', function ($user) {
-            return $user->hasRole('admin');
+        Gate::define('viewNova', function (\App\Models\User $user) {
+            return $user->hasPermissionTo('view-admin');
         });
     }
 
@@ -78,7 +78,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function tools()
     {
         return [
-            \Vyuldashev\NovaPermission\NovaPermissionTool::make(),
+            (new \Vyuldashev\NovaPermission\NovaPermissionTool())->canSeeWhen('manage-users'),
         ];
     }
 

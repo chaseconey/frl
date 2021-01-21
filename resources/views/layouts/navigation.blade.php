@@ -28,11 +28,11 @@
                         {{ __('Standings') }}
                     </x-nav-link>
 
-                    @role('admin')
+                    @can('view-admin')
                     <x-nav-link href="/nova">
                         {{ __('Admin') }}
                     </x-nav-link>
-                    @endrole
+                    @endcan
                 </div>
             </div>
 
@@ -68,6 +68,11 @@
                                         <span class="text-gray-600 text-xs">{{ $driver->division->name }}</span>
                                     </x-dropdown-link>
                                 @endforeach
+                            </div>
+                            <div>
+                                <x-dropdown-link :href="route('profile.protests')">
+                                    {{ __('My Protests') }}
+                                </x-dropdown-link>
                             </div>
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
@@ -115,11 +120,11 @@
                 {{ __('Standings') }}
             </x-responsive-nav-link>
 
-            @role('admin')
+            @can('view-admin')
             <x-responsive-nav-link href="/nova">
                 {{ __('Admin') }}
             </x-responsive-nav-link>
-            @endrole
+            @endcan
         </div>
 
         <!-- Responsive Settings Options -->

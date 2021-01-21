@@ -80,4 +80,15 @@ class User extends Authenticatable
     {
         return $this->drivers->where('division_id', $divisionId)->where('f1_team_id', $teamId)->isNotEmpty();
     }
+
+    /**
+     * Get driver for User for specified Division
+     *
+     * @param $divisionId
+     * @return mixed
+     */
+    public function driverForDivision($divisionId)
+    {
+        return $this->drivers->where('division_id', $divisionId)->first();
+    }
 }

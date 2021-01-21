@@ -26,11 +26,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('drivers', \App\Http\Controllers\DriverController::class)->only(['update', 'show']);
     Route::resource('driver-videos', \App\Http\Controllers\DriverVideoController::class)->only(['store']);
     Route::get('races/{race}/broadcast', '\App\Http\Controllers\RaceController@broadcast')->name('races.broadcast');
+    Route::get('races/{race}/protests', '\App\Http\Controllers\Race\ProtestsController@index')->name('races.protests');
     Route::resource('races', \App\Http\Controllers\RaceController::class)->only('index');
     Route::resource('divisions', \App\Http\Controllers\DivisionController::class)->only('index');
     Route::resource('race.results', \App\Http\Controllers\Race\RaceResultsController::class);
     Route::resource('race.quali-results', \App\Http\Controllers\Race\RaceQualiResultsController::class);
     Route::resource('standings', \App\Http\Controllers\StandingController::class);
+    Route::resource('protests', \App\Http\Controllers\ProtestController::class);
+
+    Route::get('profile/protests', '\App\Http\Controllers\ProfileController@protests')
+        ->name('profile.protests');
 
     Route::get('divisions/{division}/standings', '\App\Http\Controllers\Division\StandingController@standings')
         ->name('standings.standings');

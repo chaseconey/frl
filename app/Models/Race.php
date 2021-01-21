@@ -48,4 +48,9 @@ class Race extends Model
         return $this->hasMany(RaceQualiResult::class)
             ->orderBy('position');
     }
+
+    public function protests()
+    {
+        return $this->hasMany(Protest::class);
+    }
 }
