@@ -91,4 +91,9 @@ class User extends Authenticatable
     {
         return $this->drivers->where('division_id', $divisionId)->first();
     }
+
+    public function routeNotificationForDiscord()
+    {
+        return env('DISCORD_PROTEST_CHANNEL_ID');
+    }
 }

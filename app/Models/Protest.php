@@ -37,7 +37,9 @@ class Protest extends Model
                 ! is_null($new['stewards_decision'])
             ) {
                 $user = Driver::find($old['driver_id'])->user;
-                $user->notify(new ProtestReviewComplete);
+                if ($user) {
+                    $user->notify(new ProtestReviewComplete($protest));
+                }
             }
         });
     }
