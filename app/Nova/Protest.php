@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
+use EricLagarda\NovaEmbed\NovaEmbed;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -55,7 +56,9 @@ class Protest extends Resource
             BelongsTo::make('Driver')->sortable()->readonly(),
             BelongsTo::make('Protested Driver', 'protestedDriver', \App\Nova\Driver::class)->sortable()->readonly(),
             BelongsTo::make('Race')->sortable()->readonly(),
-            Text::make('Video URL')->readonly(),
+//            Text::make('Video URL')->readonly(),
+            NovaEmbed::make('Video URL')
+                ->ajax(),
             Textarea::make('Rules Breached')->readonly(),
             Textarea::make('Description')->readonly(),
 
