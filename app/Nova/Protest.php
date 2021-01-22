@@ -56,9 +56,9 @@ class Protest extends Resource
             BelongsTo::make('Driver')->sortable()->readonly(),
             BelongsTo::make('Protested Driver', 'protestedDriver', \App\Nova\Driver::class)->sortable()->readonly(),
             BelongsTo::make('Race')->sortable()->readonly(),
-//            Text::make('Video URL')->readonly(),
             NovaEmbed::make('Video URL')
-                ->ajax(),
+                ->ajax()
+                ->exceptOnForms(),
             Textarea::make('Rules Breached')->readonly(),
             Textarea::make('Description')->readonly(),
 
