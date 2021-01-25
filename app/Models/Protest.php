@@ -36,6 +36,9 @@ class Protest extends Model
                 array_key_exists('stewards_decision', $new) &&
                 ! is_null($new['stewards_decision'])
             ) {
+                /**
+                 * @var \App\Models\User $user
+                 */
                 $user = Driver::find($old['driver_id'])->user;
                 if ($user) {
                     $user->notify(new ProtestReviewComplete($protest));
