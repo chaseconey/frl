@@ -32,7 +32,7 @@ class RaceQualiResult extends Model
     public static function fromFile(array $json)
     {
         return new static([
-            'best_lap_time' => $json['bestLapTime'],
+            'best_lap_time' => is_null($json['bestLapTime']) ? 'No Lap' : $json['bestLapTime'],
             'best_s1_time' => $json['S1_Time'],
             'best_s2_time' => $json['S2_Time'],
             'best_s3_time' => $json['S3_Time'],
