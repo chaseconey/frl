@@ -37,6 +37,8 @@ class RaceController extends Controller
      */
     public function broadcast(Race $race)
     {
+        $race->load('broadcastVideos');
+
         return view('races.broadcast')
             ->withRace($race);
     }

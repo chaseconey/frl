@@ -32,6 +32,11 @@ class Race extends Model
         return $this->belongsTo(Track::class);
     }
 
+    public function broadcastVideos()
+    {
+        return $this->hasMany(BroadcastVideo::class);
+    }
+
     public function division()
     {
         return $this->belongsTo(Division::class);

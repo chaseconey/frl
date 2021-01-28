@@ -28,27 +28,22 @@
                         @include('races.race-results.partials.tabs')
                     </div>
 
-                    <div class="my-4 flex justify-center">
-                        <div id="ytplayer"></div>
+                    <div class="my-4 grid grid-cols-1 sm:grid-cols-3 text-center">
+                        @foreach($race->broadcastVideos as $video)
+                            @php
+                                $info = Embed\Embed::create($video->video_url)
+                            @endphp
 
-                        <script>
-                            // Load the IFrame Player API code asynchronously.
-                            var tag = document.createElement('script');
-                            tag.src = "https://www.youtube.com/player_api";
-                            var firstScriptTag = document.getElementsByTagName('script')[0];
-                            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+                            <div class="text-center mx-auto">
+                                <h3 class="flex flex-col my-4">
+                                    <span class="font-semibold text-lg">{{ $video->title }}</span>
+                                    <span class="text-xs text-gray-500">{{ $info->publishedTime }}</span>
+                                </h3>
+                                {!! $info->code !!}
+                            </div>
 
-                            // Replace the 'ytplayer' element with an <iframe> and
-                            // YouTube player after the API code downloads.
-                            var player;
-                            function onYouTubePlayerAPIReady() {
-                                player = new YT.Player('ytplayer', {
-                                    height: '360',
-                                    width: '640',
-                                    videoId: '{{ $race->broadcast_id }}'
-                                });
-                            }
-                        </script>
+
+                        @endforeach
                     </div>
 
                 </div>

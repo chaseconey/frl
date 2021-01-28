@@ -5,7 +5,7 @@
         ['link' => route('races.protests', $race->id), 'title' => 'Protests', 'activeRoute' => 'races.protests']
     ];
 
-    if ($race->broadcast_id) {
+    if ($race->broadcastVideos()->exists()) {
         $links[] = ['link' => route('races.broadcast', $race->id), 'title' => 'Broadcast', 'activeRoute' => 'races.broadcast'];
     }
 

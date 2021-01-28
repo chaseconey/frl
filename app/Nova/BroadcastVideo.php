@@ -2,29 +2,23 @@
 
 namespace App\Nova;
 
+use EricLagarda\NovaEmbed\NovaEmbed;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\DateTime;
-use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Race extends Resource
+class BroadcastVideo extends Resource
 {
-    /**
-     * The logical group associated with the resource.
-     *
-     * @var string
-     */
-    public static $group = 'Races';
-
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\Race::class;
+    public static $model = \App\Models\BroadcastVideo::class;
+
+    public static $group = 'Races';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -43,16 +37,6 @@ class Race extends Resource
     ];
 
     /**
-     * Get the value that should be displayed to represent the resource.
-     *
-     * @return string
-     */
-    public function title()
-    {
-        return "{$this->division->name} | {$this->track->name}";
-    }
-
-    /**
      * Get the fields displayed by the resource.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -62,15 +46,9 @@ class Race extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
-            DateTime::make('Race Time')->sortable(),
-            BelongsTo::make('Division'),
-            BelongsTo::make('Track')->searchable(),
-
-            Text::make('Broadcast ID', 'broadcast_id')->sortable()->nullable(),
-
-            HasMany::make('Race Results', 'results'),
-            HasMany::make('Race Quali Results', 'qualiResults'),
-            HasMany::make('Broadcast Videos', 'broadcastVideos'),
+            BelongsTo::make('Race')->required(),
+            Text::make('Title')->required(),
+            NovaEmbed::make('Video', 'video_url')->required(),
         ];
     }
 
