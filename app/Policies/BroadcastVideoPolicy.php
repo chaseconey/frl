@@ -41,7 +41,7 @@ class BroadcastVideoPolicy
      */
     public function create(User $user)
     {
-        return $user->can('manage-races');
+        return $user->can('manage-broadcasts');
     }
 
     /**
@@ -53,7 +53,7 @@ class BroadcastVideoPolicy
      */
     public function update(User $user, BroadcastVideo $broadcastVideo)
     {
-        return $user->can('manage-races');
+        return $user->can('manage-broadcasts');
     }
 
     /**
@@ -65,7 +65,7 @@ class BroadcastVideoPolicy
      */
     public function delete(User $user, BroadcastVideo $broadcastVideo)
     {
-        return $user->can('manage-races');
+        return $user->can('manage-broadcasts');
     }
 
     /**
@@ -77,7 +77,7 @@ class BroadcastVideoPolicy
      */
     public function restore(User $user, BroadcastVideo $broadcastVideo)
     {
-        return $user->can('manage-races');
+        return $user->can('manage-broadcasts');
     }
 
     /**
@@ -89,6 +89,6 @@ class BroadcastVideoPolicy
      */
     public function forceDelete(User $user, BroadcastVideo $broadcastVideo)
     {
-        return $user->can('manage-races');
+        return $user->can('manage-broadcasts');
     }
 }
