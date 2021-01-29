@@ -29,6 +29,7 @@ class UserSeeder extends Seeder
         Permission::create(['name' => 'manage-protests']);
         Permission::create(['name' => 'manage-tracks']);
         Permission::create(['name' => 'manage-broadcasts']);
+        Permission::create(['name' => 'view-admin']);
 
         $permissions = Permission::all();
 
