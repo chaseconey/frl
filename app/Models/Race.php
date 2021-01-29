@@ -14,7 +14,6 @@ class Race extends Model
 
     public $sortable = [
         'id',
-        'broadcast_id',
         'race_time'
     ];
 

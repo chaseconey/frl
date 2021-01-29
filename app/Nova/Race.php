@@ -66,8 +66,6 @@ class Race extends Resource
             BelongsTo::make('Division'),
             BelongsTo::make('Track')->searchable(),
 
-            Text::make('Broadcast ID', 'broadcast_id')->sortable()->nullable(),
-
             HasMany::make('Race Results', 'results'),
             HasMany::make('Race Quali Results', 'qualiResults'),
             HasMany::make('Broadcast Videos', 'broadcastVideos'),
