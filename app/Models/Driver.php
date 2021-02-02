@@ -48,7 +48,8 @@ class Driver extends Model
 
     public function division()
     {
-        return $this->belongsTo(Division::class);
+        return $this->belongsTo(Division::class)
+            ->withTrashed();
     }
 
     public function raceResults()
