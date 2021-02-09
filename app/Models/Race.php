@@ -58,4 +58,9 @@ class Race extends Model
     {
         return $this->hasMany(Protest::class);
     }
+
+    public function driverVideos()
+    {
+        return $this->hasMany(DriverVideo::class);
+    }
 }
