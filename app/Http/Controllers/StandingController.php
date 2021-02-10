@@ -13,6 +13,7 @@ class StandingController extends Controller
             ->when(!$request->has('show-closed'), function ($query) {
                 return $query->active();
             })
+            ->latest()
             ->get();
 
         return view('standings.index')

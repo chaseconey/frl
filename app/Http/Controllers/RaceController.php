@@ -22,7 +22,8 @@ class RaceController extends Controller
             ->filter($request->all())
             ->paginate();
 
-        $divisions = Division::all();
+        $divisions = Division::latest()
+            ->get();
 
         return view('races.index')
             ->withDivisions($divisions)
