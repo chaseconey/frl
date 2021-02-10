@@ -16,6 +16,7 @@ class DivisionController extends Controller
     {
         $divisions = Division::withCount('drivers')
             ->with(['drivers', 'drivers.user', 'drivers.f1Team', 'drivers.f1Number'])
+            ->active()
             ->get();
 
         return view('divisions.index')

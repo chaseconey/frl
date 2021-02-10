@@ -62,7 +62,7 @@
                                 </p>
                             </div>
                             <div>
-                                @foreach(auth()->user()->drivers as $driver)
+                                @foreach(auth()->user()->activeDrivers as $driver)
                                     <x-dropdown-link :href="route('drivers.show', $driver->id)">
                                         {{ $driver->name }}
                                         <span class="text-gray-600 text-xs">{{ $driver->division->name }}</span>
@@ -143,7 +143,7 @@
             </div>
 
             <div class="mt-3 space-y-1">
-                @foreach(auth()->user()->drivers as $driver)
+                @foreach(auth()->user()->activeDrivers as $driver)
                     <x-responsive-nav-link :href="route('drivers.show', $driver->id)">
                         {{ $driver->name }}
                         <span class="text-gray-600 text-xs">{{ $driver->division->name }}</span>

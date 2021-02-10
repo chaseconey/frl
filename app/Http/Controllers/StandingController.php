@@ -7,9 +7,13 @@ use Illuminate\Http\Request;
 
 class StandingController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $divisions = Division::all();
+        $divisions = Division::query()
+            ->when(!$request->has('show-closed'), function ($query) {
+                return $query->active();
+            })
+            ->get();
 
         return view('standings.index')
             ->withDivisions($divisions);

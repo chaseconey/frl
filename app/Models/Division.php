@@ -17,6 +17,16 @@ class Division extends Model
         'race_time'
     ];
 
+    protected $casts = [
+        'closed_at' => 'datetime',
+    ];
+
+    public function scopeActive($query)
+    {
+        return $query->whereDate('closed_at', '>=', now()->toDateString())
+            ->orWhereNull('closed_at');
+    }
+
     public function drivers()
     {
         return $this->hasMany(Driver::class);

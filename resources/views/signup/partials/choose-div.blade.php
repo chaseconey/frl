@@ -33,4 +33,10 @@
         @endforeach
 
     </ul>
+
+    @if(count($divisions) < 1)
+        <x-alert-warning>
+            We are not currently accepting sign ups. Stay tuned!
+        </x-alert-warning>
+    @endif
 </div>

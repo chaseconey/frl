@@ -38,8 +38,7 @@ class Race extends Model
 
     public function division()
     {
-        return $this->belongsTo(Division::class)
-            ->withTrashed();
+        return $this->belongsTo(Division::class);
     }
 
     public function results()

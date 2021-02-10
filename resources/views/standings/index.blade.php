@@ -17,6 +17,12 @@
                     </a>
                 @endforeach
             </div>
+            <div class="flex text-center pt-8">
+                <a class="text-sm text-gray-600 hover:text-gray-700 w-full"
+                   href="{{ route('standings.index', ['show-closed' => 1]) }}">
+                    Show Old Divisions
+                </a>
+            </div>
         </div>
     </div>
 

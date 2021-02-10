@@ -16,6 +16,7 @@ class SignupController extends Controller
     public function index()
     {
         $divisions = Division::withCount('drivers')
+            ->active()
             ->get();
 
         return view('signup.index')

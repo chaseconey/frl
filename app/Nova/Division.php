@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laraning\NovaTimeField\TimeField;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Markdown;
@@ -67,6 +68,7 @@ class Division extends Resource
                 'Saturday' => 'Saturday',
             ]),
             TimeField::make('Race Time')->withTimezoneAdjustments(),
+            DateTime::make('Closed At')->sortable(),
 
             HasMany::make('Drivers'),
             HasMany::make('Races'),

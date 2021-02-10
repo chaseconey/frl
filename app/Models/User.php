@@ -48,6 +48,14 @@ class User extends Authenticatable
         return $this->hasMany(Driver::class);
     }
 
+    public function activeDrivers()
+    {
+        return $this->hasMany(Driver::class)
+            ->whereHas('division', function($query) {
+                return $query->active();
+            });
+    }
+
     /**
      * Determines if a User is associated with a given Driver
      *
