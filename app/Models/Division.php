@@ -23,7 +23,7 @@ class Division extends Model
 
     public function scopeActive($query)
     {
-        return $query->whereDate('closed_at', '>=', now()->toDateString())
+        return $query->whereDate('closed_at', '>=', now()->format('Y-m-d H:i:s'))
             ->orWhereNull('closed_at');
     }
 
