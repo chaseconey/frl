@@ -36,7 +36,7 @@
                         </div>
 
                     </div>
-                    @foreach($division->drivers->sortBy('f1_team_id')->groupBy('type') as $type => $drivers)
+                    @foreach($division->drivers->groupBy('type') as $type => $drivers)
                     <div class="mt-4">
                         <div class="ml-4">
                             <h4 class="text-md leading-6 font-medium text-gray-900">
