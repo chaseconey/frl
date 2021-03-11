@@ -61,4 +61,9 @@ class Protest extends Model
     {
         return $this->belongsTo(Race::class);
     }
+
+    public function getStatusAttribute()
+    {
+        return $this->stewards_decision ? 'Complete' : 'In Review';
+    }
 }

@@ -64,6 +64,9 @@ class Protest extends Resource
             NovaEmbed::make('Video', 'video_url')
                 ->ajax()
                 ->exceptOnForms(),
+
+            Text::make('Status')->onlyOnIndex(),
+
             Textarea::make('Rules Breached')->readonly(),
             Textarea::make('Description')->readonly(),
 
