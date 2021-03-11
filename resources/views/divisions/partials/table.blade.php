@@ -98,6 +98,16 @@
                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                                                role="menuitem">Driver Profile</a>
 
+                                            @if($driver->steam_friend_code)
+                                            <span
+                                                @click="open = false; notyf.success('Copied to clipboard');"
+                                                data-clipboard-text="{{ $driver->steam_friend_code }}"
+                                                class="friend-code block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer"
+                                            >
+                                                Copy Steam Friend Code
+                                            </span>
+                                            @endif
+
                                             @role('admin')
                                                 <a href="/nova/resources/drivers/{{ $driver->id }}"
                                                    target="_blank"

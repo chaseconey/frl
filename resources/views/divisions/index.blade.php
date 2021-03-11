@@ -56,4 +56,10 @@
         @endif
 
     </div>
+    <x-slot name="scripts">
+        <script>
+            new ClipboardJS('.friend-code');
+            const notyf = new Notyf();
+        </script>
+    </x-slot>
 </x-app-layout>

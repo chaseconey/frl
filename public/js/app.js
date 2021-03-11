@@ -86,6 +86,965 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/Clipboard/dist/clipboard.js":
+/*!**************************************************!*\
+  !*** ./node_modules/Clipboard/dist/clipboard.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*!
+ * clipboard.js v2.0.8
+ * https://clipboardjs.com/
+ *
+ * Licensed MIT © Zeno Rocha
+ */
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(true)
+		module.exports = factory();
+	else {}
+})(this, function() {
+return /******/ (function() { // webpackBootstrap
+/******/ 	var __webpack_modules__ = ({
+
+/***/ 134:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "default": function() { return /* binding */ clipboard; }
+});
+
+// EXTERNAL MODULE: ./node_modules/tiny-emitter/index.js
+var tiny_emitter = __webpack_require__(279);
+var tiny_emitter_default = /*#__PURE__*/__webpack_require__.n(tiny_emitter);
+// EXTERNAL MODULE: ./node_modules/good-listener/src/listen.js
+var listen = __webpack_require__(370);
+var listen_default = /*#__PURE__*/__webpack_require__.n(listen);
+// EXTERNAL MODULE: ./node_modules/select/src/select.js
+var src_select = __webpack_require__(817);
+var select_default = /*#__PURE__*/__webpack_require__.n(src_select);
+;// CONCATENATED MODULE: ./src/clipboard-action.js
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+/**
+ * Inner class which performs selection from either `text` or `target`
+ * properties and then executes copy or cut operations.
+ */
+
+var ClipboardAction = /*#__PURE__*/function () {
+  /**
+   * @param {Object} options
+   */
+  function ClipboardAction(options) {
+    _classCallCheck(this, ClipboardAction);
+
+    this.resolveOptions(options);
+    this.initSelection();
+  }
+  /**
+   * Defines base properties passed from constructor.
+   * @param {Object} options
+   */
+
+
+  _createClass(ClipboardAction, [{
+    key: "resolveOptions",
+    value: function resolveOptions() {
+      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      this.action = options.action;
+      this.container = options.container;
+      this.emitter = options.emitter;
+      this.target = options.target;
+      this.text = options.text;
+      this.trigger = options.trigger;
+      this.selectedText = '';
+    }
+    /**
+     * Decides which selection strategy is going to be applied based
+     * on the existence of `text` and `target` properties.
+     */
+
+  }, {
+    key: "initSelection",
+    value: function initSelection() {
+      if (this.text) {
+        this.selectFake();
+      } else if (this.target) {
+        this.selectTarget();
+      }
+    }
+    /**
+     * Creates a fake textarea element, sets its value from `text` property,
+     */
+
+  }, {
+    key: "createFakeElement",
+    value: function createFakeElement() {
+      var isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+      this.fakeElem = document.createElement('textarea'); // Prevent zooming on iOS
+
+      this.fakeElem.style.fontSize = '12pt'; // Reset box model
+
+      this.fakeElem.style.border = '0';
+      this.fakeElem.style.padding = '0';
+      this.fakeElem.style.margin = '0'; // Move element out of screen horizontally
+
+      this.fakeElem.style.position = 'absolute';
+      this.fakeElem.style[isRTL ? 'right' : 'left'] = '-9999px'; // Move element to the same position vertically
+
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      this.fakeElem.style.top = "".concat(yPosition, "px");
+      this.fakeElem.setAttribute('readonly', '');
+      this.fakeElem.value = this.text;
+      return this.fakeElem;
+    }
+    /**
+     * Get's the value of fakeElem,
+     * and makes a selection on it.
+     */
+
+  }, {
+    key: "selectFake",
+    value: function selectFake() {
+      var _this = this;
+
+      var fakeElem = this.createFakeElement();
+
+      this.fakeHandlerCallback = function () {
+        return _this.removeFake();
+      };
+
+      this.fakeHandler = this.container.addEventListener('click', this.fakeHandlerCallback) || true;
+      this.container.appendChild(fakeElem);
+      this.selectedText = select_default()(fakeElem);
+      this.copyText();
+      this.removeFake();
+    }
+    /**
+     * Only removes the fake element after another click event, that way
+     * a user can hit `Ctrl+C` to copy because selection still exists.
+     */
+
+  }, {
+    key: "removeFake",
+    value: function removeFake() {
+      if (this.fakeHandler) {
+        this.container.removeEventListener('click', this.fakeHandlerCallback);
+        this.fakeHandler = null;
+        this.fakeHandlerCallback = null;
+      }
+
+      if (this.fakeElem) {
+        this.container.removeChild(this.fakeElem);
+        this.fakeElem = null;
+      }
+    }
+    /**
+     * Selects the content from element passed on `target` property.
+     */
+
+  }, {
+    key: "selectTarget",
+    value: function selectTarget() {
+      this.selectedText = select_default()(this.target);
+      this.copyText();
+    }
+    /**
+     * Executes the copy operation based on the current selection.
+     */
+
+  }, {
+    key: "copyText",
+    value: function copyText() {
+      var succeeded;
+
+      try {
+        succeeded = document.execCommand(this.action);
+      } catch (err) {
+        succeeded = false;
+      }
+
+      this.handleResult(succeeded);
+    }
+    /**
+     * Fires an event based on the copy operation result.
+     * @param {Boolean} succeeded
+     */
+
+  }, {
+    key: "handleResult",
+    value: function handleResult(succeeded) {
+      this.emitter.emit(succeeded ? 'success' : 'error', {
+        action: this.action,
+        text: this.selectedText,
+        trigger: this.trigger,
+        clearSelection: this.clearSelection.bind(this)
+      });
+    }
+    /**
+     * Moves focus away from `target` and back to the trigger, removes current selection.
+     */
+
+  }, {
+    key: "clearSelection",
+    value: function clearSelection() {
+      if (this.trigger) {
+        this.trigger.focus();
+      }
+
+      document.activeElement.blur();
+      window.getSelection().removeAllRanges();
+    }
+    /**
+     * Sets the `action` to be performed which can be either 'copy' or 'cut'.
+     * @param {String} action
+     */
+
+  }, {
+    key: "destroy",
+
+    /**
+     * Destroy lifecycle.
+     */
+    value: function destroy() {
+      this.removeFake();
+    }
+  }, {
+    key: "action",
+    set: function set() {
+      var action = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'copy';
+      this._action = action;
+
+      if (this._action !== 'copy' && this._action !== 'cut') {
+        throw new Error('Invalid "action" value, use either "copy" or "cut"');
+      }
+    }
+    /**
+     * Gets the `action` property.
+     * @return {String}
+     */
+    ,
+    get: function get() {
+      return this._action;
+    }
+    /**
+     * Sets the `target` property using an element
+     * that will be have its content copied.
+     * @param {Element} target
+     */
+
+  }, {
+    key: "target",
+    set: function set(target) {
+      if (target !== undefined) {
+        if (target && _typeof(target) === 'object' && target.nodeType === 1) {
+          if (this.action === 'copy' && target.hasAttribute('disabled')) {
+            throw new Error('Invalid "target" attribute. Please use "readonly" instead of "disabled" attribute');
+          }
+
+          if (this.action === 'cut' && (target.hasAttribute('readonly') || target.hasAttribute('disabled'))) {
+            throw new Error('Invalid "target" attribute. You can\'t cut text from elements with "readonly" or "disabled" attributes');
+          }
+
+          this._target = target;
+        } else {
+          throw new Error('Invalid "target" value, use a valid Element');
+        }
+      }
+    }
+    /**
+     * Gets the `target` property.
+     * @return {String|HTMLElement}
+     */
+    ,
+    get: function get() {
+      return this._target;
+    }
+  }]);
+
+  return ClipboardAction;
+}();
+
+/* harmony default export */ var clipboard_action = (ClipboardAction);
+;// CONCATENATED MODULE: ./src/clipboard.js
+function clipboard_typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { clipboard_typeof = function _typeof(obj) { return typeof obj; }; } else { clipboard_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return clipboard_typeof(obj); }
+
+function clipboard_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function clipboard_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function clipboard_createClass(Constructor, protoProps, staticProps) { if (protoProps) clipboard_defineProperties(Constructor.prototype, protoProps); if (staticProps) clipboard_defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (clipboard_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+/**
+ * Helper function to retrieve attribute value.
+ * @param {String} suffix
+ * @param {Element} element
+ */
+
+function getAttributeValue(suffix, element) {
+  var attribute = "data-clipboard-".concat(suffix);
+
+  if (!element.hasAttribute(attribute)) {
+    return;
+  }
+
+  return element.getAttribute(attribute);
+}
+/**
+ * Base class which takes one or more elements, adds event listeners to them,
+ * and instantiates a new `ClipboardAction` on each click.
+ */
+
+
+var Clipboard = /*#__PURE__*/function (_Emitter) {
+  _inherits(Clipboard, _Emitter);
+
+  var _super = _createSuper(Clipboard);
+
+  /**
+   * @param {String|HTMLElement|HTMLCollection|NodeList} trigger
+   * @param {Object} options
+   */
+  function Clipboard(trigger, options) {
+    var _this;
+
+    clipboard_classCallCheck(this, Clipboard);
+
+    _this = _super.call(this);
+
+    _this.resolveOptions(options);
+
+    _this.listenClick(trigger);
+
+    return _this;
+  }
+  /**
+   * Defines if attributes would be resolved using internal setter functions
+   * or custom functions that were passed in the constructor.
+   * @param {Object} options
+   */
+
+
+  clipboard_createClass(Clipboard, [{
+    key: "resolveOptions",
+    value: function resolveOptions() {
+      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      this.action = typeof options.action === 'function' ? options.action : this.defaultAction;
+      this.target = typeof options.target === 'function' ? options.target : this.defaultTarget;
+      this.text = typeof options.text === 'function' ? options.text : this.defaultText;
+      this.container = clipboard_typeof(options.container) === 'object' ? options.container : document.body;
+    }
+    /**
+     * Adds a click event listener to the passed trigger.
+     * @param {String|HTMLElement|HTMLCollection|NodeList} trigger
+     */
+
+  }, {
+    key: "listenClick",
+    value: function listenClick(trigger) {
+      var _this2 = this;
+
+      this.listener = listen_default()(trigger, 'click', function (e) {
+        return _this2.onClick(e);
+      });
+    }
+    /**
+     * Defines a new `ClipboardAction` on each click event.
+     * @param {Event} e
+     */
+
+  }, {
+    key: "onClick",
+    value: function onClick(e) {
+      var trigger = e.delegateTarget || e.currentTarget;
+
+      if (this.clipboardAction) {
+        this.clipboardAction = null;
+      }
+
+      this.clipboardAction = new clipboard_action({
+        action: this.action(trigger),
+        target: this.target(trigger),
+        text: this.text(trigger),
+        container: this.container,
+        trigger: trigger,
+        emitter: this
+      });
+    }
+    /**
+     * Default `action` lookup function.
+     * @param {Element} trigger
+     */
+
+  }, {
+    key: "defaultAction",
+    value: function defaultAction(trigger) {
+      return getAttributeValue('action', trigger);
+    }
+    /**
+     * Default `target` lookup function.
+     * @param {Element} trigger
+     */
+
+  }, {
+    key: "defaultTarget",
+    value: function defaultTarget(trigger) {
+      var selector = getAttributeValue('target', trigger);
+
+      if (selector) {
+        return document.querySelector(selector);
+      }
+    }
+    /**
+     * Returns the support of the given action, or all actions if no action is
+     * given.
+     * @param {String} [action]
+     */
+
+  }, {
+    key: "defaultText",
+
+    /**
+     * Default `text` lookup function.
+     * @param {Element} trigger
+     */
+    value: function defaultText(trigger) {
+      return getAttributeValue('text', trigger);
+    }
+    /**
+     * Destroy lifecycle.
+     */
+
+  }, {
+    key: "destroy",
+    value: function destroy() {
+      this.listener.destroy();
+
+      if (this.clipboardAction) {
+        this.clipboardAction.destroy();
+        this.clipboardAction = null;
+      }
+    }
+  }], [{
+    key: "isSupported",
+    value: function isSupported() {
+      var action = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : ['copy', 'cut'];
+      var actions = typeof action === 'string' ? [action] : action;
+      var support = !!document.queryCommandSupported;
+      actions.forEach(function (action) {
+        support = support && !!document.queryCommandSupported(action);
+      });
+      return support;
+    }
+  }]);
+
+  return Clipboard;
+}((tiny_emitter_default()));
+
+/* harmony default export */ var clipboard = (Clipboard);
+
+/***/ }),
+
+/***/ 828:
+/***/ (function(module) {
+
+var DOCUMENT_NODE_TYPE = 9;
+
+/**
+ * A polyfill for Element.matches()
+ */
+if (typeof Element !== 'undefined' && !Element.prototype.matches) {
+    var proto = Element.prototype;
+
+    proto.matches = proto.matchesSelector ||
+                    proto.mozMatchesSelector ||
+                    proto.msMatchesSelector ||
+                    proto.oMatchesSelector ||
+                    proto.webkitMatchesSelector;
+}
+
+/**
+ * Finds the closest parent that matches a selector.
+ *
+ * @param {Element} element
+ * @param {String} selector
+ * @return {Function}
+ */
+function closest (element, selector) {
+    while (element && element.nodeType !== DOCUMENT_NODE_TYPE) {
+        if (typeof element.matches === 'function' &&
+            element.matches(selector)) {
+          return element;
+        }
+        element = element.parentNode;
+    }
+}
+
+module.exports = closest;
+
+
+/***/ }),
+
+/***/ 438:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+var closest = __webpack_require__(828);
+
+/**
+ * Delegates event to a selector.
+ *
+ * @param {Element} element
+ * @param {String} selector
+ * @param {String} type
+ * @param {Function} callback
+ * @param {Boolean} useCapture
+ * @return {Object}
+ */
+function _delegate(element, selector, type, callback, useCapture) {
+    var listenerFn = listener.apply(this, arguments);
+
+    element.addEventListener(type, listenerFn, useCapture);
+
+    return {
+        destroy: function() {
+            element.removeEventListener(type, listenerFn, useCapture);
+        }
+    }
+}
+
+/**
+ * Delegates event to a selector.
+ *
+ * @param {Element|String|Array} [elements]
+ * @param {String} selector
+ * @param {String} type
+ * @param {Function} callback
+ * @param {Boolean} useCapture
+ * @return {Object}
+ */
+function delegate(elements, selector, type, callback, useCapture) {
+    // Handle the regular Element usage
+    if (typeof elements.addEventListener === 'function') {
+        return _delegate.apply(null, arguments);
+    }
+
+    // Handle Element-less usage, it defaults to global delegation
+    if (typeof type === 'function') {
+        // Use `document` as the first parameter, then apply arguments
+        // This is a short way to .unshift `arguments` without running into deoptimizations
+        return _delegate.bind(null, document).apply(null, arguments);
+    }
+
+    // Handle Selector-based usage
+    if (typeof elements === 'string') {
+        elements = document.querySelectorAll(elements);
+    }
+
+    // Handle Array-like based usage
+    return Array.prototype.map.call(elements, function (element) {
+        return _delegate(element, selector, type, callback, useCapture);
+    });
+}
+
+/**
+ * Finds closest match and invokes callback.
+ *
+ * @param {Element} element
+ * @param {String} selector
+ * @param {String} type
+ * @param {Function} callback
+ * @return {Function}
+ */
+function listener(element, selector, type, callback) {
+    return function(e) {
+        e.delegateTarget = closest(e.target, selector);
+
+        if (e.delegateTarget) {
+            callback.call(element, e);
+        }
+    }
+}
+
+module.exports = delegate;
+
+
+/***/ }),
+
+/***/ 879:
+/***/ (function(__unused_webpack_module, exports) {
+
+/**
+ * Check if argument is a HTML element.
+ *
+ * @param {Object} value
+ * @return {Boolean}
+ */
+exports.node = function(value) {
+    return value !== undefined
+        && value instanceof HTMLElement
+        && value.nodeType === 1;
+};
+
+/**
+ * Check if argument is a list of HTML elements.
+ *
+ * @param {Object} value
+ * @return {Boolean}
+ */
+exports.nodeList = function(value) {
+    var type = Object.prototype.toString.call(value);
+
+    return value !== undefined
+        && (type === '[object NodeList]' || type === '[object HTMLCollection]')
+        && ('length' in value)
+        && (value.length === 0 || exports.node(value[0]));
+};
+
+/**
+ * Check if argument is a string.
+ *
+ * @param {Object} value
+ * @return {Boolean}
+ */
+exports.string = function(value) {
+    return typeof value === 'string'
+        || value instanceof String;
+};
+
+/**
+ * Check if argument is a function.
+ *
+ * @param {Object} value
+ * @return {Boolean}
+ */
+exports.fn = function(value) {
+    var type = Object.prototype.toString.call(value);
+
+    return type === '[object Function]';
+};
+
+
+/***/ }),
+
+/***/ 370:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+var is = __webpack_require__(879);
+var delegate = __webpack_require__(438);
+
+/**
+ * Validates all params and calls the right
+ * listener function based on its target type.
+ *
+ * @param {String|HTMLElement|HTMLCollection|NodeList} target
+ * @param {String} type
+ * @param {Function} callback
+ * @return {Object}
+ */
+function listen(target, type, callback) {
+    if (!target && !type && !callback) {
+        throw new Error('Missing required arguments');
+    }
+
+    if (!is.string(type)) {
+        throw new TypeError('Second argument must be a String');
+    }
+
+    if (!is.fn(callback)) {
+        throw new TypeError('Third argument must be a Function');
+    }
+
+    if (is.node(target)) {
+        return listenNode(target, type, callback);
+    }
+    else if (is.nodeList(target)) {
+        return listenNodeList(target, type, callback);
+    }
+    else if (is.string(target)) {
+        return listenSelector(target, type, callback);
+    }
+    else {
+        throw new TypeError('First argument must be a String, HTMLElement, HTMLCollection, or NodeList');
+    }
+}
+
+/**
+ * Adds an event listener to a HTML element
+ * and returns a remove listener function.
+ *
+ * @param {HTMLElement} node
+ * @param {String} type
+ * @param {Function} callback
+ * @return {Object}
+ */
+function listenNode(node, type, callback) {
+    node.addEventListener(type, callback);
+
+    return {
+        destroy: function() {
+            node.removeEventListener(type, callback);
+        }
+    }
+}
+
+/**
+ * Add an event listener to a list of HTML elements
+ * and returns a remove listener function.
+ *
+ * @param {NodeList|HTMLCollection} nodeList
+ * @param {String} type
+ * @param {Function} callback
+ * @return {Object}
+ */
+function listenNodeList(nodeList, type, callback) {
+    Array.prototype.forEach.call(nodeList, function(node) {
+        node.addEventListener(type, callback);
+    });
+
+    return {
+        destroy: function() {
+            Array.prototype.forEach.call(nodeList, function(node) {
+                node.removeEventListener(type, callback);
+            });
+        }
+    }
+}
+
+/**
+ * Add an event listener to a selector
+ * and returns a remove listener function.
+ *
+ * @param {String} selector
+ * @param {String} type
+ * @param {Function} callback
+ * @return {Object}
+ */
+function listenSelector(selector, type, callback) {
+    return delegate(document.body, selector, type, callback);
+}
+
+module.exports = listen;
+
+
+/***/ }),
+
+/***/ 817:
+/***/ (function(module) {
+
+function select(element) {
+    var selectedText;
+
+    if (element.nodeName === 'SELECT') {
+        element.focus();
+
+        selectedText = element.value;
+    }
+    else if (element.nodeName === 'INPUT' || element.nodeName === 'TEXTAREA') {
+        var isReadOnly = element.hasAttribute('readonly');
+
+        if (!isReadOnly) {
+            element.setAttribute('readonly', '');
+        }
+
+        element.select();
+        element.setSelectionRange(0, element.value.length);
+
+        if (!isReadOnly) {
+            element.removeAttribute('readonly');
+        }
+
+        selectedText = element.value;
+    }
+    else {
+        if (element.hasAttribute('contenteditable')) {
+            element.focus();
+        }
+
+        var selection = window.getSelection();
+        var range = document.createRange();
+
+        range.selectNodeContents(element);
+        selection.removeAllRanges();
+        selection.addRange(range);
+
+        selectedText = selection.toString();
+    }
+
+    return selectedText;
+}
+
+module.exports = select;
+
+
+/***/ }),
+
+/***/ 279:
+/***/ (function(module) {
+
+function E () {
+  // Keep this empty so it's easier to inherit from
+  // (via https://github.com/lipsmack from https://github.com/scottcorgan/tiny-emitter/issues/3)
+}
+
+E.prototype = {
+  on: function (name, callback, ctx) {
+    var e = this.e || (this.e = {});
+
+    (e[name] || (e[name] = [])).push({
+      fn: callback,
+      ctx: ctx
+    });
+
+    return this;
+  },
+
+  once: function (name, callback, ctx) {
+    var self = this;
+    function listener () {
+      self.off(name, listener);
+      callback.apply(ctx, arguments);
+    };
+
+    listener._ = callback
+    return this.on(name, listener, ctx);
+  },
+
+  emit: function (name) {
+    var data = [].slice.call(arguments, 1);
+    var evtArr = ((this.e || (this.e = {}))[name] || []).slice();
+    var i = 0;
+    var len = evtArr.length;
+
+    for (i; i < len; i++) {
+      evtArr[i].fn.apply(evtArr[i].ctx, data);
+    }
+
+    return this;
+  },
+
+  off: function (name, callback) {
+    var e = this.e || (this.e = {});
+    var evts = e[name];
+    var liveEvents = [];
+
+    if (evts && callback) {
+      for (var i = 0, len = evts.length; i < len; i++) {
+        if (evts[i].fn !== callback && evts[i].fn._ !== callback)
+          liveEvents.push(evts[i]);
+      }
+    }
+
+    // Remove event from queue to prevent memory leak
+    // Suggested by https://github.com/lazd
+    // Ref: https://github.com/scottcorgan/tiny-emitter/commit/c6ebfaa9bc973b33d110a84a307742b7cf94c953#commitcomment-5024910
+
+    (liveEvents.length)
+      ? e[name] = liveEvents
+      : delete e[name];
+
+    return this;
+  }
+};
+
+module.exports = E;
+module.exports.TinyEmitter = E;
+
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		if(__webpack_module_cache__[moduleId]) {
+/******/ 			return __webpack_module_cache__[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	!function() {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = function(module) {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				function() { return module['default']; } :
+/******/ 				function() { return module; };
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	!function() {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = function(exports, definition) {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	!function() {
+/******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
+/******/ 	}();
+/******/ 	
+/************************************************************************/
+/******/ 	// module exports must be returned from runtime so entry inlining is disabled
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(134);
+/******/ })()
+.default;
+});
+
+/***/ }),
+
 /***/ "./node_modules/alpinejs/dist/alpine.js":
 /*!**********************************************!*\
   !*** ./node_modules/alpinejs/dist/alpine.js ***!
@@ -2027,6 +2986,7 @@ module.exports = __webpack_require__(/*! ./lib/axios */ "./node_modules/axios/li
 
 var utils = __webpack_require__(/*! ./../utils */ "./node_modules/axios/lib/utils.js");
 var settle = __webpack_require__(/*! ./../core/settle */ "./node_modules/axios/lib/core/settle.js");
+var cookies = __webpack_require__(/*! ./../helpers/cookies */ "./node_modules/axios/lib/helpers/cookies.js");
 var buildURL = __webpack_require__(/*! ./../helpers/buildURL */ "./node_modules/axios/lib/helpers/buildURL.js");
 var buildFullPath = __webpack_require__(/*! ../core/buildFullPath */ "./node_modules/axios/lib/core/buildFullPath.js");
 var parseHeaders = __webpack_require__(/*! ./../helpers/parseHeaders */ "./node_modules/axios/lib/helpers/parseHeaders.js");
@@ -2047,7 +3007,7 @@ module.exports = function xhrAdapter(config) {
     // HTTP basic authentication
     if (config.auth) {
       var username = config.auth.username || '';
-      var password = config.auth.password || '';
+      var password = config.auth.password ? unescape(encodeURIComponent(config.auth.password)) : '';
       requestHeaders.Authorization = 'Basic ' + btoa(username + ':' + password);
     }
 
@@ -2128,8 +3088,6 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(/*! ./../helpers/cookies */ "./node_modules/axios/lib/helpers/cookies.js");
-
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(fullPath)) && config.xsrfCookieName ?
         cookies.read(config.xsrfCookieName) :
@@ -2195,7 +3153,7 @@ module.exports = function xhrAdapter(config) {
       });
     }
 
-    if (requestData === undefined) {
+    if (!requestData) {
       requestData = null;
     }
 
@@ -2263,6 +3221,9 @@ axios.all = function all(promises) {
   return Promise.all(promises);
 };
 axios.spread = __webpack_require__(/*! ./helpers/spread */ "./node_modules/axios/lib/helpers/spread.js");
+
+// Expose isAxiosError
+axios.isAxiosError = __webpack_require__(/*! ./helpers/isAxiosError */ "./node_modules/axios/lib/helpers/isAxiosError.js");
 
 module.exports = axios;
 
@@ -2472,9 +3433,10 @@ Axios.prototype.getUri = function getUri(config) {
 utils.forEach(['delete', 'get', 'head', 'options'], function forEachMethodNoData(method) {
   /*eslint func-names:0*/
   Axios.prototype[method] = function(url, config) {
-    return this.request(utils.merge(config || {}, {
+    return this.request(mergeConfig(config || {}, {
       method: method,
-      url: url
+      url: url,
+      data: (config || {}).data
     }));
   };
 });
@@ -2482,7 +3444,7 @@ utils.forEach(['delete', 'get', 'head', 'options'], function forEachMethodNoData
 utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
   /*eslint func-names:0*/
   Axios.prototype[method] = function(url, data, config) {
-    return this.request(utils.merge(config || {}, {
+    return this.request(mergeConfig(config || {}, {
       method: method,
       url: url,
       data: data
@@ -2742,7 +3704,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
   error.response = response;
   error.isAxiosError = true;
 
-  error.toJSON = function() {
+  error.toJSON = function toJSON() {
     return {
       // Standard
       message: this.message,
@@ -2791,59 +3753,73 @@ module.exports = function mergeConfig(config1, config2) {
   config2 = config2 || {};
   var config = {};
 
-  var valueFromConfig2Keys = ['url', 'method', 'params', 'data'];
-  var mergeDeepPropertiesKeys = ['headers', 'auth', 'proxy'];
+  var valueFromConfig2Keys = ['url', 'method', 'data'];
+  var mergeDeepPropertiesKeys = ['headers', 'auth', 'proxy', 'params'];
   var defaultToConfig2Keys = [
-    'baseURL', 'url', 'transformRequest', 'transformResponse', 'paramsSerializer',
-    'timeout', 'withCredentials', 'adapter', 'responseType', 'xsrfCookieName',
-    'xsrfHeaderName', 'onUploadProgress', 'onDownloadProgress',
-    'maxContentLength', 'validateStatus', 'maxRedirects', 'httpAgent',
-    'httpsAgent', 'cancelToken', 'socketPath'
+    'baseURL', 'transformRequest', 'transformResponse', 'paramsSerializer',
+    'timeout', 'timeoutMessage', 'withCredentials', 'adapter', 'responseType', 'xsrfCookieName',
+    'xsrfHeaderName', 'onUploadProgress', 'onDownloadProgress', 'decompress',
+    'maxContentLength', 'maxBodyLength', 'maxRedirects', 'transport', 'httpAgent',
+    'httpsAgent', 'cancelToken', 'socketPath', 'responseEncoding'
   ];
+  var directMergeKeys = ['validateStatus'];
+
+  function getMergedValue(target, source) {
+    if (utils.isPlainObject(target) && utils.isPlainObject(source)) {
+      return utils.merge(target, source);
+    } else if (utils.isPlainObject(source)) {
+      return utils.merge({}, source);
+    } else if (utils.isArray(source)) {
+      return source.slice();
+    }
+    return source;
+  }
+
+  function mergeDeepProperties(prop) {
+    if (!utils.isUndefined(config2[prop])) {
+      config[prop] = getMergedValue(config1[prop], config2[prop]);
+    } else if (!utils.isUndefined(config1[prop])) {
+      config[prop] = getMergedValue(undefined, config1[prop]);
+    }
+  }
 
   utils.forEach(valueFromConfig2Keys, function valueFromConfig2(prop) {
-    if (typeof config2[prop] !== 'undefined') {
-      config[prop] = config2[prop];
+    if (!utils.isUndefined(config2[prop])) {
+      config[prop] = getMergedValue(undefined, config2[prop]);
     }
   });
 
-  utils.forEach(mergeDeepPropertiesKeys, function mergeDeepProperties(prop) {
-    if (utils.isObject(config2[prop])) {
-      config[prop] = utils.deepMerge(config1[prop], config2[prop]);
-    } else if (typeof config2[prop] !== 'undefined') {
-      config[prop] = config2[prop];
-    } else if (utils.isObject(config1[prop])) {
-      config[prop] = utils.deepMerge(config1[prop]);
-    } else if (typeof config1[prop] !== 'undefined') {
-      config[prop] = config1[prop];
-    }
-  });
+  utils.forEach(mergeDeepPropertiesKeys, mergeDeepProperties);
 
   utils.forEach(defaultToConfig2Keys, function defaultToConfig2(prop) {
-    if (typeof config2[prop] !== 'undefined') {
-      config[prop] = config2[prop];
-    } else if (typeof config1[prop] !== 'undefined') {
-      config[prop] = config1[prop];
+    if (!utils.isUndefined(config2[prop])) {
+      config[prop] = getMergedValue(undefined, config2[prop]);
+    } else if (!utils.isUndefined(config1[prop])) {
+      config[prop] = getMergedValue(undefined, config1[prop]);
+    }
+  });
+
+  utils.forEach(directMergeKeys, function merge(prop) {
+    if (prop in config2) {
+      config[prop] = getMergedValue(config1[prop], config2[prop]);
+    } else if (prop in config1) {
+      config[prop] = getMergedValue(undefined, config1[prop]);
     }
   });
 
   var axiosKeys = valueFromConfig2Keys
     .concat(mergeDeepPropertiesKeys)
-    .concat(defaultToConfig2Keys);
+    .concat(defaultToConfig2Keys)
+    .concat(directMergeKeys);
 
   var otherKeys = Object
-    .keys(config2)
+    .keys(config1)
+    .concat(Object.keys(config2))
     .filter(function filterAxiosKeys(key) {
       return axiosKeys.indexOf(key) === -1;
     });
 
-  utils.forEach(otherKeys, function otherKeysDefaultToConfig2(prop) {
-    if (typeof config2[prop] !== 'undefined') {
-      config[prop] = config2[prop];
-    } else if (typeof config1[prop] !== 'undefined') {
-      config[prop] = config1[prop];
-    }
-  });
+  utils.forEach(otherKeys, mergeDeepProperties);
 
   return config;
 };
@@ -2872,7 +3848,7 @@ var createError = __webpack_require__(/*! ./createError */ "./node_modules/axios
  */
 module.exports = function settle(resolve, reject, response) {
   var validateStatus = response.config.validateStatus;
-  if (!validateStatus || validateStatus(response.status)) {
+  if (!response.status || !validateStatus || validateStatus(response.status)) {
     resolve(response);
   } else {
     reject(createError(
@@ -3004,6 +3980,7 @@ var defaults = {
   xsrfHeaderName: 'X-XSRF-TOKEN',
 
   maxContentLength: -1,
+  maxBodyLength: -1,
 
   validateStatus: function validateStatus(status) {
     return status >= 200 && status < 300;
@@ -3067,7 +4044,6 @@ var utils = __webpack_require__(/*! ./../utils */ "./node_modules/axios/lib/util
 
 function encode(val) {
   return encodeURIComponent(val).
-    replace(/%40/gi, '@').
     replace(/%3A/gi, ':').
     replace(/%24/g, '$').
     replace(/%2C/gi, ',').
@@ -3248,6 +4224,29 @@ module.exports = function isAbsoluteURL(url) {
   // RFC 3986 defines scheme name as a sequence of characters beginning with a letter and followed
   // by any combination of letters, digits, plus, period, or hyphen.
   return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url);
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/helpers/isAxiosError.js":
+/*!********************************************************!*\
+  !*** ./node_modules/axios/lib/helpers/isAxiosError.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Determines whether the payload is an error thrown by Axios
+ *
+ * @param {*} payload The value to test
+ * @returns {boolean} True if the payload is an error thrown by Axios, otherwise false
+ */
+module.exports = function isAxiosError(payload) {
+  return (typeof payload === 'object') && (payload.isAxiosError === true);
 };
 
 
@@ -3577,6 +4576,21 @@ function isObject(val) {
 }
 
 /**
+ * Determine if a value is a plain Object
+ *
+ * @param {Object} val The value to test
+ * @return {boolean} True if value is a plain Object, otherwise false
+ */
+function isPlainObject(val) {
+  if (toString.call(val) !== '[object Object]') {
+    return false;
+  }
+
+  var prototype = Object.getPrototypeOf(val);
+  return prototype === null || prototype === Object.prototype;
+}
+
+/**
  * Determine if a value is a Date
  *
  * @param {Object} val The value to test
@@ -3732,34 +4746,12 @@ function forEach(obj, fn) {
 function merge(/* obj1, obj2, obj3, ... */) {
   var result = {};
   function assignValue(val, key) {
-    if (typeof result[key] === 'object' && typeof val === 'object') {
+    if (isPlainObject(result[key]) && isPlainObject(val)) {
       result[key] = merge(result[key], val);
-    } else {
-      result[key] = val;
-    }
-  }
-
-  for (var i = 0, l = arguments.length; i < l; i++) {
-    forEach(arguments[i], assignValue);
-  }
-  return result;
-}
-
-/**
- * Function equal to merge with the difference being that no reference
- * to original objects is kept.
- *
- * @see merge
- * @param {Object} obj1 Object to merge
- * @returns {Object} Result of all merge properties
- */
-function deepMerge(/* obj1, obj2, obj3, ... */) {
-  var result = {};
-  function assignValue(val, key) {
-    if (typeof result[key] === 'object' && typeof val === 'object') {
-      result[key] = deepMerge(result[key], val);
-    } else if (typeof val === 'object') {
-      result[key] = deepMerge({}, val);
+    } else if (isPlainObject(val)) {
+      result[key] = merge({}, val);
+    } else if (isArray(val)) {
+      result[key] = val.slice();
     } else {
       result[key] = val;
     }
@@ -3790,6 +4782,19 @@ function extend(a, b, thisArg) {
   return a;
 }
 
+/**
+ * Remove byte order marker. This catches EF BB BF (the UTF-8 BOM)
+ *
+ * @param {string} content with BOM
+ * @return {string} content value without BOM
+ */
+function stripBOM(content) {
+  if (content.charCodeAt(0) === 0xFEFF) {
+    content = content.slice(1);
+  }
+  return content;
+}
+
 module.exports = {
   isArray: isArray,
   isArrayBuffer: isArrayBuffer,
@@ -3799,6 +4804,7 @@ module.exports = {
   isString: isString,
   isNumber: isNumber,
   isObject: isObject,
+  isPlainObject: isPlainObject,
   isUndefined: isUndefined,
   isDate: isDate,
   isFile: isFile,
@@ -3809,10 +4815,116 @@ module.exports = {
   isStandardBrowserEnv: isStandardBrowserEnv,
   forEach: forEach,
   merge: merge,
-  deepMerge: deepMerge,
   extend: extend,
-  trim: trim
+  trim: trim,
+  stripBOM: stripBOM
 };
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/notyf/notyf.min.css":
+/*!**************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./node_modules/notyf/notyf.min.css ***!
+  \**************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "@-webkit-keyframes notyf-fadeinup{\n  0%{\n    opacity:0;\n    transform:translateY(25%)\n  }\n\n  to{\n    opacity:1;\n    transform:translateY(0)\n  }\n}\n\n@keyframes notyf-fadeinup{\n  0%{\n    opacity:0;\n    transform:translateY(25%)\n  }\n\n  to{\n    opacity:1;\n    transform:translateY(0)\n  }\n}\n\n@-webkit-keyframes notyf-fadeinleft{\n  0%{\n    opacity:0;\n    transform:translateX(25%)\n  }\n\n  to{\n    opacity:1;\n    transform:translateX(0)\n  }\n}\n\n@keyframes notyf-fadeinleft{\n  0%{\n    opacity:0;\n    transform:translateX(25%)\n  }\n\n  to{\n    opacity:1;\n    transform:translateX(0)\n  }\n}\n\n@-webkit-keyframes notyf-fadeoutright{\n  0%{\n    opacity:1;\n    transform:translateX(0)\n  }\n\n  to{\n    opacity:0;\n    transform:translateX(25%)\n  }\n}\n\n@keyframes notyf-fadeoutright{\n  0%{\n    opacity:1;\n    transform:translateX(0)\n  }\n\n  to{\n    opacity:0;\n    transform:translateX(25%)\n  }\n}\n\n@-webkit-keyframes notyf-fadeoutdown{\n  0%{\n    opacity:1;\n    transform:translateY(0)\n  }\n\n  to{\n    opacity:0;\n    transform:translateY(25%)\n  }\n}\n\n@keyframes notyf-fadeoutdown{\n  0%{\n    opacity:1;\n    transform:translateY(0)\n  }\n\n  to{\n    opacity:0;\n    transform:translateY(25%)\n  }\n}\n\n@-webkit-keyframes ripple{\n  0%{\n    transform:scale(0) translateY(-45%) translateX(13%)\n  }\n\n  to{\n    transform:scale(1) translateY(-45%) translateX(13%)\n  }\n}\n\n@keyframes ripple{\n  0%{\n    transform:scale(0) translateY(-45%) translateX(13%)\n  }\n\n  to{\n    transform:scale(1) translateY(-45%) translateX(13%)\n  }\n}\n\n.notyf{\n  position:fixed;\n  top:0;\n  left:0;\n  height:100%;\n  width:100%;\n  color:#fff;\n  z-index:9999;\n  display:flex;\n  flex-direction:column;\n  align-items:flex-end;\n  justify-content:flex-end;\n  pointer-events:none;\n  box-sizing:border-box;\n  padding:20px\n}\n\n.notyf__icon--error,.notyf__icon--success{\n  height:21px;\n  width:21px;\n  background:#fff;\n  border-radius:50%;\n  display:block;\n  margin:0 auto;\n  position:relative\n}\n\n.notyf__icon--error:after,.notyf__icon--error:before{\n  content:\"\";\n  background:currentColor;\n  display:block;\n  position:absolute;\n  width:3px;\n  border-radius:3px;\n  left:9px;\n  height:12px;\n  top:5px\n}\n\n.notyf__icon--error:after{\n  transform:rotate(-45deg)\n}\n\n.notyf__icon--error:before{\n  transform:rotate(45deg)\n}\n\n.notyf__icon--success:after,.notyf__icon--success:before{\n  content:\"\";\n  background:currentColor;\n  display:block;\n  position:absolute;\n  width:3px;\n  border-radius:3px\n}\n\n.notyf__icon--success:after{\n  height:6px;\n  transform:rotate(-45deg);\n  top:9px;\n  left:6px\n}\n\n.notyf__icon--success:before{\n  height:11px;\n  transform:rotate(45deg);\n  top:5px;\n  left:10px\n}\n\n.notyf__toast{\n  display:block;\n  overflow:hidden;\n  pointer-events:auto;\n  -webkit-animation:notyf-fadeinup .3s ease-in forwards;\n  animation:notyf-fadeinup .3s ease-in forwards;\n  box-shadow:0 3px 7px 0 rgba(0,0,0,.25);\n  position:relative;\n  padding:0 15px;\n  border-radius:2px;\n  max-width:300px;\n  transform:translateY(25%);\n  box-sizing:border-box;\n  flex-shrink:0\n}\n\n.notyf__toast--disappear{\n  transform:translateY(0);\n  -webkit-animation:notyf-fadeoutdown .3s forwards;\n  animation:notyf-fadeoutdown .3s forwards;\n  -webkit-animation-delay:.25s;\n  animation-delay:.25s\n}\n\n.notyf__toast--disappear .notyf__icon,.notyf__toast--disappear .notyf__message{\n  -webkit-animation:notyf-fadeoutdown .3s forwards;\n  animation:notyf-fadeoutdown .3s forwards;\n  opacity:1;\n  transform:translateY(0)\n}\n\n.notyf__toast--disappear .notyf__dismiss{\n  -webkit-animation:notyf-fadeoutright .3s forwards;\n  animation:notyf-fadeoutright .3s forwards;\n  opacity:1;\n  transform:translateX(0)\n}\n\n.notyf__toast--disappear .notyf__message{\n  -webkit-animation-delay:.05s;\n  animation-delay:.05s\n}\n\n.notyf__toast--upper{\n  margin-bottom:20px\n}\n\n.notyf__toast--lower{\n  margin-top:20px\n}\n\n.notyf__toast--dismissible .notyf__wrapper{\n  padding-right:30px\n}\n\n.notyf__ripple{\n  height:400px;\n  width:400px;\n  position:absolute;\n  transform-origin:bottom right;\n  right:0;\n  top:0;\n  border-radius:50%;\n  transform:scale(0) translateY(-51%) translateX(13%);\n  z-index:5;\n  -webkit-animation:ripple .4s ease-out forwards;\n  animation:ripple .4s ease-out forwards\n}\n\n.notyf__wrapper{\n  display:flex;\n  align-items:center;\n  padding-top:17px;\n  padding-bottom:17px;\n  padding-right:15px;\n  border-radius:3px;\n  position:relative;\n  z-index:10\n}\n\n.notyf__icon{\n  width:22px;\n  text-align:center;\n  font-size:1.3em;\n  opacity:0;\n  -webkit-animation:notyf-fadeinup .3s forwards;\n  animation:notyf-fadeinup .3s forwards;\n  -webkit-animation-delay:.3s;\n  animation-delay:.3s;\n  margin-right:13px\n}\n\n.notyf__dismiss{\n  position:absolute;\n  top:0;\n  right:0;\n  height:100%;\n  width:26px;\n  margin-right:-15px;\n  -webkit-animation:notyf-fadeinleft .3s forwards;\n  animation:notyf-fadeinleft .3s forwards;\n  -webkit-animation-delay:.35s;\n  animation-delay:.35s;\n  opacity:0\n}\n\n.notyf__dismiss-btn{\n  background-color:rgba(0,0,0,.25);\n  border:none;\n  cursor:pointer;\n  transition:opacity .2s ease,background-color .2s ease;\n  outline:none;\n  opacity:.35;\n  height:100%;\n  width:100%\n}\n\n.notyf__dismiss-btn:after,.notyf__dismiss-btn:before{\n  content:\"\";\n  background:#fff;\n  height:12px;\n  width:2px;\n  border-radius:3px;\n  position:absolute;\n  left:calc(50% - 1px);\n  top:calc(50% - 5px)\n}\n\n.notyf__dismiss-btn:after{\n  transform:rotate(-45deg)\n}\n\n.notyf__dismiss-btn:before{\n  transform:rotate(45deg)\n}\n\n.notyf__dismiss-btn:hover{\n  opacity:.7;\n  background-color:rgba(0,0,0,.15)\n}\n\n.notyf__dismiss-btn:active{\n  opacity:.8\n}\n\n.notyf__message{\n  vertical-align:middle;\n  position:relative;\n  opacity:0;\n  -webkit-animation:notyf-fadeinup .3s forwards;\n  animation:notyf-fadeinup .3s forwards;\n  -webkit-animation-delay:.25s;\n  animation-delay:.25s;\n  line-height:1.5em\n}\n\n@media only screen and (max-width:480px){\n  .notyf{\n    padding:0\n  }\n\n  .notyf__ripple{\n    height:600px;\n    width:600px;\n    -webkit-animation-duration:.5s;\n    animation-duration:.5s\n  }\n\n  .notyf__toast{\n    max-width:none;\n    border-radius:0;\n    box-shadow:0 -2px 7px 0 rgba(0,0,0,.13);\n    width:100%\n  }\n\n  .notyf__dismiss{\n    width:56px\n  }\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/lib/css-base.js":
+/*!*************************************************!*\
+  !*** ./node_modules/css-loader/lib/css-base.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function(useSourceMap) {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		return this.map(function (item) {
+			var content = cssWithMappingToString(item, useSourceMap);
+			if(item[2]) {
+				return "@media " + item[2] + "{" + content + "}";
+			} else {
+				return content;
+			}
+		}).join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
+function cssWithMappingToString(item, useSourceMap) {
+	var content = item[1] || '';
+	var cssMapping = item[3];
+	if (!cssMapping) {
+		return content;
+	}
+
+	if (useSourceMap && typeof btoa === 'function') {
+		var sourceMapping = toComment(cssMapping);
+		var sourceURLs = cssMapping.sources.map(function (source) {
+			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
+		});
+
+		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+	}
+
+	return [content].join('\n');
+}
+
+// Adapted from convert-source-map (MIT)
+function toComment(sourceMap) {
+	// eslint-disable-next-line no-undef
+	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+
+	return '/*# ' + data + ' */';
+}
 
 
 /***/ }),
@@ -20982,6 +22094,499 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/notyf/notyf.es.js":
+/*!****************************************!*\
+  !*** ./node_modules/notyf/notyf.es.js ***!
+  \****************************************/
+/*! exports provided: DEFAULT_OPTIONS, Notyf, NotyfArray, NotyfArrayEvent, NotyfEvent, NotyfNotification, NotyfView */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DEFAULT_OPTIONS", function() { return DEFAULT_OPTIONS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Notyf", function() { return Notyf; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotyfArray", function() { return NotyfArray; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotyfArrayEvent", function() { return NotyfArrayEvent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotyfEvent", function() { return NotyfEvent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotyfNotification", function() { return NotyfNotification; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotyfView", function() { return NotyfView; });
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
+var NotyfNotification = /** @class */ (function () {
+    function NotyfNotification(options) {
+        this.options = options;
+        this.listeners = {};
+    }
+    NotyfNotification.prototype.on = function (eventType, cb) {
+        var callbacks = this.listeners[eventType] || [];
+        this.listeners[eventType] = callbacks.concat([cb]);
+    };
+    NotyfNotification.prototype.triggerEvent = function (eventType, event) {
+        var _this = this;
+        var callbacks = this.listeners[eventType] || [];
+        callbacks.forEach(function (cb) { return cb({ target: _this, event: event }); });
+    };
+    return NotyfNotification;
+}());
+var NotyfArrayEvent;
+(function (NotyfArrayEvent) {
+    NotyfArrayEvent[NotyfArrayEvent["Add"] = 0] = "Add";
+    NotyfArrayEvent[NotyfArrayEvent["Remove"] = 1] = "Remove";
+})(NotyfArrayEvent || (NotyfArrayEvent = {}));
+var NotyfArray = /** @class */ (function () {
+    function NotyfArray() {
+        this.notifications = [];
+    }
+    NotyfArray.prototype.push = function (elem) {
+        this.notifications.push(elem);
+        this.updateFn(elem, NotyfArrayEvent.Add, this.notifications);
+    };
+    NotyfArray.prototype.splice = function (index, num) {
+        var elem = this.notifications.splice(index, num)[0];
+        this.updateFn(elem, NotyfArrayEvent.Remove, this.notifications);
+        return elem;
+    };
+    NotyfArray.prototype.indexOf = function (elem) {
+        return this.notifications.indexOf(elem);
+    };
+    NotyfArray.prototype.onUpdate = function (fn) {
+        this.updateFn = fn;
+    };
+    return NotyfArray;
+}());
+
+var NotyfEvent;
+(function (NotyfEvent) {
+    NotyfEvent["Dismiss"] = "dismiss";
+    NotyfEvent["Click"] = "click";
+})(NotyfEvent || (NotyfEvent = {}));
+var DEFAULT_OPTIONS = {
+    types: [
+        {
+            type: 'success',
+            className: 'notyf__toast--success',
+            backgroundColor: '#3dc763',
+            icon: {
+                className: 'notyf__icon--success',
+                tagName: 'i',
+            },
+        },
+        {
+            type: 'error',
+            className: 'notyf__toast--error',
+            backgroundColor: '#ed3d3d',
+            icon: {
+                className: 'notyf__icon--error',
+                tagName: 'i',
+            },
+        },
+    ],
+    duration: 2000,
+    ripple: true,
+    position: {
+        x: 'right',
+        y: 'bottom',
+    },
+    dismissible: false,
+};
+
+var NotyfView = /** @class */ (function () {
+    function NotyfView() {
+        this.notifications = [];
+        this.events = {};
+        this.X_POSITION_FLEX_MAP = {
+            left: 'flex-start',
+            center: 'center',
+            right: 'flex-end',
+        };
+        this.Y_POSITION_FLEX_MAP = {
+            top: 'flex-start',
+            center: 'center',
+            bottom: 'flex-end',
+        };
+        // Creates the main notifications container
+        var docFrag = document.createDocumentFragment();
+        var notyfContainer = this._createHTLMElement({ tagName: 'div', className: 'notyf' });
+        docFrag.appendChild(notyfContainer);
+        document.body.appendChild(docFrag);
+        this.container = notyfContainer;
+        // Identifies the main animation end event
+        this.animationEndEventName = this._getAnimationEndEventName();
+        this._createA11yContainer();
+    }
+    NotyfView.prototype.on = function (event, cb) {
+        var _a;
+        this.events = __assign(__assign({}, this.events), (_a = {}, _a[event] = cb, _a));
+    };
+    NotyfView.prototype.update = function (notification, type) {
+        if (type === NotyfArrayEvent.Add) {
+            this.addNotification(notification);
+        }
+        else if (type === NotyfArrayEvent.Remove) {
+            this.removeNotification(notification);
+        }
+    };
+    NotyfView.prototype.removeNotification = function (notification) {
+        var _this = this;
+        var renderedNotification = this._popRenderedNotification(notification);
+        var node;
+        if (!renderedNotification) {
+            return;
+        }
+        node = renderedNotification.node;
+        node.classList.add('notyf__toast--disappear');
+        var handleEvent;
+        node.addEventListener(this.animationEndEventName, (handleEvent = function (event) {
+            if (event.target === node) {
+                node.removeEventListener(_this.animationEndEventName, handleEvent);
+                _this.container.removeChild(node);
+            }
+        }));
+    };
+    NotyfView.prototype.addNotification = function (notification) {
+        var node = this._renderNotification(notification);
+        this.notifications.push({ notification: notification, node: node });
+        // For a11y purposes, we still want to announce that there's a notification in the screen
+        // even if it comes with no message.
+        this._announce(notification.options.message || 'Notification');
+    };
+    NotyfView.prototype._renderNotification = function (notification) {
+        var _a;
+        var card = this._buildNotificationCard(notification);
+        var className = notification.options.className;
+        if (className) {
+            (_a = card.classList).add.apply(_a, className.split(' '));
+        }
+        this.container.appendChild(card);
+        return card;
+    };
+    NotyfView.prototype._popRenderedNotification = function (notification) {
+        var idx = -1;
+        for (var i = 0; i < this.notifications.length && idx < 0; i++) {
+            if (this.notifications[i].notification === notification) {
+                idx = i;
+            }
+        }
+        if (idx !== -1) {
+            return this.notifications.splice(idx, 1)[0];
+        }
+        return;
+    };
+    NotyfView.prototype.getXPosition = function (options) {
+        var _a;
+        return ((_a = options === null || options === void 0 ? void 0 : options.position) === null || _a === void 0 ? void 0 : _a.x) || 'right';
+    };
+    NotyfView.prototype.getYPosition = function (options) {
+        var _a;
+        return ((_a = options === null || options === void 0 ? void 0 : options.position) === null || _a === void 0 ? void 0 : _a.y) || 'bottom';
+    };
+    NotyfView.prototype.adjustContainerAlignment = function (options) {
+        var align = this.X_POSITION_FLEX_MAP[this.getXPosition(options)];
+        var justify = this.Y_POSITION_FLEX_MAP[this.getYPosition(options)];
+        var style = this.container.style;
+        style.setProperty('justify-content', justify);
+        style.setProperty('align-items', align);
+    };
+    NotyfView.prototype._buildNotificationCard = function (notification) {
+        var _this = this;
+        var _a;
+        var options = notification.options;
+        var iconOpts = options.icon;
+        // Adjust container according to position (e.g. top-left, bottom-center, etc)
+        this.adjustContainerAlignment(options);
+        // Create elements
+        var notificationElem = this._createHTLMElement({ tagName: 'div', className: 'notyf__toast' });
+        var ripple = this._createHTLMElement({ tagName: 'div', className: 'notyf__ripple' });
+        var wrapper = this._createHTLMElement({ tagName: 'div', className: 'notyf__wrapper' });
+        var message = this._createHTLMElement({ tagName: 'div', className: 'notyf__message' });
+        message.innerHTML = options.message || '';
+        var color = options.background || options.backgroundColor;
+        // Build the icon and append it to the card
+        if (iconOpts && typeof iconOpts === 'object') {
+            var iconContainer = this._createHTLMElement({ tagName: 'div', className: 'notyf__icon' });
+            var icon = this._createHTLMElement({
+                tagName: iconOpts.tagName || 'i',
+                className: iconOpts.className,
+                text: iconOpts.text,
+            });
+            var iconColor = (_a = iconOpts.color) !== null && _a !== void 0 ? _a : color;
+            if (iconColor) {
+                icon.style.color = iconColor;
+            }
+            iconContainer.appendChild(icon);
+            wrapper.appendChild(iconContainer);
+        }
+        wrapper.appendChild(message);
+        notificationElem.appendChild(wrapper);
+        // Add ripple if applicable, else just paint the full toast
+        if (color) {
+            if (options.ripple) {
+                ripple.style.background = color;
+                notificationElem.appendChild(ripple);
+            }
+            else {
+                notificationElem.style.background = color;
+            }
+        }
+        // Add dismiss button
+        if (options.dismissible) {
+            var dismissWrapper = this._createHTLMElement({ tagName: 'div', className: 'notyf__dismiss' });
+            var dismissButton = this._createHTLMElement({
+                tagName: 'button',
+                className: 'notyf__dismiss-btn',
+            });
+            dismissWrapper.appendChild(dismissButton);
+            wrapper.appendChild(dismissWrapper);
+            notificationElem.classList.add("notyf__toast--dismissible");
+            dismissButton.addEventListener('click', function (event) {
+                var _a, _b;
+                (_b = (_a = _this.events)[NotyfEvent.Dismiss]) === null || _b === void 0 ? void 0 : _b.call(_a, { target: notification, event: event });
+                event.stopPropagation();
+            });
+        }
+        notificationElem.addEventListener('click', function (event) { var _a, _b; return (_b = (_a = _this.events)[NotyfEvent.Click]) === null || _b === void 0 ? void 0 : _b.call(_a, { target: notification, event: event }); });
+        // Adjust margins depending on whether its an upper or lower notification
+        var className = this.getYPosition(options) === 'top' ? 'upper' : 'lower';
+        notificationElem.classList.add("notyf__toast--" + className);
+        return notificationElem;
+    };
+    NotyfView.prototype._createHTLMElement = function (_a) {
+        var tagName = _a.tagName, className = _a.className, text = _a.text;
+        var elem = document.createElement(tagName);
+        if (className) {
+            elem.className = className;
+        }
+        elem.textContent = text || null;
+        return elem;
+    };
+    /**
+     * Creates an invisible container which will announce the notyfs to
+     * screen readers
+     */
+    NotyfView.prototype._createA11yContainer = function () {
+        var a11yContainer = this._createHTLMElement({ tagName: 'div', className: 'notyf-announcer' });
+        a11yContainer.setAttribute('aria-atomic', 'true');
+        a11yContainer.setAttribute('aria-live', 'polite');
+        // Set the a11y container to be visible hidden. Can't use display: none as
+        // screen readers won't read it.
+        a11yContainer.style.border = '0';
+        a11yContainer.style.clip = 'rect(0 0 0 0)';
+        a11yContainer.style.height = '1px';
+        a11yContainer.style.margin = '-1px';
+        a11yContainer.style.overflow = 'hidden';
+        a11yContainer.style.padding = '0';
+        a11yContainer.style.position = 'absolute';
+        a11yContainer.style.width = '1px';
+        a11yContainer.style.outline = '0';
+        document.body.appendChild(a11yContainer);
+        this.a11yContainer = a11yContainer;
+    };
+    /**
+     * Announces a message to screenreaders.
+     */
+    NotyfView.prototype._announce = function (message) {
+        var _this = this;
+        this.a11yContainer.textContent = '';
+        // This 100ms timeout is necessary for some browser + screen-reader combinations:
+        // - Both JAWS and NVDA over IE11 will not announce anything without a non-zero timeout.
+        // - With Chrome and IE11 with NVDA or JAWS, a repeated (identical) message won't be read a
+        //   second time without clearing and then using a non-zero delay.
+        // (using JAWS 17 at time of this writing).
+        // https://github.com/angular/material2/blob/master/src/cdk/a11y/live-announcer/live-announcer.ts
+        setTimeout(function () {
+            _this.a11yContainer.textContent = message;
+        }, 100);
+    };
+    /**
+     * Determine which animationend event is supported
+     */
+    NotyfView.prototype._getAnimationEndEventName = function () {
+        var el = document.createElement('_fake');
+        var transitions = {
+            MozTransition: 'animationend',
+            OTransition: 'oAnimationEnd',
+            WebkitTransition: 'webkitAnimationEnd',
+            transition: 'animationend',
+        };
+        var t;
+        for (t in transitions) {
+            if (el.style[t] !== undefined) {
+                return transitions[t];
+            }
+        }
+        // No supported animation end event. Using "animationend" as a fallback
+        return 'animationend';
+    };
+    return NotyfView;
+}());
+
+/**
+ * Main controller class. Defines the main Notyf API.
+ */
+var Notyf = /** @class */ (function () {
+    function Notyf(opts) {
+        var _this = this;
+        this.dismiss = this._removeNotification;
+        this.notifications = new NotyfArray();
+        this.view = new NotyfView();
+        var types = this.registerTypes(opts);
+        this.options = __assign(__assign({}, DEFAULT_OPTIONS), opts);
+        this.options.types = types;
+        this.notifications.onUpdate(function (elem, type) { return _this.view.update(elem, type); });
+        this.view.on(NotyfEvent.Dismiss, function (_a) {
+            var target = _a.target, event = _a.event;
+            _this._removeNotification(target);
+            // tslint:disable-next-line: no-string-literal
+            target['triggerEvent'](NotyfEvent.Dismiss, event);
+        });
+        // tslint:disable-next-line: no-string-literal
+        this.view.on(NotyfEvent.Click, function (_a) {
+            var target = _a.target, event = _a.event;
+            return target['triggerEvent'](NotyfEvent.Click, event);
+        });
+    }
+    Notyf.prototype.error = function (payload) {
+        var options = this.normalizeOptions('error', payload);
+        return this.open(options);
+    };
+    Notyf.prototype.success = function (payload) {
+        var options = this.normalizeOptions('success', payload);
+        return this.open(options);
+    };
+    Notyf.prototype.open = function (options) {
+        var defaultOpts = this.options.types.find(function (_a) {
+            var type = _a.type;
+            return type === options.type;
+        }) || {};
+        var config = __assign(__assign({}, defaultOpts), options);
+        this.assignProps(['ripple', 'position', 'dismissible'], config);
+        var notification = new NotyfNotification(config);
+        this._pushNotification(notification);
+        return notification;
+    };
+    Notyf.prototype.dismissAll = function () {
+        while (this.notifications.splice(0, 1))
+            ;
+    };
+    /**
+     * Assigns properties to a config object based on two rules:
+     * 1. If the config object already sets that prop, leave it as so
+     * 2. Otherwise, use the default prop from the global options
+     *
+     * It's intended to build the final config object to open a notification. e.g. if
+     * 'dismissible' is not set, then use the value from the global config.
+     *
+     * @param props - properties to be assigned to the config object
+     * @param config - object whose properties need to be set
+     */
+    Notyf.prototype.assignProps = function (props, config) {
+        var _this = this;
+        props.forEach(function (prop) {
+            // intentional double equality to check for both null and undefined
+            config[prop] = config[prop] == null ? _this.options[prop] : config[prop];
+        });
+    };
+    Notyf.prototype._pushNotification = function (notification) {
+        var _this = this;
+        this.notifications.push(notification);
+        var duration = notification.options.duration !== undefined ? notification.options.duration : this.options.duration;
+        if (duration) {
+            setTimeout(function () { return _this._removeNotification(notification); }, duration);
+        }
+    };
+    Notyf.prototype._removeNotification = function (notification) {
+        var index = this.notifications.indexOf(notification);
+        if (index !== -1) {
+            this.notifications.splice(index, 1);
+        }
+    };
+    Notyf.prototype.normalizeOptions = function (type, payload) {
+        var options = { type: type };
+        if (typeof payload === 'string') {
+            options.message = payload;
+        }
+        else if (typeof payload === 'object') {
+            options = __assign(__assign({}, options), payload);
+        }
+        return options;
+    };
+    Notyf.prototype.registerTypes = function (opts) {
+        var incomingTypes = ((opts && opts.types) || []).slice();
+        var finalDefaultTypes = DEFAULT_OPTIONS.types.map(function (defaultType) {
+            // find if there's a default type within the user input's types, if so, it means the user
+            // wants to change some of the default settings
+            var userTypeIdx = -1;
+            incomingTypes.forEach(function (t, idx) {
+                if (t.type === defaultType.type)
+                    userTypeIdx = idx;
+            });
+            var userType = userTypeIdx !== -1 ? incomingTypes.splice(userTypeIdx, 1)[0] : {};
+            return __assign(__assign({}, defaultType), userType);
+        });
+        return finalDefaultTypes.concat(incomingTypes);
+    };
+    return Notyf;
+}());
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/notyf/notyf.min.css":
+/*!******************************************!*\
+  !*** ./node_modules/notyf/notyf.min.css ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../css-loader??ref--6-1!../postcss-loader/src??ref--6-2!./notyf.min.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/notyf/notyf.min.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/process/browser.js":
 /*!*****************************************!*\
   !*** ./node_modules/process/browser.js ***!
@@ -21177,6 +22782,515 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/lib/addStyles.js":
+/*!****************************************************!*\
+  !*** ./node_modules/style-loader/lib/addStyles.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+
+var stylesInDom = {};
+
+var	memoize = function (fn) {
+	var memo;
+
+	return function () {
+		if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+		return memo;
+	};
+};
+
+var isOldIE = memoize(function () {
+	// Test for IE <= 9 as proposed by Browserhacks
+	// @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
+	// Tests for existence of standard globals is to allow style-loader
+	// to operate correctly into non-standard environments
+	// @see https://github.com/webpack-contrib/style-loader/issues/177
+	return window && document && document.all && !window.atob;
+});
+
+var getTarget = function (target, parent) {
+  if (parent){
+    return parent.querySelector(target);
+  }
+  return document.querySelector(target);
+};
+
+var getElement = (function (fn) {
+	var memo = {};
+
+	return function(target, parent) {
+                // If passing function in options, then use it for resolve "head" element.
+                // Useful for Shadow Root style i.e
+                // {
+                //   insertInto: function () { return document.querySelector("#foo").shadowRoot }
+                // }
+                if (typeof target === 'function') {
+                        return target();
+                }
+                if (typeof memo[target] === "undefined") {
+			var styleTarget = getTarget.call(this, target, parent);
+			// Special case to return head of iframe instead of iframe itself
+			if (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {
+				try {
+					// This will throw an exception if access to iframe is blocked
+					// due to cross-origin restrictions
+					styleTarget = styleTarget.contentDocument.head;
+				} catch(e) {
+					styleTarget = null;
+				}
+			}
+			memo[target] = styleTarget;
+		}
+		return memo[target]
+	};
+})();
+
+var singleton = null;
+var	singletonCounter = 0;
+var	stylesInsertedAtTop = [];
+
+var	fixUrls = __webpack_require__(/*! ./urls */ "./node_modules/style-loader/lib/urls.js");
+
+module.exports = function(list, options) {
+	if (typeof DEBUG !== "undefined" && DEBUG) {
+		if (typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+	}
+
+	options = options || {};
+
+	options.attrs = typeof options.attrs === "object" ? options.attrs : {};
+
+	// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+	// tags it will allow on a page
+	if (!options.singleton && typeof options.singleton !== "boolean") options.singleton = isOldIE();
+
+	// By default, add <style> tags to the <head> element
+        if (!options.insertInto) options.insertInto = "head";
+
+	// By default, add <style> tags to the bottom of the target
+	if (!options.insertAt) options.insertAt = "bottom";
+
+	var styles = listToStyles(list, options);
+
+	addStylesToDom(styles, options);
+
+	return function update (newList) {
+		var mayRemove = [];
+
+		for (var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+
+			domStyle.refs--;
+			mayRemove.push(domStyle);
+		}
+
+		if(newList) {
+			var newStyles = listToStyles(newList, options);
+			addStylesToDom(newStyles, options);
+		}
+
+		for (var i = 0; i < mayRemove.length; i++) {
+			var domStyle = mayRemove[i];
+
+			if(domStyle.refs === 0) {
+				for (var j = 0; j < domStyle.parts.length; j++) domStyle.parts[j]();
+
+				delete stylesInDom[domStyle.id];
+			}
+		}
+	};
+};
+
+function addStylesToDom (styles, options) {
+	for (var i = 0; i < styles.length; i++) {
+		var item = styles[i];
+		var domStyle = stylesInDom[item.id];
+
+		if(domStyle) {
+			domStyle.refs++;
+
+			for(var j = 0; j < domStyle.parts.length; j++) {
+				domStyle.parts[j](item.parts[j]);
+			}
+
+			for(; j < item.parts.length; j++) {
+				domStyle.parts.push(addStyle(item.parts[j], options));
+			}
+		} else {
+			var parts = [];
+
+			for(var j = 0; j < item.parts.length; j++) {
+				parts.push(addStyle(item.parts[j], options));
+			}
+
+			stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+		}
+	}
+}
+
+function listToStyles (list, options) {
+	var styles = [];
+	var newStyles = {};
+
+	for (var i = 0; i < list.length; i++) {
+		var item = list[i];
+		var id = options.base ? item[0] + options.base : item[0];
+		var css = item[1];
+		var media = item[2];
+		var sourceMap = item[3];
+		var part = {css: css, media: media, sourceMap: sourceMap};
+
+		if(!newStyles[id]) styles.push(newStyles[id] = {id: id, parts: [part]});
+		else newStyles[id].parts.push(part);
+	}
+
+	return styles;
+}
+
+function insertStyleElement (options, style) {
+	var target = getElement(options.insertInto)
+
+	if (!target) {
+		throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");
+	}
+
+	var lastStyleElementInsertedAtTop = stylesInsertedAtTop[stylesInsertedAtTop.length - 1];
+
+	if (options.insertAt === "top") {
+		if (!lastStyleElementInsertedAtTop) {
+			target.insertBefore(style, target.firstChild);
+		} else if (lastStyleElementInsertedAtTop.nextSibling) {
+			target.insertBefore(style, lastStyleElementInsertedAtTop.nextSibling);
+		} else {
+			target.appendChild(style);
+		}
+		stylesInsertedAtTop.push(style);
+	} else if (options.insertAt === "bottom") {
+		target.appendChild(style);
+	} else if (typeof options.insertAt === "object" && options.insertAt.before) {
+		var nextSibling = getElement(options.insertAt.before, target);
+		target.insertBefore(style, nextSibling);
+	} else {
+		throw new Error("[Style Loader]\n\n Invalid value for parameter 'insertAt' ('options.insertAt') found.\n Must be 'top', 'bottom', or Object.\n (https://github.com/webpack-contrib/style-loader#insertat)\n");
+	}
+}
+
+function removeStyleElement (style) {
+	if (style.parentNode === null) return false;
+	style.parentNode.removeChild(style);
+
+	var idx = stylesInsertedAtTop.indexOf(style);
+	if(idx >= 0) {
+		stylesInsertedAtTop.splice(idx, 1);
+	}
+}
+
+function createStyleElement (options) {
+	var style = document.createElement("style");
+
+	if(options.attrs.type === undefined) {
+		options.attrs.type = "text/css";
+	}
+
+	if(options.attrs.nonce === undefined) {
+		var nonce = getNonce();
+		if (nonce) {
+			options.attrs.nonce = nonce;
+		}
+	}
+
+	addAttrs(style, options.attrs);
+	insertStyleElement(options, style);
+
+	return style;
+}
+
+function createLinkElement (options) {
+	var link = document.createElement("link");
+
+	if(options.attrs.type === undefined) {
+		options.attrs.type = "text/css";
+	}
+	options.attrs.rel = "stylesheet";
+
+	addAttrs(link, options.attrs);
+	insertStyleElement(options, link);
+
+	return link;
+}
+
+function addAttrs (el, attrs) {
+	Object.keys(attrs).forEach(function (key) {
+		el.setAttribute(key, attrs[key]);
+	});
+}
+
+function getNonce() {
+	if (false) {}
+
+	return __webpack_require__.nc;
+}
+
+function addStyle (obj, options) {
+	var style, update, remove, result;
+
+	// If a transform function was defined, run it on the css
+	if (options.transform && obj.css) {
+	    result = typeof options.transform === 'function'
+		 ? options.transform(obj.css) 
+		 : options.transform.default(obj.css);
+
+	    if (result) {
+	    	// If transform returns a value, use that instead of the original css.
+	    	// This allows running runtime transformations on the css.
+	    	obj.css = result;
+	    } else {
+	    	// If the transform function returns a falsy value, don't add this css.
+	    	// This allows conditional loading of css
+	    	return function() {
+	    		// noop
+	    	};
+	    }
+	}
+
+	if (options.singleton) {
+		var styleIndex = singletonCounter++;
+
+		style = singleton || (singleton = createStyleElement(options));
+
+		update = applyToSingletonTag.bind(null, style, styleIndex, false);
+		remove = applyToSingletonTag.bind(null, style, styleIndex, true);
+
+	} else if (
+		obj.sourceMap &&
+		typeof URL === "function" &&
+		typeof URL.createObjectURL === "function" &&
+		typeof URL.revokeObjectURL === "function" &&
+		typeof Blob === "function" &&
+		typeof btoa === "function"
+	) {
+		style = createLinkElement(options);
+		update = updateLink.bind(null, style, options);
+		remove = function () {
+			removeStyleElement(style);
+
+			if(style.href) URL.revokeObjectURL(style.href);
+		};
+	} else {
+		style = createStyleElement(options);
+		update = applyToTag.bind(null, style);
+		remove = function () {
+			removeStyleElement(style);
+		};
+	}
+
+	update(obj);
+
+	return function updateStyle (newObj) {
+		if (newObj) {
+			if (
+				newObj.css === obj.css &&
+				newObj.media === obj.media &&
+				newObj.sourceMap === obj.sourceMap
+			) {
+				return;
+			}
+
+			update(obj = newObj);
+		} else {
+			remove();
+		}
+	};
+}
+
+var replaceText = (function () {
+	var textStore = [];
+
+	return function (index, replacement) {
+		textStore[index] = replacement;
+
+		return textStore.filter(Boolean).join('\n');
+	};
+})();
+
+function applyToSingletonTag (style, index, remove, obj) {
+	var css = remove ? "" : obj.css;
+
+	if (style.styleSheet) {
+		style.styleSheet.cssText = replaceText(index, css);
+	} else {
+		var cssNode = document.createTextNode(css);
+		var childNodes = style.childNodes;
+
+		if (childNodes[index]) style.removeChild(childNodes[index]);
+
+		if (childNodes.length) {
+			style.insertBefore(cssNode, childNodes[index]);
+		} else {
+			style.appendChild(cssNode);
+		}
+	}
+}
+
+function applyToTag (style, obj) {
+	var css = obj.css;
+	var media = obj.media;
+
+	if(media) {
+		style.setAttribute("media", media)
+	}
+
+	if(style.styleSheet) {
+		style.styleSheet.cssText = css;
+	} else {
+		while(style.firstChild) {
+			style.removeChild(style.firstChild);
+		}
+
+		style.appendChild(document.createTextNode(css));
+	}
+}
+
+function updateLink (link, options, obj) {
+	var css = obj.css;
+	var sourceMap = obj.sourceMap;
+
+	/*
+		If convertToAbsoluteUrls isn't defined, but sourcemaps are enabled
+		and there is no publicPath defined then lets turn convertToAbsoluteUrls
+		on by default.  Otherwise default to the convertToAbsoluteUrls option
+		directly
+	*/
+	var autoFixUrls = options.convertToAbsoluteUrls === undefined && sourceMap;
+
+	if (options.convertToAbsoluteUrls || autoFixUrls) {
+		css = fixUrls(css);
+	}
+
+	if (sourceMap) {
+		// http://stackoverflow.com/a/26603875
+		css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+	}
+
+	var blob = new Blob([css], { type: "text/css" });
+
+	var oldSrc = link.href;
+
+	link.href = URL.createObjectURL(blob);
+
+	if(oldSrc) URL.revokeObjectURL(oldSrc);
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/lib/urls.js":
+/*!***********************************************!*\
+  !*** ./node_modules/style-loader/lib/urls.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+/**
+ * When source maps are enabled, `style-loader` uses a link element with a data-uri to
+ * embed the css on the page. This breaks all relative urls because now they are relative to a
+ * bundle instead of the current page.
+ *
+ * One solution is to only use full urls, but that may be impossible.
+ *
+ * Instead, this function "fixes" the relative urls to be absolute according to the current page location.
+ *
+ * A rudimentary test suite is located at `test/fixUrls.js` and can be run via the `npm test` command.
+ *
+ */
+
+module.exports = function (css) {
+  // get current location
+  var location = typeof window !== "undefined" && window.location;
+
+  if (!location) {
+    throw new Error("fixUrls requires window.location");
+  }
+
+	// blank or null?
+	if (!css || typeof css !== "string") {
+	  return css;
+  }
+
+  var baseUrl = location.protocol + "//" + location.host;
+  var currentDir = baseUrl + location.pathname.replace(/\/[^\/]*$/, "/");
+
+	// convert each url(...)
+	/*
+	This regular expression is just a way to recursively match brackets within
+	a string.
+
+	 /url\s*\(  = Match on the word "url" with any whitespace after it and then a parens
+	   (  = Start a capturing group
+	     (?:  = Start a non-capturing group
+	         [^)(]  = Match anything that isn't a parentheses
+	         |  = OR
+	         \(  = Match a start parentheses
+	             (?:  = Start another non-capturing groups
+	                 [^)(]+  = Match anything that isn't a parentheses
+	                 |  = OR
+	                 \(  = Match a start parentheses
+	                     [^)(]*  = Match anything that isn't a parentheses
+	                 \)  = Match a end parentheses
+	             )  = End Group
+              *\) = Match anything and then a close parens
+          )  = Close non-capturing group
+          *  = Match anything
+       )  = Close capturing group
+	 \)  = Match a close parens
+
+	 /gi  = Get all matches, not the first.  Be case insensitive.
+	 */
+	var fixedCss = css.replace(/url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi, function(fullMatch, origUrl) {
+		// strip quotes (if they exist)
+		var unquotedOrigUrl = origUrl
+			.trim()
+			.replace(/^"(.*)"$/, function(o, $1){ return $1; })
+			.replace(/^'(.*)'$/, function(o, $1){ return $1; });
+
+		// already a full url? no change
+		if (/^(#|data:|http:\/\/|https:\/\/|file:\/\/\/|\s*$)/i.test(unquotedOrigUrl)) {
+		  return fullMatch;
+		}
+
+		// convert the url to a full url
+		var newUrl;
+
+		if (unquotedOrigUrl.indexOf("//") === 0) {
+		  	//TODO: should we add protocol?
+			newUrl = unquotedOrigUrl;
+		} else if (unquotedOrigUrl.indexOf("/") === 0) {
+			// path should be relative to the base url
+			newUrl = baseUrl + unquotedOrigUrl; // already starts with '/'
+		} else {
+			// path should be relative to current directory
+			newUrl = currentDir + unquotedOrigUrl.replace(/^\.\//, ""); // Strip leading './'
+		}
+
+		// send back the fixed url(...)
+		return "url(" + JSON.stringify(newUrl) + ")";
+	});
+
+	// send back the fixed css
+	return fixedCss;
+};
+
+
+/***/ }),
+
 /***/ "./node_modules/webpack/buildin/global.js":
 /*!***********************************!*\
   !*** (webpack)/buildin/global.js ***!
@@ -21269,9 +23383,14 @@ __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js");
 /*!***********************************!*\
   !*** ./resources/js/bootstrap.js ***!
   \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var notyf__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! notyf */ "./node_modules/notyf/notyf.es.js");
+/* harmony import */ var notyf_notyf_min_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! notyf/notyf.min.css */ "./node_modules/notyf/notyf.min.css");
+/* harmony import */ var notyf_notyf_min_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(notyf_notyf_min_css__WEBPACK_IMPORTED_MODULE_1__);
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -21281,6 +23400,11 @@ window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.ClipboardJS = __webpack_require__(/*! Clipboard */ "./node_modules/Clipboard/dist/clipboard.js");
+
+window.Notyf = notyf__WEBPACK_IMPORTED_MODULE_0__["Notyf"];
+ // for React, Vue and Svelte
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting

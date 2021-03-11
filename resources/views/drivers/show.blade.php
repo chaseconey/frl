@@ -1,10 +1,18 @@
 <x-app-layout>
 
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ $driver->name }}
-            <span class="text-lg text-gray-600">#{{ $driver->f1Number->racing_number }}</span>
-        </h2>
+        <div class="flex justify-between">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                {{ $driver->name }}
+                <span class="text-lg text-gray-600">#{{ $driver->f1Number->racing_number }}</span>
+            </h2>
+            <button
+                class="friend-code ring-0 focus:outline-none focus:ring-0"
+                data-clipboard-text="{{ $driver->steam_friend_code }}"
+            >
+                <i class="fab fa-steam" title="Steam Friend Code"></i> <span class="text-gray-600">{{ $driver->steam_friend_code }}</span>
+            </button>
+        </div>
     </x-slot>
 
     <div class="py-12">
@@ -93,6 +101,12 @@
     <x-slot name="scripts">
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
         <script>
+            let clipboard = new ClipboardJS('.friend-code');
+            const notyf = new Notyf();
+            clipboard.on('success', function(e) {
+                notyf.success('Copied to clipboard');
+            });
+
             const positionDeltaChart = document.getElementById('positionDelta')
             const positionChange = @json($positions->map(fn ($p) => $p->grid_position - $p->position));
             let labels = @json($positions->map->country);

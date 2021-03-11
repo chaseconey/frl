@@ -23,7 +23,9 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "@tailwindcss/typography": "^0.3.1"
+        "@tailwindcss/typography": "^0.3.1",
+        "clipboard": "^2.0.8",
+        "notyf": "^3.9.0"
     },
     "name": "frl"
 }
