@@ -10,7 +10,7 @@ window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-window.ClipboardJS = require('Clipboard');
+window.ClipboardJS = require('clipboard');
 
 import { Notyf } from 'notyf';
 window.Notyf = Notyf;
