@@ -117,11 +117,6 @@ class Driver extends Resource
      */
     public function actions(Request $request)
     {
-        return [
-            (new Actions\ApproveDriver)->canSee(function () {
-                return $this->resource->approved_at === null;
-            })
-                ->showOnTableRow()
-        ];
+        return [];
     }
 }

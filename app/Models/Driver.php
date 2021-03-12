@@ -20,15 +20,6 @@ class Driver extends Model
         'steam_friend_code'
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'approved_at' => 'datetime',
-    ];
-
     const TYPES = ['FULL_TIME' => 'Full Time', 'RESERVE' => 'Reserve', 'RETIRED' => 'Retired', 'BANNED' => 'Banned'];
 
     public function user()
