@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Enums\DriverEquipment;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
@@ -64,6 +65,10 @@ class Driver extends Resource
             BelongsTo::make('User')->sortable()->nullable(),
             Select::make('Type')
                 ->options(\App\Models\Driver::TYPES)
+                ->displayUsingLabels()
+                ->sortable(),
+            Select::make('Equipment')
+                ->options(DriverEquipment::asSelectArray())
                 ->displayUsingLabels()
                 ->sortable(),
             BelongsTo::make('Division')->sortable(),
