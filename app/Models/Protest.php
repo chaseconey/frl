@@ -5,6 +5,8 @@ namespace App\Models;
 use App\Notifications\ProtestReviewComplete;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Contracts\Activity;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * App\Models\Protest
@@ -40,7 +42,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Protest extends Model
 {
-    use HasFactory;
+    use HasFactory, LogsActivity;
 
     protected $fillable = [
         "driver_id",
@@ -50,6 +52,13 @@ class Protest extends Model
         "description",
         "rules_breached"
     ];
+
+    protected static $recordEvents = ['created'];
+
+    public function tapActivity(Activity $activity, string $eventName)
+    {
+        $activity->description = "New protest filed by :causer.name";
+    }
 
     /**
      * The "booted" method of the model.

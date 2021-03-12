@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Race;
 use Illuminate\Http\Request;
+use Spatie\Activitylog\Models\Activity;
 
 class DashboardController extends Controller
 {
@@ -26,8 +27,11 @@ class DashboardController extends Controller
             })
             ->get();
 
+        $feed = Activity::latest()->take(10)->get();
+
         return view('dashboard.index')
             ->withMyRaces($myRaces)
-            ->withLatestRaces($latestRaces);
+            ->withLatestRaces($latestRaces)
+            ->withFeed($feed);
     }
 }

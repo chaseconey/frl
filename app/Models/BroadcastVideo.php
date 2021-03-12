@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Contracts\Activity;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * App\Models\BroadcastVideo
@@ -28,7 +30,17 @@ use Illuminate\Database\Eloquent\Model;
  */
 class BroadcastVideo extends Model
 {
-    use HasFactory;
+    use HasFactory, LogsActivity;
+
+    protected static $recordEvents = ['created'];
+
+    public function tapActivity(Activity $activity, string $eventName)
+    {
+        $track = $this->race->track->name;
+        $division = $this->race->division->name;
+
+        $activity->description = "Broadcast uploaded for {$division} {$track}";
+    }
 
     public function race()
     {

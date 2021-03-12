@@ -93,6 +93,14 @@ class RaceQualiResultsController extends Controller
             }
         });
 
+        activity()
+            ->performedOn($race)
+            ->withProperties([
+                'division' => $race->division->name,
+                'track' => $race->track->name,
+            ])
+            ->log('Quali results uploaded for :properties.division :properties.track');
+
         return redirect()->back();
     }
 

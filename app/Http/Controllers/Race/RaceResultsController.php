@@ -88,6 +88,14 @@ class RaceResultsController extends Controller
             }
         });
 
+        activity()
+            ->performedOn($race)
+            ->withProperties([
+                'division' => $race->division->name,
+                'track' => $race->track->name,
+            ])
+            ->log('Race results uploaded for :properties.division :properties.track');
+
         return redirect()->back();
     }
 

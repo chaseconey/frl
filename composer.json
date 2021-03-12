@@ -24,6 +24,7 @@
         "laravel/tinker": "^2.5",
         "league/flysystem-aws-s3-v3": "~1.0",
         "skydiver/nova-update-card": "^1.5",
+        "spatie/laravel-activitylog": "^3.17",
         "spatie/laravel-backup": "^6.14",
         "spatie/laravel-permission": "^3.18",
         "thomaswelton/laravel-gravatar": "^1.3",

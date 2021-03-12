@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Contracts\Activity;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * App\Models\DriverVideo
@@ -29,9 +31,18 @@ use Illuminate\Database\Eloquent\Model;
  */
 class DriverVideo extends Model
 {
-    use HasFactory;
+    use HasFactory, LogsActivity;
 
     protected $fillable = ['driver_id', 'race_id', 'video_url'];
+
+    protected static $recordEvents = ['created'];
+
+    public function tapActivity(Activity $activity, string $eventName)
+    {
+        $track = $this->race->track->name;
+
+        $activity->description = "New driver pov uploaded for {$track}";
+    }
 
     public function race()
     {
