@@ -22,8 +22,11 @@ require __DIR__.'/auth.php';
 Route::group(['middleware' => 'auth'], function () {
     Route::get('dashboard', '\App\Http\Controllers\DashboardController@index')->name('dashboard');
 
+    Route::put('drivers/{driver}/toggle-claim', '\App\Http\Controllers\DriverController@toggleClaim')
+        ->name('drivers.toggle-claim');
+
     Route::resource('signup', \App\Http\Controllers\SignupController::class)->only('index', 'create', 'store');
-    Route::resource('drivers', \App\Http\Controllers\DriverController::class)->only(['update', 'show']);
+    Route::resource('drivers', \App\Http\Controllers\DriverController::class)->only(['edit', 'update', 'show']);
     Route::resource('driver-videos', \App\Http\Controllers\DriverVideoController::class)->only(['store']);
     Route::get('races/{race}/broadcast', '\App\Http\Controllers\RaceController@broadcast')->name('races.broadcast');
     Route::get('races/{race}/protests', '\App\Http\Controllers\Race\ProtestsController@index')->name('races.protests');

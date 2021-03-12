@@ -6,6 +6,7 @@ use App\Models\Driver;
 use App\Models\RaceQualiResult;
 use App\Models\RaceResult;
 use Illuminate\Http\Request;
+use App\Http\Requests\DriverUpdateRequest;
 
 class DriverController extends Controller
 {
@@ -44,6 +45,21 @@ class DriverController extends Controller
             ->withDriver($driver);
     }
 
+    public function edit(Driver $driver)
+    {
+        return view('drivers.edit')
+            ->withDriver($driver);
+    }
+
+    public function update(DriverUpdateRequest $request, Driver $driver)
+    {
+        $driver->update($request->only('equipment'));
+
+        $request->session()->flash('notice', 'Driver has been updated.');
+
+        return redirect()->back();
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -51,7 +67,7 @@ class DriverController extends Controller
      * @param  \App\Models\Driver  $driver
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Driver $driver)
+    public function toggleClaim(Request $request, Driver $driver)
     {
         // Toggle user of driver
         if ($driver->user_id) {

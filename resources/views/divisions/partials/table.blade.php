@@ -77,7 +77,7 @@
                                         <div class="py-1 z-10" role="menu" aria-orientation="vertical"
                                              aria-labelledby="options-menu">
                                             @if(auth()->user()->hasDriver($driver->id))
-                                                <form method="POST" action="{{ route('drivers.update', $driver) }}">
+                                                <form method="POST" action="{{ route('drivers.toggle-claim', $driver) }}">
                                                     @method('PUT')
                                                     @csrf
                                                     <button type="submit"
@@ -87,7 +87,7 @@
                                                     </button>
                                                 </form>
                                             @elseif(is_null($driver->user_id) && !auth()->user()->hasDriverInDivision($driver->division_id))
-                                                <form method="POST" action="{{ route('drivers.update', $driver) }}">
+                                                <form method="POST" action="{{ route('drivers.toggle-claim', $driver) }}">
                                                     @method('PUT')
                                                     @csrf
                                                     <button type="submit"
