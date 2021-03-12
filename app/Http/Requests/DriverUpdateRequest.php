@@ -26,7 +26,8 @@ class DriverUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'equipment' => 'required'
+            'equipment' => 'required',
+            'steam_friend_code' => 'required|numeric',
         ];
     }
 }

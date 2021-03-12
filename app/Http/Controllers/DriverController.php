@@ -53,7 +53,7 @@ class DriverController extends Controller
 
     public function update(DriverUpdateRequest $request, Driver $driver)
     {
-        $driver->update($request->only('equipment'));
+        $driver->update($request->only('equipment', 'steam_friend_code'));
 
         $request->session()->flash('notice', 'Driver has been updated.');
 
