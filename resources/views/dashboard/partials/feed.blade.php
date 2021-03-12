@@ -5,7 +5,7 @@
         </h3>
     </div>
     <ul class="divide-y divide-gray-200">
-        @foreach($feed as $event)
+        @forelse($feed as $event)
             <li class="py-4">
                 <div class="flex space-x-3">
                     <x-user-avatar :user="$event->causer" />
@@ -18,6 +18,12 @@
                     </div>
                 </div>
             </li>
-        @endforeach
+        @empty
+
+            <li class="py-4">
+                No recent events
+            </li>
+
+        @endforelse
     </ul>
 </div>
