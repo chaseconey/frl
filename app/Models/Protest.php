@@ -6,6 +6,38 @@ use App\Notifications\ProtestReviewComplete;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Protest
+ *
+ * @property int $id
+ * @property int $race_id
+ * @property int $driver_id
+ * @property int $protested_driver_id
+ * @property string $video_url
+ * @property string $rules_breached
+ * @property string $description
+ * @property string|null $stewards_decision
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Driver $driver
+ * @property-read mixed $status
+ * @property-read \App\Models\Driver $protestedDriver
+ * @property-read \App\Models\Race $race
+ * @method static \Illuminate\Database\Eloquent\Builder|Protest newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Protest newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Protest query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Protest whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Protest whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Protest whereDriverId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Protest whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Protest whereProtestedDriverId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Protest whereRaceId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Protest whereRulesBreached($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Protest whereStewardsDecision($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Protest whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Protest whereVideoUrl($value)
+ * @mixin \Eloquent
+ */
 class Protest extends Model
 {
     use HasFactory;

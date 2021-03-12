@@ -14,6 +14,7 @@ window.ClipboardJS = require('clipboard');
 
 import { Notyf } from 'notyf';
 window.Notyf = Notyf;
+import 'notyf/notyf.min.css';
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

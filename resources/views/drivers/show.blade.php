@@ -6,12 +6,18 @@
                 {{ $driver->name }}
                 <span class="text-lg text-gray-600">#{{ $driver->f1Number->racing_number }}</span>
             </h2>
-            <button
-                class="friend-code ring-0 focus:outline-none focus:ring-0"
-                data-clipboard-text="{{ $driver->steam_friend_code }}"
-            >
-                <i class="fab fa-steam" title="Steam Friend Code"></i> <span class="text-gray-600">{{ $driver->steam_friend_code }}</span>
-            </button>
+
+            <div class="flex gap-1 items-center">
+
+                <x-equipment-icon :driver="$driver" />
+
+                <button
+                    class="friend-code ring-0 focus:outline-none focus:ring-0 text-xl leading-none"
+                    data-clipboard-text="{{ $driver->steam_friend_code }}"
+                >
+                    <i class="fab fa-steam" title="{{ $driver->steam_friend_code }}"></i>
+                </button>
+            </div>
         </div>
     </x-slot>
 

@@ -26,13 +26,16 @@
                     @foreach($drivers->loadCount('raceResults')->sortBy([['race_results_count', 'desc'], ['f1_team_id', 'desc']]) as $driver)
                         <tr class="{{ auth()->user()->hasDriver($driver->id) ? 'bg-gray-100' : '' }}">
                             <td class="px-6 py-4 whitespace-nowrap truncate">
-                                <div class="ml-4 border-l-4 pl-2 {{ f1_team_color($driver->f1Team->name) }}">
-                                    <div class="text-sm font-medium text-gray-900 truncate">
-                                        {{ $driver->name }}
+                                <div class="flex justify-between items-center">
+                                    <div class="ml-4 border-l-4 pl-2 {{ f1_team_color($driver->f1Team->name) }}">
+                                        <div class="text-sm font-medium text-gray-900 truncate">
+                                            {{ $driver->name }}
+                                        </div>
+                                        <div class="text-sm text-gray-500">
+                                            {{ $driver->f1Team->name }}, #{{ $driver->f1Number->racing_number }}
+                                        </div>
                                     </div>
-                                    <div class="text-sm text-gray-500">
-                                        {{ $driver->f1Team->name }}, #{{ $driver->f1Number->racing_number }}
-                                    </div>
+                                    <div><x-equipment-icon :driver="$driver" /></div>
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">

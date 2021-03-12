@@ -29,6 +29,7 @@ class SignupRequest extends FormRequest
             'f1_team_id' => 'required|exists:f1_teams,id',
             'f1_number_id' => 'required|exists:f1_numbers,id',
             'steam_friend_code' => 'required|numeric',
+            'equipment' => 'required'
         ];
     }
 }

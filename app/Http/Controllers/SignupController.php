@@ -71,7 +71,8 @@ class SignupController extends Controller
             'f1_team_id' => $request->f1_team_id,
             'type' => $request->type,
             'name' => $request->user()->name,
-            'steam_friend_code' => $request->steam_friend_code
+            'steam_friend_code' => $request->steam_friend_code,
+            'equipment' => $request->equipment
         ]);
 
         return redirect()->route('dashboard');

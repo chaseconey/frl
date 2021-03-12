@@ -6,6 +6,40 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * App\Models\Division
+ *
+ * @property int $id
+ * @property string $name
+ * @property string|null $description
+ * @property string $day_of_week
+ * @property string $race_time
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property \Illuminate\Support\Carbon|null $closed_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Driver[] $drivers
+ * @property-read int|null $drivers_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Race[] $races
+ * @property-read int|null $races_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Division active()
+ * @method static \Illuminate\Database\Eloquent\Builder|Division newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Division newQuery()
+ * @method static \Illuminate\Database\Query\Builder|Division onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Division query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Division whereClosedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Division whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Division whereDayOfWeek($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Division whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Division whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Division whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Division whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Division whereRaceTime($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Division whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Division withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|Division withoutTrashed()
+ * @mixin \Eloquent
+ */
 class Division extends Model
 {
     use HasFactory, SoftDeletes;
