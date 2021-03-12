@@ -1,12 +1,12 @@
-<div class="bg-white shadow overflow-hidden sm:rounded-md p-6">
-    <div class="py-5 border-b border-gray-200">
+<div class="bg-white shadow overflow-hidden sm:rounded-md">
+    <div class="py-5 px-4 border-b border-gray-200">
         <h3 class="text-lg leading-6 font-medium text-gray-900">
             Feed
         </h3>
     </div>
     <ul class="divide-y divide-gray-200">
         @forelse($feed as $event)
-            <li class="py-4">
+            <li class="py-4 px-4 sm:px-6">
                 <div class="flex space-x-3">
                     <x-user-avatar :user="$event->causer" />
                     <div class="flex-1 space-y-1">
@@ -20,7 +20,7 @@
             </li>
         @empty
 
-            <li class="py-4">
+            <li class="py-4 px-4 sm:px-6">
                 No recent events
             </li>
 
