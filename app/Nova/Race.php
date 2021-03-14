@@ -69,7 +69,8 @@ class Race extends Resource
             HasMany::make('Race Results', 'results'),
             HasMany::make('Race Quali Results', 'qualiResults'),
             HasMany::make('Broadcast Videos', 'broadcastVideos'),
-            HasMany::make('Driver Videos', 'driverVideos')
+            HasMany::make('Driver Videos', 'driverVideos'),
+            HasMany::make('Protests', 'protests')
         ];
     }
 
