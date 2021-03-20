@@ -95,6 +95,11 @@ class Driver extends Model
         return $this->hasMany(RaceResult::class);
     }
 
+    public function qualiResults()
+    {
+        return $this->hasMany(RaceQualiResult::class);
+    }
+
     public function latestRace()
     {
         return $this->hasOne(RaceResult::class)

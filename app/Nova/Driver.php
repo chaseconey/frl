@@ -77,7 +77,8 @@ class Driver extends Resource
             Number::make('Steam Friend Code')->sortable(),
             DateTime::make('Created At')->format('YYYY-MM-DD')->sortable(),
 
-            HasMany::make('Race Results', 'raceResults')
+            HasMany::make('Race Results', 'raceResults'),
+            HasMany::make('Race Quali Results', 'qualiResults')
         ];
     }
 
