@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use EricLagarda\NovaEmbed\NovaEmbed;
@@ -66,11 +67,19 @@ class Protest extends Resource
                 ->exceptOnForms(),
 
             Text::make('Status')->onlyOnIndex(),
+            Text::make('Created', 'created_at')
+                ->displayUsing(function($created) {
+                    return $created->diffForHumans();
+                })
+                ->onlyOnIndex(),
 
             Textarea::make('Rules Breached')->readonly(),
             Textarea::make('Description')->readonly(),
 
             Textarea::make('Stewards Decision')->nullable(),
+
+            DateTime::make('Created At')->onlyOnDetail(),
+            DateTime::make('Updated At')->onlyOnDetail(),
         ];
     }
 
