@@ -65,7 +65,19 @@
     myDropzone.on('success', function () {
         location.reload();
     });
-    myDropzone.on('error', function () {
-        location.reload();
+    myDropzone.on('error', function (e) {
+        const parsedResponse = e?.xhr?.response;
+
+        let error = "There was an error during upload";
+        if (parsedResponse) {
+            const parsedError = JSON.parse(parsedResponse);
+            const firstError = parsedError?.errors[Object.keys(parsedError?.errors)[0]][0];
+            const errorMessage = parsedError?.message;
+
+            error = firstError ?? errorMessage;
+        }
+
+        const notyf = new Notyf();
+        notyf.error(error);
     });
 </script>

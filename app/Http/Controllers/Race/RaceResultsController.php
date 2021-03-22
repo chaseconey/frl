@@ -10,6 +10,7 @@ use App\Models\Race;
 use App\Models\RaceResult;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class RaceResultsController extends Controller
 {
@@ -59,6 +60,11 @@ class RaceResultsController extends Controller
         $parser = new \App\Service\RaceParser();
         $results = $parser->parse($json);
 
+        // Validate parsed file contents
+        Validator::make($results->toArray(), [
+            '*.Driver' => 'distinct'
+        ])->validate();
+
         DB::transaction(function () use ($results, $race) {
             $teams = F1Team::pluck('id', 'name');
             foreach ($results as $id => $result) {
@@ -66,16 +72,6 @@ class RaceResultsController extends Controller
                 $driver = Driver::where('name', $result['Driver'])
                     ->where('division_id', $race->division_id)
                     ->first();
-
-                // TODO: Delete in practice
-                if ( ! $driver) {
-                    $driver = \App\Models\Driver::factory([
-                        'f1_number_id' => $id,
-                        'division_id' => $race->division_id,
-                        'f1_team_id' => $teams[$result['Team']],
-                        'name' => $result['Driver']
-                    ])->create();
-                }
 
                 $raceResult = \App\Models\RaceResult::fromFile($result);
                 $raceResult->race_id = $race->id;
