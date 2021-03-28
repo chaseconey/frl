@@ -18,11 +18,6 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('test', function () {
-    $lastActivity = Activity::all()->last();
-    return $lastActivity->description;
-});
-
 require __DIR__.'/auth.php';
 
 Route::group(['middleware' => 'auth'], function () {
