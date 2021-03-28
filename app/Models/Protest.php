@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Notifications\ProtestReviewComplete;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Spatie\Activitylog\Contracts\Activity;
 use Spatie\Activitylog\Traits\LogsActivity;
 
@@ -86,6 +87,11 @@ class Protest extends Model
                 }
             }
         });
+    }
+
+    public function scopeInReview(Builder $query)
+    {
+        return $query->whereNull('stewards_decision');
     }
 
     public function driver()

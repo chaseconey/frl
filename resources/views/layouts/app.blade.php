@@ -35,6 +35,8 @@
                 </div>
             </header>
 
+            @include('layouts.partials.steward-warning')
+
             <!-- Page Content -->
             <main>
                 {{ $slot }}
