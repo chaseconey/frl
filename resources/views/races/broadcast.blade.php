@@ -39,7 +39,12 @@
                                     <span class="font-semibold text-lg">{{ $video->title }}</span>
                                     <span class="text-xs text-gray-500">{{ $info->publishedTime }}</span>
                                 </h3>
-                                {!! $info->code !!}
+                                @if(!is_null($info->code))
+                                    {!! $info->code !!}
+                                @else
+                                    <a href="{{ $info->video_url }}"><img src="{{ $info->image }}" alt="{{ $video->title }}"></a>
+                                @endif
+
                             </div>
 
 
