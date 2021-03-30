@@ -112,6 +112,22 @@
                 </div>
             </div>
 
+            <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                <div></div>
+                <div class="mt-1 sm:mt-0 sm:col-span-2">
+                    <div>
+                        <div class="relative flex items-start">
+                            <div class="flex items-center h-5">
+                                <input id="accept_rules" name="accept_rules" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                            </div>
+                            <div class="ml-3 text-sm">
+                                <label for="accept_rules" class="font-medium text-gray-700">I have read and accept <a href="/docs/FRL_RULESET_2021.pdf" target="_blank" class="underline">all league rules</a>.</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
