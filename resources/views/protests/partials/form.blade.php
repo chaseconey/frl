@@ -25,7 +25,10 @@
                     <select id="protested_driver_id" name="protested_driver_id" autocomplete="protested_driver_id"
                             class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
                         @foreach($drivers as $driver)
-                            <option value="{{ $driver->id }}">
+                            <option
+                                @if(old('protested_driver_id') == $driver->id) selected @endif
+                                value="{{ $driver->id }}"
+                            >
                                 {{ $driver->name }} - {{ $driver->f1Team->name }}
                             </option>
                         @endforeach
@@ -62,7 +65,9 @@
                 </label>
                 <div class="mt-1 sm:mt-0 sm:col-span-2">
                     <input type="text" name="video_url" id="video_url"
-                           class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                           class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                           value="{{ old('video_url') }}"
+                    >
                 </div>
             </div>
 
@@ -71,7 +76,7 @@
                     Description of the incident
                 </label>
                 <div class="mt-1 sm:mt-0 sm:col-span-2">
-                    <textarea id="description" name="description" rows="3" class="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"></textarea>
+                    <textarea id="description" name="description" rows="3" class="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md">{{ old('description') }}</textarea>
                 </div>
             </div>
 
@@ -80,7 +85,7 @@
                     Which rules were breached?
                 </label>
                 <div class="mt-1 sm:mt-0 sm:col-span-2">
-                    <textarea id="rules_breached" name="rules_breached" rows="3" class="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"></textarea>
+                    <textarea id="rules_breached" name="rules_breached" rows="3" class="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md">{{ old('rules_breached') }}</textarea>
                     <p class="mt-2 text-sm text-gray-500">Please provide the numeric rules (see above) that were broken in this incident.</p>
                 </div>
             </div>
