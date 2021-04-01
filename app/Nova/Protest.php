@@ -69,10 +69,16 @@ class Protest extends Resource
 
             Text::make('Status')->onlyOnIndex(),
             Text::make('Created', 'created_at')
-                ->displayUsing(function($created) {
+                ->displayUsing(function ($created) {
                     return $created->diffForHumans();
                 })
                 ->onlyOnIndex(),
+
+            Text::make('Race Time', function () {
+                $raceTime = $this->race->race_time;
+                $color = $raceTime->greaterThan(now()->subWeek()) ? 'green' : 'red';
+                return "<span class='whitespace-no-wrap' style='color: {$color}'>{$raceTime->diffForHumans()}</span>";
+            })->exceptOnForms()->asHtml(),
 
             Textarea::make('Rules Breached')->readonly(),
             Textarea::make('Description')->readonly(),
