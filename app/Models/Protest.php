@@ -94,6 +94,11 @@ class Protest extends Model
         return $query->whereNull('stewards_decision');
     }
 
+    public function scopeComplete(Builder $query)
+    {
+        return $query->whereNotNull('stewards_decision');
+    }
+
     public function driver()
     {
         return $this->belongsTo(Driver::class);

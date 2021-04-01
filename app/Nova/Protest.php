@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Nova\Filters\ProtestStatus;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
@@ -102,7 +103,7 @@ class Protest extends Resource
      */
     public function filters(Request $request)
     {
-        return [];
+        return [new ProtestStatus];
     }
 
     /**
