@@ -5,12 +5,12 @@ namespace App\Http\Controllers\Race;
 use App\Http\Controllers\Controller;
 use App\Models\Driver;
 use App\Models\DriverVideo;
+use App\Models\F1Number;
 use App\Models\F1Team;
 use App\Models\Race;
 use App\Models\RaceResult;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
 
 class RaceResultsController extends Controller
 {
@@ -57,19 +57,13 @@ class RaceResultsController extends Controller
 
         $json = $request->file('results')->getContent();
 
-        $parser = new \App\Service\RaceParser();
-        $results = $parser->parse($json);
-
-        // Validate parsed file contents
-        Validator::make($results->toArray(), [
-            '*.Driver' => 'distinct'
-        ])->validate();
+        $results = json_decode($json, true);
 
         DB::transaction(function () use ($results, $race) {
-            $teams = F1Team::pluck('id', 'name');
-            foreach ($results as $id => $result) {
-                // Look up Driver by string name...could be improved to use driver number later possibly.
-                $driver = Driver::where('name', $result['Driver'])
+            $teams = F1Team::pluck('id', 'codemasters_id');
+            $numbers = F1Number::pluck('id', 'racing_number');
+            foreach ($results as $racingNumber => $result) {
+                $driver = Driver::where('f1_number_id', $numbers[$racingNumber])
                     ->where('division_id', $race->division_id)
                     ->first();
 
@@ -77,8 +71,7 @@ class RaceResultsController extends Controller
                 $raceResult->race_id = $race->id;
 
                 $raceResult->driver_id = $driver->id;
-                $raceResult->f1_team_id = $teams[$result['Team']];
-                $raceResult->position = $id;
+                $raceResult->f1_team_id = $teams[$result['driver']['m_teamId']];
 
                 $raceResult->save();
             }

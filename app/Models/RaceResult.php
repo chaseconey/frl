@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use App\Service\F12020\UdpSpec;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
 use Laravel\Nova\Actions\Actionable;
 
 /**
@@ -55,6 +55,7 @@ class RaceResult extends Model
     use HasFactory, Actionable;
 
     protected $fillable = [
+        'position',
         'grid_position',
         'num_pit_stops',
         'best_lap_time',
@@ -72,14 +73,15 @@ class RaceResult extends Model
     public static function fromFile(array $json)
     {
         return new static([
-            'grid_position' => $json['gridPosition'],
-            'num_pit_stops' => $json['numPitStops'],
-            'best_lap_time' => $json['FastestLap'],
-            'num_penalties' => $json['numPenalties'],
-            'penalty_seconds' => $json['penaltiesTime'],
-            'race_time' => $json['RaceTime'],
-            'tire_stints' => Str::of($json['TyreStints'])->trim(),
-            'points' => $json['points'],
+            'position' => $json['race_data']['m_position'],
+            'grid_position' => $json['race_data']['m_gridPosition'],
+            'num_pit_stops' => $json['race_data']['m_numPitStops'],
+            'best_lap_time' => now()->startOfDay()->addMillis($json['race_data']['m_bestLapTime'] * 1000)->format('i:s.v'),
+            'num_penalties' => $json['race_data']['m_numPenalties'],
+            'penalty_seconds' => $json['race_data']['m_penaltiesTime'],
+            'race_time' => now()->startOfDay()->addMillis($json['race_data']['m_totalRaceTime'] * 1000)->format('H:i:s.v'),
+            'tire_stints' => UdpSpec::mapTireStint($json['race_data']['m_tyreStintsVisual']),
+            'points' => $json['race_data']['m_points'],
         ]);
     }
 

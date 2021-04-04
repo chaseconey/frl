@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Service\F12020\UdpSpec;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
 use Laravel\Nova\Actions\Actionable;
 
 /**
@@ -20,7 +22,6 @@ use Laravel\Nova\Actions\Actionable;
  * @property float|null $best_s1_delta
  * @property float|null $best_s2_delta
  * @property float|null $best_s3_delta
- * @property float|null $speedtrap_speed
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property int $f1_team_id
@@ -59,6 +60,7 @@ class RaceQualiResult extends Model
 
     protected $fillable = [
         'race_id',
+        'position',
         'driver_id',
         'best_lap_time',
         'best_s1_time',
@@ -68,7 +70,6 @@ class RaceQualiResult extends Model
         'best_s1_delta',
         'best_s2_delta',
         'best_s3_delta',
-        'speedtrap_speed',
         'best_lap_tire',
     ];
 
@@ -78,17 +79,31 @@ class RaceQualiResult extends Model
      */
     public static function fromFile(array $json)
     {
+        $lapData = $json['lap_data'];
+        $calcData = $json['calculated'];
+        $raceData = $json['race_data'];
+
+        $bestLap = $lapData['m_bestLapTime'];
+        $bestLapTire = Arr::get($json, 'custom.bestLapTyre');
+
+        if ($bestLap === 0) {
+            return new static([
+                'position' => $raceData['m_position'],
+                'best_lap_time' => 'No Lap',
+            ]);
+        }
+
         return new static([
-            'best_lap_time' => is_null($json['bestLapTime']) ? 'No Lap' : $json['bestLapTime'],
-            'best_s1_time' => $json['S1_Time'],
-            'best_s2_time' => $json['S2_Time'],
-            'best_s3_time' => $json['S3_Time'],
-            'lap_delta' => $json['Lap_Delta'],
-            'best_s1_delta' => $json['S1_Delta'],
-            'best_s2_delta' => $json['S2_Delta'],
-            'best_s3_delta' => $json['S3_Delta'],
-            'speedtrap_speed' => $json['SpeedTrap'],
-            'best_lap_tire' => $json['Tyre']
+            'position' => $raceData['m_position'],
+            'best_lap_time' => now()->startOfDay()->addMillis($bestLap * 1000)->format('i:s.v'),
+            'best_s1_time' => round($lapData['m_bestLapSector1TimeInMS'] / 1000, 3),
+            'best_s2_time' => round($lapData['m_bestLapSector2TimeInMS'] / 1000, 3),
+            'best_s3_time' => round($lapData['m_bestLapSector3TimeInMS'] / 1000, 3),
+            'lap_delta' => round($calcData['bestLapTimeInSecDelta'], 3),
+            'best_s1_delta' => round($calcData['bestLapSector1InMsDelta'], 3),
+            'best_s2_delta' => round($calcData['bestLapSector2InMsDelta'], 3),
+            'best_s3_delta' => round($calcData['bestLapSector3InMsDelta'], 3),
+            'best_lap_tire' => $bestLapTire ? UdpSpec::TIRES_VISUAL[$bestLapTire] : null
         ]);
     }
 
