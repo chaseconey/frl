@@ -26,6 +26,18 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('drivers/{driver}/toggle-claim', '\App\Http\Controllers\DriverController@toggleClaim')
         ->name('drivers.toggle-claim');
 
+    Route::get('profile/protests', '\App\Http\Controllers\ProfileController@protests')
+        ->name('profile.protests');
+
+    Route::get('divisions/{division}/standings', '\App\Http\Controllers\Division\StandingController@standings')
+        ->name('standings.standings');
+    Route::get('divisions/{division}/team-standings', '\App\Http\Controllers\Division\StandingController@teamStandings')
+        ->name('standings.team-standings');
+    Route::get('divisions/{division}/matrix', '\App\Http\Controllers\Division\StandingController@matrix')
+        ->name('standings.matrix');
+    Route::get('divisions/{division}/export', '\App\Http\Controllers\DivisionController@export')
+        ->name('standings.export');
+
     Route::resource('signup', \App\Http\Controllers\SignupController::class)->only('index', 'create', 'store');
     Route::resource('drivers', \App\Http\Controllers\DriverController::class)->only(['edit', 'update', 'show']);
     Route::resource('driver-videos', \App\Http\Controllers\DriverVideoController::class)->only(['store']);
@@ -38,13 +50,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('standings', \App\Http\Controllers\StandingController::class);
     Route::resource('protests', \App\Http\Controllers\ProtestController::class);
 
-    Route::get('profile/protests', '\App\Http\Controllers\ProfileController@protests')
-        ->name('profile.protests');
 
-    Route::get('divisions/{division}/standings', '\App\Http\Controllers\Division\StandingController@standings')
-        ->name('standings.standings');
-    Route::get('divisions/{division}/team-standings', '\App\Http\Controllers\Division\StandingController@teamStandings')
-        ->name('standings.team-standings');
-    Route::get('divisions/{division}/matrix', '\App\Http\Controllers\Division\StandingController@matrix')
-        ->name('standings.matrix');
 });

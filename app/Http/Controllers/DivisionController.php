@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Division;
+use App\Models\Driver;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class DivisionController extends Controller
 {
@@ -21,5 +23,22 @@ class DivisionController extends Controller
 
         return view('divisions.index')
             ->withDivisions($divisions);
+    }
+
+    public function export(Division $division)
+    {
+        $slug = Str::slug($division->name);
+        $filename = "{$slug}-map.csv";
+
+        return response()->streamDownload(function () use ($division) {
+            $data = Driver::where('division_id', $division->id)
+                ->with('f1Number')
+                ->get()
+                ->pluck('name', 'f1Number.racing_number');
+
+            $data->each(function ($driver, $number) {
+                echo "{$number},{$driver}" . PHP_EOL;
+            });
+        }, $filename);
     }
 }
