@@ -61,19 +61,23 @@ class RaceResultsController extends Controller
 
         DB::transaction(function () use ($results, $race) {
             $teams = F1Team::pluck('id', 'codemasters_id');
-            $numbers = F1Number::pluck('id', 'racing_number');
+            $numbers = F1Number::pluck('id', 'racing_number')->toArray();
             foreach ($results as $racingNumber => $result) {
-                $driver = Driver::where('f1_number_id', $numbers[$racingNumber])
-                    ->where('division_id', $race->division_id)
-                    ->first();
 
-                $raceResult = \App\Models\RaceResult::fromFile($result);
-                $raceResult->race_id = $race->id;
+                // TODO: use collection methods
+                if (array_key_exists($racingNumber, $numbers)) {
+                    $driver = Driver::where('f1_number_id', $numbers[$racingNumber])
+                        ->where('division_id', $race->division_id)
+                        ->first();
 
-                $raceResult->driver_id = $driver->id;
-                $raceResult->f1_team_id = $teams[$result['driver']['m_teamId']];
+                    $raceResult = \App\Models\RaceResult::fromFile($result);
+                    $raceResult->race_id = $race->id;
 
-                $raceResult->save();
+                    $raceResult->driver_id = $driver->id;
+                    $raceResult->f1_team_id = $teams[$result['driver']['m_teamId']];
+
+                    $raceResult->save();
+                }
             }
         });
 

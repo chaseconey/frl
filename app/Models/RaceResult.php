@@ -72,16 +72,26 @@ class RaceResult extends Model
      */
     public static function fromFile(array $json)
     {
+        // TODO: move to helper
+        $raceData = $json['race_data'];
+
+        $totalRaceTime = $raceData['m_totalRaceTime'] + $raceData['m_penaltiesTime'];
+        $raceTimeDisplay = now()->startOfDay()->addMillis($totalRaceTime * 1000)->format('H:i:s.v');
+        if (!UdpSpec::isRaceResultStatusFinished($raceData['m_resultStatus'])) {
+            $raceTimeDisplay = UdpSpec::RACE_RESULT_STATUS[$raceData['m_resultStatus']];
+        }
+
+        // TODO: add raw numeric values (to use when new season starts)
         return new static([
-            'position' => $json['race_data']['m_position'],
-            'grid_position' => $json['race_data']['m_gridPosition'],
-            'num_pit_stops' => $json['race_data']['m_numPitStops'],
-            'best_lap_time' => now()->startOfDay()->addMillis($json['race_data']['m_bestLapTime'] * 1000)->format('i:s.v'),
-            'num_penalties' => $json['race_data']['m_numPenalties'],
-            'penalty_seconds' => $json['race_data']['m_penaltiesTime'],
-            'race_time' => now()->startOfDay()->addMillis($json['race_data']['m_totalRaceTime'] * 1000)->format('H:i:s.v'),
-            'tire_stints' => UdpSpec::mapTireStint($json['race_data']['m_tyreStintsVisual']),
-            'points' => $json['race_data']['m_points'],
+            'position' => $raceData['m_position'],
+            'grid_position' => $raceData['m_gridPosition'],
+            'num_pit_stops' => $raceData['m_numPitStops'],
+            'best_lap_time' => now()->startOfDay()->addMillis($raceData['m_bestLapTime'] * 1000)->format('i:s.v'),
+            'num_penalties' => $raceData['m_numPenalties'],
+            'penalty_seconds' => $raceData['m_penaltiesTime'],
+            'race_time' => $raceTimeDisplay,
+            'tire_stints' => UdpSpec::mapTireStint($raceData['m_tyreStintsVisual']),
+            'points' => $raceData['m_points'],
         ]);
     }
 

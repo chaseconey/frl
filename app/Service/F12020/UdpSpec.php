@@ -15,6 +15,26 @@ class UdpSpec
         8 => "W"
     ];
 
+    const RACE_RESULT_STATUS = [
+        0 => 'Invalid',
+        1 => 'Inactive',
+        2 => 'Active',
+        3 => 'Finished',
+        4 => 'DSQ',
+        5 => 'Not Classified',
+        6 => 'DNF',
+        7 => 'DNF',
+    ];
+
+    /**
+     * @param $status
+     * @return bool
+     */
+    public static function isRaceResultStatusFinished($status): bool
+    {
+        return $status === 3;
+    }
+
     /**
      * Maps a UDP tire stint to our string representation
      *

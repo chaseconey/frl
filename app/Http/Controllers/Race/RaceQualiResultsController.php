@@ -65,20 +65,22 @@ class RaceQualiResultsController extends Controller
 
         DB::transaction(function () use ($results, $race) {
             $teams = F1Team::pluck('id', 'codemasters_id');
-            $numbers = F1Number::pluck('id', 'racing_number');
+            $numbers = F1Number::pluck('id', 'racing_number')->toArray();
             foreach ($results as $racingNumber => $result) {
+                // TODO: use collection methods
+                if (array_key_exists($racingNumber, $numbers)) {
+                    $driver = Driver::where('f1_number_id', $numbers[$racingNumber])
+                        ->where('division_id', $race->division_id)
+                        ->first();
 
-                $driver = Driver::where('f1_number_id', $numbers[$racingNumber])
-                    ->where('division_id', $race->division_id)
-                    ->first();
+                    $qualiResult = \App\Models\RaceQualiResult::fromFile($result);
+                    $qualiResult->race_id = $race->id;
 
-                $qualiResult = \App\Models\RaceQualiResult::fromFile($result);
-                $qualiResult->race_id = $race->id;
+                    $qualiResult->driver_id = $driver->id;
+                    $qualiResult->f1_team_id = $teams[$result['driver']['m_teamId']];
 
-                $qualiResult->driver_id = $driver->id;
-                $qualiResult->f1_team_id = $teams[$result['driver']['m_teamId']];
-
-                $qualiResult->save();
+                    $qualiResult->save();
+                }
             }
         });
 
