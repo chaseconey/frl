@@ -15,20 +15,20 @@ class F1TeamSeeder extends Seeder
     public function run()
     {
         $teams = [
-            'Mercedes',
-            'Ferrari',
-            'Red Bull Racing',
-            'Renault',
-            'Haas',
-            'McLaren',
-            'Racing Point',
-            'Alfa Romeo',
-            'Alpha Tauri',
-            'Williams',
+            ['name' => 'Mercedes', 'codemasters_id' => 0],
+            ['name' => 'Ferrari', 'codemasters_id' => 1],
+            ['name' => 'Red Bull Racing', 'codemasters_id' => 2],
+            ['name' => 'Renault', 'codemasters_id' => 5],
+            ['name' => 'Haas', 'codemasters_id' => 7],
+            ['name' => 'McLaren', 'codemasters_id' => 8],
+            ['name' => 'Racing Point', 'codemasters_id' => 4],
+            ['name' => 'Alfa Romeo', 'codemasters_id' => 9],
+            ['name' => 'Alpha Tauri', 'codemasters_id' => 6],
+            ['name' => 'Williams', 'codemasters_id' => 3],
         ];
 
         foreach ($teams as $team) {
-            F1Team::factory()->create(['name' => $team]);
+            F1Team::factory()->create($team);
         }
     }
 }

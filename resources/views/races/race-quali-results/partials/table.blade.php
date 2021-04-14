@@ -23,10 +23,6 @@
                         </th>
                         <th scope="col"
                             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Speed Trap
-                        </th>
-                        <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Best Sector Times
                         </th>
                         <th scope="col" class="relative px-6 py-3">
@@ -67,12 +63,6 @@
                             <td class="px-6 py-4 whitespace-nowrap text-right">
                                 @if(!is_null($result->lap_delta))
                                     <div class="text-sm text-gray-900">{{ number_format($result->lap_delta, 3) }}</div>
-                                @endif
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-right">
-                                @if(!is_null($result->speedtrap_speed))
-                                    <div
-                                        class="text-sm {{ $race->quali_results_max_speedtrap_speed == $result->speedtrap_speed ? 'text-purple-800 font-bold' : 'text-gray-900'}}">{{ number_format($result->speedtrap_speed, 2) }}</div>
                                 @endif
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">

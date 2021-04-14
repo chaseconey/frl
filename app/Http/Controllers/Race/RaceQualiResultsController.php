@@ -5,12 +5,12 @@ namespace App\Http\Controllers\Race;
 use App\Http\Controllers\Controller;
 use App\Models\Driver;
 use App\Models\DriverVideo;
+use App\Models\F1Number;
 use App\Models\F1Team;
 use App\Models\Race;
 use App\Models\RaceQualiResult;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
 
 class RaceQualiResultsController extends Controller
 {
@@ -24,8 +24,7 @@ class RaceQualiResultsController extends Controller
         $race->load(['qualiResults', 'qualiResults.driver', 'qualiResults.driver.user', 'qualiResults.f1Team'])
             ->loadMin('qualiResults', 'best_s1_time')
             ->loadMin('qualiResults', 'best_s2_time')
-            ->loadMin('qualiResults', 'best_s3_time')
-            ->loadMax('qualiResults', 'speedtrap_speed');
+            ->loadMin('qualiResults', 'best_s3_time');
 
         $driverVideos = DriverVideo::where('race_id', $race->id)
             ->get()
@@ -62,30 +61,26 @@ class RaceQualiResultsController extends Controller
 
         $json = $request->file('results')->getContent();
 
-        $parser = new \App\Service\RaceParser();
-        $results = $parser->parse($json);
-
-        // Validate parsed file contents
-        Validator::make($results->toArray(), [
-            '*.Driver' => 'distinct'
-        ])->validate();
+        $results = json_decode($json, true);
 
         DB::transaction(function () use ($results, $race) {
-            $teams = F1Team::pluck('id', 'name');
-            foreach ($results as $id => $result) {
-                // Look up Driver by string name...could be improved to use driver number later possibly.
-                $driver = Driver::where('name', $result['Driver'])
-                    ->where('division_id', $race->division_id)
-                    ->first();
+            $teams = F1Team::pluck('id', 'codemasters_id');
+            $numbers = F1Number::pluck('id', 'racing_number')->toArray();
+            foreach ($results as $racingNumber => $result) {
+                // TODO: use collection methods
+                if (array_key_exists($racingNumber, $numbers)) {
+                    $driver = Driver::where('f1_number_id', $numbers[$racingNumber])
+                        ->where('division_id', $race->division_id)
+                        ->first();
 
-                $qualiResult = \App\Models\RaceQualiResult::fromFile($result);
-                $qualiResult->race_id = $race->id;
+                    $qualiResult = \App\Models\RaceQualiResult::fromFile($result);
+                    $qualiResult->race_id = $race->id;
 
-                $qualiResult->driver_id = $driver->id;
-                $qualiResult->f1_team_id = $teams[$result['Team']];
-                $qualiResult->position = $id;
+                    $qualiResult->driver_id = $driver->id;
+                    $qualiResult->f1_team_id = $teams[$result['driver']['m_teamId']];
 
-                $qualiResult->save();
+                    $qualiResult->save();
+                }
             }
         });
 

@@ -40,6 +40,8 @@ class F1Team extends Model
         'name'
     ];
 
+    protected $fillable = ['name', 'codemasters_id'];
+
     /**
      * The attributes that should be cast.
      *

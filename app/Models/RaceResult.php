@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use App\Service\F12020\UdpSpec;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
 use Laravel\Nova\Actions\Actionable;
 
 /**
@@ -55,6 +55,7 @@ class RaceResult extends Model
     use HasFactory, Actionable;
 
     protected $fillable = [
+        'position',
         'grid_position',
         'num_pit_stops',
         'best_lap_time',
@@ -71,15 +72,26 @@ class RaceResult extends Model
      */
     public static function fromFile(array $json)
     {
+        // TODO: move to helper
+        $raceData = $json['race_data'];
+
+        $totalRaceTime = $raceData['m_totalRaceTime'] + $raceData['m_penaltiesTime'];
+        $raceTimeDisplay = now()->startOfDay()->addMillis($totalRaceTime * 1000)->format('H:i:s.v');
+        if (!UdpSpec::isRaceResultStatusFinished($raceData['m_resultStatus'])) {
+            $raceTimeDisplay = UdpSpec::RACE_RESULT_STATUS[$raceData['m_resultStatus']];
+        }
+
+        // TODO: add raw numeric values (to use when new season starts)
         return new static([
-            'grid_position' => $json['gridPosition'],
-            'num_pit_stops' => $json['numPitStops'],
-            'best_lap_time' => $json['FastestLap'],
-            'num_penalties' => $json['numPenalties'],
-            'penalty_seconds' => $json['penaltiesTime'],
-            'race_time' => $json['RaceTime'],
-            'tire_stints' => Str::of($json['TyreStints'])->trim(),
-            'points' => $json['points'],
+            'position' => $raceData['m_position'],
+            'grid_position' => $raceData['m_gridPosition'],
+            'num_pit_stops' => $raceData['m_numPitStops'],
+            'best_lap_time' => now()->startOfDay()->addMillis($raceData['m_bestLapTime'] * 1000)->format('i:s.v'),
+            'num_penalties' => $raceData['m_numPenalties'],
+            'penalty_seconds' => $raceData['m_penaltiesTime'],
+            'race_time' => $raceTimeDisplay,
+            'tire_stints' => UdpSpec::mapTireStint($raceData['m_tyreStintsVisual']),
+            'points' => $raceData['m_points'],
         ]);
     }
 
