@@ -101,9 +101,9 @@ class RaceQualiResult extends Model
             'best_s2_time' => round($lapData['m_bestLapSector2TimeInMS'] / 1000, 3),
             'best_s3_time' => round($lapData['m_bestLapSector3TimeInMS'] / 1000, 3),
             'lap_delta' => round($calcData['bestLapTimeInSecDelta'], 3),
-            'best_s1_delta' => round($calcData['bestLapSector1InMsDelta'], 3),
-            'best_s2_delta' => round($calcData['bestLapSector2InMsDelta'], 3),
-            'best_s3_delta' => round($calcData['bestLapSector3InMsDelta'], 3),
+            'best_s1_delta' => round($calcData['bestLapSector1InMsDelta'] / 1000, 3),
+            'best_s2_delta' => round($calcData['bestLapSector2InMsDelta'] / 1000, 3),
+            'best_s3_delta' => round($calcData['bestLapSector3InMsDelta'] / 1000, 3),
             'best_lap_tire' => $bestLapTire ? UdpSpec::TIRES_VISUAL[$bestLapTire] : null
         ]);
     }
