@@ -232,7 +232,7 @@
 
             /**
              * Calculate % time off of the best sector produced
-             * 
+             *
              * @param time
              * @param delta
              * @returns {number}
@@ -260,6 +260,14 @@
                         label: '% off Best Sector 3',
                         data: results.map(r => calcPercentageOffBest(r.best_s3_time, r.best_s3_delta)),
                         backgroundColor: '#3B82F6',
+                        fill: false
+                    },{
+                        label: '% off Best Time',
+                        data: results.map(r => {
+                            const bestLap = r.best_s1_time + r.best_s2_time + r.best_s3_time;
+                            return calcPercentageOffBest(bestLap, r.lap_delta)
+                        }),
+                        backgroundColor: 'red',
                         fill: false
                     }]
                 },
