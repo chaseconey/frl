@@ -180,4 +180,35 @@
         </div>
     </div>
 
+    <div id="broadcast-center py-16">
+        <!-- Add a placeholder for the Twitch embed -->
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-3xl font-extrabold text-gray-900">Broadcast Center</h2>
+        </div>
+        <div id="twitch-embed" class="flex justify-center my-4"></div>
+
+        <!-- Load the Twitch embed script -->
+        <script src="https://embed.twitch.tv/embed/v1.js"></script>
+
+        <!-- Create a Twitch.Embed object that will render within the "twitch-embed" root element. -->
+        <script type="text/javascript">
+            new Twitch.Embed("twitch-embed", {
+                width: 854,
+                height: 480,
+                channel: "FormulaRacingLeague_",
+            });
+        </script>
+    </div>
+
+    <footer class="bg-white">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 flex justify-center lg:px-8">
+            <div class="mt-8 md:mt-0 md:order-1">
+                <p class="text-center text-base text-gray-400">
+                    &copy; {{ now()->year }} Formula Racing League. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+
 </x-guest-layout>
