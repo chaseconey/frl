@@ -151,7 +151,7 @@
 
                 <div class="mt-5 bg-white overflow-hidden shadow rounded-lg">
                     <h3 class="mt-2 font-medium text-center text-gray-900">
-                        Quali Sector Deltas
+                        % off Best Sectors
                     </h3>
                     <div class="m-4">
                         <canvas id="qualiDeltasChart"></canvas>
@@ -228,24 +228,37 @@
 
             const qualiDeltasChart = document.getElementById('qualiDeltasChart')
             labels = @json($sectorDeltas->map->country);
+            let results = @json($sectorDeltas);
+
+            /**
+             * Calculate % time off of the best sector produced
+             * 
+             * @param time
+             * @param delta
+             * @returns {number}
+             */
+            const calcPercentageOffBest = (time, delta) => {
+                let overallBest = time - delta;
+                return ((time - overallBest) / overallBest) * 100
+            }
 
             new Chart(qualiDeltasChart, {
                 type: 'line',
                 data: {
                     labels,
                     datasets: [{
-                        label: 'Sector 1 Delta',
-                        data: @json($sectorDeltas->map->best_s1_delta),
+                        label: '% off Best Sector 1',
+                        data: results.map(r => calcPercentageOffBest(r.best_s1_time, r.best_s1_delta)),
                         backgroundColor: '#F59E0B',
                         fill: false
                     },{
-                        label: 'Sector 2 Delta',
-                        data: @json($sectorDeltas->map->best_s2_delta),
+                        label: '% off Best Sector 2',
+                        data: results.map(r => calcPercentageOffBest(r.best_s2_time, r.best_s2_delta)),
                         backgroundColor: '#10B981',
                         fill: false
                     },{
-                        label: 'Sector 3 Delta',
-                        data: @json($sectorDeltas->map->best_s3_delta),
+                        label: '% off Best Sector 3',
+                        data: results.map(r => calcPercentageOffBest(r.best_s3_time, r.best_s3_delta)),
                         backgroundColor: '#3B82F6',
                         fill: false
                     }]

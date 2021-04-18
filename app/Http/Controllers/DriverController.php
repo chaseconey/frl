@@ -32,7 +32,7 @@ class DriverController extends Controller
             ->get();
 
         $sectorDeltas = RaceQualiResult::where('driver_id', $driver->id)
-            ->select('best_s1_delta', 'best_s2_delta', 'best_s3_delta', 'tracks.country')
+            ->select('race_quali_results.*', 'tracks.country')
             ->join('races', 'race_quali_results.race_id', '=', 'races.id')
             ->join('tracks', 'tracks.id', '=', 'races.track_id')
             ->orderBy('races.race_time')
