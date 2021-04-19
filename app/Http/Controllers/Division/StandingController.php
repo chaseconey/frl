@@ -13,7 +13,6 @@ class StandingController extends Controller
 {
     public function standings(Division $division)
     {
-        // TODO: Divisions need date constraints (season? end time?)
         $standings = Driver::where('division_id', $division->id)
             ->where('type', '<>', 'BANNED')
             ->with('user', 'f1Team', 'f1Number')
@@ -30,7 +29,6 @@ class StandingController extends Controller
 
     public function teamStandings(Division $division)
     {
-        // TODO: Divisions need date constraints (season? end time?)
         $standings = F1Team::with([
             'raceResults' => function ($query) use ($division) {
                 $query->whereHas('race', function ($query) use ($division) {
@@ -52,7 +50,6 @@ class StandingController extends Controller
 
     public function matrix(Division $division)
     {
-        // TODO: Divisions need date constraints (season? end time?)
         $standings = Driver::where('division_id', $division->id)
             ->where('type', '<>', 'BANNED')
             ->with('user', 'f1Team', 'f1Number', 'raceResults')
