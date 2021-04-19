@@ -16,7 +16,9 @@
                         @foreach($races as $race)
                         <th scope="col"
                             class="px-2 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            {{ $race->track->country }}
+                            <a href="{{ route('race.results.index', $race->id) }}">
+                                {{ $race->track->country }}
+                            </a>
                         </th>
                         @endforeach
                         <th scope="col"
@@ -32,7 +34,10 @@
                                 <div class="text-sm text-gray-900">{{ $loop->iteration }}</div>
                             </td>
                             <td class="px-6 py-2 whitespace-nowrap border-l-2 {{ f1_team_color($driver->f1Team->name) }}">
-                                <div class="text-sm text-gray-900">{{ $driver->name }} <span class="text-xs text-gray-700">#{{ $driver->f1Number->racing_number }}</span></div>
+                                <a href="{{ route('drivers.show', $driver) }}"
+                                   class="text-sm text-indigo-600 hover:text-indigo-900">
+                                    {{ $driver->name }} <span class="text-xs text-gray-700">#{{ $driver->f1Number->racing_number }}</span>
+                                </a>
                             </td>
                             @foreach($races as $race)
                                 <x-matrix-points-cell :race="$race" :driver="$driver"></x-matrix-points-cell>
