@@ -17,6 +17,8 @@ class DriverVideo extends Resource
      */
     public static $model = \App\Models\DriverVideo::class;
 
+    public static $group = 'Races';
+
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
