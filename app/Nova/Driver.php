@@ -46,6 +46,8 @@ class Driver extends Resource
         'name'
     ];
 
+    public static $with = ['latestRace', 'division', 'user', 'f1Number', 'f1Team'];
+
     public function title()
     {
         return "{$this->name} | {$this->division->name}";
@@ -70,11 +72,21 @@ class Driver extends Resource
             Select::make('Equipment')
                 ->options(DriverEquipment::asSelectArray())
                 ->displayUsingLabels()
+                ->hideFromIndex()
                 ->sortable(),
             BelongsTo::make('Division')->sortable(),
             BelongsTo::make('F1 Team', 'f1Team')->sortable(),
             BelongsTo::make('F1 Number', 'f1Number')->sortable(),
             Number::make('Steam Friend Code')->sortable(),
+            Text::make('Latest Race', function () {
+                if ($this->latestRace) {
+                    $raceTime = $this->latestRace->created_at;
+                    $color = $raceTime->greaterThan(now()->subWeeks(3)) ? 'green' : 'red';
+                    return "<span class='whitespace-no-wrap' style='color: {$color}'>{$raceTime->diffForHumans()}</span>";
+                } else {
+                    return "N/A";
+                }
+            })->onlyOnIndex()->asHtml(),
             DateTime::make('Created At')->format('YYYY-MM-DD')->sortable(),
 
             HasMany::make('Race Results', 'raceResults'),
@@ -101,7 +113,10 @@ class Driver extends Resource
      */
     public function filters(Request $request)
     {
-        return [];
+        return [
+            new \App\Nova\Filters\DriverType,
+            new \App\Nova\Filters\Division,
+        ];
     }
 
     /**
