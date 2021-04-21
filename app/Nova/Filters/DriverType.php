@@ -25,7 +25,7 @@ class DriverType extends Filter
      */
     public function apply(Request $request, $query, $value)
     {
-        return $query;
+        return $query->where('type', $value);
     }
 
     /**
