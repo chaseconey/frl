@@ -56,7 +56,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         return [
             (new \Skydiver\NovaUpdateCard\LaravelUpdateCard)->width('1/2'),
-            (new \Skydiver\NovaUpdateCard\NovaUpdateCard)->width('1/2'),
+//            (new \Skydiver\NovaUpdateCard\NovaUpdateCard)->width('1/2'),
         ];
     }
 
