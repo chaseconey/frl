@@ -35,6 +35,6 @@ class Division extends Filter
      */
     public function options(Request $request)
     {
-        return \App\Models\Division::pluck('id', 'name');
+        return \App\Models\Division::latest()->pluck('id', 'name');
     }
 }
