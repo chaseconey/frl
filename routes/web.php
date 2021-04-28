@@ -48,6 +48,4 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('race.quali-results', \App\Http\Controllers\Race\RaceQualiResultsController::class);
     Route::resource('standings', \App\Http\Controllers\StandingController::class);
     Route::resource('protests', \App\Http\Controllers\ProtestController::class);
-
-
 });

@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Jobs\PostNextRace;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -27,6 +28,8 @@ class Kernel extends ConsoleKernel
         $schedule->command('backup:clean')->daily()->at('01:00');
         $schedule->command('backup:run')->daily()->at('01:30');
         $schedule->command('activitylog:clean')->daily();
+
+        $schedule->job(new PostNextRace())->everyFifteenMinutes();
     }
 
     /**
