@@ -33,11 +33,11 @@ class PostNextRace implements ShouldQueue
         // Grab active divisions
         $divisions = Division::active()->get();
         foreach ($divisions as $division) {
-            // Is there an upcoming race in roughly 72 hours that hasn't been reminded already
 
+            // Is there an upcoming race in roughly 72 hours that hasn't been reminded already
             $race = $division->races()
-                ->whereDate('race_time', '>=', now())
-                ->whereDate('race_time', '<', now()->addHours(72))
+                ->where('race_time', '>=', now())
+                ->where('race_time', '<', now()->addHours(72))
                 ->whereNull('reminder_sent_at')
                 ->first();
 
@@ -57,6 +57,8 @@ class PostNextRace implements ShouldQueue
         if ( ! $channel) {
             return;
         }
+
+        // TODO: Add mention capability
 
         // Original Message
         $response = $client->post("/channels/{$channel}/messages", [
