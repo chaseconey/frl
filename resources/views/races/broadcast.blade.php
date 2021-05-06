@@ -42,7 +42,7 @@
                                 @if(!is_null($info->code))
                                     {!! $info->code !!}
                                 @else
-                                    <a href="{{ $info->video_url }}"><img src="{{ $info->image }}" alt="{{ $video->title }}"></a>
+                                    <a href="{{ $video->video_url }}"><img src="{{ $info->image }}" alt="{{ $video->title }}"></a>
                                 @endif
 
                             </div>
