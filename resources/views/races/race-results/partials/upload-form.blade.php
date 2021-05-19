@@ -68,10 +68,20 @@
     myDropzone.on('error', function (e) {
         const parsedResponse = e?.xhr?.response;
 
+        // Default error
         let error = "There was an error during upload";
+
+        // If we sent a structured error from backend
         if (parsedResponse) {
             const parsedError = JSON.parse(parsedResponse);
-            const firstError = parsedError?.errors[Object.keys(parsedError?.errors)[0]][0];
+            let firstError = null;
+
+            // errors would be present for validation issues
+            if ('errors' in parsedError) {
+                firstError = parsedError.errors[Object.keys(parsedError.errors)[0]][0];
+            }
+
+            // all other exceptions would have a message
             const errorMessage = parsedError?.message;
 
             error = firstError ?? errorMessage;

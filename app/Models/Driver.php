@@ -102,7 +102,6 @@ class Driver extends Model
 
     public function latestRace()
     {
-        return $this->hasOne(RaceResult::class)
-            ->latest();
+        return $this->hasOne(RaceResult::class)->latestOfMany();
     }
 }

@@ -3,17 +3,17 @@
 namespace App\Http\Controllers\Race;
 
 use App\Http\Controllers\Controller;
-use App\Models\Driver;
 use App\Models\DriverVideo;
-use App\Models\F1Number;
-use App\Models\F1Team;
 use App\Models\Race;
 use App\Models\RaceResult;
+use App\Traits\RaceResultsParser;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class RaceResultsController extends Controller
 {
+
+    use RaceResultsParser;
+
     /**
      * Display a listing of the resource.
      *
@@ -59,27 +59,7 @@ class RaceResultsController extends Controller
 
         $results = json_decode($json, true);
 
-        DB::transaction(function () use ($results, $race) {
-            $teams = F1Team::pluck('id', 'codemasters_id');
-            $numbers = F1Number::pluck('id', 'racing_number')->toArray();
-            foreach ($results as $racingNumber => $result) {
-
-                // TODO: use collection methods
-                if (array_key_exists($racingNumber, $numbers)) {
-                    $driver = Driver::where('f1_number_id', $numbers[$racingNumber])
-                        ->where('division_id', $race->division_id)
-                        ->first();
-
-                    $raceResult = \App\Models\RaceResult::fromFile($result);
-                    $raceResult->race_id = $race->id;
-
-                    $raceResult->driver_id = $driver->id;
-                    $raceResult->f1_team_id = $teams[$result['driver']['m_teamId']];
-
-                    $raceResult->save();
-                }
-            }
-        });
+        $this->uploadResults($results, $race, fn($results) => RaceResult::fromFile($results));
 
         activity()
             ->performedOn($race)
