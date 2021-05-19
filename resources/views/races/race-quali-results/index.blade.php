@@ -2,8 +2,9 @@
 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __("Quali Results | {$race->track->name} | {$race->division->name}") }}
+            {{ $race->track->name }} Quali Results
         </h2>
+        <span class="text-gray-600 text-sm">{{ $race->division->name }}</span>
     </x-slot>
 
     <div class="py-12">
