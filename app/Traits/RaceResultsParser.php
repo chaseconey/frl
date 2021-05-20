@@ -44,6 +44,8 @@ trait RaceResultsParser
                     $raceResult->save();
                 }
             }
+
+            DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
 
