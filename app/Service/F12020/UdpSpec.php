@@ -20,7 +20,7 @@ class UdpSpec
         1 => 'Inactive',
         2 => 'Active',
         3 => 'Finished',
-        4 => 'DSQ',
+        4 => 'DNF',
         5 => 'Not Classified',
         6 => 'DNF',
         7 => 'DNF',
