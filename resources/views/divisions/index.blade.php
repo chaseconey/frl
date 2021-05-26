@@ -36,7 +36,7 @@
                         </div>
 
                     </div>
-                    @foreach($division->drivers->groupBy('type') as $type => $drivers)
+                    @foreach($division->drivers->groupBy('type')->sortByDesc(fn($drivers) => $drivers->count()) as $type => $drivers)
                     <div class="mt-4">
                         <div class="ml-4">
                             <h4 class="text-md leading-6 font-medium text-gray-900">
