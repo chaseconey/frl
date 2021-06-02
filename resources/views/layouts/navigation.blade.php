@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-white dark:bg-gray-700 border-b border-gray-100 dark:border-gray-900">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-20 w-20 fill-current text-gray-600" />
+                        <x-application-logo class="block h-20 w-20 fill-current text-gray-600 dark:text-gray-300" />
                     </a>
                 </div>
 
@@ -40,7 +40,7 @@
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                        <button class="flex items-center text-sm font-medium text-gray-500 dark:text-gray-200 hover:text-gray-700 dark:hover:text-gray-200 hover:border-gray-300 dark:hover:border-gray-600 focus:outline-none focus:text-gray-700 dark:focus:text-gray-200 focus:border-gray-300 transition duration-150 ease-in-out">
                             <div>{{ Auth::user()->name }}</div>
 
                             <div class="ml-1">
@@ -52,12 +52,12 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <div class="divide-y divide-gray-100">
+                        <div class="divide-y divide-gray-100 dark:divide-gray-900">
                             <div class="px-4 py-3">
-                                <p class="text-sm">
+                                <p class="text-sm dark:text-gray-100">
                                     Signed in as
                                 </p>
-                                <p class="text-sm font-medium text-gray-900 truncate">
+                                <p class="text-sm font-medium text-gray-900 dark:text-white truncate">
                                     {{ auth()->user()->email }}
                                 </p>
                             </div>
@@ -65,7 +65,7 @@
                                 @foreach(auth()->user()->activeDrivers as $driver)
                                     <x-dropdown-link :href="route('drivers.show', $driver->id)">
                                         {{ $driver->name }}
-                                        <span class="text-gray-600 text-xs">{{ $driver->division->name }}</span>
+                                        <span class="text-gray-600 dark:text-gray-300 text-xs">{{ $driver->division->name }}</span>
                                     </x-dropdown-link>
                                 @endforeach
                             </div>
@@ -91,7 +91,7 @@
 
             <!-- Hamburger -->
             <div class="-mr-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -128,7 +128,7 @@
         </div>
 
         <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200">
+        <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-800">
             <div class="flex items-center px-4">
                 <div class="flex-shrink-0">
                     <svg class="h-10 w-10 fill-current text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -137,8 +137,8 @@
                 </div>
 
                 <div class="ml-3">
-                    <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                    <div class="font-medium text-base text-gray-800 dark:text-gray-100">{{ Auth::user()->name }}</div>
+                    <div class="font-medium text-sm text-gray-500 dark:text-gray-200">{{ Auth::user()->email }}</div>
                 </div>
             </div>
 
@@ -146,7 +146,7 @@
                 @foreach(auth()->user()->activeDrivers as $driver)
                     <x-responsive-nav-link :href="route('drivers.show', $driver->id)">
                         {{ $driver->name }}
-                        <span class="text-gray-600 text-xs">{{ $driver->division->name }}</span>
+                        <span class="text-gray-600 dark:text-gray-300 text-xs">{{ $driver->division->name }}</span>
                     </x-responsive-nav-link>
                 @endforeach
 

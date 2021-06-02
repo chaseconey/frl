@@ -51,11 +51,11 @@ class MatrixPointsCell extends Component
         switch (true) {
             // 1st
             case $this->points() >= 25:
-                return 'bg-yellow-200';
+                return 'bg-yellow-200 dark:bg-yellow-500';
 
             // 2nd
             case $this->points() >= 18:
-                return 'bg-gray-300';
+                return 'bg-gray-300 dark:bg-gray-400';
 
             // 3rd
             case $this->points() >= 15:
@@ -63,14 +63,14 @@ class MatrixPointsCell extends Component
 
             // In the points
             case $this->points() > 0:
-                return 'bg-green-100';
+                return 'bg-green-100 dark:bg-green-500';
 
             // Finished, but out of the points
             case $this->points() === 0:
-                return 'bg-indigo-100';
+                return 'bg-indigo-100 dark:bg-gray-500';
 
             default:
-                return 'bg-white';
+                return 'bg-white bg-gray-700';
         }
     }
 

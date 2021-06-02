@@ -23,7 +23,7 @@ class RaceTableRow extends Component
     {
         switch (true) {
             case auth()->user()->hasDriver($this->driver->id):
-                return 'bg-gray-100';
+                return 'bg-gray-100 dark:bg-gray-800';
             default:
                 return '';
         }

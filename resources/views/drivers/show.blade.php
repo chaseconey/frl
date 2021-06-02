@@ -2,9 +2,9 @@
 
     <x-slot name="header">
         <div class="flex justify-between">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-100 leading-tight">
                 {{ $driver->name }}
-                <span class="text-lg text-gray-600">#{{ $driver->f1Number->racing_number }}</span>
+                <span class="text-lg text-gray-600 dark:text-gray-300">#{{ $driver->f1Number->racing_number }}</span>
                 <span class="p-4 whitespace-nowrap align-middle" x-data="{ open: false }">
                     <div class="relative inline-block text-left">
                         <div class="z-0">
@@ -34,7 +34,7 @@
                         <div x-show="open"
                              @click.away="open = false"
                              style="display: none;"
-                             class="z-50 origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                             class="z-50 origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white dark:bg-gray-700 ring-1 ring-black ring-opacity-5">
                             <div class="py-1 z-10" role="menu" aria-orientation="vertical"
                                  aria-labelledby="options-menu">
                                 @if(auth()->user()->hasDriver($driver->id))
@@ -42,20 +42,20 @@
                                         @method('PUT')
                                         @csrf
                                         <button type="submit"
-                                                class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
+                                                class="block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
                                                 role="menuitem">
                                             Unclaim Driver
                                         </button>
                                     </form>
                                     <a href="{{ route('drivers.edit', $driver) }}"
-                                       class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                                       class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-100"
                                        role="menuitem">Update Driver</a>
                                 @elseif(is_null($driver->user_id) && !auth()->user()->hasDriverInDivision($driver->division_id))
                                     <form method="POST" action="{{ route('drivers.toggle-claim', $driver) }}">
                                         @method('PUT')
                                         @csrf
                                         <button type="submit"
-                                                class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
+                                                class="block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
                                                 role="menuitem">
                                             Claim Driver
                                         </button>
@@ -65,7 +65,7 @@
                                 @role('admin')
                                 <a href="/nova/resources/drivers/{{ $driver->id }}"
                                    target="_blank"
-                                   class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                                   class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-100"
                                    role="menuitem">Manage Driver</a>
                                 @endrole
                             </div>
@@ -93,45 +93,45 @@
 
             <div>
                 <dl class="grid grid-cols-1 gap-5 sm:grid-cols-4">
-                    <div class="bg-white overflow-hidden shadow rounded-lg">
+                    <div class="bg-white dark:bg-gray-700 overflow-hidden shadow rounded-lg">
                         <div class="px-4 py-5 sm:p-6">
-                            <dt class="text-sm font-medium text-gray-500 truncate">
+                            <dt class="text-sm font-medium text-gray-500 dark:text-gray-200 truncate">
                                 Points Total
                             </dt>
-                            <dd class="mt-1 text-3xl font-semibold text-gray-900">
+                            <dd class="mt-1 text-3xl font-semibold text-gray-900 dark:text-white">
                                 {{ $driver->race_results_sum_points }}
                             </dd>
                         </div>
                     </div>
 
-                    <div class="bg-white overflow-hidden shadow rounded-lg">
+                    <div class="bg-white dark:bg-gray-700 overflow-hidden shadow rounded-lg">
                         <div class="px-4 py-5 sm:p-6">
-                            <dt class="text-sm font-medium text-gray-500 truncate">
+                            <dt class="text-sm font-medium text-gray-500 dark:text-gray-200 truncate">
                                 Races Completed
                             </dt>
-                            <dd class="mt-1 text-3xl font-semibold text-gray-900">
+                            <dd class="mt-1 text-3xl font-semibold text-gray-900 dark:text-white">
                                 {{ $driver->race_results_count }}
                             </dd>
                         </div>
                     </div>
 
-                    <div class="bg-white overflow-hidden shadow rounded-lg">
+                    <div class="bg-white dark:bg-gray-700 overflow-hidden shadow rounded-lg">
                         <div class="px-4 py-5 sm:p-6">
-                            <dt class="text-sm font-medium text-gray-500 truncate">
+                            <dt class="text-sm font-medium text-gray-500 dark:text-gray-200 truncate">
                                 Average Finish
                             </dt>
-                            <dd class="mt-1 text-3xl font-semibold text-gray-900">
+                            <dd class="mt-1 text-3xl font-semibold text-gray-900 dark:text-white">
                                 {{ number_format($driver->race_results_avg_position, 1) }}
                             </dd>
                         </div>
                     </div>
 
-                    <div class="bg-white overflow-hidden shadow rounded-lg">
+                    <div class="bg-white dark:bg-gray-700 overflow-hidden shadow rounded-lg">
                         <div class="px-4 py-5 sm:p-6">
-                            <dt class="text-sm font-medium text-gray-500 truncate">
+                            <dt class="text-sm font-medium text-gray-500 dark:text-gray-200 truncate">
                                 Average Penalties
                             </dt>
-                            <dd class="mt-1 text-3xl font-semibold text-gray-900">
+                            <dd class="mt-1 text-3xl font-semibold text-gray-900 dark:text-white">
                                 {{ number_format($driver->race_results_avg_num_penalties, 1) }}
                             </dd>
                         </div>
@@ -140,8 +140,8 @@
             </div>
 
             <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                <div class="mt-5 bg-white overflow-hidden shadow rounded-lg">
-                    <h3 class="mt-2 font-medium text-center text-gray-900">
+                <div class="mt-5 bg-white dark:bg-gray-700 overflow-hidden shadow rounded-lg">
+                    <h3 class="mt-2 font-medium text-center text-gray-900 dark:text-white">
                         Position Change
                     </h3>
                     <div class="m-4">
@@ -149,8 +149,8 @@
                     </div>
                 </div>
 
-                <div class="mt-5 bg-white overflow-hidden shadow rounded-lg">
-                    <h3 class="mt-2 font-medium text-center text-gray-900">
+                <div class="mt-5 bg-white dark:bg-gray-700 overflow-hidden shadow rounded-lg">
+                    <h3 class="mt-2 font-medium text-center text-gray-900 dark:text-white">
                         % off Best Sectors
                     </h3>
                     <div class="m-4">
@@ -160,7 +160,7 @@
             </div>
 
             <div class="mt-5">
-                <h3 class="text-lg leading-6 font-medium text-gray-900">
+                <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-white">
                     Recent Results
                 </h3>
 

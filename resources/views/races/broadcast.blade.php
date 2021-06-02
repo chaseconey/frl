@@ -1,16 +1,16 @@
 <x-app-layout>
 
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-100 leading-tight">
             {{ $race->track->name }} Broadcast
         </h2>
-        <span class="text-gray-600 text-sm">{{ $race->division->name }}</span>
+        <span class="text-gray-600 dark:text-gray-300 text-sm">{{ $race->division->name }}</span>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
+            <div class="bg-white dark:bg-gray-700 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white dark:bg-gray-700 border-b border-gray-200 dark:border-gray-800">
 
                     <div class="mb-4">
                         @include('components.form-errors', ['errors' => $errors])
@@ -38,7 +38,7 @@
                             <div class="text-center mx-auto">
                                 <h3 class="flex flex-col my-4">
                                     <span class="font-semibold text-lg">{{ $video->title }}</span>
-                                    <span class="text-xs text-gray-500">{{ $info->publishedTime }}</span>
+                                    <span class="text-xs text-gray-500 dark:text-gray-200">{{ $info->publishedTime }}</span>
                                 </h3>
                                 @if(!is_null($info->code))
                                     {!! $info->code !!}
