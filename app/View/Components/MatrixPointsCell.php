@@ -70,7 +70,7 @@ class MatrixPointsCell extends Component
                 return 'bg-indigo-100 dark:bg-gray-500';
 
             default:
-                return 'bg-white bg-gray-700';
+                return 'bg-white dark:bg-gray-700';
         }
     }
 
