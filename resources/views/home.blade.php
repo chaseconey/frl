@@ -1,9 +1,9 @@
 <x-guest-layout>
-    <div class="relative bg-white overflow-hidden">
+    <div class="relative bg-white dark:bg-gray-700 overflow-hidden">
         <div class="max-w-7xl mx-auto">
             <div x-data="{ open: false }"
-                 class="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
-                <svg class="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2"
+                 class="relative z-10 pb-8 bg-white dark:bg-gray-700 sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
+                <svg class="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white dark:text-gray-900 transform translate-x-1/2"
                      fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
                     <polygon points="50,0 100,0 50,100 0,100"/>
                 </svg>
@@ -19,7 +19,7 @@
                                 <div class="-mr-2 flex items-center md:hidden">
                                     <button type="button"
                                             @click="open = ! open"
-                                            class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                                            class="bg-white dark:bg-gray-700 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
                                             id="main-menu" aria-haspopup="true">
                                         <span class="sr-only">Open main menu</span>
                                         <!-- Heroicon name: menu -->
@@ -60,12 +60,12 @@
                 -->
                 <div :class="{'block': open, 'hidden': ! open}"
                      class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
-                    <div class="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
+                    <div class="rounded-lg shadow-md bg-white dark:bg-gray-700 ring-1 ring-black ring-opacity-5 overflow-hidden">
                         <div class="px-5 pt-4 flex items-center justify-between">
                             <div class="-mr-2">
                                 <button type="button"
                                         @click="open = false"
-                                        class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                                        class="bg-white dark:bg-gray-700 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                                     <span class="sr-only">Close main menu</span>
                                     <!-- Heroicon name: x -->
                                     <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -140,7 +140,7 @@
         </div>
     </div>
 
-    <div class="bg-white" id="league">
+    <div class="bg-white dark:bg-gray-700" id="league">
         <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-24 lg:px-8">
             <div class="max-w-3xl mx-auto text-center">
                 <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white">League Benefits</h2>
@@ -200,7 +200,7 @@
         </script>
     </div>
 
-    <footer class="bg-white">
+    <footer class="bg-white dark:bg-gray-700">
         <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 flex justify-center lg:px-8">
             <div class="mt-8 md:mt-0 md:order-1">
                 <p class="text-center text-base text-gray-400">
