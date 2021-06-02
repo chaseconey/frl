@@ -1,16 +1,16 @@
 <x-app-layout>
 
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-100 leading-tight">
             {{ $race->track->name }} Race Results
         </h2>
-        <span class="text-gray-600 text-sm">{{ $race->division->name }}</span>
+        <span class="text-gray-600 dark:text-gray-300 text-sm">{{ $race->division->name }}</span>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
+            <div class="bg-white dark:bg-gray-700 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white dark:bg-gray-700 border-b border-gray-200 dark:border-gray-800">
 
                     <div class="mb-4">
                         @include('components.form-errors', ['errors' => $errors])

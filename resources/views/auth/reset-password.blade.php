@@ -2,7 +2,7 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                <x-application-logo class="w-20 h-20 fill-current text-gray-500 dark:text-gray-200" />
             </a>
         </x-slot>
 
@@ -24,7 +24,7 @@
 
             <!-- Password -->
             <div class="mt-4">
-                <label for="password" class="block font-medium text-sm text-gray-700">
+                <label for="password" class="block font-medium text-sm text-gray-700 dark:text-gray-200">
                     {{ __('Password') }}
                 </label>
 
@@ -33,7 +33,7 @@
 
             <!-- Confirm Password -->
             <div class="mt-4">
-                <label for="password_confirmation" class="block font-medium text-sm text-gray-700">
+                <label for="password_confirmation" class="block font-medium text-sm text-gray-700 dark:text-gray-200">
                     {{ __('Confirm Password') }}
                 </label>
 

@@ -2,20 +2,20 @@
 <div class="flex flex-col">
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                <table class="min-w-full divide-y divide-gray-200">
-                    <thead class="bg-gray-50">
+            <div class="shadow overflow-hidden border-b border-gray-200 dark:border-gray-800 sm:rounded-lg">
+                <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-800">
+                    <thead class="bg-gray-50 dark:bg-gray-600">
                     <tr>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">
                             @sortablelink('track.name', 'Track')
                         </th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">
                             @sortablelink('division.name', 'Division')
                         </th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">
                             @sortablelink('race_time', 'Race Time')
                         </th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">
                             Status
                         </th>
                         <th scope="col" class="relative px-6 py-3">
@@ -23,7 +23,7 @@
                         </th>
                     </tr>
                     </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
+                    <tbody class="bg-white dark:bg-gray-700 divide-y divide-gray-200 dark:divide-gray-800">
                     @foreach($races as $race)
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap">
@@ -32,22 +32,22 @@
                                     <x-track-avatar :track="$race->track"></x-track-avatar>
                                 </div>
                                 <div class="ml-4">
-                                    <div class="text-sm font-medium text-gray-900">
-                                        <a href="{{ route('race.results.index', $race->id) }}" class="text-indigo-600 hover:text-indigo-900">
+                                    <div class="text-sm font-medium text-gray-900 dark:text-white">
+                                        <a href="{{ route('race.results.index', $race->id) }}" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-900">
                                             {{ $race->track->name }}
                                         </a>
                                     </div>
-                                    <div class="text-sm text-gray-500">
+                                    <div class="text-sm text-gray-500 dark:text-gray-200">
                                         {{ country_code_to_name($race->track->country) }}
                                     </div>
                                 </div>
                             </div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">{{ $race->division->name }}</div>
+                            <div class="text-sm text-gray-900 dark:text-white">{{ $race->division->name }}</div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">{{ $race->race_time->diffForHumans() }}</div>
+                            <div class="text-sm text-gray-900 dark:text-white">{{ $race->race_time->diffForHumans() }}</div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             <span
@@ -57,7 +57,7 @@
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                             @if($race->broadcastVideos()->exists())
-                            <a href="{{ route('races.broadcast', $race->id) }}" class="text-indigo-600 hover:text-indigo-900">
+                            <a href="{{ route('races.broadcast', $race->id) }}" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-900">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                                 </svg>

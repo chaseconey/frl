@@ -11,14 +11,14 @@
 
     <input type="hidden" name="driver_id" value="{{ $driver_id }}">
 
-    <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
+    <div class="space-y-8 divide-y divide-gray-200 dark:divide-gray-800 sm:space-y-5">
 
         <div class="mt-6 sm:mt-5 space-y-6 sm:space-y-5">
 
             <div
-                class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 dark:border-gray-800 sm:pt-5">
                 <label for="protested_driver_id"
-                       class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
+                       class="block text-sm font-medium text-gray-700 dark:text-gray-200 sm:mt-px sm:pt-2">
                     Protested Driver
                 </label>
                 <div class="mt-1 sm:mt-0 sm:col-span-2">
@@ -37,9 +37,9 @@
             </div>
 
             <div
-                class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 dark:border-gray-800 sm:pt-5">
                 <label for="race_id"
-                       class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
+                       class="block text-sm font-medium text-gray-700 dark:text-gray-200 sm:mt-px sm:pt-2">
                     Track
                 </label>
                 <div class="mt-1 sm:mt-0 sm:col-span-2">
@@ -57,10 +57,10 @@
                 </div>
             </div>
 
-            <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-                <label for="video_url" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
+            <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 dark:border-gray-800 sm:pt-5">
+                <label for="video_url" class="block text-sm font-medium text-gray-700 dark:text-gray-200 sm:mt-px sm:pt-2">
                     Video URL
-                    <p class="mt-1 text-gray-500">If the video is over 5 minutes long, add a timestamp. Protests without
+                    <p class="mt-1 text-gray-500 dark:text-gray-200">If the video is over 5 minutes long, add a timestamp. Protests without
                         a timestamp for videos over 5 minutes will be automatically dismissed.</p>
                 </label>
                 <div class="mt-1 sm:mt-0 sm:col-span-2">
@@ -71,8 +71,8 @@
                 </div>
             </div>
 
-            <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-                <label for="description" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
+            <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 dark:border-gray-800 sm:pt-5">
+                <label for="description" class="block text-sm font-medium text-gray-700 dark:text-gray-200 sm:mt-px sm:pt-2">
                     Description of the incident
                 </label>
                 <div class="mt-1 sm:mt-0 sm:col-span-2">
@@ -80,13 +80,13 @@
                 </div>
             </div>
 
-            <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-                <label for="rules_breached" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
+            <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 dark:border-gray-800 sm:pt-5">
+                <label for="rules_breached" class="block text-sm font-medium text-gray-700 dark:text-gray-200 sm:mt-px sm:pt-2">
                     Which rules were breached?
                 </label>
                 <div class="mt-1 sm:mt-0 sm:col-span-2">
                     <textarea id="rules_breached" name="rules_breached" rows="3" class="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md">{{ old('rules_breached') }}</textarea>
-                    <p class="mt-2 text-sm text-gray-500">Please provide the numeric rules (see above) that were broken in this incident.</p>
+                    <p class="mt-2 text-sm text-gray-500 dark:text-gray-200">Please provide the numeric rules (see above) that were broken in this incident.</p>
                 </div>
             </div>
 
@@ -96,7 +96,7 @@
     <div class="pt-5">
         <div class="flex justify-end">
             <button type="submit"
-                    class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white dark:text-gray-900 bg-indigo-600 dark:bg-indigo-400 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 Submit
             </button>
         </div>

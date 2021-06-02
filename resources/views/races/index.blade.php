@@ -1,15 +1,15 @@
 <x-app-layout>
 
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-100 leading-tight">
             {{ __('Races') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
+            <div class="overflow-hidden">
+                <div class="p-6">
 
                     <div class="mb-4" x-data="{ filters_open: false }">
                         <form>
@@ -19,7 +19,7 @@
                             </div>
                             <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4" style="display: none;" x-show.transition="filters_open">
                                 <div>
-                                    <label for="division_id" class="block text-sm font-medium text-gray-700">Division</label>
+                                    <label for="division_id" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Division</label>
                                     <select id="division_id" name="division_id"
                                             class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
                                             onchange="this.closest('form').submit()"
@@ -34,7 +34,7 @@
                         </form>
 
                         <div class="flex justify-center my-2" @click="filters_open = !filters_open">
-                            <a x-text="filters_open ? 'Hide Filters': 'Show Filters'" class="text-gray-600 text-sm cursor-pointer"></a>
+                            <a x-text="filters_open ? 'Hide Filters': 'Show Filters'" class="text-gray-600 dark:text-gray-300 text-sm cursor-pointer"></a>
                         </div>
 
                     </div>
