@@ -15,13 +15,10 @@ const teams = [
 
 module.exports = {
     purge: {
-        content: ['./storage/framework/views/*.php', './resources/views/**/*.blade.php'],
+        content: ['./storage/framework/views/*.php', './resources/views/**/*.blade.php', './app/View/Components/*.php'],
         options: {
             safelist: [
                 ...teams.map(team => `border-${team}`),
-
-                // Colors for CSS Tire component that are dynamically generated
-                'bg-red-500', 'bg-yellow-300', 'bg-white', 'bg-green-600', 'bg-blue-500'
             ]
         }
     },
