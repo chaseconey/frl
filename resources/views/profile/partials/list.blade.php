@@ -1,8 +1,8 @@
-<div class="bg-white dark:bg-gray-700 shadow overflow-hidden sm:rounded-md">
+<div class="bg-white dark:bg-gray-800 shadow overflow-hidden sm:rounded-md">
     <ul class="divide-y divide-gray-200 dark:divide-gray-800">
         @foreach($protests as $protest)
             <li x-data="{ open: false }">
-                <span class="block hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer" @click="open = ! open">
+                <span class="block hover:bg-gray-50 dark:hover:bg-gray-900 cursor-pointer" @click="open = ! open">
                     <div class="px-4 py-4 sm:px-6">
                         <div class="flex items-center justify-between">
                             <p class="text-sm font-medium text-indigo-600 dark:text-indigo-400 truncate">
@@ -61,7 +61,7 @@
                         <label for="description" class="block text-sm font-medium text-gray-700 dark:text-gray-200 sm:mt-px sm:pt-2">
                             Description of the incident
                         </label>
-                        <div class="mt-1 sm:mt-0 sm:col-span-2">
+                        <div class="mt-1 sm:mt-0 sm:col-span-2 dark:text-gray-100">
                             <p>{{ $protest->description }}</p>
                         </div>
                     </div>
@@ -70,7 +70,7 @@
                         <label for="description" class="block text-sm font-medium text-gray-700 dark:text-gray-200 sm:mt-px sm:pt-2">
                             Stewards' Decision
                         </label>
-                        <div class="mt-1 sm:mt-0 sm:col-span-2">
+                        <div class="mt-1 sm:mt-0 sm:col-span-2 dark:text-gray-100">
                             <p>{{ $protest->stewards_decision }}</p>
                         </div>
                     </div>
