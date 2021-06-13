@@ -1,4 +1,4 @@
-@if(auth()->user()->can('manage-protests') && \App\Models\Protest::inReview()->count() > 0)
+@if(auth()->user() && auth()->user()->can('manage-protests') && \App\Models\Protest::inReview()->count() > 0)
     <div class="max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:px-8">
         <x-alert-warning>
             <strong>Steward Notification</strong>
