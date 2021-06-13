@@ -26,7 +26,6 @@ Route::get('divisions/{division}/team-standings', '\App\Http\Controllers\Divisio
 Route::get('divisions/{division}/matrix', '\App\Http\Controllers\Division\StandingController@matrix')
     ->name('standings.matrix');
 
-Route::resource('divisions', \App\Http\Controllers\DivisionController::class)->only('index');
 Route::resource('standings', \App\Http\Controllers\StandingController::class);
 
 Route::get('races/{race}/broadcast', '\App\Http\Controllers\RaceController@broadcast')->name('races.broadcast');
@@ -47,6 +46,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('divisions/{division}/export', '\App\Http\Controllers\DivisionController@export')
         ->name('standings.export');
 
+    Route::resource('divisions', \App\Http\Controllers\DivisionController::class)->only('index');
     Route::resource('signup', \App\Http\Controllers\SignupController::class)->only('index', 'create', 'store');
     Route::resource('drivers', \App\Http\Controllers\DriverController::class)->only(['edit', 'update', 'show']);
     Route::resource('driver-videos', \App\Http\Controllers\DriverVideoController::class)->only(['store']);
