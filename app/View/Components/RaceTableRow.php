@@ -22,7 +22,7 @@ class RaceTableRow extends Component
     public function backgroundColor()
     {
         switch (true) {
-            case auth()->user()->hasDriver($this->driver->id):
+            case auth()->user() && auth()->user()->hasDriver($this->driver->id):
                 return 'bg-gray-100 dark:bg-gray-800';
             default:
                 return '';
