@@ -17,7 +17,7 @@
                     </thead>
                     <tbody class="bg-white dark:bg-gray-700 divide-y divide-gray-200 dark:divide-gray-800">
                     @foreach($standings as $team)
-                        <tr class="{{ auth()->user()->hasF1Team($team->id, $division->id) ? 'bg-gray-100 dark:bg-gray-800' : '' }}">
+                        <tr class="{{ auth()->user() && auth()->user()->hasF1Team($team->id, $division->id) ? 'bg-gray-100 dark:bg-gray-800' : '' }}">
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="pl-4 border-l-4 {{ f1_team_color($team->name) }}">
                                     <div class="text-sm font-medium text-gray-900 dark:text-white">
