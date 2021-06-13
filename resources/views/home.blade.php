@@ -36,7 +36,7 @@
                             <a href="#league" class="font-medium text-gray-500 dark:text-gray-200 hover:text-gray-900 dark:hover:text-gray-100">League Benefits</a>
                             <a href="https://discord.gg/73u3p54" target="_blank"
                                class="font-medium text-gray-500 dark:text-gray-200 hover:text-gray-900 dark:hover:text-gray-100">Discord</a>
-                            <a href="{{ route('standings.index') }}" target="_blank"
+                            <a href="{{ route('standings.index') }}"
                                class="font-medium text-gray-500 dark:text-gray-200 hover:text-gray-900 dark:hover:text-gray-100">Standings</a>
 
                             @auth
