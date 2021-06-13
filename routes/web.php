@@ -29,6 +29,12 @@ Route::get('divisions/{division}/matrix', '\App\Http\Controllers\Division\Standi
 Route::resource('divisions', \App\Http\Controllers\DivisionController::class)->only('index');
 Route::resource('standings', \App\Http\Controllers\StandingController::class);
 
+Route::get('races/{race}/broadcast', '\App\Http\Controllers\RaceController@broadcast')->name('races.broadcast');
+
+Route::resource('races', \App\Http\Controllers\RaceController::class)->only('index');
+Route::resource('race.results', \App\Http\Controllers\Race\RaceResultsController::class);
+Route::resource('race.quali-results', \App\Http\Controllers\Race\RaceQualiResultsController::class);
+
 Route::group(['middleware' => 'auth'], function () {
     Route::get('dashboard', '\App\Http\Controllers\DashboardController@index')->name('dashboard');
 
@@ -44,10 +50,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('signup', \App\Http\Controllers\SignupController::class)->only('index', 'create', 'store');
     Route::resource('drivers', \App\Http\Controllers\DriverController::class)->only(['edit', 'update', 'show']);
     Route::resource('driver-videos', \App\Http\Controllers\DriverVideoController::class)->only(['store']);
-    Route::get('races/{race}/broadcast', '\App\Http\Controllers\RaceController@broadcast')->name('races.broadcast');
     Route::get('races/{race}/protests', '\App\Http\Controllers\Race\ProtestsController@index')->name('races.protests');
-    Route::resource('races', \App\Http\Controllers\RaceController::class)->only('index');
-    Route::resource('race.results', \App\Http\Controllers\Race\RaceResultsController::class);
-    Route::resource('race.quali-results', \App\Http\Controllers\Race\RaceQualiResultsController::class);
+
     Route::resource('protests', \App\Http\Controllers\ProtestController::class);
 });
