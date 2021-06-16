@@ -95,10 +95,8 @@ class RaceQualiResult extends Model
             ]);
         }
 
-        // TODO: add raw numeric values (to use when new season starts)
         return new static([
             'position' => $raceData['m_position'],
-//            'best_lap_time' => now()->startOfDay()->addMillis($bestLap * 1000)->format('i:s.v'),
             'best_lap_time' => $bestLap,
             'best_s1_time' => round($lapData['m_bestLapSector1TimeInMS'] / 1000, 3),
             'best_s2_time' => round($lapData['m_bestLapSector2TimeInMS'] / 1000, 3),
