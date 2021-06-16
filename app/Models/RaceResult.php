@@ -63,7 +63,9 @@ class RaceResult extends Model
         'penalty_seconds',
         'race_time',
         'tire_stints',
-        'points'
+        'points',
+        'codemasters_result_status',
+        'laps_completed'
     ];
 
     /**
@@ -76,22 +78,25 @@ class RaceResult extends Model
         $raceData = $json['race_data'];
 
         $totalRaceTime = $raceData['m_totalRaceTime'] + $raceData['m_penaltiesTime'];
-        $raceTimeDisplay = now()->startOfDay()->addMillis($totalRaceTime * 1000)->format('H:i:s.v');
-        if (!UdpSpec::isRaceResultStatusFinished($raceData['m_resultStatus'])) {
-            $raceTimeDisplay = UdpSpec::RACE_RESULT_STATUS[$raceData['m_resultStatus']];
-        }
+//        $raceTimeDisplay = now()->startOfDay()->addMillis($totalRaceTime * 1000)->format('H:i:s.v');
+//        if (!UdpSpec::isRaceResultStatusFinished($raceData['m_resultStatus'])) {
+//            $raceTimeDisplay = UdpSpec::RACE_RESULT_STATUS[$raceData['m_resultStatus']];
+//        }
 
         // TODO: add raw numeric values (to use when new season starts)
         return new static([
             'position' => $raceData['m_position'],
             'grid_position' => $raceData['m_gridPosition'],
             'num_pit_stops' => $raceData['m_numPitStops'],
-            'best_lap_time' => now()->startOfDay()->addMillis($raceData['m_bestLapTime'] * 1000)->format('i:s.v'),
+            'best_lap_time' => $raceData['m_bestLapTime'],
+//            'best_lap_time' => now()->startOfDay()->addMillis($raceData['m_bestLapTime'] * 1000)->format('i:s.v'),
             'num_penalties' => $raceData['m_numPenalties'],
             'penalty_seconds' => $raceData['m_penaltiesTime'],
-            'race_time' => $raceTimeDisplay,
+            'race_time' => $totalRaceTime,
+            'codemasters_result_status' => $raceData['m_resultStatus'],
             'tire_stints' => UdpSpec::mapTireStint($raceData['m_tyreStintsVisual']),
             'points' => $raceData['m_points'],
+            'laps_completed' => $raceData['m_numLaps'],
         ]);
     }
 

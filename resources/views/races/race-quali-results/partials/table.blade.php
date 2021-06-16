@@ -57,7 +57,13 @@
                                     @if($result->best_lap_tire)
                                         <x-tire :tire="$result->best_lap_tire"></x-tire>
                                     @endif
-                                    <div class="text-sm text-gray-900 dark:text-white">{{ $result->best_lap_time }}</div>
+                                    <div class="text-sm text-gray-900 dark:text-white">
+                                        @if($result->best_lap_time_legacy)
+                                            {{ $result->best_lap_time_legacy }}
+                                        @else
+                                            {{ format_seconds_as_human_time($result->best_lap_time) }}
+                                        @endif
+                                    </div>
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right">

@@ -71,6 +71,7 @@ class RaceQualiResult extends Model
         'best_s2_delta',
         'best_s3_delta',
         'best_lap_tire',
+        'codemasters_result_status'
     ];
 
     /**
@@ -89,14 +90,16 @@ class RaceQualiResult extends Model
         if ($bestLap === 0) {
             return new static([
                 'position' => $raceData['m_position'],
-                'best_lap_time' => 'No Lap',
+                'best_lap_time' => $bestLap,
+                'codemasters_result_status' => $raceData['m_resultStatus'],
             ]);
         }
 
         // TODO: add raw numeric values (to use when new season starts)
         return new static([
             'position' => $raceData['m_position'],
-            'best_lap_time' => now()->startOfDay()->addMillis($bestLap * 1000)->format('i:s.v'),
+//            'best_lap_time' => now()->startOfDay()->addMillis($bestLap * 1000)->format('i:s.v'),
+            'best_lap_time' => $bestLap,
             'best_s1_time' => round($lapData['m_bestLapSector1TimeInMS'] / 1000, 3),
             'best_s2_time' => round($lapData['m_bestLapSector2TimeInMS'] / 1000, 3),
             'best_s3_time' => round($lapData['m_bestLapSector3TimeInMS'] / 1000, 3),
@@ -104,7 +107,8 @@ class RaceQualiResult extends Model
             'best_s1_delta' => round($calcData['bestLapSector1InMsDelta'] / 1000, 3),
             'best_s2_delta' => round($calcData['bestLapSector2InMsDelta'] / 1000, 3),
             'best_s3_delta' => round($calcData['bestLapSector3InMsDelta'] / 1000, 3),
-            'best_lap_tire' => $bestLapTire ? UdpSpec::TIRES_VISUAL[$bestLapTire] : null
+            'best_lap_tire' => $bestLapTire ? UdpSpec::TIRES_VISUAL[$bestLapTire] : null,
+            'codemasters_result_status' => $raceData['m_resultStatus'],
         ]);
     }
 
