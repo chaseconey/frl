@@ -10,7 +10,9 @@ const teams = [
     'racing-point',
     'red-bull-racing',
     'renault',
-    'williams'
+    'williams',
+    'aston-martin',
+    'alpine'
 ]
 
 module.exports = {
@@ -31,16 +33,18 @@ module.exports = {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
             borderColor: {
-                'alfa-romeo': '#9B0000',
-                'alpha-tauri': '#FFFFFF',
-                'ferrari': '#C80000',
-                'haas': '#787878',
+                'alfa-romeo': '#900000',
+                'alpha-tauri': '#2B4562',
+                'ferrari': '#DC0000',
+                'haas': '#FFFFFF',
                 'mclaren': '#FF8700',
                 'mercedes': '#00D2BE',
                 'racing-point': '#F596C8',
-                'red-bull-racing': '#1E41FF',
+                'red-bull-racing': '#0600EF',
                 'renault': '#FFF500',
-                'williams': '#0082FA',
+                'williams': '#005AFF',
+                'aston-martin': '#006F62',
+                'alpine': '#0090FF'
             }
         },
     },
