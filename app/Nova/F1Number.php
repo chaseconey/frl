@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
@@ -52,6 +53,7 @@ class F1Number extends Resource
         return [
             ID::make(__('ID'), 'id')->sortable(),
             Number::make('Racing Number')->sortable(),
+            Boolean::make('Is User Assignable')->sortable(),
 
             HasMany::make('Drivers')
         ];

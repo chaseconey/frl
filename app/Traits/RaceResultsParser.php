@@ -19,8 +19,8 @@ trait RaceResultsParser
      */
     protected function uploadResults(array $results, Race $race, callable $mapper): void
     {
-        $teams = F1Team::pluck('id', 'codemasters_id');
-        $numbers = F1Number::pluck('id', 'racing_number')->toArray();
+        $teams = F1Team::active()->pluck('id', 'codemasters_id');
+        $numbers = F1Number::active()->pluck('id', 'racing_number')->toArray();
 
         DB::beginTransaction();
 

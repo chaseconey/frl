@@ -43,7 +43,7 @@ class SignupController extends Controller
             ])->get();
 
         $takenNumbers = $division->drivers->pluck('f1Number.id');
-        $numbers = F1Number::whereNotIn('id', $takenNumbers)->pluck('racing_number', 'id');
+        $numbers = F1Number::active()->whereNotIn('id', $takenNumbers)->pluck('racing_number', 'id');
 
         return view('signup.create')
             ->withNumbers($numbers)
