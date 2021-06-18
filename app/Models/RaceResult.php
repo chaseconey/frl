@@ -78,7 +78,7 @@ class RaceResult extends Model
         $raceData = $json['race_data'];
 
         $totalRaceTime = $raceData['m_totalRaceTime'] + $raceData['m_penaltiesTime'];
-        
+
         return new static([
             'position' => $raceData['m_position'],
             'grid_position' => $raceData['m_gridPosition'],
