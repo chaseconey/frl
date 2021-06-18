@@ -1,13 +1,7 @@
-php:
-  preset: recommended
-  disabled:
-    - no_unused_imports
-  finder:
-    not-name:
-      - index.php
-      - server.php
-js:
-  finder:
-    not-name:
-      - webpack.mix.js
-css: true
+preset: psr2
+finder:
+  not-name:
+    - index.php
+    - server.php
+    - _ide_helper.php
+    - .phpstorm.meta.php
