@@ -1,4 +1,5 @@
 ## FRL Portal
+![CircleCI](https://img.shields.io/circleci/build/github/chaseconey/frl)
 [![StyleCI](https://github.styleci.io/repos/322995461/shield?branch=main)](https://github.styleci.io/repos/322995461?branch=main)
 
 This project is an authenticated portal for an online F1 racing league called FRL. It is a fully-featured application that offers all of the league management and driver experiences that you would expect such as:
