@@ -12,6 +12,7 @@ jobs:
           DB_DATABASE: test_db
           DB_USERNAME: root
           DB_PASSWORD: rootpw
+          APP_KEY: base64:8z8BrA5JEvZ52h/DXJF7b24n5oWOe9S3ADtzjiYQxM0=
       - image: circleci/mysql:5.7-ram
         environment:
           MYSQL_ROOT_PASSWORD: rootpw
@@ -43,5 +44,4 @@ jobs:
           key: node-v1-{{ checksum "package-lock.json" }}
           paths:
             - node_modules
-      - run: php artisan key:generate
       - run: ./vendor/bin/phpunit
