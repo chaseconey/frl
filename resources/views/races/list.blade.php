@@ -1,19 +1,9 @@
 <x-app-layout>
 
     <x-slot name="header">
-        <div class="flex justify-between text-gray-800 dark:text-gray-100">
-            <h2 class="font-semibold text-xl leading-tight">
-                {{ __('Races') }}
-            </h2>
-
-            <div>
-                <a href="{{ route('races.index') }}" title="Calendar View">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                </a>
-            </div>
-        </div>
+        <h2 class="font-semibold text-gray-800 dark:text-gray-100 text-xl leading-tight">
+            {{ __('Races') }}
+        </h2>
     </x-slot>
 
     <div class="py-12">
