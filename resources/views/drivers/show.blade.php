@@ -180,6 +180,11 @@
                 notyf.success('Copied to clipboard');
             });
 
+            let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (isDarkMode) {
+                Chart.defaults.global.defaultFontColor = 'white';
+            }
+
             const positionDeltaChart = document.getElementById('positionDelta')
             const positionChange = @json($positions->map(fn ($p) => $p->grid_position - $p->position));
             let labels = @json($positions->map->country);
@@ -231,15 +236,17 @@
             let results = @json($sectorDeltas);
 
             /**
-             * Calculate % time off of the best sector produced
+             * Calculate the rounded % time off of the best sector produced
              *
              * @param time
              * @param delta
              * @returns {number}
              */
             const calcPercentageOffBest = (time, delta) => {
-                let overallBest = time - delta;
-                return ((time - overallBest) / overallBest) * 100
+                const overallBest = time - delta;
+                const percentageOff = ((time - overallBest) / overallBest) * 100
+
+                return Number(percentageOff).toFixed(4);
             }
 
             new Chart(qualiDeltasChart, {
