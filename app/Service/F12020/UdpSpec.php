@@ -3,10 +3,8 @@
 
 namespace App\Service\F12020;
 
-
 class UdpSpec
 {
-
     const TIRES_VISUAL = [
         16 => "S",
         17 => "M",
@@ -52,5 +50,4 @@ class UdpSpec
 
         return $stint;
     }
-
 }

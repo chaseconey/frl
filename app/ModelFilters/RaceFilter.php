@@ -21,8 +21,7 @@ class RaceFilter extends ModelFilter
 
     public function search($search)
     {
-        return $this->whereHas('track', function($query) use ($search)
-        {
+        return $this->whereHas('track', function ($query) use ($search) {
             return $query->where('name', 'LIKE', "%{$search}%")
                 ->orWhere('country', 'LIKE', "%{$search}%");
         });

@@ -54,7 +54,7 @@ class PostNextRace implements ShouldQueue
         $client = app(Client::class);
         $channel = $race->division->discord_reminder_channel_id;
 
-        if ( ! $channel) {
+        if (! $channel) {
             return;
         }
 

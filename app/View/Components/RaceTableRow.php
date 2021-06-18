@@ -6,7 +6,6 @@ use Illuminate\View\Component;
 
 class RaceTableRow extends Component
 {
-
     public $driver;
 
     /**

@@ -87,7 +87,7 @@ class User extends Authenticatable
     public function activeDrivers()
     {
         return $this->hasMany(Driver::class)
-            ->whereHas('division', function($query) {
+            ->whereHas('division', function ($query) {
                 return $query->active();
             });
     }

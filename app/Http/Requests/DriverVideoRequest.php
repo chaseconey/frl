@@ -49,7 +49,5 @@ class DriverVideoRequest extends FormRequest
         $driverId = auth()->user()->drivers->pluck('id', 'division_id')->get($race->division_id);
 
         $this->merge(['driver_id' => $driverId]);
-
     }
-
 }

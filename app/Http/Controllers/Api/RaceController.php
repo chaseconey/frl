@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 class RaceController extends Controller
 {
-
     public function index(Request $request)
     {
 
@@ -23,7 +22,7 @@ class RaceController extends Controller
 //            "start": "2019-09-08",
 //            "end": "2019-09-10"
 //        }
-        return $races->map(function(Race $r) {
+        return $races->map(function (Race $r) {
             return [
                 'title' => "{$r->track->name} - {$r->division->name}",
                 'start' => $r->race_time,
@@ -33,5 +32,4 @@ class RaceController extends Controller
             ];
         });
     }
-
 }

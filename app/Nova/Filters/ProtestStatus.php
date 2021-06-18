@@ -26,7 +26,7 @@ class ProtestStatus extends Filter
     {
         if ($value === "in-review") {
             return $query->inReview();
-        } else if ($value === "complete") {
+        } elseif ($value === "complete") {
             return $query->complete();
         }
     }
