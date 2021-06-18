@@ -147,8 +147,11 @@
             <x-responsive-nav-link :href="route('divisions.index')" :active="request()->routeIs('divisions.*')">
                 {{ __('Roster') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('races.index')" :active="request()->routeIs('races*')">
+            <x-responsive-nav-link :href="route('races.list')" :active="!request()->routeIs('races.index') && request()->routeIs('races*')">
                 {{ __('Races') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('races.index')" :active="request()->routeIs('races.index')">
+                {{ __('Race Calendar') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('standings.index')" :active="request()->routeIs('standings.*')">
                 {{ __('Standings') }}
