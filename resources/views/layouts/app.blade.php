@@ -13,6 +13,7 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
+        @production
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-W2DQ2BPDFL"></script>
         <script>
@@ -22,6 +23,7 @@
 
           gtag('config', 'G-W2DQ2BPDFL');
         </script>
+        @endproduction
 
     </head>
     <body class="font-sans antialiased">
