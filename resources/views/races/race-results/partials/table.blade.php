@@ -67,7 +67,7 @@
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right">
-                                <div class="text-sm text-gray-900 dark:text-white">{{ $result->best_lap_time }}</div>
+                                <div class="text-sm text-gray-900 dark:text-white">{{ format_seconds_as_human_time($result->best_lap_time) }}</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="text-sm text-gray-900 dark:text-white">{{ $result->num_pit_stops }}</div>
@@ -85,7 +85,15 @@
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right">
-                                <div class="text-sm text-gray-900 dark:text-white">{{ $result->race_time }}</div>
+                                <div class="text-sm text-gray-900 dark:text-white">
+
+                                    @if ($result->race_time_legacy)
+                                        {{-- This is for preserving old string-based race data --}}
+                                        {{ $result->race_time_legacy }}
+                                    @else
+                                        <x-race-time-column :race="$race" :result="$result" />
+                                    @endif
+                                </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right">
                                 <div class="text-sm text-gray-900 dark:text-white">{{ $result->points }}</div>
@@ -104,7 +112,7 @@
                     </tbody>
                 </table>
             </div>
-            @if($race->results->count() === 0 && auth()->user()->hasRole('admin'))
+            @if($race->results->count() === 0 && auth()->user() && auth()->user()->hasRole('admin'))
                 @include('races.race-results.partials.upload-form', ['route' => 'race.results.store'])
             @endif
         </div>
