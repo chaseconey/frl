@@ -12,6 +12,7 @@ jobs:
           DB_DATABASE: test_db
           DB_USERNAME: root
           DB_PASSWORD: rootpw
+          APP_KEY: base64:8z8BrA5JEvZ52h/DXJF7b24n5oWOe9S3ADtzjiYQxM0=
       - image: circleci/mysql:5.7-ram
         environment:
           MYSQL_ROOT_PASSWORD: rootpw
@@ -22,7 +23,7 @@ jobs:
       - checkout
       - run: sudo apt update
       - run: sudo apt install zlib1g-dev libsqlite3-dev
-      - run: sudo docker-php-ext-install zip
+      - run: sudo docker-php-ext-install zip pdo pdo_mysql
       # Download and cache dependencies
       - restore_cache:
           keys:
