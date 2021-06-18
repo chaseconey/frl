@@ -61,7 +61,11 @@
                                         @if($result->best_lap_time_legacy)
                                             {{ $result->best_lap_time_legacy }}
                                         @else
-                                            {{ format_seconds_as_human_time($result->best_lap_time) }}
+                                            @if($result->best_lap_time > 0)
+                                                {{ format_seconds_as_human_time($result->best_lap_time) }}
+                                            @else
+                                                No Lap
+                                            @endif
                                         @endif
                                     </div>
                                 </div>
