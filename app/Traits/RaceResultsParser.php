@@ -20,14 +20,14 @@ trait RaceResultsParser
     protected function uploadResults(array $results, Race $race, callable $mapper): void
     {
         $teams = F1Team::active()->pluck('id', 'codemasters_id');
-        $numbers = F1Number::active()->pluck('id', 'racing_number')->toArray();
+        $activeF1Numbers = F1Number::active()->pluck('id', 'racing_number')->toArray();
 
         DB::beginTransaction();
 
         try {
             foreach ($results as $racingNumber => $result) {
-                if (array_key_exists($racingNumber, $numbers)) {
-                    $driver = Driver::where('f1_number_id', $numbers[$racingNumber])
+                if (array_key_exists($racingNumber, $activeF1Numbers)) {
+                    $driver = Driver::where('f1_number_id', $activeF1Numbers[$racingNumber])
                         ->where('division_id', $race->division_id)
                         ->first();
 
@@ -42,6 +42,9 @@ trait RaceResultsParser
                     $raceResult->f1_team_id = $teams[$result['driver']['m_teamId']];
 
                     $raceResult->save();
+                } else if ($result['race_data']['m_position'] > 0 && $result['race_data']['m_numLaps'] > 0) {
+                    // This usually happens when someone comes in after the session has started
+                    throw new \Exception("Driver with AI racing number found, please correct data");
                 }
             }
 
