@@ -96,6 +96,5 @@ class F1NumberSeeder extends Seeder
         foreach ($numbers as $number) {
             \App\Models\F1Number::factory()->create(['racing_number' => $number]);
         }
-
     }
 }

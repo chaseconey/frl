@@ -10,7 +10,6 @@ use App\Http\Requests\DriverUpdateRequest;
 
 class DriverController extends Controller
 {
-
     public function show(Driver $driver)
     {
         $driver->loadCount('raceResults')

@@ -31,7 +31,7 @@ trait RaceResultsParser
                         ->where('division_id', $race->division_id)
                         ->first();
 
-                    if ( ! $driver) {
+                    if (! $driver) {
                         throw new \Exception("Driver with number #{$racingNumber} not found");
                     }
 
@@ -42,7 +42,7 @@ trait RaceResultsParser
                     $raceResult->f1_team_id = $teams[$result['driver']['m_teamId']];
 
                     $raceResult->save();
-                } else if ($result['race_data']['m_position'] > 0 && $result['race_data']['m_numLaps'] > 0) {
+                } elseif ($result['race_data']['m_position'] > 0 && $result['race_data']['m_numLaps'] > 0) {
                     // This usually happens when someone comes in after the session has started
                     throw new \Exception("Driver with AI racing number (#{$racingNumber}) found, please correct data");
                 }
@@ -55,5 +55,4 @@ trait RaceResultsParser
             throw $e;
         }
     }
-
 }

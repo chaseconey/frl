@@ -12,7 +12,6 @@ use Illuminate\Http\Request;
 
 class SignupController extends Controller
 {
-
     public function index()
     {
         $divisions = Division::withCount('drivers')
@@ -77,5 +76,4 @@ class SignupController extends Controller
 
         return redirect()->route('dashboard');
     }
-
 }

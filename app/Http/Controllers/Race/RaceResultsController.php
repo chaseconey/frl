@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 
 class RaceResultsController extends Controller
 {
-
     use RaceResultsParser;
 
     /**
@@ -59,7 +58,7 @@ class RaceResultsController extends Controller
 
         $results = json_decode($json, true);
 
-        $this->uploadResults($results, $race, fn($results) => RaceResult::fromFile($results));
+        $this->uploadResults($results, $race, fn ($results) => RaceResult::fromFile($results));
 
         activity()
             ->performedOn($race)
