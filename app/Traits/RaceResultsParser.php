@@ -44,7 +44,7 @@ trait RaceResultsParser
                     $raceResult->save();
                 } else if ($result['race_data']['m_position'] > 0 && $result['race_data']['m_numLaps'] > 0) {
                     // This usually happens when someone comes in after the session has started
-                    throw new \Exception("Driver with AI racing number found, please correct data");
+                    throw new \Exception("Driver with AI racing number (#{$racingNumber}) found, please correct data");
                 }
             }
 
