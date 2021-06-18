@@ -34,7 +34,7 @@
                         </div>
                         <div class="hidden md:block md:ml-10 md:pr-4 md:space-x-8">
                             <a href="#league" class="font-medium text-gray-500 dark:text-gray-200 hover:text-gray-900 dark:hover:text-gray-100">League Benefits</a>
-                            <a href="https://discord.gg/73u3p54" target="_blank"
+                            <a href="{{ config('services.discord.channel_url') }}" target="_blank"
                                class="font-medium text-gray-500 dark:text-gray-200 hover:text-gray-900 dark:hover:text-gray-100">Discord</a>
                             <a href="{{ route('standings.index') }}"
                                class="font-medium text-gray-500 dark:text-gray-200 hover:text-gray-900 dark:hover:text-gray-100">Standings</a>
@@ -207,15 +207,7 @@
         </script>
     </div>
 
-    <footer class="bg-white dark:bg-gray-700">
-        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 flex justify-center lg:px-8">
-            <div class="mt-8 md:mt-0 md:order-1">
-                <p class="text-center text-base text-gray-400">
-                    &copy; {{ now()->year }} Formula Racing League. All rights reserved.
-                </p>
-            </div>
-        </div>
-    </footer>
+    @include('layouts.partials.footer')
 
 
 </x-guest-layout>

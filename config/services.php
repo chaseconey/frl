@@ -32,6 +32,7 @@ return [
 
     'discord' => [
         'token' => env('DISCORD_API_TOKEN'),
+        'channel_url' => 'https://discord.gg/73u3p54'
     ],
 
 ];
