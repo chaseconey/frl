@@ -1,47 +1,51 @@
 <x-app-layout>
 
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-100 leading-tight">
-            {{ __('Races') }}
-        </h2>
+        <div class="flex justify-between text-gray-800 dark:text-gray-100">
+            <h2 class="font-semibold text-xl leading-tight">
+                {{ __('Races') }}
+            </h2>
+
+            <div>
+                <a href="{{ route('races.list') }}" title="List View">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                    </svg>
+                </a>
+            </div>
+        </div>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="overflow-hidden">
-                <div class="p-6">
+            <div class="bg-white dark:bg-gray-700 shadow overflow-hidden sm:rounded-md">
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.css" integrity="sha256-u40zn9KeZYpMjgYaxWJccb4HnP0i8XI17xkXrEklevE=" crossorigin="anonymous">
+                <style>
+                    .fc-event {
+                        white-space: normal;
+                    }
+                </style>
 
-                    <div class="mb-4" x-data="{ filters_open: false }">
-                        <form>
-                            <div class="w-full mb-4">
-                                <label for="search" class="sr-only">Search</label>
-                                <input type="text" value="{{ Request::get('search') }}" name="search" id="search" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Search...">
-                            </div>
-                            <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4" style="display: none;" x-show.transition="filters_open">
-                                <div>
-                                    <label for="division_id" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Division</label>
-                                    <select id="division_id" name="division_id"
-                                            class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
-                                            onchange="this.closest('form').submit()"
-                                    >
-                                        <option></option>
-                                        @foreach($divisions as $division)
-                                            <option value="{{ $division->id }}" @if(Request::get('division_id') == $division->id) selected @endif>{{ $division->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </form>
+                <div class="p-6 text-gray-800 dark:text-gray-100" id="calendar"></div>
 
-                        <div class="flex justify-center my-2" @click="filters_open = !filters_open">
-                            <a x-text="filters_open ? 'Hide Filters': 'Show Filters'" class="text-gray-600 dark:text-gray-300 text-sm cursor-pointer"></a>
-                        </div>
+                <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js" integrity="sha256-AOrsg7pOO9zNtKymdz4LsI+KyLEHhTccJrZVU4UFwIU=" crossorigin="anonymous"></script>
+                <script>
 
-                    </div>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        var calendarEl = document.getElementById('calendar');
+                        var calendar = new FullCalendar.Calendar(calendarEl, {
+                            initialView: 'dayGridMonth',
+                            events: '/api/races',
+                            headerToolbar: {
+                                start: 'today prev,next', // will normally be on the left. if RTL, will be on the right
+                                center: 'title',
+                                end: 'dayGridMonth dayGridWeek dayGridDay listDay' // will normally be on the right. if RTL, will be on the left
+                            }
+                        });
+                        calendar.render();
+                    });
 
-                    @include('races.partials.table', ['races' => $races])
-
-                </div>
+                </script>
             </div>
         </div>
     </div>

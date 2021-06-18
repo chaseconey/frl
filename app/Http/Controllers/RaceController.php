@@ -8,13 +8,18 @@ use Illuminate\Http\Request;
 
 class RaceController extends Controller
 {
+
+    public function index(Request $request)
+    {
+        return view('races.index');
+    }
     /**
      * Display a listing of the resource.
      *
      * @param  Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function list(Request $request)
     {
         $races = Race::whereDate('races.race_time', '<=', now()->addWeeks(4))
             ->with('track', 'division')
@@ -25,7 +30,7 @@ class RaceController extends Controller
         $divisions = Division::latest()
             ->get();
 
-        return view('races.index')
+        return view('races.list')
             ->withDivisions($divisions)
             ->withRaces($races);
     }

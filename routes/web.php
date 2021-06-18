@@ -28,6 +28,8 @@ Route::get('divisions/{division}/matrix', '\App\Http\Controllers\Division\Standi
 
 Route::resource('standings', \App\Http\Controllers\StandingController::class);
 
+Route::get('/api/races', '\App\Http\Controllers\Api\RaceController@index');
+Route::get('races/list', '\App\Http\Controllers\RaceController@list')->name('races.list');
 Route::get('races/{race}/broadcast', '\App\Http\Controllers\RaceController@broadcast')->name('races.broadcast');
 
 Route::resource('races', \App\Http\Controllers\RaceController::class)->only('index');
