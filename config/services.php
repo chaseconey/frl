@@ -35,4 +35,8 @@ return [
         'channel_url' => 'https://discord.gg/73u3p54'
     ],
 
+    'github' => [
+        'repo_url' => 'https://github.com/chaseconey/frl'
+    ]
+
 ];
