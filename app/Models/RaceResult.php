@@ -17,8 +17,8 @@ use Laravel\Nova\Actions\Actionable;
  * @property int $num_pit_stops
  * @property string $best_lap_time
  * @property int $num_penalties
- * @property int $penalty_seconds
- * @property string $race_time
+ * @property float $penalty_seconds
+ * @property float $race_time
  * @property string $tire_stints
  * @property int $points
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -77,8 +77,6 @@ class RaceResult extends Model
         // TODO: move to helper
         $raceData = $json['race_data'];
 
-        $totalRaceTime = $raceData['m_totalRaceTime'] + $raceData['m_penaltiesTime'];
-
         return new static([
             'position' => $raceData['m_position'],
             'grid_position' => $raceData['m_gridPosition'],
@@ -86,7 +84,7 @@ class RaceResult extends Model
             'best_lap_time' => $raceData['m_bestLapTime'],
             'num_penalties' => $raceData['m_numPenalties'],
             'penalty_seconds' => $raceData['m_penaltiesTime'],
-            'race_time' => $totalRaceTime,
+            'race_time' => $raceData['m_totalRaceTime'],
             'codemasters_result_status' => $raceData['m_resultStatus'],
             'tire_stints' => UdpSpec::mapTireStint($raceData['m_tyreStintsVisual']),
             'points' => $raceData['m_points'],
@@ -107,5 +105,10 @@ class RaceResult extends Model
     public function race()
     {
         return $this->belongsTo(Race::class);
+    }
+
+    public function getFullRaceTimeAttribute(): float
+    {
+        return $this->race_time + $this->penalty_seconds;
     }
 }

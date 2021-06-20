@@ -34,13 +34,13 @@ class RaceTimeColumn extends Component
 
     public function firstResultDisplay($result)
     {
-        return format_seconds_as_human_time($result->race_time);
+        return format_seconds_as_human_time($result->full_race_time);
     }
 
     public function getRaceTimeDiff(): float
     {
         $firstPlace = $this->race->results[0];
-        return $this->result->race_time - $firstPlace->race_time;
+        return $this->result->full_race_time - $firstPlace->full_race_time;
     }
 
     public function getLapDiff(): int
