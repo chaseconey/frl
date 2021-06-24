@@ -55,17 +55,16 @@ class Protest extends Resource
         return [
             ID::make(__('ID'), 'id')->sortable(),
 
-            BelongsTo::make('Driver')->sortable()->readonly(),
-            BelongsTo::make('Protested Driver', 'protestedDriver', \App\Nova\Driver::class)->sortable()->readonly(),
-            BelongsTo::make('Race')->sortable()->readonly(),
+            BelongsTo::make('Driver')->sortable(),
+            BelongsTo::make('Protested Driver', 'protestedDriver', \App\Nova\Driver::class)->sortable(),
+            BelongsTo::make('Race')->sortable(),
             Text::make('Video Url', function () {
                 $url = $this->video_url;
 
                 return "<a href='{$url}'>{$url}</a>";
             })->asHtml(),
             NovaEmbed::make('Video', 'video_url')
-                ->ajax()
-                ->exceptOnForms(),
+                ->ajax(),
 
             Text::make('Status')->onlyOnIndex(),
             Text::make('Created', 'created_at')
@@ -80,8 +79,8 @@ class Protest extends Resource
                 return "<span class='whitespace-no-wrap' style='color: {$color}'>{$raceTime->diffForHumans()}</span>";
             })->exceptOnForms()->asHtml(),
 
-            Textarea::make('Rules Breached')->readonly(),
-            Textarea::make('Description')->readonly(),
+            Textarea::make('Rules Breached'),
+            Textarea::make('Description'),
 
             Textarea::make('Stewards Decision')->nullable(),
 
