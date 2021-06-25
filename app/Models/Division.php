@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\DivisionCreating;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -49,6 +50,11 @@ class Division extends Model
         'description',
         'day_of_week',
         'race_time'
+    ];
+
+    protected $dispatchesEvents = [
+        'creating' => DivisionCreating::class,
+        // TODO: add updating event for updating discord role
     ];
 
     protected $casts = [

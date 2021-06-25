@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\DriverEquipment;
+use App\Events\DriverSaving;
 use BenSampo\Enum\Traits\CastsEnums;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -62,6 +63,10 @@ class Driver extends Model
         'name',
         'steam_friend_code',
         'equipment'
+    ];
+
+    protected $dispatchesEvents = [
+        'saving' => DriverSaving::class
     ];
 
     protected $casts = [

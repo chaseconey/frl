@@ -32,7 +32,16 @@ return [
 
     'discord' => [
         'token' => env('DISCORD_API_TOKEN'),
-        'channel_url' => 'https://discord.gg/73u3p54'
+        'channel_url' => 'https://discord.gg/73u3p54',
+        'server_id' => env('DISCORD_SERVER_ID'),
+
+        'client_id' => env('DISCORD_CLIENT_ID'),
+        'client_secret' => env('DISCORD_CLIENT_SECRET'),
+        'redirect' => env('DISCORD_REDIRECT_URI', '/auth/discord/callback'),
+
+        // optional
+        'allow_gif_avatars' => (bool)env('DISCORD_AVATAR_GIF', true),
+        'avatar_default_extension' => env('DISCORD_EXTENSION_DEFAULT', 'jpg'), // only pick from jpg, png, webp
     ],
 
     'github' => [

@@ -37,6 +37,9 @@ Route::resource('race.results', \App\Http\Controllers\Race\RaceResultsController
 Route::resource('race.quali-results', \App\Http\Controllers\Race\RaceQualiResultsController::class);
 
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('/auth/discord', [\App\Http\Controllers\Auth\DiscordAuthController::class, 'redirect'])->name('auth.discord');
+    Route::get('/auth/discord/callback', [\App\Http\Controllers\Auth\DiscordAuthController::class, 'callback']);
+
     Route::get('dashboard', '\App\Http\Controllers\DashboardController@index')->name('dashboard');
 
     Route::put('drivers/{driver}/toggle-claim', '\App\Http\Controllers\DriverController@toggleClaim')

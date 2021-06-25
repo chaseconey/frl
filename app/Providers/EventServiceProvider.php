@@ -18,6 +18,16 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        \SocialiteProviders\Manager\SocialiteWasCalled::class => [
+            'SocialiteProviders\\Discord\\DiscordExtendSocialite@handle',
+        ],
+
+        \App\Events\DivisionCreating::class => [
+            \App\Listeners\CreateDiscordRoleForDivision::class
+        ],
+        \App\Events\DriverSaving::class => [
+            \App\Listeners\SyncDriverToDiscordRole::class
+        ],
     ];
 
     /**

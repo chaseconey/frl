@@ -32,6 +32,7 @@ class PostNextRace implements ShouldQueue
     {
         // Grab active divisions
         $divisions = Division::active()->get();
+
         foreach ($divisions as $division) {
 
             // Is there an upcoming race in roughly 72 hours that hasn't been reminded already
@@ -53,16 +54,18 @@ class PostNextRace implements ShouldQueue
         // TODO: Figure out the proper way to inject this. It works, but fails because it actually returns a PendingRequest rather than a Client.
         $client = app(Client::class);
         $channel = $race->division->discord_reminder_channel_id;
+        $driverRole = $race->division->discord_driver_role_id;
+        $reserveRole = $race->division->discord_reserve_role_id;
 
         if (! $channel) {
             return;
         }
 
-        // TODO: Add mention capability
-
         // Original Message
         $response = $client->post("/channels/{$channel}/messages", [
             "content" => "Greetings racers! Please indicate your availability for next race.
+
+<@&{$driverRole}> <@&{$reserveRole}>
 
 ✅: if you are a full-time driver and you will attend
 ✔: if you are a reserve driver and you can fill a spot
