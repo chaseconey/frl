@@ -3,13 +3,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 
 class DiscordAuthController
 {
-
     public function redirect()
     {
         return Socialite::driver('discord')->redirect();
@@ -25,5 +23,4 @@ class DiscordAuthController
 
         return redirect()->route('dashboard');
     }
-
 }

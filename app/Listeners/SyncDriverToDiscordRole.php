@@ -46,7 +46,6 @@ class SyncDriverToDiscordRole
 
         $client->delete("/guilds/{$guildId}/members/{$userId}/roles/{$driverRole}");
         $client->delete("/guilds/{$guildId}/members/{$userId}/roles/{$reserveRole}");
-
     }
 
     /**
