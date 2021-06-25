@@ -58,6 +58,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'discord_user_id',
     ];
 
     /**
