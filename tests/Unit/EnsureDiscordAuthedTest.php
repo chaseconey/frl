@@ -10,12 +10,12 @@ use Tests\TestCase;
 
 class EnsureDiscordAuthedTest extends TestCase
 {
-//    use RefreshDatabase;
+    use RefreshDatabase;
 
     /** @test */
     public function discord_not_linked_redirected()
     {
-        $user = User::factory()->make(['discord_user_id' => null]);
+        $user = User::factory()->create(['discord_user_id' => null]);
 
         $this->actingAs($user);
 
