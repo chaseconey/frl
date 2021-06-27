@@ -4,15 +4,18 @@ namespace Tests\Unit;
 
 use App\Http\Middleware\EnsureDiscordAuthed;
 use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Request;
 use Tests\TestCase;
 
 class EnsureDiscordAuthedTest extends TestCase
 {
+//    use RefreshDatabase;
+
     /** @test */
     public function discord_not_linked_redirected()
     {
-        $user = User::factory()->create(['discord_user_id' => null]);
+        $user = User::factory()->make(['discord_user_id' => null]);
 
         $this->actingAs($user);
 
