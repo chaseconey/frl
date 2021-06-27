@@ -20,7 +20,8 @@ class EnsureDiscordAuthedTest extends TestCase
 
         $middleware = new EnsureDiscordAuthed();
 
-        $response = $middleware->handle($request, function () {});
+        $response = $middleware->handle($request, function () {
+        });
 
         $this->assertEquals($response->getStatusCode(), 302);
     }
@@ -36,7 +37,8 @@ class EnsureDiscordAuthedTest extends TestCase
 
         $middleware = new EnsureDiscordAuthed();
 
-        $response = $middleware->handle($request, function () {});
+        $response = $middleware->handle($request, function () {
+        });
 
         $this->assertEquals($response, null);
     }
