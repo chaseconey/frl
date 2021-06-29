@@ -2,10 +2,12 @@
 
 namespace App\Nova;
 
+use App\Service\F12020\UdpSpec;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -63,6 +65,7 @@ class RaceResult extends Resource
             Text::make('Race Time'),
             Number::make('Pit Stop', 'num_pit_stops'),
             Text::make('Tire Stints'),
+            Select::make('Codemasters Result Status')->options(UdpSpec::RACE_RESULT_STATUS),
             Number::make('Points'),
             Text::make('Best Lap Time')->hideFromIndex(),
             Number::make('Penalties', 'num_penalties')->hideFromIndex(),
