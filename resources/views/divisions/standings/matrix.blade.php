@@ -16,6 +16,11 @@
                     </div>
 
                     <div class="my-4">
+
+                        <div class="text-right sm:text-sm">
+                            <span class="italic">fastest lap</span>, <span class="font-bold">pole position</span>
+                        </div>
+
                         @include('divisions.standings.partials.matrix-table', ['standings' => $standings])
                     </div>
 
