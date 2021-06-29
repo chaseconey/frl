@@ -95,6 +95,11 @@ class Race extends Model
             ->orderBy('position');
     }
 
+    public function fastestLap()
+    {
+        return $this->hasOne(RaceResult::class)->ofMany('best_lap_time', 'min');
+    }
+
     public function protests()
     {
         return $this->hasMany(Protest::class);

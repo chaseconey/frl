@@ -59,10 +59,9 @@ class StandingController extends Controller
             ->get();
 
         $races = Race::where('division_id', $division->id)
-            ->with('track')
+            ->with('track', 'fastestLap')
             ->oldest('race_time')
             ->get();
-
 
         return view('divisions.standings.matrix')
             ->withDivision($division)

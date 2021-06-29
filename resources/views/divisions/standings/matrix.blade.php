@@ -2,7 +2,7 @@
 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-100 leading-tight">
-            {{ __("Team Standings") }}
+            {{ $division->name }} Standings
         </h2>
     </x-slot>
 

@@ -39,11 +39,40 @@ class MatrixPointsCell extends Component
 
     public function points()
     {
-        if (isset($this->driverRaces[$this->race->id])) {
+        if ($this->driverHasRace()) {
             return $this->driverRaces[$this->race->id]->first()->points;
         }
 
         return '-';
+    }
+
+    /**
+     * Helper to determien if the result for diver's cell held the fastest lap.
+     *
+     * @return bool
+     */
+    public function isFastestLap()
+    {
+        if (isset($this->race->fastestLap)) {
+            return $this->race->fastestLap->driver_id === $this->driver->id
+                && $this->race->fastestLap->best_lap_time > 0;
+        }
+
+        return false;
+    }
+
+    /**
+     * Helper to determine if the the result for driver's cell qualified on pole.
+     *
+     * @return bool
+     */
+    public function isPolePosition()
+    {
+        if ($this->driverHasRace()) {
+            return $this->driverRaces[$this->race->id]->first()->grid_position === 1;
+        }
+
+        return false;
     }
 
     public function pointsColor()
@@ -82,5 +111,13 @@ class MatrixPointsCell extends Component
     public function render()
     {
         return view('components.matrix-points-cell');
+    }
+
+    /**
+     * @return bool
+     */
+    private function driverHasRace(): bool
+    {
+        return isset($this->driverRaces[$this->race->id]);
     }
 }
