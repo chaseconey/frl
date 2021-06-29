@@ -12,7 +12,7 @@
 
         $links[] = ['link' => route('races.protests', $race->id), 'title' => 'Protests', 'activeRoute' => 'races.protests'];
 
-        if (auth()->user()->hasRole(['admin', 'broadcaster'])) {
+        if (auth()->user()->hasRole(\Spatie\Permission\Models\Role::all())) {
             $links[] = ['link' => "/nova/resources/races/{$race->id}", 'title' => 'Manage Race', 'activeRoute' => ''];
         }
     }
