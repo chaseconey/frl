@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Race;
 
+use App\Exceptions\ResultsUploadError;
 use App\Http\Controllers\Controller;
 use App\Models\DriverVideo;
 use App\Models\Race;
 use App\Models\RaceResult;
 use App\Traits\RaceResultsParser;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class RaceResultsController extends Controller
 {
@@ -16,7 +18,7 @@ class RaceResultsController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index(Race $race)
     {
@@ -34,7 +36,7 @@ class RaceResultsController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -45,8 +47,9 @@ class RaceResultsController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  Race  $race
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  Request  $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Throwable
      */
     public function store(Race $race, Request $request)
     {
@@ -58,7 +61,13 @@ class RaceResultsController extends Controller
 
         $results = json_decode($json, true);
 
-        $this->uploadResults($results, $race, fn ($results) => RaceResult::fromFile($results));
+        try {
+            $this->uploadResults($results, $race, fn($results) => RaceResult::fromFile($results));
+        } catch (ResultsUploadError $e) {
+            return response()->json([
+                'message' => $e->getMessage(),
+            ], 422);
+        }
 
         activity()
             ->performedOn($race)
@@ -74,8 +83,8 @@ class RaceResultsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\RaceResult  $raceResults
-     * @return \Illuminate\Http\Response
+     * @param  RaceResult  $raceResults
+     * @return Response
      */
     public function show(RaceResult $raceResults)
     {
@@ -85,8 +94,8 @@ class RaceResultsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\RaceResult  $raceResults
-     * @return \Illuminate\Http\Response
+     * @param  RaceResult  $raceResults
+     * @return Response
      */
     public function edit(RaceResult $raceResults)
     {
@@ -96,9 +105,9 @@ class RaceResultsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\RaceResult  $raceResults
-     * @return \Illuminate\Http\Response
+     * @param  Request  $request
+     * @param  RaceResult  $raceResults
+     * @return Response
      */
     public function update(Request $request, RaceResult $raceResults)
     {
@@ -108,8 +117,8 @@ class RaceResultsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\RaceResult  $raceResults
-     * @return \Illuminate\Http\Response
+     * @param  RaceResult  $raceResults
+     * @return Response
      */
     public function destroy(RaceResult $raceResults)
     {

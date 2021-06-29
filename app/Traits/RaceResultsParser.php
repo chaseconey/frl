@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use App\Exceptions\ResultsUploadError;
 use App\Models\Driver;
 use App\Models\F1Number;
 use App\Models\F1Team;
@@ -15,6 +16,7 @@ trait RaceResultsParser
      * @param  array  $results
      * @param  Race  $race
      * @param  callable  $mapper
+     * @throws ResultsUploadError
      * @throws \Throwable
      */
     protected function uploadResults(array $results, Race $race, callable $mapper): void
@@ -32,7 +34,7 @@ trait RaceResultsParser
                         ->first();
 
                     if (! $driver) {
-                        throw new \Exception("Driver with number #{$racingNumber} not found");
+                        throw new ResultsUploadError("Driver with number #{$racingNumber} not found");
                     }
 
                     $raceResult = $mapper($result);
@@ -44,7 +46,7 @@ trait RaceResultsParser
                     $raceResult->save();
                 } elseif ($result['race_data']['m_position'] > 0 && $result['race_data']['m_numLaps'] > 0) {
                     // This usually happens when someone comes in after the session has started
-                    throw new \Exception("Driver with AI racing number (#{$racingNumber}) found, please correct data");
+                    throw new ResultsUploadError("Driver with AI racing number (#{$racingNumber}) found, please correct data");
                 }
             }
 

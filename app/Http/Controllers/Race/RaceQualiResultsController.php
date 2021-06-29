@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Race;
 
+use App\Exceptions\ResultsUploadError;
 use App\Http\Controllers\Controller;
 use App\Models\DriverVideo;
 use App\Models\Race;
 use App\Models\RaceQualiResult;
 use App\Traits\RaceResultsParser;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class RaceQualiResultsController extends Controller
 {
@@ -49,8 +51,8 @@ class RaceQualiResultsController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  Race  $race
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  Request  $request
+     * @return Response
      */
     public function store(Race $race, Request $request)
     {
@@ -62,7 +64,14 @@ class RaceQualiResultsController extends Controller
 
         $results = json_decode($json, true);
 
-        $this->uploadResults($results, $race, fn ($results) => RaceQualiResult::fromFile($results));
+        try {
+            $this->uploadResults($results, $race, fn ($results) => RaceQualiResult::fromFile($results));
+        } catch (ResultsUploadError $e) {
+            return response()->json([
+                'message' => $e->getMessage(),
+            ], 422);
+        }
+
 
         activity()
             ->performedOn($race)
@@ -78,7 +87,7 @@ class RaceQualiResultsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\RaceQualiResult  $raceQualiResults
+     * @param  RaceQualiResult  $raceQualiResults
      * @return \Illuminate\Http\Response
      */
     public function show(RaceQualiResult $raceQualiResults)
@@ -89,7 +98,7 @@ class RaceQualiResultsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\RaceQualiResult  $raceQualiResults
+     * @param  RaceQualiResult  $raceQualiResults
      * @return \Illuminate\Http\Response
      */
     public function edit(RaceQualiResult $raceQualiResults)
@@ -100,8 +109,8 @@ class RaceQualiResultsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\RaceQualiResult  $raceQualiResults
+     * @param  Request  $request
+     * @param  RaceQualiResult  $raceQualiResults
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, RaceQualiResult $raceQualiResults)
@@ -112,7 +121,7 @@ class RaceQualiResultsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\RaceQualiResult  $raceQualiResults
+     * @param  RaceQualiResult  $raceQualiResults
      * @return \Illuminate\Http\Response
      */
     public function destroy(RaceQualiResult $raceQualiResults)
