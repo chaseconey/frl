@@ -10,7 +10,11 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-700 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white dark:bg-gray-700 border-b border-gray-200 dark:border-gray-800">
-                    @include('signup.partials.choose-div', ['divisions' => $divisions])
+                    @if(auth()->user()->discord_user_id)
+                        @include('signup.partials.choose-div', ['divisions' => $divisions])
+                    @else
+                        @include('signup.partials.discord-button')
+                    @endif
                 </div>
             </div>
         </div>

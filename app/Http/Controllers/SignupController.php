@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\DriverSignedUp;
 use App\Http\Requests\SignupRequest;
 use App\Models\Division;
 use App\Models\Driver;
@@ -12,6 +13,11 @@ use Illuminate\Http\Request;
 
 class SignupController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth.discord')->only(['create', 'store']);
+    }
+
     public function index()
     {
         $divisions = Division::withCount('drivers')
