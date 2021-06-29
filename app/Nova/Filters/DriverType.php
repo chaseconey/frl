@@ -36,6 +36,6 @@ class DriverType extends Filter
      */
     public function options(Request $request)
     {
-        return array_flip(Driver::TYPES);
+        return array_flip(\App\Enums\DriverType::asSelectArray());
     }
 }

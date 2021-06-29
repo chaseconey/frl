@@ -73,8 +73,6 @@ class Driver extends Model
         'equipment' => DriverEquipment::class
     ];
 
-    const TYPES = ['FULL_TIME' => 'Full Time', 'RESERVE' => 'Reserve', 'RETIRED' => 'Retired', 'BANNED' => 'Banned'];
-
     public function user()
     {
         return $this->belongsTo(User::class);

@@ -20,7 +20,7 @@
                                 <div>
                                     @foreach($division->drivers->countBy('type') as $type => $count)
                                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-mediumbg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100">
-                                        {{ \App\Models\Driver::TYPES[$type] }}: {{ $count }}
+                                        {{ \App\Enums\DriverType::fromValue($type)->description }}: {{ $count }}
                                     </span>
                                     @endforeach
                                 </div>
@@ -40,7 +40,7 @@
                     <div class="mt-4">
                         <div class="ml-4">
                             <h4 class="text-md leading-6 font-medium text-gray-900 dark:text-white">
-                                {{ \App\Models\Driver::TYPES[$type] }}
+                                {{ \App\Enums\DriverType::fromValue($type)->description }}
                             </h4>
                         </div>
                         @include('divisions.partials.table', ['drivers' => $drivers])

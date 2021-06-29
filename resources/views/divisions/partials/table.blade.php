@@ -39,7 +39,7 @@
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="text-sm text-gray-900 dark:text-white">{{ \App\Models\Driver::TYPES[$driver->type] }}</div>
+                                <div class="text-sm text-gray-900 dark:text-white">{{ \App\Enums\DriverType::fromValue($driver->type)->description }}</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="text-sm text-gray-900 dark:text-white">{{ $driver->race_results_count }}</div>
