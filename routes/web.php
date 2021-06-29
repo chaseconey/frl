@@ -42,9 +42,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('dashboard', '\App\Http\Controllers\DashboardController@index')->name('dashboard');
 
-    Route::put('drivers/{driver}/toggle-claim', '\App\Http\Controllers\DriverController@toggleClaim')
-        ->name('drivers.toggle-claim');
-
     Route::get('profile/protests', '\App\Http\Controllers\ProfileController@protests')
         ->name('profile.protests');
 

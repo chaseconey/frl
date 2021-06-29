@@ -37,30 +37,13 @@
                              class="z-50 origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white dark:bg-gray-700 ring-1 ring-black ring-opacity-5">
                             <div class="py-1 z-10" role="menu" aria-orientation="vertical"
                                  aria-labelledby="options-menu">
-                                @if(auth()->user()->hasDriver($driver->id))
-                                    <form method="POST" action="{{ route('drivers.toggle-claim', $driver) }}">
-                                        @method('PUT')
-                                        @csrf
-                                        <button type="submit"
-                                                class="block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
-                                                role="menuitem">
-                                            Unclaim Driver
-                                        </button>
-                                    </form>
-                                    <a href="{{ route('drivers.edit', $driver) }}"
-                                       class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-100"
-                                       role="menuitem">Update Driver</a>
-                                @elseif(is_null($driver->user_id) && !auth()->user()->hasDriverInDivision($driver->division_id))
-                                    <form method="POST" action="{{ route('drivers.toggle-claim', $driver) }}">
-                                        @method('PUT')
-                                        @csrf
-                                        <button type="submit"
-                                                class="block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
-                                                role="menuitem">
-                                            Claim Driver
-                                        </button>
-                                    </form>
-                                @endif
+
+                                <span
+                                    class="friend-code cursor-pointer block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-100"
+                                    data-clipboard-text="{{ $driver->steam_friend_code }}"
+                                >
+                                    Copy Steam Friend Code
+                                </span>
 
                                 @role('admin')
                                 <a href="/nova/resources/drivers/{{ $driver->id }}"
