@@ -17,7 +17,7 @@
                                 <label for="search" class="sr-only">Search</label>
                                 <input type="text" value="{{ Request::get('search') }}" name="search" id="search" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Search...">
                             </div>
-                            <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4" style="display: none;" x-show.transition="filters_open">
+                            <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4" style="display: none;" x-show="filters_open" x-transition>
                                 <div>
                                     <label for="division_id" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Division</label>
                                     <select id="division_id" name="division_id"
