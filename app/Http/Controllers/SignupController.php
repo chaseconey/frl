@@ -40,6 +40,7 @@ class SignupController extends Controller
             ->first();
 
         $teams = F1Team::active()
+            ->orderBy('name')
             ->withCount([
                 'drivers' => function (Builder $query) use ($division) {
                     $query->where('type', '=', 'FULL_TIME')
