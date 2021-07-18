@@ -102,7 +102,7 @@
                 </table>
 
             </div>
-            @if($race->qualiResults->count() === 0 && auth()->user()->hasRole('admin'))
+            @if($race->qualiResults->count() === 0 && auth()->user() && auth()->user()->hasRole('admin'))
                 @include('races.race-results.partials.upload-form', ['route' => 'race.quali-results.store'])
             @endif
         </div>
