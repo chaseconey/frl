@@ -3,13 +3,11 @@
 
 namespace App\Service\Discord\Actions;
 
-
 use App\Models\Driver;
 use Illuminate\Support\Facades\Log;
 
 class RemoveFromManagedRoles
 {
-
     public function handle(Driver $driver)
     {
         $client = app(\App\Service\Discord\Client::class);
@@ -23,7 +21,5 @@ class RemoveFromManagedRoles
 
         $client->delete("/guilds/{$guildId}/members/{$userId}/roles/{$driverRole}");
         $client->delete("/guilds/{$guildId}/members/{$userId}/roles/{$reserveRole}");
-
     }
-
 }

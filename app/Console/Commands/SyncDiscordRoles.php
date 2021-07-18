@@ -55,8 +55,6 @@ class SyncDiscordRoles extends Command
             $addEvent->handle($driver);
 
             $this->info("{$driver->name}'s roles have been synced");
-
         }
-
     }
 }
