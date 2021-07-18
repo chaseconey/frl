@@ -61,7 +61,7 @@ class SyncDriverToDiscordRole
 
         if ($event->driver->type === DriverType::FullTime()->value) {
             $roleId = $event->driver->division->discord_driver_role_id;
-        } else if ($event->driver->type === DriverType::Reserve()->value) {
+        } elseif ($event->driver->type === DriverType::Reserve()->value) {
             $roleId = $event->driver->division->discord_reserve_role_id;
         }
 
