@@ -2,8 +2,10 @@
 
 namespace App\Listeners;
 
-use App\Enums\DriverType;
 use App\Events\DriverSaving;
+use App\Exceptions\DiscordRoleSyncError;
+use App\Service\Discord\Actions\AddToManagedRoles;
+use App\Service\Discord\Actions\RemoveFromManagedRoles;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
@@ -24,6 +26,7 @@ class SyncDriverToDiscordRole
      *
      * @param  DriverSaving  $event
      * @return void
+     * @throws DiscordRoleSyncError
      */
     public function handle(DriverSaving $event)
     {
@@ -38,35 +41,19 @@ class SyncDriverToDiscordRole
      */
     private function removeFromRoles(DriverSaving $event)
     {
-        $client = app(\App\Service\Discord\Client::class);
-
-        $guildId = config('services.discord.server_id');
-        $driverRole = $event->driver->division->discord_driver_role_id;
-        $reserveRole = $event->driver->division->discord_reserve_role_id;
-        $userId = $event->driver->user->discord_user_id;
-
-        $client->delete("/guilds/{$guildId}/members/{$userId}/roles/{$driverRole}");
-        $client->delete("/guilds/{$guildId}/members/{$userId}/roles/{$reserveRole}");
+        $action = new RemoveFromManagedRoles();
+        $action->handle($event->driver);
     }
 
     /**
      * Add to new role based on type of driver
      *
      * @param  DriverSaving  $event
+     * @throws DiscordRoleSyncError
      */
     private function addToRole(DriverSaving $event): void
     {
-        $client = app(\App\Service\Discord\Client::class);
-        $guildId = config('services.discord.server_id');
-
-        if ($event->driver->type === DriverType::FullTime()->value) {
-            $roleId = $event->driver->division->discord_driver_role_id;
-        } elseif ($event->driver->type === DriverType::Reserve()->value) {
-            $roleId = $event->driver->division->discord_reserve_role_id;
-        }
-
-        $userId = $event->driver->user->discord_user_id;
-
-        $client->put("/guilds/{$guildId}/members/{$userId}/roles/{$roleId}");
+        $action = new AddToManagedRoles();
+        $action->handle($event->driver);
     }
 }
