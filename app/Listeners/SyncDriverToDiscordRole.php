@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Enums\DriverType;
 use App\Events\DriverSaving;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
@@ -58,9 +59,9 @@ class SyncDriverToDiscordRole
         $client = app(\App\Service\Discord\Client::class);
         $guildId = config('services.discord.server_id');
 
-        if ($event->driver->type === "FULL_TIME") {
+        if ($event->driver->type === DriverType::FullTime()->value) {
             $roleId = $event->driver->division->discord_driver_role_id;
-        } else {
+        } else if ($event->driver->type === DriverType::Reserve()->value) {
             $roleId = $event->driver->division->discord_reserve_role_id;
         }
 
