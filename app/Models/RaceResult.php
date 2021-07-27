@@ -49,6 +49,15 @@ use Laravel\Nova\Actions\Actionable;
  * @method static \Illuminate\Database\Eloquent\Builder|RaceResult whereTireStints($value)
  * @method static \Illuminate\Database\Eloquent\Builder|RaceResult whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string|null $best_lap_time_legacy
+ * @property string|null $race_time_legacy
+ * @property int $codemasters_result_status
+ * @property int $laps_completed
+ * @property-read float $full_race_time
+ * @method static \Illuminate\Database\Eloquent\Builder|RaceResult whereBestLapTimeLegacy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|RaceResult whereCodemastersResultStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|RaceResult whereLapsCompleted($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|RaceResult whereRaceTimeLegacy($value)
  */
 class RaceResult extends Model
 {

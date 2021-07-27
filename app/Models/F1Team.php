@@ -30,6 +30,9 @@ use Kyslik\ColumnSortable\Sortable;
  * @method static Builder|F1Team whereName($value)
  * @method static Builder|F1Team whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property int $codemasters_id
+ * @method static \Database\Factories\F1TeamFactory factory(...$parameters)
+ * @method static Builder|F1Team whereCodemastersId($value)
  */
 class F1Team extends Model
 {

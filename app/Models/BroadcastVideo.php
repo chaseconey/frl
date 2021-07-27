@@ -27,6 +27,8 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @method static \Illuminate\Database\Eloquent\Builder|BroadcastVideo whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BroadcastVideo whereVideoUrl($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Activitylog\Models\Activity[] $activities
+ * @property-read int|null $activities_count
  */
 class BroadcastVideo extends Model
 {

@@ -40,6 +40,11 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @method static \Illuminate\Database\Eloquent\Builder|Protest whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Protest whereVideoUrl($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Activitylog\Models\Activity[] $activities
+ * @property-read int|null $activities_count
+ * @method static Builder|Protest complete()
+ * @method static \Database\Factories\ProtestFactory factory(...$parameters)
+ * @method static Builder|Protest inReview()
  */
 class Protest extends Model
 {

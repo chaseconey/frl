@@ -44,6 +44,11 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string|null $discord_user_id
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Driver[] $activeDrivers
+ * @property-read int|null $active_drivers_count
+ * @method static \Database\Factories\UserFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereDiscordUserId($value)
  */
 class User extends Authenticatable
 {

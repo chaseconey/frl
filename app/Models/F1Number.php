@@ -23,6 +23,10 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|F1Number whereRacingNumber($value)
  * @method static \Illuminate\Database\Eloquent\Builder|F1Number whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property int $is_user_assignable
+ * @method static Builder|F1Number active()
+ * @method static \Database\Factories\F1NumberFactory factory(...$parameters)
+ * @method static Builder|F1Number whereIsUserAssignable($value)
  */
 class F1Number extends Model
 {

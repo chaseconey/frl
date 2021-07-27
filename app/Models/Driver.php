@@ -49,6 +49,9 @@ use Laravel\Nova\Actions\Actionable;
  * @method static \Illuminate\Database\Eloquent\Builder|Driver whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Driver whereUserId($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\RaceQualiResult[] $qualiResults
+ * @property-read int|null $quali_results_count
+ * @method static \Database\Factories\DriverFactory factory(...$parameters)
  */
 class Driver extends Model
 {

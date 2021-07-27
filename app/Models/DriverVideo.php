@@ -28,6 +28,9 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @method static \Illuminate\Database\Eloquent\Builder|DriverVideo whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|DriverVideo whereVideoUrl($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Activitylog\Models\Activity[] $activities
+ * @property-read int|null $activities_count
+ * @method static \Database\Factories\DriverVideoFactory factory(...$parameters)
  */
 class DriverVideo extends Model
 {

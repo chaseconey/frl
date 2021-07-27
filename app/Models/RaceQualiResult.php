@@ -53,6 +53,10 @@ use Laravel\Nova\Actions\Actionable;
  * @method static \Illuminate\Database\Eloquent\Builder|RaceQualiResult whereSpeedtrapSpeed($value)
  * @method static \Illuminate\Database\Eloquent\Builder|RaceQualiResult whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string|null $best_lap_time_legacy
+ * @property int $codemasters_result_status
+ * @method static \Illuminate\Database\Eloquent\Builder|RaceQualiResult whereBestLapTimeLegacy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|RaceQualiResult whereCodemastersResultStatus($value)
  */
 class RaceQualiResult extends Model
 {

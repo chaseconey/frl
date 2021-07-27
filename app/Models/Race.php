@@ -49,6 +49,10 @@ use Laravel\Nova\Actions\Actionable;
  * @method static \Illuminate\Database\Eloquent\Builder|Race whereTrackId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Race whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string|null $reminder_sent_at
+ * @property-read \App\Models\RaceResult|null $fastestLap
+ * @method static \Database\Factories\RaceFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Race whereReminderSentAt($value)
  */
 class Race extends Model
 {

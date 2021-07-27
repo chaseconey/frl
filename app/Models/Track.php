@@ -30,6 +30,7 @@ use Kyslik\ColumnSortable\Sortable;
  * @method static \Illuminate\Database\Eloquent\Builder|Track whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Track whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Database\Factories\TrackFactory factory(...$parameters)
  */
 class Track extends Model
 {
