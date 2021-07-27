@@ -64,7 +64,8 @@ class Race extends Model
     ];
 
     protected $casts = [
-        'race_time' => 'datetime'
+        'race_time' => 'datetime',
+        'reminder_sent_at' => 'datetime',
     ];
 
     public function scopeCompleted($query)

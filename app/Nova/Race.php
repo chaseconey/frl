@@ -65,6 +65,7 @@ class Race extends Resource
             DateTime::make('Race Time')->sortable(),
             BelongsTo::make('Division'),
             BelongsTo::make('Track')->searchable(),
+            DateTime::make('Reminder Sent At')->sortable()->nullable()->hideFromIndex(),
 
             HasMany::make('Race Results', 'results'),
             HasMany::make('Race Quali Results', 'qualiResults'),
