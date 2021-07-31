@@ -23,7 +23,6 @@ class RaceResultsParserTest extends TestCase
 
         // Disabling eventing so creating divisions doesn't try and create a discord role
         Event::fake();
-
     }
 
     /**
