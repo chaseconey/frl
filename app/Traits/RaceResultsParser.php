@@ -21,6 +21,11 @@ trait RaceResultsParser
      */
     protected function uploadResults(array $results, Race $race, callable $mapper): void
     {
+        if ($gaps = $this->hasMissingPositions($results)) {
+            $encodedGaps = implode(',', $gaps);
+            throw new ResultsUploadError("Result for position(s) {$encodedGaps} missing. Check for duplicate driver number.");
+        }
+
         $teams = F1Team::active()->pluck('id', 'codemasters_id');
         $activeF1Numbers = F1Number::active()->pluck('id', 'racing_number')->toArray();
 
@@ -34,7 +39,7 @@ trait RaceResultsParser
                         ->first();
 
                     if (! $driver) {
-                        throw new ResultsUploadError("Driver with number #{$racingNumber} not found");
+                        throw new ResultsUploadError("Driver with number #{$racingNumber} not found.");
                     }
 
                     $raceResult = $mapper($result);
@@ -46,7 +51,7 @@ trait RaceResultsParser
                     $raceResult->save();
                 } elseif ($result['race_data']['m_position'] > 0 && $result['race_data']['m_numLaps'] > 0) {
                     // This usually happens when someone comes in after the session has started
-                    throw new ResultsUploadError("Driver with AI racing number (#{$racingNumber}) found, please correct data");
+                    throw new ResultsUploadError("Driver with AI racing number (#{$racingNumber}) found, please correct data.");
                 }
             }
 
@@ -56,5 +61,21 @@ trait RaceResultsParser
 
             throw $e;
         }
+    }
+
+    /**
+     * Check to see if the results have any gaps in positions. This would usually indicate that 2 drivers had the same
+     * driver number.
+     *
+     * @param  array  $results
+     * @return bool
+     */
+    protected function hasMissingPositions(array $results): array
+    {
+        $possiblePositions = range(1, count($results));
+        $positions = collect($results)->pluck('race_data.m_position')->sort()->toArray();
+        $gaps = array_diff($possiblePositions, $positions);
+
+        return $gaps;
     }
 }
