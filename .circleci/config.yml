@@ -14,7 +14,7 @@ jobs:
           DB_PASSWORD: rootpw
           APP_KEY: base64:8z8BrA5JEvZ52h/DXJF7b24n5oWOe9S3ADtzjiYQxM0=
           APP_ENV: test
-      - image: circleci/mysql:5.7-ram
+      - image: circleci/mysql:8.0-ram
         environment:
           MYSQL_ROOT_PASSWORD: rootpw
           MYSQL_DATABASE: test_db
