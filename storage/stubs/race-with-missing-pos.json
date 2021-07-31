@@ -1,0 +1,154 @@
+{
+  "12": {
+    "driver": {
+      "m_aiControlled": 0,
+      "m_driverId": 100,
+      "m_teamId": 1,
+      "m_raceNumber": 12,
+      "m_nationality": 9,
+      "m_name": "Player",
+      "m_yourTelemetry": 1
+    },
+    "lap_data": {
+      "m_lastLapTime": 70.46630859375,
+      "m_currentLapTime": 0.017086900770664215,
+      "m_sector1TimeInMS": 0,
+      "m_sector2TimeInMS": 0,
+      "m_bestLapTime": 70.32568359375,
+      "m_bestLapNum": 33,
+      "m_bestLapSector1TimeInMS": 17242,
+      "m_bestLapSector2TimeInMS": 36258,
+      "m_bestLapSector3TimeInMS": 16824,
+      "m_bestOverallSector1TimeInMS": 17157,
+      "m_bestOverallSector1LapNum": 29,
+      "m_bestOverallSector2TimeInMS": 35883,
+      "m_bestOverallSector2LapNum": 35,
+      "m_bestOverallSector3TimeInMS": 16771,
+      "m_bestOverallSector3LapNum": 14,
+      "m_lapDistance": 2506.75,
+      "m_totalDistance": 157105.625,
+      "m_safetyCarDelta": 0,
+      "m_carPosition": 5,
+      "m_currentLapNum": 37,
+      "m_pitStatus": 0,
+      "m_sector": 1,
+      "m_currentLapInvalid": 0,
+      "m_penalties": 12,
+      "m_gridPosition": 2,
+      "m_driverStatus": 2,
+      "m_resultStatus": 3
+    },
+    "custom": {
+      "bestLapTyre": 18
+    },
+    "race_data": {
+      "m_position": 1,
+      "m_numLaps": 36,
+      "m_gridPosition": 2,
+      "m_points": 10,
+      "m_numPitStops": 1,
+      "m_resultStatus": 3,
+      "m_bestLapTime": 70.32568359375,
+      "m_totalRaceTime": 2579.435546875,
+      "m_penaltiesTime": 12,
+      "m_numPenalties": 4,
+      "m_numTyreStints": 2,
+      "m_tyreStintsActual": [
+        18,
+        20,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "m_tyreStintsVisual": [
+        16,
+        18,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "24": {
+    "driver": {
+      "m_aiControlled": 0,
+      "m_driverId": 100,
+      "m_teamId": 1,
+      "m_raceNumber": 24,
+      "m_nationality": 9,
+      "m_name": "Player",
+      "m_yourTelemetry": 1
+    },
+    "lap_data": {
+      "m_lastLapTime": 70.46630859375,
+      "m_currentLapTime": 0.017086900770664215,
+      "m_sector1TimeInMS": 0,
+      "m_sector2TimeInMS": 0,
+      "m_bestLapTime": 70.32568359375,
+      "m_bestLapNum": 33,
+      "m_bestLapSector1TimeInMS": 17242,
+      "m_bestLapSector2TimeInMS": 36258,
+      "m_bestLapSector3TimeInMS": 16824,
+      "m_bestOverallSector1TimeInMS": 17157,
+      "m_bestOverallSector1LapNum": 29,
+      "m_bestOverallSector2TimeInMS": 35883,
+      "m_bestOverallSector2LapNum": 35,
+      "m_bestOverallSector3TimeInMS": 16771,
+      "m_bestOverallSector3LapNum": 14,
+      "m_lapDistance": 2506.75,
+      "m_totalDistance": 157105.625,
+      "m_safetyCarDelta": 0,
+      "m_carPosition": 5,
+      "m_currentLapNum": 37,
+      "m_pitStatus": 0,
+      "m_sector": 1,
+      "m_currentLapInvalid": 0,
+      "m_penalties": 12,
+      "m_gridPosition": 2,
+      "m_driverStatus": 2,
+      "m_resultStatus": 3
+    },
+    "custom": {
+      "bestLapTyre": 18
+    },
+    "race_data": {
+      "m_position": 4,
+      "m_numLaps": 36,
+      "m_gridPosition": 2,
+      "m_points": 10,
+      "m_numPitStops": 1,
+      "m_resultStatus": 3,
+      "m_bestLapTime": 70.32568359375,
+      "m_totalRaceTime": 2579.435546875,
+      "m_penaltiesTime": 12,
+      "m_numPenalties": 4,
+      "m_numTyreStints": 2,
+      "m_tyreStintsActual": [
+        18,
+        20,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "m_tyreStintsVisual": [
+        16,
+        18,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  }
+}

@@ -1,16 +1,16 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\Unit\Middleware;
 
 use App\Http\Middleware\EnsureDiscordAuthed;
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\Request;
 use Tests\TestCase;
 
 class EnsureDiscordAuthedTest extends TestCase
 {
-    use RefreshDatabase;
+    use DatabaseTransactions;
 
     /** @test */
     public function discord_not_linked_redirected()
