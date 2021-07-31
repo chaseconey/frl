@@ -8,7 +8,6 @@ use App\Models\F1Number;
 use App\Models\F1Team;
 use App\Models\Race;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 
 trait RaceResultsParser
 {
