@@ -21,7 +21,7 @@ class DivisionSeeder extends Seeder
 
         foreach ($divisions as $division) {
             // Turn off event listeners for seeder
-            Division::withoutEvents(function() use ($division) {
+            Division::withoutEvents(function () use ($division) {
                 Division::factory()->create(['name' => $division]);
             });
         }
