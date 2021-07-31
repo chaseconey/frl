@@ -3,14 +3,28 @@
 namespace Tests\Unit\Traits;
 
 use App\Exceptions\ResultsUploadError;
+use App\Models\Division;
+use App\Models\Driver;
+use App\Models\F1Number;
 use App\Models\Race;
+use App\Models\RaceResult;
 use App\Traits\RaceResultsParser;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
 class RaceResultsParserTest extends TestCase
 {
     use RaceResultsParser, DatabaseTransactions;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        // Disabling eventing so creating divisions doesn't try and create a discord role
+        Event::fake();
+
+    }
 
     /**
      * @test
@@ -97,5 +111,37 @@ class RaceResultsParserTest extends TestCase
 
         // AI (#44) and no laps == ignore
         $this->assertDatabaseCount('race_results', 0);
+    }
+
+    /**
+     * @test
+     */
+    public function race_results_are_parsed_properly()
+    {
+        RaceResult::query()->delete();
+        $division = Division::factory()->create(['name' => 'Test Div']);
+
+        $race = Race::factory()->create(['division_id' => $division->id]);
+
+        $stub = file_get_contents(storage_path('stubs/race-results.json'));
+        $results = json_decode($stub, true);
+
+
+        $resultDriverNumbers = collect($results)->pluck('driver.m_raceNumber');
+
+        // Get the system IDs for the result's driver numbers so we can dynamically create drivers for each number in the division
+        $f1Numbers = F1Number::whereIn('racing_number', $resultDriverNumbers)->pluck('id');
+
+        foreach ($f1Numbers as $f1Number) {
+            Driver::factory()->create([
+                'division_id' => $division->id,
+                'f1_number_id' => $f1Number,
+                'f1_team_id' => 1, // They all drive for Mercedes apparently
+            ]);
+        }
+
+        $this->uploadResults($results, $race, fn ($results) => RaceResult::fromFile($results));
+
+        $this->assertDatabaseCount('race_results', count($results));
     }
 }
