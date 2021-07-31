@@ -4,21 +4,13 @@ namespace Tests\Unit\Traits;
 
 use App\Exceptions\ResultsUploadError;
 use App\Models\Race;
-use App\Models\Track;
 use App\Traits\RaceResultsParser;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class RaceResultsParserTest extends TestCase
 {
-    use RaceResultsParser, RefreshDatabase;
-
-    /**
-     * Indicates whether the default seeder should run before each test.
-     *
-     * @var bool
-     */
-    protected $seed = true;
+    use RaceResultsParser, DatabaseTransactions;
 
     /**
      * @test
@@ -47,7 +39,7 @@ class RaceResultsParserTest extends TestCase
                     'm_raceNumber' => 12,
                 ],
                 'race_data' => [
-                    'm_position' => 1
+                    'm_position' => 1,
                 ]
             ]
         ];

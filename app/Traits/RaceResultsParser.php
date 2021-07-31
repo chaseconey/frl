@@ -8,6 +8,7 @@ use App\Models\F1Number;
 use App\Models\F1Team;
 use App\Models\Race;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 trait RaceResultsParser
 {
@@ -28,6 +29,9 @@ trait RaceResultsParser
 
         $teams = F1Team::active()->pluck('id', 'codemasters_id');
         $activeF1Numbers = F1Number::active()->pluck('id', 'racing_number')->toArray();
+
+        $count = count($activeF1Numbers);
+        Log::info("Found {$count} f1 numbers");
 
         DB::beginTransaction();
 
