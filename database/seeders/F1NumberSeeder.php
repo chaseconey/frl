@@ -15,16 +15,17 @@ class F1NumberSeeder extends Seeder
     {
         $numbers = [
             2,
-            9,
+            8,
             12,
             13,
-            14,
             15,
             19,
+            20,
             21,
-            22,
+            23,
             24,
             25,
+            26,
             27,
             28,
             29,
@@ -42,7 +43,6 @@ class F1NumberSeeder extends Seeder
             43,
             45,
             46,
-            47,
             48,
             49,
             50,
@@ -90,7 +90,7 @@ class F1NumberSeeder extends Seeder
             95,
             96,
             97,
-            98
+            98,
         ];
 
         foreach ($numbers as $number) {
