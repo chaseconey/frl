@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Service\F12020\UdpSpec;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
@@ -123,6 +124,9 @@ class RaceQualiResult extends Resource
                 'W' => 'Wet',
                 'I' => 'Inters'
             ])->nullable(),
+            Select::make('Codemasters Result Status')
+                ->options(UdpSpec::RACE_RESULT_STATUS)
+                ->default(fn() => 3),
 
             Number::make('Best S1 Time')->step(0.001)->nullable()->hideFromIndex(),
             Number::make('Best S2 Time')->step(0.001)->nullable()->hideFromIndex(),
