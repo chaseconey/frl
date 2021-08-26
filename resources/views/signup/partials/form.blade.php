@@ -121,7 +121,7 @@
                                 <input id="accept_rules" name="accept_rules" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 dark:text-indigo-400 border-gray-300 rounded">
                             </div>
                             <div class="ml-3 text-sm">
-                                <label for="accept_rules" class="font-medium text-gray-700 dark:text-gray-200">I have read and accept <a href="/docs/FRL_RULESET_2021.pdf" target="_blank" class="underline">all league rules</a>.</label>
+                                <label for="accept_rules" class="font-medium text-gray-700 dark:text-gray-200">I have read and accept <a href="{{ config('frl.rules_path') }}" target="_blank" class="underline">all league rules</a>.</label>
                             </div>
                         </div>
                     </div>
