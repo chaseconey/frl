@@ -85,7 +85,7 @@
                                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800"
                                    role="menuitem">League Benefits</a>
 
-                                <a href="https://discord.gg/73u3p54"
+                                <a href="{{ config('services.discord.channel_url') }}"
                                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800"
                                    role="menuitem">Discord</a>
 
@@ -131,7 +131,7 @@
                                 </a>
                             </div>
                             <div class="mt-3 sm:mt-0 sm:ml-3">
-                                <a href="https://discord.gg/73u3p54"
+                                <a href="{{ config('services.discord.channel_url') }}"
                                    target="_blank"
                                    class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10">
                                     Discord
