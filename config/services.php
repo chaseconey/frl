@@ -32,7 +32,7 @@ return [
 
     'discord' => [
         'token' => env('DISCORD_API_TOKEN'),
-        'channel_url' => 'https://discord.gg/73u3p54',
+        'channel_url' => 'https://discord.gg/ZEZHQbgQRR',
         'server_id' => env('DISCORD_SERVER_ID'),
 
         'client_id' => env('DISCORD_CLIENT_ID'),
