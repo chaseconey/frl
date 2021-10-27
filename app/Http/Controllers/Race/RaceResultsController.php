@@ -22,7 +22,8 @@ class RaceResultsController extends Controller
      */
     public function index(Race $race)
     {
-        $race->load(['results', 'results.driver', 'results.driver.user', 'results.f1Team']);
+        $race->load(['results', 'results.driver', 'results.driver.user', 'results.f1Team'])
+            ->loadMin('results', 'best_lap_time');
 
         $driverVideos = DriverVideo::where('race_id', $race->id)
             ->get()

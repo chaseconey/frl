@@ -67,7 +67,7 @@
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right">
-                                <div class="text-sm text-gray-900 dark:text-white">
+                                <div class="text-sm dark:text-white {{ $race->results_min_best_lap_time == $result->best_lap_time ? 'text-purple-800' : 'text-gray-800 dark:text-gray-100' }}">
                                     @if($result->best_lap_time > 0)
                                         {{ format_seconds_as_human_time($result->best_lap_time) }}
                                     @else
