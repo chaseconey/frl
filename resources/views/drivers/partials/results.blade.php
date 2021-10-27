@@ -67,7 +67,13 @@
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right">
-                                <div class="text-sm text-gray-900 dark:text-white">{{ $result->best_lap_time }}</div>
+                                <div class="text-sm text-gray-900 dark:text-white">
+                                    @if($result->best_lap_time > 0)
+                                        {{ format_seconds_as_human_time($result->best_lap_time) }}
+                                    @else
+                                        {{ $result->best_lap_time_legacy }}
+                                    @endif
+                                </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="text-sm text-gray-900 dark:text-white">{{ $result->num_pit_stops }}</div>
