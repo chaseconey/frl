@@ -67,6 +67,7 @@ class RaceResult extends Resource
             Text::make('Tire Stints'),
             Select::make('Codemasters Result Status')->options(UdpSpec::RACE_RESULT_STATUS),
             Number::make('Points'),
+            Number::make('Laps Completed'),
             Text::make('Best Lap Time')->hideFromIndex(),
             Number::make('Penalties', 'num_penalties')->hideFromIndex(),
             Number::make('Penalty Time', 'penalty_seconds')->hideFromIndex(),
