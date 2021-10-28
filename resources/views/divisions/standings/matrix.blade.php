@@ -17,7 +17,7 @@
 
                     <div class="my-4">
 
-                        <div class="text-right sm:text-sm">
+                        <div class="text-right sm:text-sm dark:text-gray-400">
                             <span class="italic">fastest lap</span>, <span class="font-bold">pole position</span>
                         </div>
 
