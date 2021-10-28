@@ -19,12 +19,12 @@ Route::get('/', function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('divisions/{division}/standings', '\App\Http\Controllers\Division\StandingController@standings')
-    ->name('standings.standings');
 Route::get('divisions/{division}/team-standings', '\App\Http\Controllers\Division\StandingController@teamStandings')
     ->name('standings.team-standings');
 Route::get('divisions/{division}/matrix', '\App\Http\Controllers\Division\StandingController@matrix')
     ->name('standings.matrix');
+Route::get('divisions/{division}/plot', '\App\Http\Controllers\Division\StandingController@plot')
+    ->name('standings.plot');
 
 Route::resource('standings', \App\Http\Controllers\StandingController::class);
 
