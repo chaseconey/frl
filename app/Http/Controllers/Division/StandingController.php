@@ -12,7 +12,6 @@ use Illuminate\Support\Arr;
 
 class StandingController extends Controller
 {
-
     public function teamStandings(Division $division)
     {
         $standings = F1Team::with([
@@ -57,7 +56,6 @@ class StandingController extends Controller
 
     public function plot(Division $division)
     {
-
         $drivers = Driver::where('division_id', $division->id)
             ->where('type', '<>', 'BANNED')
             ->with('raceResults:id,race_id,driver_id,points')
@@ -97,6 +95,5 @@ class StandingController extends Controller
             ->withDivision($division)
             ->withRaces($races)
             ->withPlot($plot);
-
     }
 }
