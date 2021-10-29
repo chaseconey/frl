@@ -58,8 +58,9 @@ class StandingController extends Controller
     {
         $drivers = Driver::where('division_id', $division->id)
             ->where('type', '<>', 'BANNED')
-            ->with('raceResults:id,race_id,driver_id,points')
+            ->with('raceResults:id,race_id,driver_id,points', 'f1Team')
             ->has('raceResults')
+            ->orderBy('name')
             ->get();
 
         $races = Race::where('division_id', $division->id)
