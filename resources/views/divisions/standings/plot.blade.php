@@ -39,18 +39,31 @@
             const ctx = document.getElementById('graph').getContext('2d');
 
             const randomColor = () => `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+            const teamColors = {
+                'Alfa Romeo': '#900000',
+                'Alpha Tauri': '#91ABC8',
+                'Ferrari': '#DC0000',
+                'Haas': '#787878',
+                'McLaren': '#FF8700',
+                'Mercedes': '#00D2BE',
+                'Racing Point': '#F596C8',
+                'Red Bull Racing': '#0600EF',
+                'Renault': '#FFF500',
+                'Williams': '#005AFF',
+                'Aston Martin': '#006F62',
+                'Alpine': '#0090FF'
+            }
 
             new Chart(ctx, {
                 type: 'line',
                 data: {
                     labels,
                     datasets: plot.map(d => {
-                        console.log(Math.floor(Math.random() * 16777215).toString(16));
                         return {
                             label: d.driver.name,
                             data: d.results,
                             fill: false,
-                            borderColor: randomColor(),
+                            borderColor: teamColors[d.driver.f1_team.name] || randomColor(),
                         }
                     })
                 },
