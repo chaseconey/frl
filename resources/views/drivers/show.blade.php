@@ -226,6 +226,11 @@
              * @returns {number}
              */
             const calcPercentageOffBest = (time, delta) => {
+
+                if (!time || !delta) {
+                    return 0;
+                }
+
                 const overallBest = time - delta;
                 const percentageOff = ((time - overallBest) / overallBest) * 100
 
