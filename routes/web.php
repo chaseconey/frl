@@ -25,6 +25,7 @@ Route::get('divisions/{division}/matrix', '\App\Http\Controllers\Division\Standi
     ->name('standings.matrix');
 Route::get('divisions/{division}/plot', '\App\Http\Controllers\Division\StandingController@plot')
     ->name('standings.plot');
+Route::resource('blog', \App\Http\Controllers\BlogController::class)->only(['index', 'show']);
 
 Route::resource('standings', \App\Http\Controllers\StandingController::class);
 

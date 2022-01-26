@@ -1,4 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
+const colors = require('tailwindcss/colors')
 
 const teams = [
     'alfa-romeo',
@@ -16,19 +17,18 @@ const teams = [
 ]
 
 module.exports = {
-    purge: {
-        content: ['./storage/framework/views/*.php', './resources/views/**/*.blade.php', './app/View/Components/*.php'],
-        options: {
-            safelist: [
-                ...teams.map(team => `border-${team}`),
-            ]
-        }
-    },
-
-    darkMode: 'media',
+    safelist: [
+        ...teams.map(team => `border-${team}`),
+    ],
+    content: ['./storage/framework/views/*.php', './resources/views/**/*.blade.php', './app/View/Components/*.php'],
 
     theme: {
         extend: {
+            colors: {
+                green: colors.emerald,
+                yellow: colors.amber,
+                purple: colors.violet,
+            },
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
@@ -46,12 +46,6 @@ module.exports = {
                 'aston-martin': '#006F62',
                 'alpine': '#0090FF'
             }
-        },
-    },
-
-    variants: {
-        extend: {
-            opacity: ['disabled'],
         },
     },
 

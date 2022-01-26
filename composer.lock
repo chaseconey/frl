@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "12a63bed0e921bd9bdc8e234566ad9bf",
+    "content-hash": "64c906b0922bf8b44400669ceb835289",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -8275,6 +8275,62 @@
                 "source": "https://github.com/Textalk/websocket-php/tree/1.5.5"
             },
             "time": "2021-08-07T10:21:40+00:00"
+        },
+        {
+            "name": "themsaid/wink",
+            "version": "v1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/themsaid/wink.git",
+                "reference": "df0b131a01691204bc82ea197546040b521ae490"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/themsaid/wink/zipball/df0b131a01691204bc82ea197546040b521ae490",
+                "reference": "df0b131a01691204bc82ea197546040b521ae490",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^7.0||^8.0",
+                "php": "^7.3||^7.4||^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Wink\\WinkServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Wink\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mohamed Said",
+                    "email": "mohamed@laravel.com"
+                }
+            ],
+            "description": "Wink Publishing Framework.",
+            "keywords": [
+                "blog",
+                "framework",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/themsaid/wink/issues",
+                "source": "https://github.com/themsaid/wink/tree/v1.3.1"
+            },
+            "time": "2022-01-04T15:55:40+00:00"
         },
         {
             "name": "thomaswelton/gravatarlib",

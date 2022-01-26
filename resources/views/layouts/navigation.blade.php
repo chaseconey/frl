@@ -52,6 +52,10 @@
                         {{ __('Standings') }}
                     </x-nav-link>
 
+                    <x-nav-link :href="route('blog.index')" :active="request()->routeIs('blog.*')">
+                        {{ __('Blog') }}
+                    </x-nav-link>
+
                     @can('view-admin')
                     <x-nav-link href="/nova">
                         {{ __('Admin') }}
@@ -172,6 +176,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('standings.index')" :active="request()->routeIs('standings.*')">
                 {{ __('Standings') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('blog.index')" :active="request()->routeIs('blog.*')">
+                {{ __('Blog') }}
             </x-responsive-nav-link>
 
             @can('view-admin')
