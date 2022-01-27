@@ -2,7 +2,7 @@
 
     <x-slot name="header">
         <div class="flex justify-between">
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-100 leading-tight">
+            <h2 class="font-semibold text-xl text-indigo-600 leading-tight">
                 {{ $driver->name }}
                 <span class="text-lg text-gray-600 dark:text-gray-300">#{{ $driver->f1Number->racing_number }}</span>
                 <span class="p-4 whitespace-nowrap align-middle" x-data="{ open: false }">
