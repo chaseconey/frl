@@ -17,7 +17,7 @@
                         <p class="text-xl font-semibold text-gray-900 dark:text-gray-100">
                             {{ $post->title }}
                         </p>
-                        <p class="mt-3 text-base text-gray-500">
+                        <p class="mt-3 text-base text-gray-500 dark:text-gray-300">
                             {{ $post->excerpt ?? '' }}
                         </p>
                     </a>
