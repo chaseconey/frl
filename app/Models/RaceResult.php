@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Service\F12020\UdpSpec;
+use App\Service\F12021\UdpSpec;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Nova\Actions\Actionable;
@@ -78,19 +78,15 @@ class RaceResult extends Model
     ];
 
     /**
-     * @param  array  $json
-     * @return mixed|static
+     * Map in data from file into our model
      */
-    public static function fromFile(array $json)
+    public static function fromFile(array $raceData)
     {
-        // TODO: move to helper
-        $raceData = $json['race_data'];
-
         return new static([
             'position' => $raceData['m_position'],
             'grid_position' => $raceData['m_gridPosition'],
             'num_pit_stops' => $raceData['m_numPitStops'],
-            'best_lap_time' => $raceData['m_bestLapTime'],
+            'best_lap_time' => $raceData['m_bestLapTimeInMS'] / 1000,
             'num_penalties' => $raceData['m_numPenalties'],
             'penalty_seconds' => $raceData['m_penaltiesTime'],
             'race_time' => $raceData['m_totalRaceTime'],

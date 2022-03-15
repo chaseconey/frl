@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -15,9 +16,6 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-//        \App\Models\User::factory(20)
-//            ->hasDriver()
-//            ->create();
 
         $role = Role::create(['name' => 'admin']);
         Permission::create(['name' => 'manage-users']);
@@ -35,7 +33,9 @@ class UserSeeder extends Seeder
 
         $role->givePermissionTo($permissions);
 
-        $user = \App\Models\User::factory()->create(['email' => 'admin@admin.com']);
+        $user = User::factory()->create(['email' => 'admin@admin.com']);
         $user->assignRole($role);
+
+        User::factory()->count(10)->create();
     }
 }

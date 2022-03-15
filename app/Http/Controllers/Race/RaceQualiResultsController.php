@@ -65,7 +65,7 @@ class RaceQualiResultsController extends Controller
         $results = json_decode($json, true);
 
         try {
-            $this->uploadResults($results, $race, fn ($results) => RaceQualiResult::fromFile($results));
+            $this->uploadResults($results, $race, fn ($result) => RaceQualiResult::fromFile($result, $results));
         } catch (ResultsUploadError $e) {
             return response()->json([
                 'message' => $e->getMessage(),

@@ -82,36 +82,45 @@ class RaceQualiResult extends Model
      * @param  array  $json
      * @return mixed|static
      */
-    public static function fromFile(array $json)
+    public static function fromFile(array $raceData, array $allResults)
     {
-        $lapData = $json['lap_data'];
-        $calcData = $json['calculated'];
-        $raceData = $json['race_data'];
+        // TODO: Pull tire out of m_tyreStintsHistoryData
+        $bestLapTire = 17; // fake
 
-        $bestLap = $lapData['m_bestLapTime'];
-        $bestLapTire = Arr::get($json, 'custom.bestLapTyre');
-
-        if ($bestLap === 0) {
+        if ($raceData['m_bestLapTimeInMS'] === 0) {
             return new static([
                 'position' => $raceData['m_position'],
-                'best_lap_time' => $bestLap,
+                'best_lap_time' => 0,
                 'codemasters_result_status' => $raceData['m_resultStatus'],
             ]);
         }
 
+        // Grab best lap
+        $bestLapNum = $raceData['m_bestLapTimeLapNum'];
+        $bestLap = $raceData['m_lapHistoryData'][$bestLapNum - 1];
+
+        // Grab session best
+        $sessionBestDriver = collect($allResults['driverData'])->firstWhere('m_position', '=', 1);
+        $sessionBestLapNum = $sessionBestDriver['m_bestLapTimeLapNum'];
+        $sessionBestLap = $sessionBestDriver['m_lapHistoryData'][$sessionBestLapNum - 1];
+
         return new static([
             'position' => $raceData['m_position'],
-            'best_lap_time' => $bestLap,
-            'best_s1_time' => round($lapData['m_bestLapSector1TimeInMS'] / 1000, 3),
-            'best_s2_time' => round($lapData['m_bestLapSector2TimeInMS'] / 1000, 3),
-            'best_s3_time' => round($lapData['m_bestLapSector3TimeInMS'] / 1000, 3),
-            'lap_delta' => round($calcData['bestLapTimeInSecDelta'], 3),
-            'best_s1_delta' => round($calcData['bestLapSector1InMsDelta'] / 1000, 3),
-            'best_s2_delta' => round($calcData['bestLapSector2InMsDelta'] / 1000, 3),
-            'best_s3_delta' => round($calcData['bestLapSector3InMsDelta'] / 1000, 3),
+            'best_lap_time' => round($bestLap['m_lapTimeInMS'] / 1000, 3),
+            'best_s1_time' => round($bestLap['m_sector1TimeInMS'] / 1000, 3),
+            'best_s2_time' => round($bestLap['m_sector2TimeInMS'] / 1000, 3),
+            'best_s3_time' => round($bestLap['m_sector3TimeInMS'] / 1000, 3),
+            'lap_delta' => static::diffFromSessionBest($bestLap['m_lapTimeInMS'], $sessionBestLap['m_lapTimeInMS']),
+            'best_s1_delta' => static::diffFromSessionBest($bestLap['m_sector1TimeInMS'], $sessionBestLap['m_sector1TimeInMS']),
+            'best_s2_delta' => static::diffFromSessionBest($bestLap['m_sector2TimeInMS'], $sessionBestLap['m_sector2TimeInMS']),
+            'best_s3_delta' => static::diffFromSessionBest($bestLap['m_sector3TimeInMS'], $sessionBestLap['m_sector3TimeInMS']),
             'best_lap_tire' => $bestLapTire ? UdpSpec::TIRES_VISUAL[$bestLapTire] : null,
             'codemasters_result_status' => $raceData['m_resultStatus'],
         ]);
+    }
+
+    protected static function diffFromSessionBest($best, $sessionBest) {
+        return round(($best - $sessionBest) / 1000, 3);
     }
 
     public function driver()
