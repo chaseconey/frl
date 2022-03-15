@@ -1,7 +1,8 @@
 <?php
 
-
 namespace App\Service\F12021;
+
+use App\Exceptions\ResultsUploadError;
 
 class UdpSpec
 {
@@ -50,5 +51,32 @@ class UdpSpec
         }
 
         return $stint;
+    }
+
+    /**
+     * Gets fastest lap tired using lap history and maps to visual tire character
+     */
+    public static function getFastestLapTire(array $result): string
+    {
+        // Make sure we have required data
+        if (!array_key_exists('m_tyreStintsHistoryData', $result) || !array_key_exists('m_bestLapTimeLapNum', $result)) {
+            throw new ResultsUploadError('Missing tire stint data');
+        }
+
+        $stints = collect($result['m_tyreStintsHistoryData']);
+        $bestLapNum = $result['m_bestLapTimeLapNum'];
+
+        // Grab stint where fastest lap occurred
+        $fastestStint = $stints->where('m_endLap', '>', 0)
+            ->sortBy('m_endLap')
+            ->firstWhere('m_endLap', '>', $bestLapNum);
+
+        // Get the visual compound
+        $tireId = $fastestStint['m_tyreVisualCompound'];
+
+        // Map it into visual identifier
+        $visualTire = $tireId ? static::TIRES_VISUAL[$tireId] : null;
+
+        return $visualTire;
     }
 }

@@ -80,20 +80,20 @@ class RaceResult extends Model
     /**
      * Map in data from file into our model
      */
-    public static function fromFile(array $raceData)
+    public static function fromFile(array $result)
     {
         return new static([
-            'position' => $raceData['m_position'],
-            'grid_position' => $raceData['m_gridPosition'],
-            'num_pit_stops' => $raceData['m_numPitStops'],
-            'best_lap_time' => $raceData['m_bestLapTimeInMS'] / 1000,
-            'num_penalties' => $raceData['m_numPenalties'],
-            'penalty_seconds' => $raceData['m_penaltiesTime'],
-            'race_time' => $raceData['m_totalRaceTime'],
-            'codemasters_result_status' => $raceData['m_resultStatus'],
-            'tire_stints' => UdpSpec::mapTireStint($raceData['m_tyreStintsVisual']),
-            'points' => $raceData['m_points'],
-            'laps_completed' => $raceData['m_numLaps'],
+            'position' => $result['m_position'],
+            'grid_position' => $result['m_gridPosition'],
+            'num_pit_stops' => $result['m_numPitStops'],
+            'best_lap_time' => $result['m_bestLapTimeInMS'] / 1000,
+            'num_penalties' => $result['m_numPenalties'],
+            'penalty_seconds' => $result['m_penaltiesTime'],
+            'race_time' => $result['m_totalRaceTime'],
+            'codemasters_result_status' => $result['m_resultStatus'],
+            'tire_stints' => UdpSpec::mapTireStint($result['m_tyreStintsVisual']),
+            'points' => $result['m_points'],
+            'laps_completed' => $result['m_numLaps'],
         ]);
     }
 
