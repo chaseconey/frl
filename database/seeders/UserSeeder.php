@@ -16,7 +16,6 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-
         $role = Role::create(['name' => 'admin']);
         Permission::create(['name' => 'manage-users']);
         Permission::create(['name' => 'manage-races']);

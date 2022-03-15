@@ -17,12 +17,11 @@ class DriverSeeder extends Seeder
     public function run()
     {
         // Add driver for every number so we can upload files at will and number lookup will work
-        for($x = 1; $x <= 77; $x++) {
+        for ($x = 1; $x <= 77; $x++) {
             Driver::factory()->create([
                 'f1_number_id' => $x,
                 'type' => 'RESERVE',
             ]);
         }
-
     }
 }

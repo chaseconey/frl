@@ -119,7 +119,8 @@ class RaceQualiResult extends Model
         ]);
     }
 
-    protected static function diffFromSessionBest($best, $sessionBest) {
+    protected static function diffFromSessionBest($best, $sessionBest)
+    {
         return round(($best - $sessionBest) / 1000, 3);
     }
 
