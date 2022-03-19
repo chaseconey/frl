@@ -1,154 +1,2476 @@
 {
-  "12": {
-    "driver": {
-      "m_aiControlled": 0,
-      "m_driverId": 100,
-      "m_teamId": 1,
-      "m_raceNumber": 12,
-      "m_nationality": 9,
-      "m_name": "Player",
-      "m_yourTelemetry": 1
-    },
-    "lap_data": {
-      "m_lastLapTime": 70.46630859375,
-      "m_currentLapTime": 0.017086900770664215,
-      "m_sector1TimeInMS": 0,
-      "m_sector2TimeInMS": 0,
-      "m_bestLapTime": 70.32568359375,
-      "m_bestLapNum": 33,
-      "m_bestLapSector1TimeInMS": 17242,
-      "m_bestLapSector2TimeInMS": 36258,
-      "m_bestLapSector3TimeInMS": 16824,
-      "m_bestOverallSector1TimeInMS": 17157,
-      "m_bestOverallSector1LapNum": 29,
-      "m_bestOverallSector2TimeInMS": 35883,
-      "m_bestOverallSector2LapNum": 35,
-      "m_bestOverallSector3TimeInMS": 16771,
-      "m_bestOverallSector3LapNum": 14,
-      "m_lapDistance": 2506.75,
-      "m_totalDistance": 157105.625,
-      "m_safetyCarDelta": 0,
-      "m_carPosition": 5,
-      "m_currentLapNum": 37,
-      "m_pitStatus": 0,
-      "m_sector": 1,
-      "m_currentLapInvalid": 0,
-      "m_penalties": 12,
-      "m_gridPosition": 2,
-      "m_driverStatus": 2,
-      "m_resultStatus": 3
-    },
-    "custom": {
-      "bestLapTyre": 18
-    },
-    "race_data": {
-      "m_position": 1,
-      "m_numLaps": 36,
-      "m_gridPosition": 2,
-      "m_points": 10,
-      "m_numPitStops": 1,
-      "m_resultStatus": 3,
-      "m_bestLapTime": 70.32568359375,
-      "m_totalRaceTime": 2579.435546875,
-      "m_penaltiesTime": 12,
-      "m_numPenalties": 4,
-      "m_numTyreStints": 2,
-      "m_tyreStintsActual": [
-        18,
-        20,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "m_tyreStintsVisual": [
-        16,
-        18,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ]
-    }
-  },
-  "24": {
-    "driver": {
-      "m_aiControlled": 0,
-      "m_driverId": 100,
-      "m_teamId": 1,
-      "m_raceNumber": 24,
-      "m_nationality": 9,
-      "m_name": "Player",
-      "m_yourTelemetry": 1
-    },
-    "lap_data": {
-      "m_lastLapTime": 70.46630859375,
-      "m_currentLapTime": 0.017086900770664215,
-      "m_sector1TimeInMS": 0,
-      "m_sector2TimeInMS": 0,
-      "m_bestLapTime": 70.32568359375,
-      "m_bestLapNum": 33,
-      "m_bestLapSector1TimeInMS": 17242,
-      "m_bestLapSector2TimeInMS": 36258,
-      "m_bestLapSector3TimeInMS": 16824,
-      "m_bestOverallSector1TimeInMS": 17157,
-      "m_bestOverallSector1LapNum": 29,
-      "m_bestOverallSector2TimeInMS": 35883,
-      "m_bestOverallSector2LapNum": 35,
-      "m_bestOverallSector3TimeInMS": 16771,
-      "m_bestOverallSector3LapNum": 14,
-      "m_lapDistance": 2506.75,
-      "m_totalDistance": 157105.625,
-      "m_safetyCarDelta": 0,
-      "m_carPosition": 5,
-      "m_currentLapNum": 37,
-      "m_pitStatus": 0,
-      "m_sector": 1,
-      "m_currentLapInvalid": 0,
-      "m_penalties": 12,
-      "m_gridPosition": 2,
-      "m_driverStatus": 2,
-      "m_resultStatus": 3
-    },
-    "custom": {
-      "bestLapTyre": 18
-    },
-    "race_data": {
-      "m_position": 4,
-      "m_numLaps": 36,
-      "m_gridPosition": 2,
-      "m_points": 10,
-      "m_numPitStops": 1,
-      "m_resultStatus": 3,
-      "m_bestLapTime": 70.32568359375,
-      "m_totalRaceTime": 2579.435546875,
-      "m_penaltiesTime": 12,
-      "m_numPenalties": 4,
-      "m_numTyreStints": 2,
-      "m_tyreStintsActual": [
-        18,
-        20,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "m_tyreStintsVisual": [
-        16,
-        18,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ]
-    }
-  }
+    "driverData": [
+        {
+            "m_lastLapTimeInMS": 77121,
+            "m_currentLapTimeInMS": 65743,
+            "m_sector1TimeInMS": 22068,
+            "m_sector2TimeInMS": 24159,
+            "m_lapDistance": 3608.453125,
+            "m_totalDistance": 77923.046875,
+            "m_safetyCarDelta": 0,
+            "m_carPosition": 4,
+            "m_currentLapNum": 18,
+            "m_pitStatus": 0,
+            "m_numPitStops": 2,
+            "m_sector": 2,
+            "m_currentLapInvalid": 0,
+            "m_penalties": 13,
+            "m_warnings": 0,
+            "m_numUnservedDriveThroughPens": 0,
+            "m_numUnservedStopGoPens": 0,
+            "m_gridPosition": 3,
+            "m_driverStatus": 2,
+            "m_resultStatus": 7,
+            "m_pitLaneTimerActive": 0,
+            "m_pitLaneTimeInLaneInMS": 0,
+            "m_pitStopTimerInMS": 0,
+            "m_pitStopShouldServePen": 0,
+            "m_aiControlled": 1,
+            "m_driverId": 255,
+            "m_networkId": 177,
+            "m_teamId": 4,
+            "m_myTeam": 0,
+            "m_raceNumber": 69,
+            "m_nationality": 15,
+            "m_name": "Player",
+            "m_yourTelemetry": 0,
+            "m_header": {
+                "m_packetFormat": 2021,
+                "m_gameMajorVersion": 1,
+                "m_gameMinorVersion": 16,
+                "m_packetVersion": 1,
+                "m_packetId": 11,
+                "m_sessionUID": "16403238887700065391",
+                "m_sessionTime": 0,
+                "m_frameIdentifier": 0,
+                "m_playerCarIndex": 255,
+                "m_secondaryPlayerCarIndex": 255
+            },
+            "m_carIdx": 0,
+            "m_numLaps": 17,
+            "m_numTyreStints": 3,
+            "m_bestLapTimeLapNum": 13,
+            "m_bestSector1LapNum": 14,
+            "m_bestSector2LapNum": 13,
+            "m_bestSector3LapNum": 13,
+            "m_lapHistoryData": [
+                {
+                    "m_lapTimeInMS": 80882,
+                    "m_sector1TimeInMS": 26709,
+                    "m_sector2TimeInMS": 23933,
+                    "m_sector3TimeInMS": 30240,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 74850,
+                    "m_sector1TimeInMS": 21020,
+                    "m_sector2TimeInMS": 23644,
+                    "m_sector3TimeInMS": 30185,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 75336,
+                    "m_sector1TimeInMS": 21019,
+                    "m_sector2TimeInMS": 24185,
+                    "m_sector3TimeInMS": 30130,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 75071,
+                    "m_sector1TimeInMS": 21217,
+                    "m_sector2TimeInMS": 23384,
+                    "m_sector3TimeInMS": 30469,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 104557,
+                    "m_sector1TimeInMS": 23426,
+                    "m_sector2TimeInMS": 26428,
+                    "m_sector3TimeInMS": 54701,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 86148,
+                    "m_sector1TimeInMS": 22279,
+                    "m_sector2TimeInMS": 23740,
+                    "m_sector3TimeInMS": 40128,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 117253,
+                    "m_sector1TimeInMS": 32764,
+                    "m_sector2TimeInMS": 38785,
+                    "m_sector3TimeInMS": 45703,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 74097,
+                    "m_sector1TimeInMS": 21017,
+                    "m_sector2TimeInMS": 23093,
+                    "m_sector3TimeInMS": 29986,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 75271,
+                    "m_sector1TimeInMS": 21364,
+                    "m_sector2TimeInMS": 23547,
+                    "m_sector3TimeInMS": 30359,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 74748,
+                    "m_sector1TimeInMS": 21073,
+                    "m_sector2TimeInMS": 23317,
+                    "m_sector3TimeInMS": 30357,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 105282,
+                    "m_sector1TimeInMS": 24460,
+                    "m_sector2TimeInMS": 26335,
+                    "m_sector3TimeInMS": 54487,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 99199,
+                    "m_sector1TimeInMS": 21889,
+                    "m_sector2TimeInMS": 25507,
+                    "m_sector3TimeInMS": 51802,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 73337,
+                    "m_sector1TimeInMS": 20997,
+                    "m_sector2TimeInMS": 22860,
+                    "m_sector3TimeInMS": 29479,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 74095,
+                    "m_sector1TimeInMS": 20904,
+                    "m_sector2TimeInMS": 23172,
+                    "m_sector3TimeInMS": 30018,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 76941,
+                    "m_sector1TimeInMS": 21938,
+                    "m_sector2TimeInMS": 24347,
+                    "m_sector3TimeInMS": 30655,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 77735,
+                    "m_sector1TimeInMS": 22017,
+                    "m_sector2TimeInMS": 24446,
+                    "m_sector3TimeInMS": 31271,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 77121,
+                    "m_sector1TimeInMS": 21985,
+                    "m_sector2TimeInMS": 24164,
+                    "m_sector3TimeInMS": 30970,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 22068,
+                    "m_sector2TimeInMS": 24159,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                }
+            ],
+            "m_tyreStintsHistoryData": [
+                {
+                    "m_endLap": 4,
+                    "m_tyreActualCompound": 18,
+                    "m_tyreVisualCompound": 18
+                },
+                {
+                    "m_endLap": 10,
+                    "m_tyreActualCompound": 17,
+                    "m_tyreVisualCompound": 17
+                },
+                {
+                    "m_endLap": 255,
+                    "m_tyreActualCompound": 17,
+                    "m_tyreVisualCompound": 17
+                },
+                {
+                    "m_endLap": 0,
+                    "m_tyreActualCompound": 0,
+                    "m_tyreVisualCompound": 0
+                },
+                {
+                    "m_endLap": 0,
+                    "m_tyreActualCompound": 0,
+                    "m_tyreVisualCompound": 0
+                },
+                {
+                    "m_endLap": 0,
+                    "m_tyreActualCompound": 0,
+                    "m_tyreVisualCompound": 0
+                },
+                {
+                    "m_endLap": 0,
+                    "m_tyreActualCompound": 0,
+                    "m_tyreVisualCompound": 0
+                },
+                {
+                    "m_endLap": 0,
+                    "m_tyreActualCompound": 0,
+                    "m_tyreVisualCompound": 0
+                }
+            ],
+            "m_position": 1,
+            "m_points": 12,
+            "m_bestLapTimeInMS": 73337,
+            "m_totalRaceTime": 1487.6731879999934,
+            "m_penaltiesTime": 13,
+            "m_numPenalties": 2,
+            "m_tyreStintsActual": [
+                18,
+                17,
+                17,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "m_tyreStintsVisual": [
+                18,
+                17,
+                17,
+                0,
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "m_lastLapTimeInMS": 73786,
+            "m_currentLapTimeInMS": 5,
+            "m_sector1TimeInMS": 0,
+            "m_sector2TimeInMS": 0,
+            "m_lapDistance": 3.125,
+            "m_totalDistance": 78689.1640625,
+            "m_safetyCarDelta": 0,
+            "m_carPosition": 3,
+            "m_currentLapNum": 19,
+            "m_pitStatus": 0,
+            "m_numPitStops": 1,
+            "m_sector": 0,
+            "m_currentLapInvalid": 0,
+            "m_penalties": 3,
+            "m_warnings": 0,
+            "m_numUnservedDriveThroughPens": 0,
+            "m_numUnservedStopGoPens": 0,
+            "m_gridPosition": 8,
+            "m_driverStatus": 2,
+            "m_resultStatus": 3,
+            "m_pitLaneTimerActive": 0,
+            "m_pitLaneTimeInLaneInMS": 0,
+            "m_pitStopTimerInMS": 0,
+            "m_pitStopShouldServePen": 0,
+            "m_aiControlled": 0,
+            "m_driverId": 255,
+            "m_networkId": 175,
+            "m_teamId": 2,
+            "m_myTeam": 0,
+            "m_raceNumber": 42,
+            "m_nationality": 0,
+            "m_name": "Player",
+            "m_yourTelemetry": 0,
+            "m_header": {
+                "m_packetFormat": 2021,
+                "m_gameMajorVersion": 1,
+                "m_gameMinorVersion": 16,
+                "m_packetVersion": 1,
+                "m_packetId": 11,
+                "m_sessionUID": "16403238887700065391",
+                "m_sessionTime": 0,
+                "m_frameIdentifier": 0,
+                "m_playerCarIndex": 255,
+                "m_secondaryPlayerCarIndex": 255
+            },
+            "m_carIdx": 1,
+            "m_numLaps": 18,
+            "m_numTyreStints": 2,
+            "m_bestLapTimeLapNum": 15,
+            "m_bestSector1LapNum": 18,
+            "m_bestSector2LapNum": 18,
+            "m_bestSector3LapNum": 15,
+            "m_lapHistoryData": [
+                {
+                    "m_lapTimeInMS": 84983,
+                    "m_sector1TimeInMS": 29656,
+                    "m_sector2TimeInMS": 23440,
+                    "m_sector3TimeInMS": 31885,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 75641,
+                    "m_sector1TimeInMS": 21367,
+                    "m_sector2TimeInMS": 24097,
+                    "m_sector3TimeInMS": 30177,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 74647,
+                    "m_sector1TimeInMS": 21529,
+                    "m_sector2TimeInMS": 23188,
+                    "m_sector3TimeInMS": 29928,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 74670,
+                    "m_sector1TimeInMS": 21463,
+                    "m_sector2TimeInMS": 23061,
+                    "m_sector3TimeInMS": 30145,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 98942,
+                    "m_sector1TimeInMS": 23749,
+                    "m_sector2TimeInMS": 26178,
+                    "m_sector3TimeInMS": 49014,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 87244,
+                    "m_sector1TimeInMS": 22457,
+                    "m_sector2TimeInMS": 23752,
+                    "m_sector3TimeInMS": 41034,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 117330,
+                    "m_sector1TimeInMS": 32852,
+                    "m_sector2TimeInMS": 38237,
+                    "m_sector3TimeInMS": 46239,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 75295,
+                    "m_sector1TimeInMS": 21298,
+                    "m_sector2TimeInMS": 23108,
+                    "m_sector3TimeInMS": 30888,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 75369,
+                    "m_sector1TimeInMS": 21434,
+                    "m_sector2TimeInMS": 23296,
+                    "m_sector3TimeInMS": 30638,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 74699,
+                    "m_sector1TimeInMS": 20964,
+                    "m_sector2TimeInMS": 23060,
+                    "m_sector3TimeInMS": 30674,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 84741,
+                    "m_sector1TimeInMS": 24862,
+                    "m_sector2TimeInMS": 26421,
+                    "m_sector3TimeInMS": 33457,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 116812,
+                    "m_sector1TimeInMS": 26453,
+                    "m_sector2TimeInMS": 36298,
+                    "m_sector3TimeInMS": 54060,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 75421,
+                    "m_sector1TimeInMS": 21148,
+                    "m_sector2TimeInMS": 22878,
+                    "m_sector3TimeInMS": 31393,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 75773,
+                    "m_sector1TimeInMS": 20765,
+                    "m_sector2TimeInMS": 23166,
+                    "m_sector3TimeInMS": 31841,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 73779,
+                    "m_sector1TimeInMS": 20970,
+                    "m_sector2TimeInMS": 23014,
+                    "m_sector3TimeInMS": 29794,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 74020,
+                    "m_sector1TimeInMS": 20816,
+                    "m_sector2TimeInMS": 23284,
+                    "m_sector3TimeInMS": 29920,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 74306,
+                    "m_sector1TimeInMS": 20883,
+                    "m_sector2TimeInMS": 23136,
+                    "m_sector3TimeInMS": 30286,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 73786,
+                    "m_sector1TimeInMS": 20706,
+                    "m_sector2TimeInMS": 22826,
+                    "m_sector3TimeInMS": 30253,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                }
+            ],
+            "m_tyreStintsHistoryData": [
+                {
+                    "m_endLap": 4,
+                    "m_tyreActualCompound": 16,
+                    "m_tyreVisualCompound": 16
+                },
+                {
+                    "m_endLap": 255,
+                    "m_tyreActualCompound": 17,
+                    "m_tyreVisualCompound": 17
+                },
+                {
+                    "m_endLap": 0,
+                    "m_tyreActualCompound": 0,
+                    "m_tyreVisualCompound": 0
+                },
+                {
+                    "m_endLap": 0,
+                    "m_tyreActualCompound": 0,
+                    "m_tyreVisualCompound": 0
+                },
+                {
+                    "m_endLap": 0,
+                    "m_tyreActualCompound": 0,
+                    "m_tyreVisualCompound": 0
+                },
+                {
+                    "m_endLap": 0,
+                    "m_tyreActualCompound": 0,
+                    "m_tyreVisualCompound": 0
+                },
+                {
+                    "m_endLap": 0,
+                    "m_tyreActualCompound": 0,
+                    "m_tyreVisualCompound": 0
+                },
+                {
+                    "m_endLap": 0,
+                    "m_tyreActualCompound": 0,
+                    "m_tyreVisualCompound": 0
+                }
+            ],
+            "m_position": 3,
+            "m_points": 15,
+            "m_bestLapTimeInMS": 73779,
+            "m_totalRaceTime": 1487.466552734375,
+            "m_penaltiesTime": 3,
+            "m_numPenalties": 1,
+            "m_tyreStintsActual": [
+                16,
+                17,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "m_tyreStintsVisual": [
+                16,
+                17,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "m_lastLapTimeInMS": 73844,
+            "m_currentLapTimeInMS": 7,
+            "m_sector1TimeInMS": 0,
+            "m_sector2TimeInMS": 0,
+            "m_lapDistance": 356.46875,
+            "m_totalDistance": 79042.5078125,
+            "m_safetyCarDelta": 0,
+            "m_carPosition": 1,
+            "m_currentLapNum": 19,
+            "m_pitStatus": 0,
+            "m_numPitStops": 2,
+            "m_sector": 0,
+            "m_currentLapInvalid": 0,
+            "m_penalties": 6,
+            "m_warnings": 0,
+            "m_numUnservedDriveThroughPens": 0,
+            "m_numUnservedStopGoPens": 0,
+            "m_gridPosition": 2,
+            "m_driverStatus": 2,
+            "m_resultStatus": 3,
+            "m_pitLaneTimerActive": 0,
+            "m_pitLaneTimeInLaneInMS": 0,
+            "m_pitStopTimerInMS": 0,
+            "m_pitStopShouldServePen": 0,
+            "m_aiControlled": 0,
+            "m_driverId": 255,
+            "m_networkId": 163,
+            "m_teamId": 2,
+            "m_myTeam": 0,
+            "m_raceNumber": 54,
+            "m_nationality": 0,
+            "m_name": "Player",
+            "m_yourTelemetry": 0,
+            "m_header": {
+                "m_packetFormat": 2021,
+                "m_gameMajorVersion": 1,
+                "m_gameMinorVersion": 16,
+                "m_packetVersion": 1,
+                "m_packetId": 11,
+                "m_sessionUID": "16403238887700065391",
+                "m_sessionTime": 0,
+                "m_frameIdentifier": 0,
+                "m_playerCarIndex": 255,
+                "m_secondaryPlayerCarIndex": 255
+            },
+            "m_carIdx": 2,
+            "m_numLaps": 18,
+            "m_numTyreStints": 3,
+            "m_bestLapTimeLapNum": 14,
+            "m_bestSector1LapNum": 4,
+            "m_bestSector2LapNum": 14,
+            "m_bestSector3LapNum": 14,
+            "m_lapHistoryData": [
+                {
+                    "m_lapTimeInMS": 77355,
+                    "m_sector1TimeInMS": 25230,
+                    "m_sector2TimeInMS": 22769,
+                    "m_sector3TimeInMS": 29355,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 72805,
+                    "m_sector1TimeInMS": 20640,
+                    "m_sector2TimeInMS": 22860,
+                    "m_sector3TimeInMS": 29304,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 73413,
+                    "m_sector1TimeInMS": 20793,
+                    "m_sector2TimeInMS": 23064,
+                    "m_sector3TimeInMS": 29554,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 73345,
+                    "m_sector1TimeInMS": 20152,
+                    "m_sector2TimeInMS": 23407,
+                    "m_sector3TimeInMS": 29786,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 93530,
+                    "m_sector1TimeInMS": 20613,
+                    "m_sector2TimeInMS": 27016,
+                    "m_sector3TimeInMS": 45900,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 105006,
+                    "m_sector1TimeInMS": 25297,
+                    "m_sector2TimeInMS": 35885,
+                    "m_sector3TimeInMS": 43823,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 116640,
+                    "m_sector1TimeInMS": 32733,
+                    "m_sector2TimeInMS": 38062,
+                    "m_sector3TimeInMS": 45844,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 72872,
+                    "m_sector1TimeInMS": 20922,
+                    "m_sector2TimeInMS": 22744,
+                    "m_sector3TimeInMS": 29205,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 72624,
+                    "m_sector1TimeInMS": 20247,
+                    "m_sector2TimeInMS": 22789,
+                    "m_sector3TimeInMS": 29588,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 72757,
+                    "m_sector1TimeInMS": 20208,
+                    "m_sector2TimeInMS": 22923,
+                    "m_sector3TimeInMS": 29624,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 101855,
+                    "m_sector1TimeInMS": 24668,
+                    "m_sector2TimeInMS": 25703,
+                    "m_sector3TimeInMS": 51483,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 108929,
+                    "m_sector1TimeInMS": 22880,
+                    "m_sector2TimeInMS": 32339,
+                    "m_sector3TimeInMS": 53709,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 73739,
+                    "m_sector1TimeInMS": 21589,
+                    "m_sector2TimeInMS": 22779,
+                    "m_sector3TimeInMS": 29370,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 72139,
+                    "m_sector1TimeInMS": 20338,
+                    "m_sector2TimeInMS": 22732,
+                    "m_sector3TimeInMS": 29068,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 72817,
+                    "m_sector1TimeInMS": 20450,
+                    "m_sector2TimeInMS": 22989,
+                    "m_sector3TimeInMS": 29378,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 72995,
+                    "m_sector1TimeInMS": 20349,
+                    "m_sector2TimeInMS": 23147,
+                    "m_sector3TimeInMS": 29498,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 73570,
+                    "m_sector1TimeInMS": 20743,
+                    "m_sector2TimeInMS": 23098,
+                    "m_sector3TimeInMS": 29728,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 73844,
+                    "m_sector1TimeInMS": 20692,
+                    "m_sector2TimeInMS": 23187,
+                    "m_sector3TimeInMS": 29964,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 15
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                },
+                {
+                    "m_lapTimeInMS": 0,
+                    "m_sector1TimeInMS": 0,
+                    "m_sector2TimeInMS": 0,
+                    "m_sector3TimeInMS": 0,
+                    "m_lapValidBitFlags": 0
+                }
+            ],
+            "m_tyreStintsHistoryData": [
+                {
+                    "m_endLap": 4,
+                    "m_tyreActualCompound": 17,
+                    "m_tyreVisualCompound": 17
+                },
+                {
+                    "m_endLap": 10,
+                    "m_tyreActualCompound": 16,
+                    "m_tyreVisualCompound": 16
+                },
+                {
+                    "m_endLap": 255,
+                    "m_tyreActualCompound": 16,
+                    "m_tyreVisualCompound": 16
+                },
+                {
+                    "m_endLap": 0,
+                    "m_tyreActualCompound": 0,
+                    "m_tyreVisualCompound": 0
+                },
+                {
+                    "m_endLap": 0,
+                    "m_tyreActualCompound": 0,
+                    "m_tyreVisualCompound": 0
+                },
+                {
+                    "m_endLap": 0,
+                    "m_tyreActualCompound": 0,
+                    "m_tyreVisualCompound": 0
+                },
+                {
+                    "m_endLap": 0,
+                    "m_tyreActualCompound": 0,
+                    "m_tyreVisualCompound": 0
+                },
+                {
+                    "m_endLap": 0,
+                    "m_tyreActualCompound": 0,
+                    "m_tyreVisualCompound": 0
+                }
+            ],
+            "m_position": 4,
+            "m_points": 25,
+            "m_bestLapTimeInMS": 72139,
+            "m_totalRaceTime": 1480.242919921875,
+            "m_penaltiesTime": 6,
+            "m_numPenalties": 2,
+            "m_tyreStintsActual": [
+                17,
+                16,
+                16,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "m_tyreStintsVisual": [
+                17,
+                16,
+                16,
+                0,
+                0,
+                0,
+                0,
+                0
+            ]
+        }
+    ]
 }

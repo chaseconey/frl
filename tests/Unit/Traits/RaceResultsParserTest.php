@@ -33,6 +33,7 @@ class RaceResultsParserTest extends TestCase
         $stub = file_get_contents(storage_path('stubs/race-with-missing-pos.json'));
 
         $results = json_decode($stub, true);
+
         $race = Race::factory()->make();
 
         $this->expectException(ResultsUploadError::class);
@@ -47,14 +48,10 @@ class RaceResultsParserTest extends TestCase
     public function error_thrown_when_driver_missing()
     {
         $results = [
-            '12' => [
-                'driver' => [
-                    'm_raceNumber' => 12,
-                ],
-                'race_data' => [
-                    'm_position' => 1,
+            'driverData' =>
+                [
+                    ['m_raceNumber' => 12, 'm_position' => 1],
                 ]
-            ]
         ];
         $race = Race::factory()->make(['division_id' => 1]);
 
@@ -70,11 +67,9 @@ class RaceResultsParserTest extends TestCase
     public function error_thrown_when_result_has_ai_number()
     {
         $results = [
-            '44' => [
-                'driver' => [
+            'driverData' => [
+                [
                     'm_raceNumber' => 44, // Lewis Hamilton's number (can't be selected)
-                ],
-                'race_data' => [
                     'm_position' => 1,
                     'm_numLaps' => 1,
                 ]
@@ -94,11 +89,9 @@ class RaceResultsParserTest extends TestCase
     public function ai_results_with_no_race_data_are_ignored()
     {
         $results = [
-            '44' => [
-                'driver' => [
+            'driverData' => [
+                [
                     'm_raceNumber' => 44, // Lewis Hamilton's number (can't be selected)
-                ],
-                'race_data' => [
                     'm_position' => 1,
                     'm_numLaps' => 0,
                 ]
@@ -125,8 +118,7 @@ class RaceResultsParserTest extends TestCase
         $stub = file_get_contents(storage_path('stubs/race-results.json'));
         $results = json_decode($stub, true);
 
-
-        $resultDriverNumbers = collect($results)->pluck('driver.m_raceNumber');
+        $resultDriverNumbers = collect($results['driverData'])->pluck('m_raceNumber');
 
         // Get the system IDs for the result's driver numbers so we can dynamically create drivers for each number in the division
         $f1Numbers = F1Number::whereIn('racing_number', $resultDriverNumbers)->pluck('id');
@@ -141,6 +133,6 @@ class RaceResultsParserTest extends TestCase
 
         $this->uploadResults($results, $race, fn ($results) => RaceResult::fromFile($results));
 
-        $this->assertDatabaseCount('race_results', count($results));
+        $this->assertDatabaseCount('race_results', 11);
     }
 }

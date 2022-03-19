@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Service\F12020\UdpSpec;
+use App\Service\F12021\UdpSpec;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Nova\Actions\Actionable;
@@ -74,30 +74,36 @@ class RaceResult extends Model
         'tire_stints',
         'points',
         'codemasters_result_status',
-        'laps_completed'
+        'laps_completed',
+        'lap_data'
+    ];
+
+    protected $casts = [
+        'lap_data' => 'array'
+    ];
+
+    protected $attributes = [
+        'lap_data' => '[]'
     ];
 
     /**
-     * @param  array  $json
-     * @return mixed|static
+     * Map in data from file into our model
      */
-    public static function fromFile(array $json)
+    public static function fromFile(array $result)
     {
-        // TODO: move to helper
-        $raceData = $json['race_data'];
-
         return new static([
-            'position' => $raceData['m_position'],
-            'grid_position' => $raceData['m_gridPosition'],
-            'num_pit_stops' => $raceData['m_numPitStops'],
-            'best_lap_time' => $raceData['m_bestLapTime'],
-            'num_penalties' => $raceData['m_numPenalties'],
-            'penalty_seconds' => $raceData['m_penaltiesTime'],
-            'race_time' => $raceData['m_totalRaceTime'],
-            'codemasters_result_status' => $raceData['m_resultStatus'],
-            'tire_stints' => UdpSpec::mapTireStint($raceData['m_tyreStintsVisual']),
-            'points' => $raceData['m_points'],
-            'laps_completed' => $raceData['m_numLaps'],
+            'position' => $result['m_position'],
+            'grid_position' => $result['m_gridPosition'],
+            'num_pit_stops' => $result['m_numPitStops'],
+            'best_lap_time' => $result['m_bestLapTimeInMS'] / 1000,
+            'num_penalties' => $result['m_numPenalties'],
+            'penalty_seconds' => $result['m_penaltiesTime'],
+            'race_time' => $result['m_totalRaceTime'],
+            'codemasters_result_status' => $result['m_resultStatus'],
+            'tire_stints' => UdpSpec::mapTireStint($result['m_tyreStintsVisual']),
+            'points' => $result['m_points'],
+            'laps_completed' => $result['m_numLaps'],
+            'lap_data' => collect($result['m_lapHistoryData'])->where('m_lapTimeInMS', '>', 0)
         ]);
     }
 

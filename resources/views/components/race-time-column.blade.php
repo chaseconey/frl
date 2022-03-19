@@ -1,5 +1,5 @@
 @if(!$hasFinishedRace())
-    {{ \App\Service\F12020\UdpSpec::RACE_RESULT_STATUS[$result->codemasters_result_status] }}
+    {{ \App\Service\F12021\UdpSpec::RACE_RESULT_STATUS[$result->codemasters_result_status] }}
 @else
 
     @if($result->position === 1)

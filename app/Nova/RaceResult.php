@@ -2,7 +2,7 @@
 
 namespace App\Nova;
 
-use App\Service\F12020\UdpSpec;
+use App\Service\F12021\UdpSpec;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
