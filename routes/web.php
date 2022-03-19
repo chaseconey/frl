@@ -36,6 +36,7 @@ Route::get('races/{race}/broadcast', '\App\Http\Controllers\RaceController@broad
 Route::resource('races', \App\Http\Controllers\RaceController::class)->only('index');
 Route::resource('race.results', \App\Http\Controllers\Race\RaceResultsController::class);
 Route::resource('race.quali-results', \App\Http\Controllers\Race\RaceQualiResultsController::class);
+Route::get('/api/race-results/{result}/laps', [\App\Http\Controllers\Api\RaceResults\LapController::class, 'index']);
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/auth/discord', [\App\Http\Controllers\Auth\DiscordAuthController::class, 'redirect'])->name('auth.discord');

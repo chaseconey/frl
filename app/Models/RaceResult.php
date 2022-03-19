@@ -74,7 +74,16 @@ class RaceResult extends Model
         'tire_stints',
         'points',
         'codemasters_result_status',
-        'laps_completed'
+        'laps_completed',
+        'lap_data'
+    ];
+
+    protected $casts = [
+        'lap_data' => 'array'
+    ];
+
+    protected $attributes = [
+        'lap_data' => '[]'
     ];
 
     /**
@@ -94,6 +103,7 @@ class RaceResult extends Model
             'tire_stints' => UdpSpec::mapTireStint($result['m_tyreStintsVisual']),
             'points' => $result['m_points'],
             'laps_completed' => $result['m_numLaps'],
+            'lap_data' => collect($result['m_lapHistoryData'])->where('m_lapTimeInMS', '>', 0)
         ]);
     }
 
