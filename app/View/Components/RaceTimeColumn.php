@@ -4,6 +4,7 @@ namespace App\View\Components;
 
 use App\Models\Race;
 use App\Models\RaceResult;
+use App\Service\F12021\UdpSpec;
 use Illuminate\View\Component;
 
 class RaceTimeColumn extends Component
@@ -29,7 +30,7 @@ class RaceTimeColumn extends Component
 
     public function hasFinishedRace(): bool
     {
-        return \App\Service\F12020\UdpSpec::isRaceResultStatusFinished($this->result->codemasters_result_status);
+        return UdpSpec::isRaceResultStatusFinished($this->result->codemasters_result_status);
     }
 
     public function firstResultDisplay($result)

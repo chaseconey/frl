@@ -2,10 +2,9 @@
 
 namespace App\Models;
 
-use App\Service\F12020\UdpSpec;
+use App\Service\F12021\UdpSpec;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Arr;
 use Laravel\Nova\Actions\Actionable;
 
 /**
@@ -92,7 +91,7 @@ class RaceQualiResult extends Model
             ]);
         }
 
-        $bestLapTire = \App\Service\F12021\UdpSpec::getFastestLapTire($result);
+        $bestLapTire = UdpSpec::getFastestLapTire($result);
 
         // Grab best lap
         $bestLapNum = $result['m_bestLapTimeLapNum'];
