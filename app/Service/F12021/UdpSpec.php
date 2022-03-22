@@ -67,9 +67,14 @@ class UdpSpec
         $bestLapNum = $result['m_bestLapTimeLapNum'];
 
         // Grab stint where fastest lap occurred
-        $fastestStint = $stints->where('m_endLap', '>', 0)
-            ->sortBy('m_endLap')
-            ->firstWhere('m_endLap', '>', $bestLapNum);
+        $sortedStints = $stints->where('m_tyreVisualCompound', '>', 0)
+            ->sortBy('m_endLap');
+
+        if ($sortedStints->count() === 1) {
+            $fastestStint = $sortedStints->first();
+        } else {
+            $fastestStint = $sortedStints->firstWhere('m_endLap', '>', $bestLapNum);
+        }
 
         // Get the visual compound
         $tireId = $fastestStint['m_tyreVisualCompound'];
