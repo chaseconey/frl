@@ -182,8 +182,21 @@
                         }],
                     },
                     options: {
+                        scales : {
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: 'Lap time (s)'
+                                }
+                            },
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Lap #'
+                                }
+                            }
+                        },
                         interaction: {intersect: false},
-                        scales: {y: {beginAtZero: true}},
                         plugins: {
                             legend: {display: false},
                             tooltip: {
