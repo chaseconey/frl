@@ -36,7 +36,7 @@ class DivisionController extends Controller
                 ->get()
                 ->pluck('name', 'f1Number.racing_number');
 
-            echo "number,driver" . PHP_EOL;
+            echo "number,name" . PHP_EOL;
             $data->each(function ($driver, $number) {
                 echo "{$number},{$driver}" . PHP_EOL;
             });
