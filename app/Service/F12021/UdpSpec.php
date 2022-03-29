@@ -3,6 +3,7 @@
 namespace App\Service\F12021;
 
 use App\Exceptions\ResultsUploadError;
+use App\Exceptions\UdpDataException;
 
 class UdpSpec
 {
@@ -55,6 +56,7 @@ class UdpSpec
 
     /**
      * Gets fastest lap tired using lap history and maps to visual tire character
+     * @throws UdpDataException
      */
     public static function getFastestLapTire(array $result): string
     {
@@ -74,6 +76,10 @@ class UdpSpec
             $fastestStint = $sortedStints->first();
         } else {
             $fastestStint = $sortedStints->firstWhere('m_endLap', '>', $bestLapNum);
+        }
+
+        if (!$fastestStint) {
+            throw new UdpDataException("Fastest stint data corrupt for #{$result['m_raceNumber']}");
         }
 
         // Get the visual compound

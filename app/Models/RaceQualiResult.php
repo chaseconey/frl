@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Exceptions\UdpDataException;
 use App\Service\F12021\UdpSpec;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -91,7 +92,13 @@ class RaceQualiResult extends Model
             ]);
         }
 
-        $bestLapTire = UdpSpec::getFastestLapTire($result);
+        try {
+            $bestLapTire = UdpSpec::getFastestLapTire($result);
+        } catch (UdpDataException $e) {
+            // We will just gracefully fail on this one...
+            \Log::warning($e->getMessage());
+            $bestLapTire = 'S';
+        }
 
         // Grab best lap
         $bestLapNum = $result['m_bestLapTimeLapNum'];
