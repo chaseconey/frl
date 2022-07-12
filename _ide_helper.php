@@ -4,7 +4,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 8.83.5.
+ * Generated for Laravel 8.83.18.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -11348,6 +11348,16 @@
                     /**
          * 
          *
+         * @see \Inertia\ServiceProvider::registerRequestMacro()
+         * @static 
+         */ 
+        public static function inertia()
+        {
+                        return \Illuminate\Http\Request::inertia();
+        }
+                    /**
+         * 
+         *
          * @see \Kyslik\ColumnSortable\ColumnSortableServiceProvider::boot()
          * @param array $keys
          * @static 
@@ -11629,6 +11639,7 @@
      * @method static \Illuminate\Routing\RouteRegistrar prefix(string $prefix)
      * @method static \Illuminate\Routing\RouteRegistrar scopeBindings()
      * @method static \Illuminate\Routing\RouteRegistrar where(array $where)
+     * @method static \Illuminate\Routing\RouteRegistrar withoutMiddleware(array|string $middleware)
      * @see \Illuminate\Routing\Router
      */ 
         class Route {
@@ -12501,6 +12512,19 @@
         {
                         /** @var \Illuminate\Routing\Router $instance */
                         return $instance->macroCall($method, $parameters);
+        }
+                    /**
+         * 
+         *
+         * @see \Inertia\ServiceProvider::registerRouterMacro()
+         * @param mixed $uri
+         * @param mixed $component
+         * @param mixed $props
+         * @static 
+         */ 
+        public static function inertia($uri, $component, $props = [])
+        {
+                        return \Illuminate\Routing\Router::inertia($uri, $component, $props);
         }
                     /**
          * 
@@ -17061,6 +17085,16 @@
                     /**
          * 
          *
+         * @see \Inertia\ServiceProvider::registerRequestMacro()
+         * @static 
+         */ 
+        public static function inertia()
+        {
+                        return \Illuminate\Http\Request::inertia();
+        }
+                    /**
+         * 
+         *
          * @see \Kyslik\ColumnSortable\ColumnSortableServiceProvider::boot()
          * @param array $keys
          * @static 
@@ -17081,6 +17115,19 @@
      * @mixin \Illuminate\Routing\RouteRegistrar
      */ 
         class Router {
+                    /**
+         * 
+         *
+         * @see \Inertia\ServiceProvider::registerRouterMacro()
+         * @param mixed $uri
+         * @param mixed $component
+         * @param mixed $props
+         * @static 
+         */ 
+        public static function inertia($uri, $component, $props = [])
+        {
+                        return \Illuminate\Routing\Router::inertia($uri, $component, $props);
+        }
                     /**
          * 
          *
@@ -17150,6 +17197,79 @@
         public static function permission($permissions = [])
         {
                         return \Illuminate\Routing\Route::permission($permissions);
+        }
+         
+    }
+     
+}
+
+    namespace Illuminate\Testing { 
+            /**
+     * 
+     *
+     * @mixin \Illuminate\Http\Response
+     */ 
+        class TestResponse {
+                    /**
+         * 
+         *
+         * @see \Inertia\Testing\TestResponseMacros::assertInertia()
+         * @param \Closure|null $callback
+         * @static 
+         */ 
+        public static function assertInertia($callback = null)
+        {
+                        return \Illuminate\Testing\TestResponse::assertInertia($callback);
+        }
+                    /**
+         * 
+         *
+         * @see \Inertia\Testing\TestResponseMacros::inertiaPage()
+         * @static 
+         */ 
+        public static function inertiaPage()
+        {
+                        return \Illuminate\Testing\TestResponse::inertiaPage();
+        }
+         
+    }
+     
+}
+
+    namespace Illuminate\Database\Eloquent\Relations { 
+            /**
+     * 
+     *
+     */ 
+        class BelongsToMany {
+         
+    }
+            /**
+     * 
+     *
+     * @mixin \Illuminate\Database\Eloquent\Builder
+     */ 
+        class Relation {
+                    /**
+         * 
+         *
+         * @see \Laravel\Nova\Query\Mixin\BelongsToMany::getDefaultPivotAttributes()
+         * @static 
+         */ 
+        public static function getDefaultPivotAttributes()
+        {
+                        return \Illuminate\Database\Eloquent\Relations\Relation::getDefaultPivotAttributes();
+        }
+                    /**
+         * 
+         *
+         * @see \Laravel\Nova\Query\Mixin\BelongsToMany::applyDefaultPivotQuery()
+         * @param mixed $query
+         * @static 
+         */ 
+        public static function applyDefaultPivotQuery($query)
+        {
+                        return \Illuminate\Database\Eloquent\Relations\Relation::applyDefaultPivotQuery($query);
         }
          
     }
