@@ -50,7 +50,7 @@ class RaceResultsParserTest extends TestCase
         $results = [
             'driverData' =>
                 [
-                    ['m_raceNumber' => 12, 'm_position' => 1],
+                    ['m_raceNumber' => 12, 'm_position' => 1, 'm_numLaps' => 5],
                 ]
         ];
         $race = Race::factory()->make(['division_id' => 1]);
