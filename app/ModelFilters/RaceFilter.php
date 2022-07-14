@@ -23,7 +23,7 @@ class RaceFilter extends ModelFilter
     {
 
         // Translate full country to shorthand (which is what the DB has)
-        $shorthand = array_search($search, config('countries')) ?? $search;
+        $shorthand = array_search($search, config('countries')) ?: $search;
 
         return $this->whereHas('track', function ($query) use ($shorthand, $search) {
             return $query->where('name', 'LIKE', "%{$search}%")
