@@ -73,6 +73,20 @@ class Race extends Model
         return $query->whereDate('race_time', '<=', now()->toDateString());
     }
 
+    public static function nextRace()
+    {
+        return static::whereDate('race_time', '>=', now()->toDateString())
+            ->oldest('race_time')
+            ->first();
+    }
+
+    public static function lastRace()
+    {
+        return static::completed()
+            ->latest('race_time')
+            ->first();
+    }
+
     public function track()
     {
         return $this->belongsTo(Track::class);

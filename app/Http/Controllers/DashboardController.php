@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Race;
+use App\Models\RaceResult;
 use Illuminate\Http\Request;
 use Spatie\Activitylog\Models\Activity;
 
@@ -10,28 +11,23 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $latestRaces = Race::latest('race_time')
-            ->take(5)
-            ->with('track', 'division')
-            ->withCount('results')
-            ->completed()
-            ->get();
+        $lastRace = Race::lastRace();
 
-        $myRaces = Race::latest('race_time')
-            ->take(5)
-            ->withCount('results')
-            ->with('track', 'division')
-            ->completed()
-            ->whereHas('results', function ($query) {
-                $query->whereIn('driver_id', auth()->user()->drivers->pluck('id'));
-            })
-            ->get();
+        $nextRace = Race::nextRace();
+
+        $drivers = auth()->user()->activeDrivers;
+        $results = RaceResult::where('driver_id', $drivers->first()->id)
+            ->join('races', 'race_results.race_id', '=', 'races.id')
+            ->with('race.track', 'f1Team')
+            ->orderByDesc('races.race_time')
+            ->paginate(5);
 
         $feed = Activity::latest()->take(10)->get();
 
         return view('dashboard.index')
-            ->withMyRaces($myRaces)
-            ->withLatestRaces($latestRaces)
+            ->withResults($results)
+            ->withLastRace($lastRace)
+            ->withNextRace($nextRace)
             ->withFeed($feed);
     }
 }
