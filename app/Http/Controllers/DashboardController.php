@@ -16,11 +16,15 @@ class DashboardController extends Controller
         $nextRace = Race::nextRace();
 
         $drivers = auth()->user()->activeDrivers;
-        $results = RaceResult::where('driver_id', $drivers->first()->id)
-            ->join('races', 'race_results.race_id', '=', 'races.id')
-            ->with('race.track', 'f1Team')
-            ->orderByDesc('races.race_time')
-            ->paginate(5);
+
+        $results = collect();
+        if ($drivers->first()) {
+            $results = RaceResult::where('driver_id', $drivers->first()->id)
+                ->join('races', 'race_results.race_id', '=', 'races.id')
+                ->with('race.track', 'f1Team')
+                ->orderByDesc('races.race_time')
+                ->paginate(5);
+        }
 
         $feed = Activity::latest()->take(10)->get();
 
