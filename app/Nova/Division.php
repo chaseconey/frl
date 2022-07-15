@@ -68,6 +68,7 @@ class Division extends Resource
                 'Saturday' => 'Saturday',
             ]),
             TimeField::make('Race Time')->withTimezoneAdjustments(),
+            Text::make('Discord Reminder Channel', 'discord_reminder_channel_id')->nullable(),
             DateTime::make('Closed At')->sortable(),
 
             HasMany::make('Drivers'),
