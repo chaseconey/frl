@@ -70,12 +70,12 @@ class Race extends Model
 
     public function scopeCompleted($query)
     {
-        return $query->whereDate('race_time', '<=', now()->toDateString());
+        return $query->whereDate('race_time', '<=', now()->toDateTimeString());
     }
 
     public static function nextRace()
     {
-        return static::whereDate('race_time', '>=', now()->toDateString())
+        return static::whereDate('race_time', '>=', now()->toDateTimeString())
             ->oldest('race_time')
             ->first();
     }
