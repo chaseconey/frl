@@ -4,7 +4,6 @@ namespace App\Models;
 
 use App\Enums\DriverEquipment;
 use App\Events\DriverSaving;
-use BenSampo\Enum\Traits\CastsEnums;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Nova\Actions\Actionable;
@@ -58,7 +57,7 @@ use Laravel\Nova\Actions\Actionable;
  */
 class Driver extends Model
 {
-    use HasFactory, Actionable, CastsEnums;
+    use HasFactory, Actionable;
 
     protected $fillable = [
         'user_id',
