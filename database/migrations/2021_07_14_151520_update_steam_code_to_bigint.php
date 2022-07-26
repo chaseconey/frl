@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateSteamCodeToBigint extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -29,4 +29,4 @@ class UpdateSteamCodeToBigint extends Migration
             $table->unsignedInteger('steam_friend_code')->default(0)->change();
         });
     }
-}
+};

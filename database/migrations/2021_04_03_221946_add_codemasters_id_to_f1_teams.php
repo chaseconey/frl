@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCodemastersIdToF1Teams extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -29,4 +29,4 @@ class AddCodemastersIdToF1Teams extends Migration
             $table->dropColumn('codemasters_id');
         });
     }
-}
+};

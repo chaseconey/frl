@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ConvertDriverTypeToString extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -29,4 +29,4 @@ class ConvertDriverTypeToString extends Migration
             $table->enum('type', ['FULL_TIME', 'RESERVE', 'RETIRED', 'BANNED'])->default('FULL_TIME');
         });
     }
-}
+};
