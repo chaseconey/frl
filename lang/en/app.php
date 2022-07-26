@@ -2,6 +2,6 @@
 
 return [
     'signup' => [
-        'intro' => 'Spiel'
-    ]
+        'intro' => 'Spiel',
+    ],
 ];

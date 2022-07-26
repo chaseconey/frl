@@ -19,6 +19,7 @@ use Kyslik\ColumnSortable\Sortable;
  * @property-read int|null $drivers_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\RaceResult[] $raceResults
  * @property-read int|null $race_results_count
+ *
  * @method static Builder|F1Team active()
  * @method static Builder|F1Team newModelQuery()
  * @method static Builder|F1Team newQuery()
@@ -30,7 +31,9 @@ use Kyslik\ColumnSortable\Sortable;
  * @method static Builder|F1Team whereName($value)
  * @method static Builder|F1Team whereUpdatedAt($value)
  * @mixin \Eloquent
+ *
  * @property int $codemasters_id
+ *
  * @method static \Database\Factories\F1TeamFactory factory(...$parameters)
  * @method static Builder|F1Team whereCodemastersId($value)
  */
@@ -40,7 +43,7 @@ class F1Team extends Model
 
     public $sortable = [
         'id',
-        'name'
+        'name',
     ];
 
     protected $fillable = ['name', 'codemasters_id'];

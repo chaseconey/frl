@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Division;
 use App\Models\Driver;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class DivisionController extends Controller
@@ -36,9 +35,9 @@ class DivisionController extends Controller
                 ->get()
                 ->pluck('name', 'f1Number.racing_number');
 
-            echo "number,name" . PHP_EOL;
+            echo 'number,name'.PHP_EOL;
             $data->each(function ($driver, $number) {
-                echo "{$number},{$driver}" . PHP_EOL;
+                echo "{$number},{$driver}".PHP_EOL;
             });
         }, $filename);
     }

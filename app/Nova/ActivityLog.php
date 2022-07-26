@@ -7,7 +7,6 @@ use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\MorphTo;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Http\Requests\NovaRequest;
 use Spatie\Activitylog\Models\Activity;
 
 class ActivityLog extends Resource
@@ -33,7 +32,7 @@ class ActivityLog extends Resource
      */
     public static $search = [
         'id',
-        'description'
+        'description',
     ];
 
     /**
@@ -54,7 +53,7 @@ class ActivityLog extends Resource
                 Race::class,
             ]),
             MorphTo::make('Causer')->types([
-                User::class
+                User::class,
             ]),
             Code::make('Properties')->json(),
         ];

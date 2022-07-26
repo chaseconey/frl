@@ -31,7 +31,6 @@ class RaceQualiResultsController extends Controller
             ->get()
             ->keyBy('driver_id');
 
-
         return view('races.race-quali-results.index')
             ->withDriverVideos($driverVideos)
             ->withRace($race);
@@ -71,7 +70,6 @@ class RaceQualiResultsController extends Controller
                 'message' => $e->getMessage(),
             ], 422);
         }
-
 
         activity()
             ->performedOn($race)

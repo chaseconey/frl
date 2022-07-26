@@ -3,8 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Driver;
-use App\Models\F1Number;
-use App\Models\F1Team;
 use Illuminate\Database\Seeder;
 
 class DriverSeeder extends Seeder

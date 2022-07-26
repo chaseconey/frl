@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateRaceQualiResultsToNumeric extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -35,4 +34,4 @@ class UpdateRaceQualiResultsToNumeric extends Migration
         Schema::table('race_quali_results', function (Blueprint $table) {
         });
     }
-}
+};

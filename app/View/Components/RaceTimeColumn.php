@@ -10,8 +10,11 @@ use Illuminate\View\Component;
 class RaceTimeColumn extends Component
 {
     public Race $race;
+
     public RaceResult $result;
+
     public int $lapDiff;
+
     public float $raceTimeDiff;
 
     /**
@@ -41,12 +44,14 @@ class RaceTimeColumn extends Component
     public function getRaceTimeDiff(): float
     {
         $firstPlace = $this->race->results[0];
+
         return $this->result->full_race_time - $firstPlace->full_race_time;
     }
 
     public function getLapDiff(): int
     {
         $firstPlace = $this->race->results[0];
+
         return $firstPlace->laps_completed - $this->result->laps_completed;
     }
 

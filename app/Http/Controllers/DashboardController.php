@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Race;
 use App\Models\RaceResult;
-use Illuminate\Http\Request;
 use Spatie\Activitylog\Models\Activity;
 
 class DashboardController extends Controller

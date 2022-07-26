@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ChangeBestLapsToNullableInQualiResults extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -43,4 +42,4 @@ class ChangeBestLapsToNullableInQualiResults extends Migration
             $table->float('speedtrap_speed', 8, 3)->nullable(false)->change();
         });
     }
-}
+};

@@ -5,9 +5,8 @@ namespace App\Http\Controllers\Division;
 use App\Http\Controllers\Controller;
 use App\Models\Division;
 use App\Models\Driver;
-use App\Models\Race;
 use App\Models\F1Team;
-use Illuminate\Http\Request;
+use App\Models\Race;
 use Illuminate\Support\Arr;
 
 class StandingController extends Controller
@@ -20,7 +19,7 @@ class StandingController extends Controller
                     $query->where('division_id', $division->id);
                 })
                     ->with('driver', 'driver.user');
-            }
+            },
         ])
             ->get()
             ->each(function ($team) {
@@ -88,7 +87,7 @@ class StandingController extends Controller
             // Add to data structure for frontend
             $plot[] = [
                 'results' => $results,
-                'driver' => $driver
+                'driver' => $driver,
             ];
         }
 

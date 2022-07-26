@@ -50,6 +50,7 @@ class RaceResultsController extends Controller
      * @param  Race  $race
      * @param  Request  $request
      * @return \Symfony\Component\HttpFoundation\Response
+     *
      * @throws \Throwable
      */
     public function store(Race $race, Request $request)

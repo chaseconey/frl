@@ -2,6 +2,7 @@
 
 /**
  * Countries pulled from Country nova field, which is how the country short code is populated in our database.
+ *
  * @see \Laravel\Nova\Fields\Country
  */
 return [

@@ -6,8 +6,6 @@ use App\Events\DriverSaving;
 use App\Exceptions\DiscordRoleSyncError;
 use App\Service\Discord\Actions\AddToManagedRoles;
 use App\Service\Discord\Actions\RemoveFromManagedRoles;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 
 class SyncDriverToDiscordRole
 {
@@ -26,6 +24,7 @@ class SyncDriverToDiscordRole
      *
      * @param  DriverSaving  $event
      * @return void
+     *
      * @throws DiscordRoleSyncError
      */
     public function handle(DriverSaving $event)
@@ -49,6 +48,7 @@ class SyncDriverToDiscordRole
      * Add to new role based on type of driver
      *
      * @param  DriverSaving  $event
+     *
      * @throws DiscordRoleSyncError
      */
     private function addToRole(DriverSaving $event): void

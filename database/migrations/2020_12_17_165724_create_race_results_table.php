@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRaceResultsTable extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -38,4 +37,4 @@ class CreateRaceResultsTable extends Migration
     {
         Schema::dropIfExists('race_results');
     }
-}
+};

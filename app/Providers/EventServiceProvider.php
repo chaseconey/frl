@@ -23,10 +23,10 @@ class EventServiceProvider extends ServiceProvider
         ],
 
         \App\Events\DivisionCreating::class => [
-            \App\Listeners\CreateDiscordRoleForDivision::class
+            \App\Listeners\CreateDiscordRoleForDivision::class,
         ],
         \App\Events\DriverSaving::class => [
-            \App\Listeners\SyncDriverToDiscordRole::class
+            \App\Listeners\SyncDriverToDiscordRole::class,
         ],
     ];
 
@@ -38,5 +38,15 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+    }
+
+    /**
+     * Determine if events and listeners should be automatically discovered.
+     *
+     * @return bool
+     */
+    public function shouldDiscoverEvents()
+    {
+        return false;
     }
 }

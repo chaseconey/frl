@@ -24,12 +24,12 @@ class ProtestRequest extends FormRequest
     public function rules()
     {
         return [
-            "driver_id" => "required|exists:drivers,id",
-            "protested_driver_id" => "required|exists:drivers,id",
-            "race_id" => "required|exists:races,id",
-            "video_url" => "required|url",
-            "description" => "required",
-            "rules_breached" => "required"
+            'driver_id' => 'required|exists:drivers,id',
+            'protested_driver_id' => 'required|exists:drivers,id',
+            'race_id' => 'required|exists:races,id',
+            'video_url' => 'required|url',
+            'description' => 'required',
+            'rules_breached' => 'required',
         ];
     }
 }

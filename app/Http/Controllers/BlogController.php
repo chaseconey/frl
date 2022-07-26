@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\HtmlString;
 use League\CommonMark\GithubFlavoredMarkdownConverter;
 use Wink\WinkPost;
@@ -29,7 +28,7 @@ class BlogController extends Controller
 
         return view('blog.show', [
             'post' => $post,
-            'content' => $content
+            'content' => $content,
         ]);
     }
 

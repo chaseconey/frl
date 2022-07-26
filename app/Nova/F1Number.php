@@ -7,7 +7,6 @@ use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
-use Laravel\Nova\Http\Requests\NovaRequest;
 
 class F1Number extends Resource
 {
@@ -39,7 +38,7 @@ class F1Number extends Resource
      */
     public static $search = [
         'id',
-        'racing_number'
+        'racing_number',
     ];
 
     /**
@@ -55,7 +54,7 @@ class F1Number extends Resource
             Number::make('Racing Number')->sortable(),
             Boolean::make('Is User Assignable')->sortable(),
 
-            HasMany::make('Drivers')
+            HasMany::make('Drivers'),
         ];
     }
 

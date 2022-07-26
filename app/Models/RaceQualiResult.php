@@ -32,6 +32,7 @@ use Laravel\Nova\Actions\Actionable;
  * @property-read \App\Models\Driver $driver
  * @property-read \App\Models\F1Team $f1Team
  * @property-read \App\Models\Race $race
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|RaceQualiResult newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|RaceQualiResult newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|RaceQualiResult query()
@@ -53,8 +54,10 @@ use Laravel\Nova\Actions\Actionable;
  * @method static \Illuminate\Database\Eloquent\Builder|RaceQualiResult whereSpeedtrapSpeed($value)
  * @method static \Illuminate\Database\Eloquent\Builder|RaceQualiResult whereUpdatedAt($value)
  * @mixin \Eloquent
+ *
  * @property string|null $best_lap_time_legacy
  * @property int $codemasters_result_status
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|RaceQualiResult whereBestLapTimeLegacy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|RaceQualiResult whereCodemastersResultStatus($value)
  */
@@ -75,7 +78,7 @@ class RaceQualiResult extends Model
         'best_s2_delta',
         'best_s3_delta',
         'best_lap_tire',
-        'codemasters_result_status'
+        'codemasters_result_status',
     ];
 
     /**

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Service\Discord\Actions;
 
 use App\Models\Driver;

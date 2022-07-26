@@ -30,6 +30,7 @@ use Laravel\Nova\Actions\Actionable;
  * @property-read \App\Models\Driver $driver
  * @property-read \App\Models\F1Team $f1Team
  * @property-read \App\Models\Race $race
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|RaceResult newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|RaceResult newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|RaceResult query()
@@ -49,11 +50,13 @@ use Laravel\Nova\Actions\Actionable;
  * @method static \Illuminate\Database\Eloquent\Builder|RaceResult whereTireStints($value)
  * @method static \Illuminate\Database\Eloquent\Builder|RaceResult whereUpdatedAt($value)
  * @mixin \Eloquent
+ *
  * @property string|null $best_lap_time_legacy
  * @property string|null $race_time_legacy
  * @property int $codemasters_result_status
  * @property int $laps_completed
  * @property-read float $full_race_time
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|RaceResult whereBestLapTimeLegacy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|RaceResult whereCodemastersResultStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|RaceResult whereLapsCompleted($value)
@@ -75,15 +78,15 @@ class RaceResult extends Model
         'points',
         'codemasters_result_status',
         'laps_completed',
-        'lap_data'
+        'lap_data',
     ];
 
     protected $casts = [
-        'lap_data' => 'array'
+        'lap_data' => 'array',
     ];
 
     protected $attributes = [
-        'lap_data' => '[]'
+        'lap_data' => '[]',
     ];
 
     /**
@@ -103,7 +106,7 @@ class RaceResult extends Model
             'tire_stints' => UdpSpec::mapTireStint($result['m_tyreStintsVisual']),
             'points' => $result['m_points'],
             'laps_completed' => $result['m_numLaps'],
-            'lap_data' => collect($result['m_lapHistoryData'])->where('m_lapTimeInMS', '>', 0)
+            'lap_data' => collect($result['m_lapHistoryData'])->where('m_lapTimeInMS', '>', 0),
         ]);
     }
 

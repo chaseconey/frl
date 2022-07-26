@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Driver[] $drivers
  * @property-read int|null $drivers_count
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|F1Number newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|F1Number newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|F1Number query()
@@ -23,7 +24,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|F1Number whereRacingNumber($value)
  * @method static \Illuminate\Database\Eloquent\Builder|F1Number whereUpdatedAt($value)
  * @mixin \Eloquent
+ *
  * @property int $is_user_assignable
+ *
  * @method static Builder|F1Number active()
  * @method static \Database\Factories\F1NumberFactory factory(...$parameters)
  * @method static Builder|F1Number whereIsUserAssignable($value)

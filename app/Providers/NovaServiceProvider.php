@@ -2,9 +2,7 @@
 
 namespace App\Providers;
 
-use App\Nova\ActionEvent;
 use Illuminate\Support\Facades\Gate;
-use Laravel\Nova\Cards\Help;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
 
@@ -56,7 +54,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         return [
             (new \Skydiver\NovaUpdateCard\LaravelUpdateCard)->width('full'),
-//            (new \Skydiver\NovaUpdateCard\NovaUpdateCard)->width('1/2'),
+            //            (new \Skydiver\NovaUpdateCard\NovaUpdateCard)->width('1/2'),
         ];
     }
 

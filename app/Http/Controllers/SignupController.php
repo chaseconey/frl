@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\DriverSignedUp;
 use App\Http\Requests\SignupRequest;
 use App\Models\Division;
 use App\Models\Driver;
@@ -45,7 +44,7 @@ class SignupController extends Controller
                 'drivers' => function (Builder $query) use ($division) {
                     $query->where('type', '=', 'FULL_TIME')
                         ->where('division_id', '=', $division->id);
-                }
+                },
             ])->get();
 
         $takenNumbers = $division->drivers->pluck('f1Number.id');
@@ -78,7 +77,7 @@ class SignupController extends Controller
             'type' => $request->type,
             'name' => $request->user()->name,
             'steam_friend_code' => $request->steam_friend_code,
-            'equipment' => $request->equipment
+            'equipment' => $request->equipment,
         ]);
 
         return redirect()->route('dashboard');

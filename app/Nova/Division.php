@@ -10,7 +10,6 @@ use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Division extends Resource
 {
@@ -42,7 +41,7 @@ class Division extends Resource
      */
     public static $search = [
         'id',
-        'name'
+        'name',
     ];
 
     /**

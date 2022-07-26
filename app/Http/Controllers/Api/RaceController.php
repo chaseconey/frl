@@ -28,7 +28,7 @@ class RaceController extends Controller
                 'start' => $r->race_time,
                 'end' => $r->race_time->addHours(2),
                 'url' => route('race.results.index', $r->id),
-                'display' => 'auto'
+                'display' => 'auto',
             ];
         });
     }

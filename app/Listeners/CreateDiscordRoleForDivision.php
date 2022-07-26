@@ -3,12 +3,9 @@
 namespace App\Listeners;
 
 use App\Events\DivisionCreating;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 
 class CreateDiscordRoleForDivision
 {
-
     /**
      * Create the event listener.
      *
@@ -47,6 +44,7 @@ class CreateDiscordRoleForDivision
             'mentionable' => true,
             'hoist' => true,
         ]);
+
         return $resp;
     }
 }

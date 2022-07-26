@@ -23,6 +23,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property-read int|null $drivers_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Race[] $races
  * @property-read int|null $races_count
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|Division active()
  * @method static \Illuminate\Database\Eloquent\Builder|Division newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Division newQuery()
@@ -40,10 +41,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|Division withTrashed()
  * @method static \Illuminate\Database\Query\Builder|Division withoutTrashed()
  * @mixin \Eloquent
+ *
  * @property string|null $opened_at
  * @property string|null $discord_reminder_channel_id
  * @property string $discord_driver_role_id
  * @property string $discord_reserve_role_id
+ *
  * @method static \Database\Factories\DivisionFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Division whereDiscordDriverRoleId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Division whereDiscordReminderChannelId($value)
@@ -58,7 +61,7 @@ class Division extends Model
         'name',
         'description',
         'day_of_week',
-        'race_time'
+        'race_time',
     ];
 
     protected $dispatchesEvents = [

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Contracts\Activity;
+use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
@@ -17,6 +18,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Race $race
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|BroadcastVideo newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BroadcastVideo newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BroadcastVideo query()
@@ -27,6 +29,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @method static \Illuminate\Database\Eloquent\Builder|BroadcastVideo whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BroadcastVideo whereVideoUrl($value)
  * @mixin \Eloquent
+ *
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Activitylog\Models\Activity[] $activities
  * @property-read int|null $activities_count
  */
@@ -47,5 +50,10 @@ class BroadcastVideo extends Model
     public function race()
     {
         return $this->belongsTo(Race::class);
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults();
     }
 }

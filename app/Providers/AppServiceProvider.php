@@ -16,11 +16,11 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(Client::class, function ($app) {
             $token = config('services.discord.token');
-            $baseUrl = "https://discord.com/api";
+            $baseUrl = 'https://discord.com/api';
 
             return Client::baseUrl($baseUrl)
                 ->withHeaders([
-                    'Authorization' => "Bot {$token}"
+                    'Authorization' => "Bot {$token}",
                 ]);
         });
     }

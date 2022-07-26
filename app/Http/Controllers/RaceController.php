@@ -12,6 +12,7 @@ class RaceController extends Controller
     {
         return view('races.index');
     }
+
     /**
      * Display a listing of the resource.
      *

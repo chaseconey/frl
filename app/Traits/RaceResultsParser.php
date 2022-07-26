@@ -12,11 +12,11 @@ use Illuminate\Support\Facades\DB;
 
 trait RaceResultsParser
 {
-
     /**
      * @param  array  $results
      * @param  Race  $race
      * @param  callable  $mapper
+     *
      * @throws ResultsUploadError
      * @throws \Throwable
      */

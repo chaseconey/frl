@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUserAssignableToF1Numbers extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -29,4 +28,4 @@ class AddUserAssignableToF1Numbers extends Migration
             $table->dropColumn('is_user_assignable');
         });
     }
-}
+};

@@ -14,6 +14,8 @@ use BenSampo\Enum\Enum;
 final class DriverEquipment extends Enum
 {
     const Pad = 'pad';
+
     const Wheel = 'wheel';
+
     const Keyboard = 'keyboard';
 }

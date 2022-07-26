@@ -3,14 +3,8 @@
 namespace App\Http\Controllers\Race;
 
 use App\Http\Controllers\Controller;
-use App\Models\Driver;
-use App\Models\DriverVideo;
-use App\Models\F1Team;
 use App\Models\Protest;
 use App\Models\Race;
-use App\Models\RaceResult;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class ProtestsController extends Controller
 {
@@ -23,7 +17,6 @@ class ProtestsController extends Controller
     {
         $protests = Protest::where('race_id', $race->id)
             ->paginate(5);
-
 
         return view('races.protests')
             ->withProtests($protests)

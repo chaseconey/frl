@@ -10,7 +10,7 @@ class StandingController extends Controller
     public function index(Request $request)
     {
         $divisions = Division::query()
-            ->when(!$request->has('show-closed'), function ($query) {
+            ->when(! $request->has('show-closed'), function ($query) {
                 return $query->active();
             })
             ->latest()

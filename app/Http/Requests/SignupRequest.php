@@ -30,7 +30,7 @@ class SignupRequest extends FormRequest
             'f1_number_id' => 'required|exists:f1_numbers,id',
             'steam_friend_code' => 'required|numeric',
             'equipment' => 'required',
-            'accept_rules' => 'accepted'
+            'accept_rules' => 'accepted',
         ];
     }
 
@@ -42,7 +42,7 @@ class SignupRequest extends FormRequest
     public function messages()
     {
         return [
-            'accept_rules.accepted' => 'You must accept rules.'
+            'accept_rules.accepted' => 'You must accept rules.',
         ];
     }
 }

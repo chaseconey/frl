@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Service\Discord\Actions;
 
 use App\Enums\DriverType;
@@ -24,7 +23,7 @@ class AddToManagedRoles
 
         $userId = $driver->user->discord_user_id;
 
-        if (!$userId) {
+        if (! $userId) {
             throw new DiscordRoleSyncError();
         }
 
