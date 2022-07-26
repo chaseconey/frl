@@ -40,12 +40,12 @@ return [
         'redirect' => env('DISCORD_REDIRECT_URI', '/auth/discord/callback'),
 
         // optional
-        'allow_gif_avatars' => (bool)env('DISCORD_AVATAR_GIF', true),
+        'allow_gif_avatars' => (bool) env('DISCORD_AVATAR_GIF', true),
         'avatar_default_extension' => env('DISCORD_EXTENSION_DEFAULT', 'jpg'), // only pick from jpg, png, webp
     ],
 
     'github' => [
-        'repo_url' => 'https://github.com/chaseconey/frl'
-    ]
+        'repo_url' => 'https://github.com/chaseconey/frl',
+    ],
 
 ];

@@ -23,7 +23,7 @@ class TrackFactory extends Factory
     {
         return [
             'name' => 'Australia GP',
-            'country' => 'Australia'
+            'country' => 'Australia',
         ];
     }
 }

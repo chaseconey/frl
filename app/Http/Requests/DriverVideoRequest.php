@@ -39,7 +39,7 @@ class DriverVideoRequest extends FormRequest
     public function messages()
     {
         return [
-            'driver_id.required' => 'An assigned driver in this division is required.'
+            'driver_id.required' => 'An assigned driver in this division is required.',
         ];
     }
 

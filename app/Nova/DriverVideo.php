@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Http\Requests\NovaRequest;
 
 class DriverVideo extends Resource
 {
@@ -47,7 +46,7 @@ class DriverVideo extends Resource
             ID::make(__('ID'), 'id')->sortable(),
             BelongsTo::make('Driver')->sortable(),
             BelongsTo::make('Race')->sortable(),
-            Text::make('Video Url')->sortable()
+            Text::make('Video Url')->sortable(),
         ];
     }
 

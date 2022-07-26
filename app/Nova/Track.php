@@ -8,7 +8,6 @@ use Laravel\Nova\Fields\Country;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Track extends Resource
 {
@@ -58,7 +57,7 @@ class Track extends Resource
             Country::make('Country')->displayUsingLabels()->sortable(),
             Avatar::make(),
 
-            HasMany::make('Races')
+            HasMany::make('Races'),
         ];
     }
 

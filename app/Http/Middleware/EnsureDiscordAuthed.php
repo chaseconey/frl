@@ -16,7 +16,7 @@ class EnsureDiscordAuthed
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!auth()->user()->discord_user_id) {
+        if (! auth()->user()->discord_user_id) {
             return redirect()->route('auth.discord');
         }
 

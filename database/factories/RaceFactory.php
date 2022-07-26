@@ -24,7 +24,7 @@ class RaceFactory extends Factory
         return [
             'race_time' => $this->faker->dateTimeThisYear,
             'division_id' => $this->faker->numberBetween(1, 2),
-            'track_id' => $this->faker->numberBetween(1, 20)
+            'track_id' => $this->faker->numberBetween(1, 20),
         ];
     }
 }

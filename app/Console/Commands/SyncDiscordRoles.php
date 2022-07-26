@@ -43,7 +43,7 @@ class SyncDiscordRoles extends Command
         $division = Division::with('drivers', 'drivers.user')->findOrFail($this->argument('divisionId'));
 
         foreach ($division->drivers as $driver) {
-            if (!$driver->user->discord_user_id) {
+            if (! $driver->user->discord_user_id) {
                 $this->warn("{$driver->name} does not have discord synced");
                 continue;
             }

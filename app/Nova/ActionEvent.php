@@ -11,11 +11,9 @@ use Laravel\Nova\Fields\MorphToActionTarget;
 use Laravel\Nova\Fields\Status;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
-use Laravel\Nova\Http\Requests\NovaRequest;
 
 class ActionEvent extends ActionResource
 {
-
     /**
      * The logical group associated with the resource.
      *
@@ -81,7 +79,7 @@ class ActionEvent extends ActionResource
     public function filters(Request $request)
     {
         return [
-            new \App\Nova\Filters\User
+            new \App\Nova\Filters\User,
         ];
     }
 }

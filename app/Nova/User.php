@@ -72,7 +72,7 @@ class User extends Resource
 
             RoleSelect::make('Role', 'roles')->nullable(),
 
-            HasMany::make('Drivers')
+            HasMany::make('Drivers'),
         ];
     }
 
@@ -118,7 +118,7 @@ class User extends Resource
     public function actions(Request $request)
     {
         return [
-            new Actions\EmailUserResetPassword
+            new Actions\EmailUserResetPassword,
         ];
     }
 }

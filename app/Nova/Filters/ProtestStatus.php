@@ -24,9 +24,9 @@ class ProtestStatus extends Filter
      */
     public function apply(Request $request, $query, $value)
     {
-        if ($value === "in-review") {
+        if ($value === 'in-review') {
             return $query->inReview();
-        } elseif ($value === "complete") {
+        } elseif ($value === 'complete') {
             return $query->complete();
         }
     }
@@ -40,7 +40,7 @@ class ProtestStatus extends Filter
     public function options(Request $request)
     {
         return [
-             'In Review' => 'in-review',
+            'In Review' => 'in-review',
             'Complete' => 'complete',
         ];
     }

@@ -31,6 +31,7 @@ use Laravel\Nova\Actions\Actionable;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\RaceResult[] $results
  * @property-read int|null $results_count
  * @property-read \App\Models\Track $track
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|Race completed()
  * @method static \Illuminate\Database\Eloquent\Builder|Race filter(array $input = [], $filter = null)
  * @method static \Illuminate\Database\Eloquent\Builder|Race newModelQuery()
@@ -49,8 +50,10 @@ use Laravel\Nova\Actions\Actionable;
  * @method static \Illuminate\Database\Eloquent\Builder|Race whereTrackId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Race whereUpdatedAt($value)
  * @mixin \Eloquent
+ *
  * @property string|null $reminder_sent_at
  * @property-read \App\Models\RaceResult|null $fastestLap
+ *
  * @method static \Database\Factories\RaceFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Race whereReminderSentAt($value)
  */
@@ -60,7 +63,7 @@ class Race extends Model
 
     public $sortable = [
         'id',
-        'race_time'
+        'race_time',
     ];
 
     protected $casts = [

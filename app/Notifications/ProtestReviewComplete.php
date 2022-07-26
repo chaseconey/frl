@@ -4,7 +4,6 @@ namespace App\Notifications;
 
 use App\Models\Protest;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use NotificationChannels\Discord\DiscordChannel;
@@ -21,6 +20,7 @@ class ProtestReviewComplete extends Notification
 
     /**
      * Create a new notification instance.
+     *
      * @param  Protest  $protest
      */
     public function __construct(Protest $protest)
@@ -63,8 +63,8 @@ class ProtestReviewComplete extends Notification
                     ['name' => 'Driver', 'value' => $this->protest->driver->name],
                     ['name' => 'Protested Driver', 'value' => $this->protest->protestedDriver->name],
                     ['name' => 'Track', 'value' => $this->protest->race->track->name],
-                    ['name' => 'Video Evidence', 'value' => $this->protest->video_url]
-                ]
+                    ['name' => 'Video Evidence', 'value' => $this->protest->video_url],
+                ],
             ]);
     }
 

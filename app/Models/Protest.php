@@ -3,9 +3,9 @@
 namespace App\Models;
 
 use App\Notifications\ProtestReviewComplete;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
 use Spatie\Activitylog\Contracts\Activity;
 use Spatie\Activitylog\Traits\LogsActivity;
 
@@ -26,6 +26,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @property-read mixed $status
  * @property-read \App\Models\Driver $protestedDriver
  * @property-read \App\Models\Race $race
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|Protest newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Protest newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Protest query()
@@ -40,8 +41,10 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @method static \Illuminate\Database\Eloquent\Builder|Protest whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Protest whereVideoUrl($value)
  * @mixin \Eloquent
+ *
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Activitylog\Models\Activity[] $activities
  * @property-read int|null $activities_count
+ *
  * @method static Builder|Protest complete()
  * @method static \Database\Factories\ProtestFactory factory(...$parameters)
  * @method static Builder|Protest inReview()
@@ -51,19 +54,19 @@ class Protest extends Model
     use HasFactory, LogsActivity;
 
     protected $fillable = [
-        "driver_id",
-        "protested_driver_id",
-        "race_id",
-        "video_url",
-        "description",
-        "rules_breached"
+        'driver_id',
+        'protested_driver_id',
+        'race_id',
+        'video_url',
+        'description',
+        'rules_breached',
     ];
 
     protected static $recordEvents = ['created'];
 
     public function tapActivity(Activity $activity, string $eventName)
     {
-        $activity->description = "New protest filed by :causer.name";
+        $activity->description = 'New protest filed by :causer.name';
     }
 
     /**

@@ -24,7 +24,7 @@ class DriverVideoFactory extends Factory
         return [
             'race_id' => 1,
             'driver_id' => 1,
-            'video_url' => 'https://www.youtube.com/watch?v=fnLL6AzGQhM'
+            'video_url' => 'https://www.youtube.com/watch?v=fnLL6AzGQhM',
         ];
     }
 }

@@ -13,7 +13,10 @@ use BenSampo\Enum\Enum;
 final class DriverType extends Enum
 {
     const FullTime = 'FULL_TIME';
+
     const Reserve = 'RESERVE';
+
     const Retired = 'RETIRED';
+
     const Banned = 'BANNED';
 }

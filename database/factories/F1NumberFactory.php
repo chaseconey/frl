@@ -22,7 +22,7 @@ class F1NumberFactory extends Factory
     public function definition()
     {
         return [
-            'racing_number' => $this->faker->randomNumber()
+            'racing_number' => $this->faker->randomNumber(),
         ];
     }
 }

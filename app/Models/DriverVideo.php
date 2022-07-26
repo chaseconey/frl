@@ -18,6 +18,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Driver $driver
  * @property-read \App\Models\Race $race
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|DriverVideo newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|DriverVideo newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|DriverVideo query()
@@ -28,8 +29,10 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @method static \Illuminate\Database\Eloquent\Builder|DriverVideo whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|DriverVideo whereVideoUrl($value)
  * @mixin \Eloquent
+ *
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Activitylog\Models\Activity[] $activities
  * @property-read int|null $activities_count
+ *
  * @method static \Database\Factories\DriverVideoFactory factory(...$parameters)
  */
 class DriverVideo extends Model

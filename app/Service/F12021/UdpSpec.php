@@ -8,13 +8,12 @@ use App\Exceptions\UdpDataException;
 class UdpSpec
 {
     const TIRES_VISUAL = [
-        16 => "S",
-        17 => "M",
-        18 => "H",
-        7 => "I",
-        8 => "W"
+        16 => 'S',
+        17 => 'M',
+        18 => 'H',
+        7 => 'I',
+        8 => 'W',
     ];
-
 
     const RACE_RESULT_STATUS = [
         0 => 'Invalid',
@@ -44,7 +43,7 @@ class UdpSpec
      */
     public static function mapTireStint(array $tires): string
     {
-        $stint = "";
+        $stint = '';
         foreach ($tires as $tire) {
             if (array_key_exists($tire, self::TIRES_VISUAL)) {
                 $stint .= self::TIRES_VISUAL[$tire];
@@ -56,12 +55,13 @@ class UdpSpec
 
     /**
      * Gets fastest lap tired using lap history and maps to visual tire character
+     *
      * @throws UdpDataException
      */
     public static function getFastestLapTire(array $result): string
     {
         // Make sure we have required data
-        if (!array_key_exists('m_tyreStintsHistoryData', $result) || !array_key_exists('m_bestLapTimeLapNum', $result)) {
+        if (! array_key_exists('m_tyreStintsHistoryData', $result) || ! array_key_exists('m_bestLapTimeLapNum', $result)) {
             throw new ResultsUploadError('Missing tire stint data');
         }
 
@@ -78,7 +78,7 @@ class UdpSpec
             $fastestStint = $sortedStints->firstWhere('m_endLap', '>', $bestLapNum);
         }
 
-        if (!$fastestStint) {
+        if (! $fastestStint) {
             throw new UdpDataException("Fastest stint data corrupt for #{$result['m_raceNumber']}");
         }
 

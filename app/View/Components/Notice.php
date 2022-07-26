@@ -6,7 +6,6 @@ use Illuminate\View\Component;
 
 class Notice extends Component
 {
-
     /**
      * @var string
      */

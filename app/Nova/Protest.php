@@ -3,14 +3,13 @@
 namespace App\Nova;
 
 use App\Nova\Filters\ProtestStatus;
+use EricLagarda\NovaEmbed\NovaEmbed;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
-use EricLagarda\NovaEmbed\NovaEmbed;
 use Laravel\Nova\Fields\Textarea;
-use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Protest extends Resource
 {
@@ -76,6 +75,7 @@ class Protest extends Resource
             Text::make('Race Time', function () {
                 $raceTime = $this->race->race_time;
                 $color = $raceTime->greaterThan(now()->subWeek()) ? 'green' : 'red';
+
                 return "<span class='whitespace-no-wrap' style='color: {$color}'>{$raceTime->diffForHumans()}</span>";
             })->exceptOnForms()->asHtml(),
 

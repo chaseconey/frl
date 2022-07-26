@@ -7,8 +7,6 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Race extends Resource
 {
@@ -71,7 +69,7 @@ class Race extends Resource
             HasMany::make('Race Quali Results', 'qualiResults'),
             HasMany::make('Broadcast Videos', 'broadcastVideos'),
             HasMany::make('Driver Videos', 'driverVideos'),
-            HasMany::make('Protests', 'protests')
+            HasMany::make('Protests', 'protests'),
         ];
     }
 

@@ -18,6 +18,7 @@ use Kyslik\ColumnSortable\Sortable;
  * @property string|null $avatar
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Race[] $races
  * @property-read int|null $races_count
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|Track newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Track newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Track query()
@@ -30,6 +31,7 @@ use Kyslik\ColumnSortable\Sortable;
  * @method static \Illuminate\Database\Eloquent\Builder|Track whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Track whereUpdatedAt($value)
  * @mixin \Eloquent
+ *
  * @method static \Database\Factories\TrackFactory factory(...$parameters)
  */
 class Track extends Model
@@ -38,7 +40,7 @@ class Track extends Model
 
     public $sortable = [
         'id',
-        'name'
+        'name',
     ];
 
     public function races()

@@ -6,7 +6,6 @@ use App\Models\Division;
 use App\Models\Race;
 use App\Service\Discord\Client;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
@@ -63,7 +62,7 @@ class PostNextRace implements ShouldQueue
 
         // Original Message
         $response = $client->post("/channels/{$channel}/messages", [
-            "content" => "Greetings racers! Please indicate your availability for next race.
+            'content' => "Greetings racers! Please indicate your availability for next race.
 
 <@&{$driverRole}> <@&{$reserveRole}>
 
@@ -71,19 +70,19 @@ class PostNextRace implements ShouldQueue
 ✔: if you are a reserve driver and you can fill a spot
 ❔: if you are unsure about attending
 🛑: if you are not able to attend",
-            "tts" => false,
+            'tts' => false,
             'embed' => [
-                "title" => $race->track->name,
-                "description" => "**[{$race->race_time->tz('US/Eastern')->toDayDateTimeString()} EST](https://www.timeanddate.com/worldclock/converter.html?iso={$race->race_time->format('Ymd\THis')}&p1=tz_et&p2=tz_ct&p3=tz_pt)**",
-                "url" => route('race.results.index', $race)
-            ]
+                'title' => $race->track->name,
+                'description' => "**[{$race->race_time->tz('US/Eastern')->toDayDateTimeString()} EST](https://www.timeanddate.com/worldclock/converter.html?iso={$race->race_time->format('Ymd\THis')}&p1=tz_et&p2=tz_ct&p3=tz_pt)**",
+                'url' => route('race.results.index', $race),
+            ],
         ]);
 
         $json = $response->json();
         $messageId = $json['id'];
 
         // Add reactions
-        $emojis = ["✅", "✔️", "❔", "🛑"];
+        $emojis = ['✅', '✔️', '❔', '🛑'];
         foreach ($emojis as $emoji) {
             $client->put("/channels/{$channel}/messages/{$messageId}/reactions/{$emoji}/@me");
             sleep(1);

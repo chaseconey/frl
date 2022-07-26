@@ -13,28 +13,28 @@ class UdpSpecTest extends TestCase
         $raceData =
             [
                 'm_bestLapTimeLapNum' => 14,
-                "m_tyreStintsHistoryData" => [
+                'm_tyreStintsHistoryData' => [
                     [
-                        "m_endLap" => 4,
-                        "m_tyreActualCompound" => 18,
-                        "m_tyreVisualCompound" => 18
+                        'm_endLap' => 4,
+                        'm_tyreActualCompound' => 18,
+                        'm_tyreVisualCompound' => 18,
                     ],
                     [
-                        "m_endLap" => 10,
-                        "m_tyreActualCompound" => 17,
-                        "m_tyreVisualCompound" => 17
+                        'm_endLap' => 10,
+                        'm_tyreActualCompound' => 17,
+                        'm_tyreVisualCompound' => 17,
                     ],
                     [
-                        "m_endLap" => 255,
-                        "m_tyreActualCompound" => 17,
-                        "m_tyreVisualCompound" => 17
+                        'm_endLap' => 255,
+                        'm_tyreActualCompound' => 17,
+                        'm_tyreVisualCompound' => 17,
                     ],
                     [
-                        "m_endLap" => 0,
-                        "m_tyreActualCompound" => 0,
-                        "m_tyreVisualCompound" => 0
-                    ]
-                ]
+                        'm_endLap' => 0,
+                        'm_tyreActualCompound' => 0,
+                        'm_tyreVisualCompound' => 0,
+                    ],
+                ],
             ];
 
         $fastestTire = UdpSpec::getFastestLapTire($raceData);
@@ -46,13 +46,13 @@ class UdpSpecTest extends TestCase
     {
         // Missing m_bestLapTimeLapNum
         $raceData = [
-            "m_tyreStintsHistoryData" => [
+            'm_tyreStintsHistoryData' => [
                 [
-                    "m_endLap" => 4,
-                    "m_tyreActualCompound" => 18,
-                    "m_tyreVisualCompound" => 18
+                    'm_endLap' => 4,
+                    'm_tyreActualCompound' => 18,
+                    'm_tyreVisualCompound' => 18,
                 ],
-            ]
+            ],
         ];
 
         $this->expectException(ResultsUploadError::class);

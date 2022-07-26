@@ -23,10 +23,10 @@ class EventServiceProvider extends ServiceProvider
         ],
 
         \App\Events\DivisionCreating::class => [
-            \App\Listeners\CreateDiscordRoleForDivision::class
+            \App\Listeners\CreateDiscordRoleForDivision::class,
         ],
         \App\Events\DriverSaving::class => [
-            \App\Listeners\SyncDriverToDiscordRole::class
+            \App\Listeners\SyncDriverToDiscordRole::class,
         ],
     ];
 

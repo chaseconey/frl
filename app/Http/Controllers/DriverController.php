@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DriverUpdateRequest;
 use App\Models\Driver;
 use App\Models\RaceQualiResult;
 use App\Models\RaceResult;
-use Illuminate\Http\Request;
-use App\Http\Requests\DriverUpdateRequest;
 
 class DriverController extends Controller
 {

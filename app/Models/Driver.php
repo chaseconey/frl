@@ -33,6 +33,7 @@ use Laravel\Nova\Actions\Actionable;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\RaceResult[] $raceResults
  * @property-read int|null $race_results_count
  * @property-read \App\Models\User|null $user
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|Driver newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Driver newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Driver query()
@@ -49,8 +50,10 @@ use Laravel\Nova\Actions\Actionable;
  * @method static \Illuminate\Database\Eloquent\Builder|Driver whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Driver whereUserId($value)
  * @mixin \Eloquent
+ *
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\RaceQualiResult[] $qualiResults
  * @property-read int|null $quali_results_count
+ *
  * @method static \Database\Factories\DriverFactory factory(...$parameters)
  */
 class Driver extends Model
@@ -65,15 +68,15 @@ class Driver extends Model
         'type',
         'name',
         'steam_friend_code',
-        'equipment'
+        'equipment',
     ];
 
     protected $dispatchesEvents = [
-        'saving' => DriverSaving::class
+        'saving' => DriverSaving::class,
     ];
 
     protected $casts = [
-        'equipment' => DriverEquipment::class
+        'equipment' => DriverEquipment::class,
     ];
 
     public function user()

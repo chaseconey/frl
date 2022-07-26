@@ -12,7 +12,6 @@ use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Driver extends Resource
 {
@@ -44,7 +43,7 @@ class Driver extends Resource
      */
     public static $search = [
         'id',
-        'name'
+        'name',
     ];
 
     public static $with = ['latestRace', 'division', 'user', 'f1Number', 'f1Team'];
@@ -83,15 +82,16 @@ class Driver extends Resource
                 if ($this->latestRace) {
                     $raceTime = $this->latestRace->created_at;
                     $color = $raceTime->greaterThan(now()->subWeeks(3)) ? 'green' : 'red';
+
                     return "<span class='whitespace-no-wrap' style='color: {$color}'>{$raceTime->diffForHumans()}</span>";
                 } else {
-                    return "N/A";
+                    return 'N/A';
                 }
             })->onlyOnIndex()->asHtml(),
             DateTime::make('Created At')->format('YYYY-MM-DD')->sortable(),
 
             HasMany::make('Race Results', 'raceResults'),
-            HasMany::make('Race Quali Results', 'qualiResults')
+            HasMany::make('Race Quali Results', 'qualiResults'),
         ];
     }
 

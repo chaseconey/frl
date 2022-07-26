@@ -9,7 +9,6 @@ use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Panel;
 
 class RaceQualiResult extends Resource
@@ -122,7 +121,7 @@ class RaceQualiResult extends Resource
                 'M' => 'Medium',
                 'H' => 'Hard',
                 'W' => 'Wet',
-                'I' => 'Inters'
+                'I' => 'Inters',
             ])->nullable(),
             Select::make('Codemasters Result Status')
                 ->options(UdpSpec::RACE_RESULT_STATUS)

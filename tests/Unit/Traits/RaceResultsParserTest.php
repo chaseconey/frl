@@ -39,7 +39,7 @@ class RaceResultsParserTest extends TestCase
         $this->expectException(ResultsUploadError::class);
         $this->expectExceptionMessage('Result for position(s) 2 missing. Check for duplicate driver number.');
 
-        $this->uploadResults($results, $race, fn ($r) => "hi");
+        $this->uploadResults($results, $race, fn ($r) => 'hi');
     }
 
     /**
@@ -48,17 +48,16 @@ class RaceResultsParserTest extends TestCase
     public function error_thrown_when_driver_missing()
     {
         $results = [
-            'driverData' =>
-                [
-                    ['m_raceNumber' => 12, 'm_position' => 1, 'm_numLaps' => 5],
-                ]
+            'driverData' => [
+                ['m_raceNumber' => 12, 'm_position' => 1, 'm_numLaps' => 5],
+            ],
         ];
         $race = Race::factory()->make(['division_id' => 1]);
 
         $this->expectException(ResultsUploadError::class);
         $this->expectExceptionMessage('Driver with number #12 not found.');
 
-        $this->uploadResults($results, $race, fn ($r) => "hi");
+        $this->uploadResults($results, $race, fn ($r) => 'hi');
     }
 
     /**
@@ -72,15 +71,15 @@ class RaceResultsParserTest extends TestCase
                     'm_raceNumber' => 44, // Lewis Hamilton's number (can't be selected)
                     'm_position' => 1,
                     'm_numLaps' => 1,
-                ]
-            ]
+                ],
+            ],
         ];
         $race = Race::factory()->make();
 
         $this->expectException(ResultsUploadError::class);
         $this->expectExceptionMessage('Driver with AI racing number (#44) found, please correct data.');
 
-        $this->uploadResults($results, $race, fn ($r) => "hi");
+        $this->uploadResults($results, $race, fn ($r) => 'hi');
     }
 
     /**
@@ -94,12 +93,12 @@ class RaceResultsParserTest extends TestCase
                     'm_raceNumber' => 44, // Lewis Hamilton's number (can't be selected)
                     'm_position' => 1,
                     'm_numLaps' => 0,
-                ]
-            ]
+                ],
+            ],
         ];
         $race = Race::factory()->make();
 
-        $this->uploadResults($results, $race, fn ($r) => "hi");
+        $this->uploadResults($results, $race, fn ($r) => 'hi');
 
         // AI (#44) and no laps == ignore
         $this->assertDatabaseCount('race_results', 0);
