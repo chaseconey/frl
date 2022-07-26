@@ -24,7 +24,7 @@ class DriverFactory extends Factory
         return [
             'division_id' => 1,
             'user_id' => $this->faker->numberBetween(1, 10),
-            'name' => $this->faker->name,
+            'name' => $this->faker->name(),
             'f1_number_id' => 1,
             'f1_team_id' => $this->faker->numberBetween(1, 10),
             'type' => 'FULL_TIME',
