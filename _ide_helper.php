@@ -4,7 +4,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 9.22.0.
+ * Generated for Laravel 9.22.1.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -16735,7 +16735,61 @@
      
 }
 
-        namespace Barryvdh\Debugbar\Facades { 
+        namespace Creativeorange\Gravatar\Facades { 
+            /**
+     * 
+     *
+     * @see \Creativeorange\Gravatar\Gravatar
+     */ 
+        class Gravatar {
+                    /**
+         * Override the default image fallback set in the config.
+         * 
+         * Can either be a public URL to an image or a valid themed image.
+         * For more info, visit http://en.gravatar.com/site/implement/images/#default-image
+         *
+         * @param string $fallback
+         * @return \Creativeorange\Gravatar\Gravatar 
+         * @static 
+         */ 
+        public static function fallback($fallback)
+        {
+                        /** @var \Creativeorange\Gravatar\Gravatar $instance */
+                        return $instance->fallback($fallback);
+        }
+                    /**
+         * Check if Gravatar has an avatar for the given email address
+         *
+         * @param string $email
+         * @return bool 
+         * @throws InvalidEmailException
+         * @static 
+         */ 
+        public static function exists($email)
+        {
+                        /** @var \Creativeorange\Gravatar\Gravatar $instance */
+                        return $instance->exists($email);
+        }
+                    /**
+         * Get the gravatar url
+         *
+         * @param string $email
+         * @param string|array|null $configGroup
+         * @return string 
+         * @throws InvalidEmailException
+         * @static 
+         */ 
+        public static function get($email, $configGroup = 'default')
+        {
+                        /** @var \Creativeorange\Gravatar\Gravatar $instance */
+                        return $instance->get($email, $configGroup);
+        }
+         
+    }
+     
+}
+
+    namespace Barryvdh\Debugbar\Facades { 
             /**
      * 
      *
@@ -17266,60 +17320,6 @@
         {            //Method inherited from \DebugBar\DebugBar         
                         /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
                         return $instance->offsetUnset($key);
-        }
-         
-    }
-     
-}
-
-    namespace Creativeorange\Gravatar\Facades { 
-            /**
-     * 
-     *
-     * @see \Creativeorange\Gravatar\Gravatar
-     */ 
-        class Gravatar {
-                    /**
-         * Override the default image fallback set in the config.
-         * 
-         * Can either be a public URL to an image or a valid themed image.
-         * For more info, visit http://en.gravatar.com/site/implement/images/#default-image
-         *
-         * @param string $fallback
-         * @return \Creativeorange\Gravatar\Gravatar 
-         * @static 
-         */ 
-        public static function fallback($fallback)
-        {
-                        /** @var \Creativeorange\Gravatar\Gravatar $instance */
-                        return $instance->fallback($fallback);
-        }
-                    /**
-         * Check if Gravatar has an avatar for the given email address
-         *
-         * @param string $email
-         * @return bool 
-         * @throws InvalidEmailException
-         * @static 
-         */ 
-        public static function exists($email)
-        {
-                        /** @var \Creativeorange\Gravatar\Gravatar $instance */
-                        return $instance->exists($email);
-        }
-                    /**
-         * Get the gravatar url
-         *
-         * @param string $email
-         * @param string|array|null $configGroup
-         * @return string 
-         * @throws InvalidEmailException
-         * @static 
-         */ 
-        public static function get($email, $configGroup = 'default')
-        {
-                        /** @var \Creativeorange\Gravatar\Gravatar $instance */
-                        return $instance->get($email, $configGroup);
         }
          
     }
@@ -21802,8 +21802,8 @@ namespace  {
             class URL extends \Illuminate\Support\Facades\URL {}
             class Validator extends \Illuminate\Support\Facades\Validator {}
             class View extends \Illuminate\Support\Facades\View {}
-            class Debugbar extends \Barryvdh\Debugbar\Facades\Debugbar {}
             class Gravatar extends \Creativeorange\Gravatar\Facades\Gravatar {}
+            class Debugbar extends \Barryvdh\Debugbar\Facades\Debugbar {}
             class Nova extends \Laravel\Nova\Nova {}
             class Socialite extends \Laravel\Socialite\Facades\Socialite {}
             class Flare extends \Spatie\LaravelIgnition\Facades\Flare {}
