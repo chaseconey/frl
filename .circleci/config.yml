@@ -22,7 +22,6 @@ jobs:
           MYSQL_PASSWORD: passw0rd
     steps:
       - checkout
-      - run: sudo apt update
       - run: sudo apt install zlib1g-dev libsqlite3-dev
       - run: sudo docker-php-ext-install zip pdo pdo_mysql
       # Download and cache dependencies
