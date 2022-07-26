@@ -93,8 +93,7 @@ trait RaceResultsParser
      */
     private function cleanResults(Collection $results): Collection
     {
-        return $results->where('m_position', '>', 0)
-            ->where('m_aiControlled', 0);
+        return $results->where('m_position', '>', 0);
     }
 
     /**
