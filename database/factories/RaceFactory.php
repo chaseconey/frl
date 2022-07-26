@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Race;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class RaceFactory extends Factory

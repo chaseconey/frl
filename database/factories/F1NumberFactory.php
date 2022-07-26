@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\F1Number;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class F1NumberFactory extends Factory

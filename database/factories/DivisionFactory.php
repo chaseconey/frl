@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Division;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class DivisionFactory extends Factory

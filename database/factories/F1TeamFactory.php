@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\F1Team;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class F1TeamFactory extends Factory

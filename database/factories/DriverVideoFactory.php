@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\DriverVideo;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class DriverVideoFactory extends Factory

@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Protest;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ProtestFactory extends Factory
