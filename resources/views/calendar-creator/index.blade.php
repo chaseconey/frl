@@ -52,6 +52,7 @@
                 @csrf
 
                 <input type="hidden" name="division_id" value="{{ request()->get('division_id') }}">
+                <input type="hidden" name="form-timezone" id="form-timezone">
 
                 @for($x = 0; $x < request()->get('num_races'); $x++)
 
@@ -116,6 +117,11 @@
             function removeItem(e) {
                 e.target.closest('.race-item').remove();
             }
+
+            (function() {
+                document.getElementById('form-timezone').value = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            })();
+
         </script>
 
     </x-slot>

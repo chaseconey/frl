@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Division;
 use App\Models\Track;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class CalendarCreatorController extends Controller
@@ -22,8 +23,14 @@ class CalendarCreatorController extends Controller
     {
         $division = Division::findOrFail($request->get('division_id'));
 
+        $timezone = $request->input('form-timezone', 'UTC');
+        $races = $request->get('race');
+
+        $races = collect($races)
+            ->map(fn ($race) => ['track_id' => $race['track_id'], 'race_time' => (new Carbon($race['race_time'], $timezone))->utc()]);
+
         $division->races()
-            ->createMany($request->get('race'));
+            ->createMany($races);
 
         $request->session()->flash('notice', 'Races have been added to calendar.');
 
