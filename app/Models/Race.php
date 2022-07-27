@@ -71,6 +71,8 @@ class Race extends Model
         'reminder_sent_at' => 'datetime',
     ];
 
+    protected $guarded = [];
+
     public function scopeCompleted($query)
     {
         return $query->whereDate('race_time', '<=', now()->toDateTimeString());

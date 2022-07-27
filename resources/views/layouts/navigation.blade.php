@@ -44,6 +44,12 @@
                                 <x-dropdown-link :href="route('races.list')">
                                     {{ __('List') }}
                                 </x-dropdown-link>
+
+                                @can('manage-races')
+                                <x-dropdown-link :href="route('calendar-creator.index')">
+                                    {{ __('Race Wizard') }}
+                                </x-dropdown-link>
+                                @endcan
                             </div>
                         </x-slot>
                     </x-dropdown>
@@ -174,6 +180,11 @@
             <x-responsive-nav-link :href="route('races.index')" :active="request()->routeIs('races.index')">
                 {{ __('Race Calendar') }}
             </x-responsive-nav-link>
+            @can('manage-races')
+            <x-responsive-nav-link :href="route('calendar-creator.index')" :active="request()->routeIs('calendar-creator.index')">
+                {{ __('Race Wizard') }}
+            </x-responsive-nav-link>
+            @endcan
             <x-responsive-nav-link :href="route('standings.index')" :active="request()->routeIs('standings.*')">
                 {{ __('Standings') }}
             </x-responsive-nav-link>
