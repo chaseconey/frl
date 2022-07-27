@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
@@ -42,6 +43,11 @@ class Track extends Model
         'id',
         'name',
     ];
+
+    public function scopeActive(Builder $query)
+    {
+        return $query->where('is_available', true);
+    }
 
     public function races()
     {

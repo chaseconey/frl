@@ -11,7 +11,7 @@ class CalendarCreatorController extends Controller
 {
     public function index()
     {
-        $tracks = Track::inRandomOrder()->get();
+        $tracks = Track::active()->inRandomOrder()->get();
         $openDivs = Division::active()->get();
 
         return view('calendar-creator.index')

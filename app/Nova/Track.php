@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Avatar;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Country;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
@@ -55,6 +56,7 @@ class Track extends Resource
             ID::make(__('ID'), 'id')->sortable(),
             Text::make('Name')->sortable(),
             Country::make('Country')->displayUsingLabels()->sortable(),
+            Boolean::make('Is Available'),
             Avatar::make(),
 
             HasMany::make('Races'),
