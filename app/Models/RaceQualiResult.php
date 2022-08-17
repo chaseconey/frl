@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Exceptions\UdpDataException;
-use App\Service\F12021\UdpSpec;
+use App\Service\F122\UdpSpec;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Nova\Actions\Actionable;

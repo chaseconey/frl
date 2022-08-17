@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Service\F12021;
+namespace App\Service\F122;
 
 use App\Exceptions\ResultsUploadError;
 use App\Exceptions\UdpDataException;

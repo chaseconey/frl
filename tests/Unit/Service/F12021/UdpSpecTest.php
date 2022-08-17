@@ -3,7 +3,7 @@
 namespace Tests\Unit\Service\F12021;
 
 use App\Exceptions\ResultsUploadError;
-use App\Service\F12021\UdpSpec;
+use App\Service\F122\UdpSpec;
 use PHPUnit\Framework\TestCase;
 
 class UdpSpecTest extends TestCase
