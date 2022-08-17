@@ -44,6 +44,5 @@ class RandomizeDataFile extends Command
         }
 
         File::put($path, json_encode($contents));
-
     }
 }
