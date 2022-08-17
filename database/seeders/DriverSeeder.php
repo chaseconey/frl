@@ -20,7 +20,6 @@ class DriverSeeder extends Seeder
                 Driver::factory()->create([
                     'f1_number_id' => $x,
                     'type' => 'RESERVE',
-                    'division_id' => 11
                 ]);
             }
         });
