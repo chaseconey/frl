@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use App\Models\Race;
 use App\Models\RaceResult;
-use App\Service\F12021\UdpSpec;
+use App\Service\F122\UdpSpec;
 use Illuminate\View\Component;
 
 class RaceTimeColumn extends Component
