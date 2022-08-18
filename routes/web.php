@@ -54,7 +54,7 @@ Route::resource('race.results', RaceResultsController::class);
 Route::resource('race.quali-results', RaceQualiResultsController::class);
 Route::get('/api/race-results/{result}/laps', [LapController::class, 'index']);
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/auth/discord', [DiscordAuthController::class, 'redirect'])->name('auth.discord');
     Route::get('/auth/discord/callback', [DiscordAuthController::class, 'callback']);
 
