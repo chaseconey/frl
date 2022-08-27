@@ -15,6 +15,7 @@
         "ericlagarda/nova-embed": "^2.1",
         "erusev/parsedown": "^1.7",
         "guzzlehttp/guzzle": "^7.2",
+        "honeybadger-io/honeybadger-laravel": "^3.14",
         "kyslik/column-sortable": "^6.4",
         "laraning/nova-time-field": "^1.2",
         "laravel-notification-channels/discord": "^1.3",

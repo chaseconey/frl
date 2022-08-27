@@ -17586,6 +17586,165 @@
      
 }
 
+    namespace Honeybadger\HoneybadgerLaravel\Facades { 
+            /**
+     * 
+     *
+     */ 
+        class Honeybadger {
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function make($config)
+        {
+                        return \Honeybadger\HoneybadgerLaravel\HoneybadgerLaravel::make($config);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function notify($throwable, $request = null, $additionalParams = [])
+        {
+                        /** @var \Honeybadger\HoneybadgerLaravel\HoneybadgerLaravel $instance */
+                        return $instance->notify($throwable, $request, $additionalParams);
+        }
+                    /**
+         * 
+         *
+         * @param array $payload
+         * @return array 
+         * @throws \Honeybadger\Exceptions\ServiceException
+         * @static 
+         */ 
+        public static function customNotification($payload)
+        {            //Method inherited from \Honeybadger\Honeybadger         
+                        /** @var \Honeybadger\HoneybadgerLaravel\HoneybadgerLaravel $instance */
+                        return $instance->customNotification($payload);
+        }
+                    /**
+         * 
+         *
+         * @param callable $callable
+         * @return array 
+         * @throws \Honeybadger\Exceptions\ServiceException
+         * @throws \InvalidArgumentException
+         * @static 
+         */ 
+        public static function rawNotification($callable)
+        {            //Method inherited from \Honeybadger\Honeybadger         
+                        /** @var \Honeybadger\HoneybadgerLaravel\HoneybadgerLaravel $instance */
+                        return $instance->rawNotification($callable);
+        }
+                    /**
+         * 
+         *
+         * @param string $key
+         * @return void 
+         * @throws \Honeybadger\Exceptions\ServiceException
+         * @static 
+         */ 
+        public static function checkin($key)
+        {            //Method inherited from \Honeybadger\Honeybadger         
+                        /** @var \Honeybadger\HoneybadgerLaravel\HoneybadgerLaravel $instance */
+                        $instance->checkin($key);
+        }
+                    /**
+         * Attach some additional context to an error report. Context can be specified as a $key and $value, or as an array with key-value pairs.
+         *
+         * @param int|string|array $key
+         * @param mixed $value
+         * @return self 
+         * @static 
+         */ 
+        public static function context($key, $value = null)
+        {            //Method inherited from \Honeybadger\Honeybadger         
+                        /** @var \Honeybadger\HoneybadgerLaravel\HoneybadgerLaravel $instance */
+                        return $instance->context($key, $value);
+        }
+                    /**
+         * 
+         *
+         * @return void 
+         * @static 
+         */ 
+        public static function resetContext()
+        {            //Method inherited from \Honeybadger\Honeybadger         
+                        /** @var \Honeybadger\HoneybadgerLaravel\HoneybadgerLaravel $instance */
+                        $instance->resetContext();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function addBreadcrumb($message, $metadata = [], $category = 'custom')
+        {            //Method inherited from \Honeybadger\Honeybadger         
+                        /** @var \Honeybadger\HoneybadgerLaravel\HoneybadgerLaravel $instance */
+                        return $instance->addBreadcrumb($message, $metadata, $category);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function clear()
+        {            //Method inherited from \Honeybadger\Honeybadger         
+                        /** @var \Honeybadger\HoneybadgerLaravel\HoneybadgerLaravel $instance */
+                        return $instance->clear();
+        }
+                    /**
+         * 
+         *
+         * @return \Honeybadger\Support\Repository 
+         * @static 
+         */ 
+        public static function getContext()
+        {            //Method inherited from \Honeybadger\Honeybadger         
+                        /** @var \Honeybadger\HoneybadgerLaravel\HoneybadgerLaravel $instance */
+                        return $instance->getContext();
+        }
+                    /**
+         * 
+         *
+         * @param string $component
+         * @return self 
+         * @static 
+         */ 
+        public static function setComponent($component)
+        {            //Method inherited from \Honeybadger\Honeybadger         
+                        /** @var \Honeybadger\HoneybadgerLaravel\HoneybadgerLaravel $instance */
+                        return $instance->setComponent($component);
+        }
+                    /**
+         * 
+         *
+         * @param string $action
+         * @return self 
+         * @static 
+         */ 
+        public static function setAction($action)
+        {            //Method inherited from \Honeybadger\Honeybadger         
+                        /** @var \Honeybadger\HoneybadgerLaravel\HoneybadgerLaravel $instance */
+                        return $instance->setAction($action);
+        }
+                    /**
+         * 
+         *
+         * @return self 
+         * @static 
+         */ 
+        public static function new()
+        {            //Method inherited from \Honeybadger\Honeybadger         
+                        return \Honeybadger\HoneybadgerLaravel\HoneybadgerLaravel::new();
+        }
+         
+    }
+     
+}
+
     namespace Laravel\Nova { 
             /**
      * 
@@ -18315,6 +18474,39 @@
         public static function permission($permissions = [])
         {
                         return \Illuminate\Routing\Route::permission($permissions);
+        }
+         
+    }
+     
+}
+
+    namespace Illuminate\Console\Scheduling { 
+            /**
+     * 
+     *
+     */ 
+        class Event {
+                    /**
+         * 
+         *
+         * @param string|array|null $environments
+         * @see \Honeybadger\HoneybadgerLaravel\HoneybadgerServiceProvider::registerEventHooks()
+         * @static 
+         */ 
+        public static function thenPingHoneybadger($id, $environments = null)
+        {
+                        return \Illuminate\Console\Scheduling\Event::thenPingHoneybadger($id, $environments);
+        }
+                    /**
+         * 
+         *
+         * @param string|array|null $environments
+         * @see \Honeybadger\HoneybadgerLaravel\HoneybadgerServiceProvider::registerEventHooks()
+         * @static 
+         */ 
+        public static function pingHoneybadgerOnSuccess($id, $environments = null)
+        {
+                        return \Illuminate\Console\Scheduling\Event::pingHoneybadgerOnSuccess($id, $environments);
         }
          
     }
@@ -22075,6 +22267,7 @@ namespace  {
             class Vite extends \Illuminate\Support\Facades\Vite {}
             class Gravatar extends \Creativeorange\Gravatar\Facades\Gravatar {}
             class Debugbar extends \Barryvdh\Debugbar\Facades\Debugbar {}
+            class Honeybadger extends \Honeybadger\HoneybadgerLaravel\Facades\Honeybadger {}
             class Nova extends \Laravel\Nova\Nova {}
             class Socialite extends \Laravel\Socialite\Facades\Socialite {}
             class Flare extends \Spatie\LaravelIgnition\Facades\Flare {}
