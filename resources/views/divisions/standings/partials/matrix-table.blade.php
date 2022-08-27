@@ -19,6 +19,9 @@
                             <a href="{{ route('race.results.index', $race->id) }}">
                                 {{ $race->track->country }}
                             </a>
+                            <div class="flex justify-center">
+                                <x-track-avatar :track="$race->track" :size="6" />
+                            </div>
                         </th>
                         @endforeach
                         <th scope="col"
