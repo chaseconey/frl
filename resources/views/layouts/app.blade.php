@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        @vite('resources/css/app.css')
 
         @production
         <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -49,7 +49,8 @@
     </body>
     <!-- Scripts -->
     <script src="https://kit.fontawesome.com/399fc73196.js" crossorigin="anonymous"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
+
+    @vite('resources/js/app.js')
 
     {{ $scripts ?? '' }}
 </html>
