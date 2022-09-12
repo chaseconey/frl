@@ -13,7 +13,7 @@
                 <div class="p-6 bg-white dark:bg-gray-700 border-b border-gray-200 dark:border-gray-800">
 
                     <div class="mb-4">
-                        @include('components.form-errors', ['errors' => $errors])
+                        <x-form-errors />
                     </div>
 
                     <div class="flex flex-wrap justify-between" x-data="{ open: false }">
