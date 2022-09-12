@@ -4,7 +4,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 9.28.0.
+ * Generated for Laravel 9.29.0.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -3358,6 +3358,17 @@
         {
                         /** @var \Illuminate\Support\Testing\Fakes\BusFake $instance */
                         $instance->assertBatchCount($count);
+        }
+                    /**
+         * Assert that no batched jobs were dispatched.
+         *
+         * @return void 
+         * @static 
+         */ 
+        public static function assertNothingBatched()
+        {
+                        /** @var \Illuminate\Support\Testing\Fakes\BusFake $instance */
+                        $instance->assertNothingBatched();
         }
                     /**
          * Get all of the jobs matching a truth-test callback.
@@ -10516,7 +10527,6 @@
                     /**
          * Gets the Session.
          *
-         * @throws SessionNotFoundException When session is not set properly
          * @static 
          */ 
         public static function getSession()
