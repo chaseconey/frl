@@ -29,7 +29,6 @@ trait RaceResultsParser
         $activeF1Numbers = F1Number::active()->pluck('id', 'racing_number')->toArray();
 
         foreach ($driverData as $result) {
-
             $racingNumber = $result['m_raceNumber'];
 
             $driver = null;
@@ -94,7 +93,7 @@ trait RaceResultsParser
      */
     protected function hasDuplicateRacingNumbers($tempResults): array
     {
-        return $tempResults->countBy('driver_id')->filter(fn($value) => $value > 1)->keys()->toArray();
+        return $tempResults->countBy('driver_id')->filter(fn ($value) => $value > 1)->keys()->toArray();
     }
 
     /**

@@ -89,5 +89,4 @@ class RaceQualiResultsController extends Controller
 
         return back();
     }
-
 }

@@ -119,6 +119,4 @@ class RaceResultsParserTest extends TestCase
 
         $this->assertFalse($hasUnassigned);
     }
-
-
 }
