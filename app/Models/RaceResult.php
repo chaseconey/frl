@@ -68,6 +68,9 @@ class RaceResult extends Model
 
     protected $fillable = [
         'position',
+        'race_id',
+        'driver_id',
+        'f1_team_id',
         'grid_position',
         'num_pit_stops',
         'best_lap_time',
@@ -88,27 +91,6 @@ class RaceResult extends Model
     protected $attributes = [
         'lap_data' => '[]',
     ];
-
-    /**
-     * Map in data from file into our model
-     */
-    public static function fromFile(array $result)
-    {
-        return new static([
-            'position' => $result['m_position'],
-            'grid_position' => $result['m_gridPosition'],
-            'num_pit_stops' => $result['m_numPitStops'],
-            'best_lap_time' => $result['m_bestLapTimeInMS'] / 1000,
-            'num_penalties' => $result['m_numPenalties'],
-            'penalty_seconds' => $result['m_penaltiesTime'],
-            'race_time' => $result['m_totalRaceTime'],
-            'codemasters_result_status' => $result['m_resultStatus'],
-            'tire_stints' => UdpSpec::mapTireStint($result['m_tyreStintsVisual']),
-            'points' => $result['m_points'],
-            'laps_completed' => $result['m_numLaps'],
-            'lap_data' => collect($result['m_lapHistoryData'])->where('m_lapTimeInMS', '>', 0),
-        ]);
-    }
 
     public function driver()
     {

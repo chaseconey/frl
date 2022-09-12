@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Race;
 
-use App\Exceptions\ResultsUploadError;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PostRaceResultsRequest;
+use App\Models\Driver;
 use App\Models\DriverVideo;
 use App\Models\Race;
 use App\Models\RaceResult;
+use App\Models\TempRaceResult;
 use App\Traits\RaceResultsParser;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -25,40 +27,47 @@ class RaceResultsController extends Controller
         $race->load(['results', 'results.driver', 'results.driver.user', 'results.f1Team'])
             ->loadMin('results', 'best_lap_time');
 
+        $tempResults = TempRaceResult::where('race_id', $race->id)->orderBy('position')->get();
+        $drivers = Driver::where('division_id', $race->division_id)->get();
+
         $driverVideos = DriverVideo::where('race_id', $race->id)
             ->get()
             ->keyBy('driver_id');
 
         return view('races.race-results.index')
             ->withDriverVideos($driverVideos)
-            ->withRace($race);
+            ->withRace($race)
+            ->withTempResults($tempResults)
+            ->withDrivers($drivers);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  Race  $race
-     * @param  Request  $request
-     * @return \Symfony\Component\HttpFoundation\Response
-     *
-     * @throws \Throwable
-     */
-    public function store(Race $race, Request $request)
+    public function store(Race $race, PostRaceResultsRequest $request)
     {
-        $request->validate([
-            'results' => 'required|mimes:json',
-        ]);
 
-        $json = $request->file('results')->getContent();
+        // Save changes to drivers (and whatever else we allow)
+        foreach ($request->input('driver_id', []) as $position => $driverId) {
+            $result = TempRaceResult::where('race_id', $race->id)
+                ->where('position', $position)
+                ->first();
 
-        $results = json_decode($json, true);
+            $result->driver_id = $driverId;
+            $result->save();
+        }
+
+        // Validate all the things
+        $tempResults = TempRaceResult::where('race_id', $race->id)
+            ->get();
 
         try {
-            $this->uploadResults($results, $race, fn ($result) => RaceResult::fromFile($result));
-        } catch (ResultsUploadError $e) {
-            return response()->json([
-                'message' => $e->getMessage(),
-            ], 422);
+            $this->validateTempResults($tempResults);
+        } catch (\Exception $e) {
+            return back()->withErrors($e->getMessage());
+        }
+
+        // Convert temp results into real results
+        foreach ($tempResults as $tempResult) {
+            RaceResult::create([...$tempResult->toArray(), ...['race_id' => $race->id]]);
+            $tempResult->delete();
         }
 
         activity()
@@ -69,51 +78,6 @@ class RaceResultsController extends Controller
             ])
             ->log('Race results uploaded for :properties.division :properties.track');
 
-        return redirect()->back();
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  RaceResult  $raceResults
-     * @return Response
-     */
-    public function show(RaceResult $raceResults)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  RaceResult  $raceResults
-     * @return Response
-     */
-    public function edit(RaceResult $raceResults)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  Request  $request
-     * @param  RaceResult  $raceResults
-     * @return Response
-     */
-    public function update(Request $request, RaceResult $raceResults)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  RaceResult  $raceResults
-     * @return Response
-     */
-    public function destroy(RaceResult $raceResults)
-    {
-        //
+        return back();
     }
 }

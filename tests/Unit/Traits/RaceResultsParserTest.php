@@ -8,6 +8,8 @@ use App\Models\Driver;
 use App\Models\F1Number;
 use App\Models\Race;
 use App\Models\RaceResult;
+use App\Models\TempRaceQualiResult;
+use App\Models\TempRaceResult;
 use App\Traits\RaceResultsParser;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Event;
@@ -28,110 +30,95 @@ class RaceResultsParserTest extends TestCase
     /**
      * @test
      */
-    public function error_thrown_when_position_missing()
+    public function missing_positions_check_when_position_missing()
     {
-        $stub = file_get_contents(storage_path('stubs/race-with-missing-pos.json'));
+        $tempResults = TempRaceQualiResult::factory()
+            ->count(3)
+            ->sequence(fn ($sequence) => ['position' => ($sequence->index + 1) * 2])
+            ->make();
 
-        $results = json_decode($stub, true);
+        $missingPositions = $this->hasMissingPositions($tempResults);
 
-        $race = Race::factory()->make();
-
-        $this->expectException(ResultsUploadError::class);
-        $this->expectExceptionMessage('Result for position(s) 2 missing. Check for duplicate driver number.');
-
-        $this->uploadResults($results, $race, fn ($r) => 'hi');
+        $this->assertNotEmpty($missingPositions);
     }
 
     /**
      * @test
      */
-    public function error_thrown_when_driver_missing()
+    public function missing_positions_check_when_no_missing_positions()
     {
-        $results = [
-            'driverData' => [
-                ['m_raceNumber' => 12, 'm_position' => 1, 'm_numLaps' => 5],
-            ],
-        ];
-        $race = Race::factory()->make(['division_id' => 1]);
+        $tempResults = TempRaceQualiResult::factory()
+            ->count(3)
+            ->sequence(fn ($sequence) => ['position' => $sequence->index + 1])
+            ->make();
 
-        $this->expectException(ResultsUploadError::class);
-        $this->expectExceptionMessage('Driver with number #12 not found.');
+        $missingPositions = $this->hasMissingPositions($tempResults);
 
-        $this->uploadResults($results, $race, fn ($r) => 'hi');
+        $this->assertEmpty($missingPositions);
     }
 
     /**
      * @test
      */
-    public function error_thrown_when_result_has_ai_number()
+    public function dupe_check_when_driver_id_duplicated()
     {
-        $results = [
-            'driverData' => [
-                [
-                    'm_raceNumber' => 44, // Lewis Hamilton's number (can't be selected)
-                    'm_position' => 1,
-                    'm_numLaps' => 1,
-                ],
-            ],
-        ];
-        $race = Race::factory()->make();
-
-        $this->expectException(ResultsUploadError::class);
-        $this->expectExceptionMessage('Driver with AI racing number (#44) found, please correct data.');
-
-        $this->uploadResults($results, $race, fn ($r) => 'hi');
-    }
-
-    /**
-     * @test
-     */
-    public function ai_results_with_no_race_data_are_ignored()
-    {
-        $results = [
-            'driverData' => [
-                [
-                    'm_raceNumber' => 44, // Lewis Hamilton's number (can't be selected)
-                    'm_position' => 1,
-                    'm_numLaps' => 0,
-                ],
-            ],
-        ];
-        $race = Race::factory()->make();
-
-        $this->uploadResults($results, $race, fn ($r) => 'hi');
-
-        // AI (#44) and no laps == ignore
-        $this->assertDatabaseCount('race_results', 0);
-    }
-
-    /**
-     * @test
-     */
-    public function race_results_are_parsed_properly()
-    {
-        RaceResult::query()->delete();
-        $division = Division::factory()->create(['name' => 'Test Div']);
-
-        $race = Race::factory()->create(['division_id' => $division->id]);
-
-        $stub = file_get_contents(storage_path('stubs/race-results.json'));
-        $results = json_decode($stub, true);
-
-        $resultDriverNumbers = collect($results['driverData'])->pluck('m_raceNumber');
-
-        // Get the system IDs for the result's driver numbers so we can dynamically create drivers for each number in the division
-        $f1Numbers = F1Number::whereIn('racing_number', $resultDriverNumbers)->pluck('id');
-
-        foreach ($f1Numbers as $f1Number) {
-            Driver::factory()->create([
-                'division_id' => $division->id,
-                'f1_number_id' => $f1Number,
-                'f1_team_id' => 1, // They all drive for Mercedes apparently
+        $tempResults = TempRaceQualiResult::factory()
+            ->count(2)
+            ->make([
+                'driver_id' => 1
             ]);
-        }
 
-        $this->uploadResults($results, $race, fn ($results) => RaceResult::fromFile($results));
+        $dupes = $this->hasDuplicateRacingNumbers($tempResults);
 
-        $this->assertDatabaseCount('race_results', 11);
+        $this->assertNotEmpty($dupes);
     }
+
+    /**
+     * @test
+     */
+    public function driver_check_with_no_dupes()
+    {
+        $tempResults = TempRaceQualiResult::factory()
+            ->count(2)
+            ->sequence(fn ($sequence) => ['driver_id' => $sequence->index + 1])
+            ->make();
+
+        $dupes = $this->hasDuplicateRacingNumbers($tempResults);
+
+        $this->assertEmpty($dupes);
+    }
+
+    /**
+     * @test
+     */
+    public function unassigned_driver_check_with_nulls()
+    {
+        $tempResults = TempRaceQualiResult::factory()
+            ->count(2)
+            ->make([
+                'driver_id' => null
+            ]);
+
+        $hasUnassigned = $this->hasUnassignedDrivers($tempResults);
+
+        $this->assertTrue($hasUnassigned);
+    }
+
+    /**
+     * @test
+     */
+    public function unassigned_driver_check_with_no_nulls()
+    {
+        $tempResults = TempRaceQualiResult::factory()
+            ->count(2)
+            ->make([
+                'driver_id' => 1
+            ]);
+
+        $hasUnassigned = $this->hasUnassignedDrivers($tempResults);
+
+        $this->assertFalse($hasUnassigned);
+    }
+
+
 }
