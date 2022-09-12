@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Service\F12021;
+namespace Tests\Unit\Service\F122;
 
 use App\Exceptions\ResultsUploadError;
 use App\Service\F122\UdpSpec;

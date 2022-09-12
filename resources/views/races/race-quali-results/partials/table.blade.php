@@ -2,6 +2,12 @@
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div class="shadow overflow-hidden border-b border-gray-200 dark:border-gray-800 sm:rounded-lg">
+            </div>
+            @if($tempResults->count() > 0 && auth()->user() && auth()->user()->can('manage-races'))
+                @include('races.partials.temp-results', ['submitRoute' => 'race.quali-results.store', 'deleteRoute' => 'race.temp-quali-results.destroy'])
+            @elseif($race->qualiResults->count() === 0 && auth()->user() && auth()->user()->can('manage-races'))
+                @include('races.race-results.partials.upload-form', ['route' => 'race.temp-quali-results.store'])
+            @else
                 <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-800">
                     <thead class="bg-gray-50 dark:bg-gray-600">
                     <tr>
@@ -72,7 +78,8 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right">
                                 @if(!is_null($result->lap_delta))
-                                    <div class="text-sm text-gray-900 dark:text-white">{{ number_format($result->lap_delta, 3) }}</div>
+                                    <div
+                                        class="text-sm text-gray-900 dark:text-white">{{ number_format($result->lap_delta, 3) }}</div>
                                 @endif
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
@@ -89,9 +96,12 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-center">
                                 @if($driverVideos->has($result->driver_id))
-                                    <a href="{{ $driverVideos->get($result->driver_id)->video_url }}" class="text-red-600 hover:text-red-900" target="_blank">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                    <a href="{{ $driverVideos->get($result->driver_id)->video_url }}"
+                                       class="text-red-600 hover:text-red-900" target="_blank">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                             stroke="currentColor" class="w-5">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                                  d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
                                         </svg>
                                     </a>
                                 @endif
@@ -100,10 +110,6 @@
                     @endforeach
                     </tbody>
                 </table>
-
-            </div>
-            @if($race->qualiResults->count() === 0 && auth()->user() && auth()->user()->hasRole('admin'))
-                @include('races.race-results.partials.upload-form', ['route' => 'race.quali-results.store'])
             @endif
         </div>
     </div>

@@ -13,6 +13,8 @@ use App\Http\Controllers\ProtestController;
 use App\Http\Controllers\Race\ProtestsController;
 use App\Http\Controllers\Race\RaceQualiResultsController;
 use App\Http\Controllers\Race\RaceResultsController;
+use App\Http\Controllers\Race\TempRaceQualiResultsController;
+use App\Http\Controllers\Race\TempRaceResultsController;
 use App\Http\Controllers\RaceController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\StandingController;
@@ -70,6 +72,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('drivers', DriverController::class)->only(['edit', 'update', 'show']);
     Route::resource('driver-videos', DriverVideoController::class)->only(['store']);
     Route::get('races/{race}/protests', [ProtestsController::class, 'index'])->name('races.protests');
+
+    Route::resource('race.temp-results', TempRaceResultsController::class)
+        ->only('store', 'destroy');
+    Route::resource('race.temp-quali-results', TempRaceQualiResultsController::class)
+        ->only('store', 'destroy');
 
     Route::resource('protests', ProtestController::class);
 

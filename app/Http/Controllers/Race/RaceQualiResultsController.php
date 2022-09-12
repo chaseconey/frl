@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Race;
 
-use App\Exceptions\ResultsUploadError;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PostRaceQualiResultsRequest;
+use App\Models\Driver;
 use App\Models\DriverVideo;
 use App\Models\Race;
 use App\Models\RaceQualiResult;
+use App\Models\TempRaceQualiResult;
 use App\Traits\RaceResultsParser;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,23 +29,18 @@ class RaceQualiResultsController extends Controller
             ->loadMin('qualiResults', 'best_s2_time')
             ->loadMin('qualiResults', 'best_s3_time');
 
+        $tempResults = TempRaceQualiResult::where('race_id', $race->id)->orderBy('position')->get();
+        $drivers = Driver::where('division_id', $race->division_id)->get();
+
         $driverVideos = DriverVideo::where('race_id', $race->id)
             ->get()
             ->keyBy('driver_id');
 
         return view('races.race-quali-results.index')
             ->withDriverVideos($driverVideos)
-            ->withRace($race);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+            ->withRace($race)
+            ->withTempResults($tempResults)
+            ->withDrivers($drivers);
     }
 
     /**
@@ -53,22 +50,33 @@ class RaceQualiResultsController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Race $race, Request $request)
+    public function store(Race $race, PostRaceQualiResultsRequest $request)
     {
-        $request->validate([
-            'results' => 'required|mimes:json',
-        ]);
 
-        $json = $request->file('results')->getContent();
+        // Save changes to drivers (and whatever else we allow)
+        foreach ($request->input('driver_id', []) as $position => $driverId) {
+            $result = TempRaceQualiResult::where('race_id', $race->id)
+                ->where('position', $position)
+                ->first();
 
-        $results = json_decode($json, true);
+            $result->driver_id = $driverId;
+            $result->save();
+        }
+
+        // Validate all the things
+        $tempResults = TempRaceQualiResult::where('race_id', $race->id)
+            ->get();
 
         try {
-            $this->uploadResults($results, $race, fn ($result) => RaceQualiResult::fromFile($result, $results));
-        } catch (ResultsUploadError $e) {
-            return response()->json([
-                'message' => $e->getMessage(),
-            ], 422);
+            $this->validateTempResults($tempResults);
+        } catch (\Exception $e) {
+            return back()->withErrors($e->getMessage());
+        }
+
+        // Convert temp results into real results
+        foreach ($tempResults as $tempResult) {
+            RaceQualiResult::create([...$tempResult->toArray(), ...['race_id' => $race->id]]);
+            $tempResult->delete();
         }
 
         activity()
@@ -79,51 +87,6 @@ class RaceQualiResultsController extends Controller
             ])
             ->log('Quali results uploaded for :properties.division :properties.track');
 
-        return redirect()->back();
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  RaceQualiResult  $raceQualiResults
-     * @return \Illuminate\Http\Response
-     */
-    public function show(RaceQualiResult $raceQualiResults)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  RaceQualiResult  $raceQualiResults
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(RaceQualiResult $raceQualiResults)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  Request  $request
-     * @param  RaceQualiResult  $raceQualiResults
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, RaceQualiResult $raceQualiResults)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  RaceQualiResult  $raceQualiResults
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(RaceQualiResult $raceQualiResults)
-    {
-        //
+        return back();
     }
 }

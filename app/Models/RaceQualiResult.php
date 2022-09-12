@@ -68,6 +68,7 @@ class RaceQualiResult extends Model
     protected $fillable = [
         'race_id',
         'position',
+        'f1_team_id',
         'driver_id',
         'best_lap_time',
         'best_s1_time',
@@ -80,57 +81,6 @@ class RaceQualiResult extends Model
         'best_lap_tire',
         'codemasters_result_status',
     ];
-
-    /**
-     * @param  array  $json
-     * @return mixed|static
-     */
-    public static function fromFile(array $result, array $allResults)
-    {
-        if ($result['m_bestLapTimeInMS'] === 0) {
-            return new static([
-                'position' => $result['m_position'],
-                'best_lap_time' => 0,
-                'codemasters_result_status' => $result['m_resultStatus'],
-            ]);
-        }
-
-        try {
-            $bestLapTire = UdpSpec::getFastestLapTire($result);
-        } catch (UdpDataException $e) {
-            // We will just gracefully fail on this one...
-            \Log::warning($e->getMessage());
-            $bestLapTire = 'S';
-        }
-
-        // Grab best lap
-        $bestLapNum = $result['m_bestLapTimeLapNum'];
-        $bestLap = $result['m_lapHistoryData'][$bestLapNum - 1];
-
-        // Grab session best
-        $sessionBestDriver = collect($allResults['driverData'])->firstWhere('m_position', '=', 1);
-        $sessionBestLapNum = $sessionBestDriver['m_bestLapTimeLapNum'];
-        $sessionBestLap = $sessionBestDriver['m_lapHistoryData'][$sessionBestLapNum - 1];
-
-        return new static([
-            'position' => $result['m_position'],
-            'best_lap_time' => round($bestLap['m_lapTimeInMS'] / 1000, 3),
-            'best_s1_time' => round($bestLap['m_sector1TimeInMS'] / 1000, 3),
-            'best_s2_time' => round($bestLap['m_sector2TimeInMS'] / 1000, 3),
-            'best_s3_time' => round($bestLap['m_sector3TimeInMS'] / 1000, 3),
-            'lap_delta' => static::diffFromSessionBest($bestLap['m_lapTimeInMS'], $sessionBestLap['m_lapTimeInMS']),
-            'best_s1_delta' => static::diffFromSessionBest($bestLap['m_sector1TimeInMS'], $sessionBestLap['m_sector1TimeInMS']),
-            'best_s2_delta' => static::diffFromSessionBest($bestLap['m_sector2TimeInMS'], $sessionBestLap['m_sector2TimeInMS']),
-            'best_s3_delta' => static::diffFromSessionBest($bestLap['m_sector3TimeInMS'], $sessionBestLap['m_sector3TimeInMS']),
-            'best_lap_tire' => $bestLapTire,
-            'codemasters_result_status' => $result['m_resultStatus'],
-        ]);
-    }
-
-    protected static function diffFromSessionBest($best, $sessionBest)
-    {
-        return round(($best - $sessionBest) / 1000, 3);
-    }
 
     public function driver()
     {
