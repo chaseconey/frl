@@ -21,6 +21,7 @@ class StandingController extends Controller
                     ->with('driver', 'driver.user');
             },
         ])
+            ->active()
             ->get()
             ->each(function ($team) {
                 $points = $team->raceResults->sum('points');
