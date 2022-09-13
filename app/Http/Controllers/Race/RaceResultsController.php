@@ -66,7 +66,7 @@ class RaceResultsController extends Controller
 
         // Convert temp results into real results
         foreach ($tempResults as $tempResult) {
-            RaceResult::create([...$tempResult->toArray(), ...['race_id' => $race->id]]);
+            RaceResult::create(array_merge($tempResult->toArray(), ['race_id' => $race->id]));
             $tempResult->delete();
         }
 
