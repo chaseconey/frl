@@ -30,7 +30,7 @@ class RaceQualiResultsController extends Controller
             ->loadMin('qualiResults', 'best_s3_time');
 
         $tempResults = TempRaceQualiResult::where('race_id', $race->id)->orderBy('position')->get();
-        $drivers = Driver::where('division_id', $race->division_id)->get();
+        $drivers = Driver::where('division_id', $race->division_id)->orderBy('name')->get();
 
         $driverVideos = DriverVideo::where('race_id', $race->id)
             ->get()

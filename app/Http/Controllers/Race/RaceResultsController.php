@@ -28,7 +28,7 @@ class RaceResultsController extends Controller
             ->loadMin('results', 'best_lap_time');
 
         $tempResults = TempRaceResult::where('race_id', $race->id)->orderBy('position')->get();
-        $drivers = Driver::where('division_id', $race->division_id)->get();
+        $drivers = Driver::where('division_id', $race->division_id)->orderBy('name')->get();
 
         $driverVideos = DriverVideo::where('race_id', $race->id)
             ->get()
