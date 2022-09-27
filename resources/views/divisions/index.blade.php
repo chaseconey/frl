@@ -57,7 +57,7 @@
 
     </div>
     <x-slot name="scripts">
-        <script>
+        <script type="module">
             new ClipboardJS('.friend-code');
             const notyf = new Notyf();
         </script>

@@ -156,7 +156,7 @@
 
     <x-slot name="scripts">
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
-        <script>
+        <script type="module">
             let clipboard = new ClipboardJS('.friend-code');
             const notyf = new Notyf();
             clipboard.on('success', function(e) {
